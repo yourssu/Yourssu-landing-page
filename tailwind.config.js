@@ -9,7 +9,17 @@ module.exports = {
     borderRadius: {
       project: "35px",
     },
-    extend: {},
+    extend: {
+      fontFamily: { 
+        Roboto: ["Roboto"],
+        NeoSB: ["NeoSB"],
+        NeoR: ["NeoR"],
+      },
+      textColor: {
+        Text_Color1: ["#8D8A93"],
+        Text_Color2: ["#525252"],
+      }
+    },
   },
   plugins: [],
 }

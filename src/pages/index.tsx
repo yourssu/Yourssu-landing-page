@@ -1,14 +1,13 @@
-import Title from '../components/Title';
+import { Ideal } from '@/containers/home/Ideal';
+import { Team } from '@/containers/home/Team';
 
-export default function Home() {
+const Home = () => {
   return (
     <main>
-      <Title>dfdfdf</Title>
-      <p>A TypeScript starter for Gatsby. Great for advanced users.</p>
-      <p>
-        Follow me on Twitter (
-        <a href="https://twitter.com/jpedroschmitz">@jpedroschmitz</a>)
-      </p>
+      <Team />
+      <Ideal />
     </main>
   );
-}
+};
+
+export default Home;

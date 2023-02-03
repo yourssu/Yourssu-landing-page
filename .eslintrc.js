@@ -1,4 +1,4 @@
-{
+module.exports = {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -28,7 +28,18 @@
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
-  "rules": {},
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }
+    ],
+    "import/no-unresolved": "error",
+    "consistent-return": [0],
+    "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+    "react/jsx-filename-extension": [0, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off"
+  },
   "settings": {
     "import/resolver": {
       "typescript": {

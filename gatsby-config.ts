@@ -18,6 +18,9 @@ const config: GatsbyConfig = {
   // don't need to define it here (just if you need to change the options)
   plugins: [
     'gatsby-plugin-postcss',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

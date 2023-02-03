@@ -29,7 +29,5 @@
   "exclude": [
     "node_modules"
   ],
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*", "./gatsby-node.ts", "./gatsby-config.ts", "./gatsby-browser.tsx", "./plugins/**/*"]
 }

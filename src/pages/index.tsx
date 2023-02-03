@@ -1,14 +1,12 @@
-import Title from '../components/Title';
+import Banner from '@/container/home/banner';
+import Project from '@/container/home/project';
+import Layout from '../components/Layout';
 
 export default function Home() {
   return (
-    <main>
-      <Title>dfdfdf</Title>
-      <p>A TypeScript starter for Gatsby. Great for advanced users.</p>
-      <p>
-        Follow me on Twitter (
-        <a href="https://twitter.com/jpedroschmitz">@jpedroschmitz</a>)
-      </p>
-    </main>
+    <Layout pageTypes="home">
+      <Banner />
+      <Project />
+    </Layout>
   );
 }

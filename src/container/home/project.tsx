@@ -49,16 +49,17 @@ function Project() {
           title="Project"
           description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숭실위키,<br />숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
           image={lineImg}
+          color="text-Text_Color2-0"
         />
         <div className=" mt-8 flex flex-row justify-center items-center w-full px-52">
-          {projectData.map((imgData: ProjectData) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <div className=" border-violet-300 border-4 rounded-project">
-                <img src={imgData.publicURL} alt={imgData.name} />
-              </div>
-            );
-          })}
+          {projectData.map((imgData: ProjectData) => (
+            <div
+              key={imgData.publicURL}
+              className=" border-violet-300 border-4 rounded-project"
+            >
+              <img src={imgData.publicURL} alt={imgData.name} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

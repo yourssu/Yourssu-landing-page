@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
+<<<<<<< HEAD
 @tailwind utilities;
+=======
+@tailwind utilities;
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/assets/fonts/Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: "NeoSB";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoSB.ttf");
+}
+@font-face {
+  font-family: "NeoR";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoR.ttf");
+}
+>>>>>>> 0dd8100 (추가 - 부서별 섹션, 인재상 섹션)

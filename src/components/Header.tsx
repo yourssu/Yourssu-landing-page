@@ -33,18 +33,15 @@ export default function Header() {
           <span className="font-bold text-2xl">YOURSSU</span>
         </div>
         <div className="flex flex-row items-center">
-          {socialData.map((data: SocialButtonData) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <a href="#!">
-                <img
-                  src={data.publicURL}
-                  alt={data.name}
-                  className="mr-4 cursor-pointer"
-                />
-              </a>
-            );
-          })}
+          {socialData.map((data: SocialButtonData) => (
+            <a key={data.name} href="#!">
+              <img
+                src={data.publicURL}
+                alt={data.name}
+                className="mr-4 cursor-pointer"
+              />
+            </a>
+          ))}
         </div>
       </div>
       <hr className=" w-full h-0.5 bg-gray-400 block mt-2" />

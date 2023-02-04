@@ -51,7 +51,7 @@ function Project() {
           <br /> 숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가가고
           있어요.
         </p>
-        <div className=" mt-8 flex flex-row justify-start items-center w-full px-52">
+        <div className=" mt-8 flex flex-row justify-center items-center w-full px-52">
           {projectData.map((imgData: ProjectData) => {
             return (
               // eslint-disable-next-line react/jsx-key

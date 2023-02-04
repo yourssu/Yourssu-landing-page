@@ -15,7 +15,7 @@ const gatsbyRequiredRules = path.join(
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: 'yourssu',
+    title: 'YOURSSU',
   },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)
@@ -70,6 +70,15 @@ const config: GatsbyConfig = {
         name: `image`,
         // Path to the directory
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        // The unique name for each instance
+        name: `example`,
+        // Path to the directory
+        path: `${__dirname}/src/images/teams`,
       },
     },
   ],

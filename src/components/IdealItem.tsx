@@ -1,15 +1,19 @@
 type Ideal = {
   title: string;
   description: string;
+  img: {
+    publicURL: string;
+    name: string;
+  };
 };
 
-function IdealItem({ title, description }: Ideal) {
+function IdealItem({ img, title, description }: Ideal) {
   return (
     <div className="my-4 flex-row">
       <div>
         <img
-          alt="ideals/Rectangle"
-          src="static/images/ideals/Rectangle.png"
+          alt={img.name}
+          src={img.publicURL}
           className="absolute w-[71px] translate-y-3"
         />
         <h3 className="absolute w-[71px] text-center font-NeoSB text-lg tracking-tighter">

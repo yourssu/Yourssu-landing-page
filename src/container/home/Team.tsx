@@ -1,7 +1,34 @@
 import { StaticImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery } from 'gatsby';
 import TeamButton from '@/components/TeamButton';
 
+type TeamButtonData = {
+  node: {
+    publicURL: string;
+    name: string;
+  };
+};
+
 function Team() {
+  const teamdata = useStaticQuery(graphql`
+    query {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "image" }
+          dir: { regex: "/teams/" }
+          name: { ne: "Line" }
+        }
+      ) {
+        edges {
+          node {
+            publicURL
+            name
+          }
+        }
+      }
+    }
+  `);
+  const data = teamdata.allFile.edges;
   return (
     <div className="mt-5 py-16">
       <div className="mb-8 flex flex-col items-center">
@@ -18,15 +45,13 @@ function Team() {
           숭실대 학생들의 즐거운 캠퍼스 라이프를 위한 서비스를 만들고 있습니다.
         </p>
       </div>
-      <div className="flex justify-center">
-        <TeamButton img="../../images/teams/HR.png" name="HR" />
-        <TeamButton img="../../images/teams/Marketer.png" name="Marketer" />
-        <TeamButton img="../../images/teams/Legal.png" name="Legal" />
-        <TeamButton img="../../images/teams/Designer.png" name="Designer" />
-        <TeamButton img="../../images/teams/iOS.png" name="iOS" />
-        <TeamButton img="../../images/teams/Android.png" name="Android" />
-        <TeamButton img="../../images/teams/Backend.png" name="Backend" />
-        <TeamButton img="../../images/teams/Frontend.png" name="Frontend" />
+      <div className="flex flex-row justify-center items-center">
+        {data.map((data1: TeamButtonData) => {
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <TeamButton img={data1.node.publicURL} name={data1.node.name} />
+          );
+        })}
       </div>
     </div>
   );

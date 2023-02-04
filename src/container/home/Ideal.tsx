@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import IdealItem from '@/components/IdealItem';
 
 const items = [
@@ -19,6 +20,20 @@ const items = [
 ];
 
 function Ideal() {
+  const data = useStaticQuery(graphql`
+    query {
+      allFile(
+        filter: { extension: { eq: "png" }, dir: { regex: "/ideals/" } }
+      ) {
+        nodes {
+          name
+          publicURL
+        }
+      }
+    }
+  `);
+  const longData = data.allFile.nodes[0];
+  const itemData = data.allFile.nodes[1];
   return (
     <div className="flex flex-row justify-center bg-[#F5F5F5] py-16">
       <h2 className="min-w-max pt-4 pl-5 font-NeoSB text-2xl">
@@ -27,13 +42,14 @@ function Ideal() {
         지향해요
       </h2>
       <img
-        alt="ideals/Long"
-        src="static/images/ideals/Long.png"
+        alt={longData.name}
+        src={longData.publicURL}
         className="mx-7 h-[216px]"
       />
       <div className="flex flex-col">
         {items.map((item) => (
           <IdealItem
+            img={itemData}
             title={item.title}
             description={item.description}
             key={item.title}

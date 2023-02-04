@@ -3,9 +3,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 function Banner() {
   const bannerData = useStaticQuery(graphql`
     query {
-      file(sourceInstanceName: { eq: "image" }) {
-        publicURL
-        name
+      allFile(filter: { extension: { eq: "png" }, name: { eq: "banner" } }) {
+        nodes {
+          name
+          publicURL
+        }
       }
     }
   `);
@@ -13,8 +15,8 @@ function Banner() {
     <div>
       <div className="h-[600px]">
         <img
-          src={bannerData.file.publicURL}
-          alt={bannerData.file.name}
+          src={bannerData.allFile.nodes[0].publicURL}
+          alt={bannerData.allFile.nodes[0].name}
           className="object-fill h-full w-full"
         />
       </div>

@@ -18,8 +18,19 @@ module.exports = {
       textColor: {
         Text_Color1: ["#8D8A93"],
         Text_Color2: ["#525252"],
+        Text_Color3: ["#CDCDCD"],
+      },
+      colors: {
+        gradient_color1: ["#F590FA"],
+        gradient_color2: ["#81A0F6"],
       }
     },
+    screens: {
+      size1: '1920px',
+      size2: '1440px',
+      size3: '1080px',
+      size4: '720px',
+    }
   },
   plugins: [],
 }

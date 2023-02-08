@@ -1,31 +1,54 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 
 function Banner() {
   const bannerData = useStaticQuery(graphql`
     query {
-      allFile(filter: { extension: { eq: "png" }, name: { eq: "banner" } }) {
-        nodes {
-          name
-          publicURL
+      desktopImage: file(name: { eq: "banner-desktop" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      sm: file(name: { eq: "banner-sm" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }
   `);
   return (
-    <div>
-      <div className="h-[600px]">
-        <img
-          src={bannerData.allFile.nodes[0].publicURL}
-          alt={bannerData.allFile.nodes[0].name}
-          className="object-fill h-full w-full"
-        />
-      </div>
-      <div className="absolute top-72 left-52">
-        <span className=" font-normal text-4xl">
+    <div className="relative">
+      <Img
+        className="sm:h-[557px] md:h-[557px] lg:h-[800px]"
+        fluid={[
+          bannerData.sm.childImageSharp.fluid,
+          {
+            ...bannerData.desktopImage.childImageSharp.fluid,
+            media: `(min-width: 1160px)`,
+          },
+        ]}
+      />
+      <div className=" flex flex-col justify-center items-center w-full absolute top-[132px] xl:hidden xxl:hidden">
+        <span className=" font-NeoSB font-medium sm:text-[20px] sm:leading-[20px] md:text-[24px] md:leading-[24px] lg:text-[36px] lg:leading-[36px] ">
           함께 만들어가는 당신의 숭실,
         </span>
-        <br />
-        <span className=" font-black text-6xl">YOURSSU</span>
+        <span className=" font-Roboto font-extrabold sm:text-[40px] md:text-[48px] lg:text-[66px]">
+          YOURSSU
+        </span>
+      </div>
+      <div className="flex justify-start absolute xxl:top-[280px] xl:top-[220px] xxl:left-[320px] xl:left-[140px] sm:hidden md:hidden lg:hidden">
+        <div className=" flex flex-col justify-start items-start">
+          <span className=" font-NeoSB font-medium text-[48px] leading-[48px]">
+            함께 만들어가는 당신의 숭실,
+          </span>
+          <span className=" font-Roboto font-extrabold text-[90px] leading-[90px]">
+            YOURSSU
+          </span>
+        </div>
       </div>
     </div>
   );

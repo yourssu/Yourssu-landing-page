@@ -13,3 +13,7 @@
   font-family: "NeoR";
   src: url("../../src/assets/fonts/AppleSDGothicNeoR.ttf");
 }
+@font-face {
+  font-family: "NeoEB";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoEB.ttf");
+}

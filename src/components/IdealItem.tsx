@@ -3,27 +3,6 @@ type Ideal = {
   description: string;
 };
 
-/* function IdealItem({ img, title, description }: Ideal) {
-  return (
-    <div className="my-4 flex-row">
-      <div>
-        <img
-          alt={img.name}
-          src={img.publicURL}
-          className="absolute w-[71px] translate-y-3"
-        />
-        <div className=" bg-red-300 w-[71px] h-[14px]" />
-        <h3 className="absolute w-[71px] text-center font-NeoSB text-lg tracking-tighter">
-          {title}
-        </h3>
-      </div>
-      <div className="ml-[71px] max-w-[505px] px-5 text-justify font-NeoR text-sm text-Text_Color2-0">
-        {description}
-      </div>
-    </div>
-  );
-} */
-
 function IdealItem({ title, description }: Ideal) {
   return (
     <div className="my-5 flex-row">

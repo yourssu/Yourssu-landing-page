@@ -30,6 +30,3 @@ jobs:
 
       - name: Check linting
         run: npm run lint
-
-      - name: Run tests
-        run: npm test

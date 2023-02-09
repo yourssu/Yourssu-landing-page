@@ -14,10 +14,16 @@ module.exports = {
         Roboto: ["Roboto"],
         NeoSB: ["NeoSB"],
         NeoR: ["NeoR"],
+        NeoEB: ["NeoEB"]
       },
       textColor: {
         Text_Color1: ["#8D8A93"],
         Text_Color2: ["#525252"],
+        Text_Color3: ["#CDCDCD"],
+      },
+      colors: {
+        gradient_color1: ["#F590FA"],
+        gradient_color2: ["#81A0F6"],
       }
     },
     screens: {

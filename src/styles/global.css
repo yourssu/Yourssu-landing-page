@@ -3,13 +3,17 @@
 @tailwind utilities;
 @font-face {
   font-family: "Roboto";
-  src: url("../../public/static/fonts/Roboto-Medium.ttf");
+  src: url("../../src/assets/fonts/Roboto-Medium.ttf");
 }
 @font-face {
   font-family: "NeoSB";
-  src: url("../../public/static/fonts/AppleSDGothicNeoSB.ttf");
+  src: url("../../src/assets/fonts/AppleSDGothicNeoSB.ttf");
 }
 @font-face {
   font-family: "NeoR";
-  src: url("../../public/static/fonts/AppleSDGothicNeoR.ttf");
+  src: url("../../src/assets/fonts/AppleSDGothicNeoR.ttf");
+}
+@font-face {
+  font-family: "NeoEB";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoEB.ttf");
 }

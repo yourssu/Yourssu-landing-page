@@ -10,7 +10,7 @@ import Footer from '@/container/Footer';
 export default function Home() {
   return (
     <Layout pageTypes="home">
-      <Banner />
+      {/* <Banner /> */}
       <Team />
       <Ideal />
       {/* <Project /> */}

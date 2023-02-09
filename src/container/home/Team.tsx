@@ -27,7 +27,7 @@ function Team() {
         divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0 w-[3px] h-[39px]"
         color="text-Text_Color1-0"
       />
-      <div className="flex flex-row flex-wrap justify-center size2:w-full size3:w-[600px]">
+      <div className="flex flex-row flex-wrap justify-center">
         {teamData.map((data: TeamButtonData) => (
           <TeamButton key={data.name} img={data.publicURL} name={data.name} />
         ))}

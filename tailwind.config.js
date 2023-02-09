@@ -27,10 +27,11 @@ module.exports = {
       }
     },
     screens: {
-      size1: '1920px',
-      size2: '1440px',
-      size3: '1080px',
-      size4: '720px',
+      sm: {"min": "0px", 'max': "580px"},
+      md: {"min": "580px", 'max': "869px"},
+      lg: {"min": "870px", 'max': "1159px"},
+      xl: {"min": "1160px", 'max': "1440px"},
+      xxl: {"min": "1441px"}
     }
   },
   plugins: [],

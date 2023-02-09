@@ -67,6 +67,15 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         // The unique name for each instance
+        name: `projects`,
+        // Path to the directory
+        path: `${__dirname}/src/assets/projects`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        // The unique name for each instance
         name: `image`,
         // Path to the directory
         path: `${__dirname}/src/images`,

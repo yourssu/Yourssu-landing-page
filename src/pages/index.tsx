@@ -13,6 +13,7 @@ import Footer from '@/container/Footer';
 export default function Home() {
   return (
     <Layout>
+      <Header />
       <Banner />
       <Team />
       <Ideal />

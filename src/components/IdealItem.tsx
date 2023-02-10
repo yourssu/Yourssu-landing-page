@@ -12,7 +12,7 @@ function IdealItem({ title, description }: Ideal) {
           {title}
         </h3>
       </div>
-      <div className="ml-[141px] max-w-[725px] text-justify font-NeoR text-[22px] text-Text_Color2-0">
+      <div className="ml-[141px] md:w-[400px] lg:w-[455px] w-[725px] text-justify font-NeoR text-[22px] text-Text_Color2-0">
         {description}
       </div>
     </div>

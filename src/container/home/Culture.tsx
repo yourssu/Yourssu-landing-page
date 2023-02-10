@@ -30,14 +30,14 @@ const items = [
 
 function Culture() {
   return (
-    <div className="flex flex-col justify-center items-center pt-[34px] pb-[200px]">
+    <div className="flex flex-col justify-center items-center md:pt-[40px] pt-[35px] md:pb-[110px] pb-[200px]">
       <SectionIntro
         title="CULTURE"
         description="유어슈는 서로를 존중하며 커뮤니케이션하는 동아리입니다.<br />성장하는 문화를 통해 같이 있는 것만으로도 즐겁고 배울 수 있는 동아리로 나아갑니다."
         divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0 w-[3px] h-[39px]"
         color="text-Text_Color1-0"
       />
-      <div className="w-[958px] h-[492px] flex flex-wrap justify-between content-between items-center mt-[110px]">
+      <div className="md:w-[400px] w-[958px] md:h-fit h-[492px] flex flex-wrap justify-between content-between items-center md:mt-[30px] mt-[110px]">
         {items.map((item) => (
           <CultureItem
             key={item.id}

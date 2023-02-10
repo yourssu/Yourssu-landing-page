@@ -26,12 +26,20 @@ module.exports = {
         gradient_color2: ["#81A0F6"],
       }
     },
+    /* screens: {
+      sm: {"min": "0px", 'max': "375px"},
+      md: {"min": "376px", 'max': "720px"},
+      lg: {"min": "721px", 'max': "1080px"},
+      xl: {"min": "1081px", 'max': "1440px"},
+      xxl: {"min": "1441px", "max": "1920px"},
+      xxxl: {"min": "1921px"}
+    } */
     screens: {
-      sm: {"min": "0px", 'max': "580px"},
-      md: {"min": "580px", 'max': "869px"},
-      lg: {"min": "870px", 'max': "1159px"},
-      xl: {"min": "1160px", 'max': "1440px"},
-      xxl: {"min": "1441px"}
+      sm: {"min": "0px", 'max': "720px"},
+      md: {"min": "721px", 'max': "1080px"},
+      lg: {"min": "1081px", 'max': "1440px"},
+      xl: {"min": "1441px", 'max': "1920px"},
+      xxl: {"min": "1921px"}
     }
   },
   plugins: [],

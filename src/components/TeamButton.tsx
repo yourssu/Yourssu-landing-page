@@ -5,7 +5,7 @@ type ButtonItem = {
 
 function TeamButton({ img, name }: ButtonItem) {
   return (
-    <div className="mx-[15px] mb-[30px]">
+    <div className="mx-[15px] mb-[40px] md:mb-[50px]">
       <img src={img} alt={img} className="mb-[8px] w-[120px]" />
       <div className="text-center h-[22px] text-[22px]">
         <span className="font-NeoR text-Text_Color2-0">

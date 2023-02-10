@@ -6,8 +6,8 @@ type Culture = {
 
 function CultureItem({ id, title, description }: Culture) {
   return (
-    <div className="w-[408px] h-[219px] flex flex-row justify-between">
-      <span className="font-NeoEB text-[32px] text-transparent bg-clip-text bg-gradient-to-r from-gradient_color2-0 to-gradient_color1-0">
+    <div className="w-[408px] h-[219px] flex flex-row justify-between md:mb-[50px]">
+      <span className="font-NeoEB text-[32px] text-transparent bg-clip-text bg-gradient-to-r from-gradient_color2-0 to-gradient_color1-0 -translate-y-1">
         {id}
       </span>
       <div className="justify-between">

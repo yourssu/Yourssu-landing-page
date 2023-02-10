@@ -20,21 +20,23 @@ const items = [
 
 function Ideal() {
   return (
-    <div className="flex flex-row justify-center items-center bg-[#F5F5F5] h-[607px]">
-      <h2 className="min-w-max h-[284px] pt-4 font-NeoSB text-[36px]">
-        이런 사람을
-        <br />
-        지향해요
-      </h2>
-      <div className="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0 mx-[39px] w-[2px] h-[284px]" />
-      <div className="flex flex-col">
-        {items.map((item) => (
-          <IdealItem
-            title={item.title}
-            description={item.description}
-            key={item.title}
-          />
-        ))}
+    <div className="bg-[#F5F5F5] py-[160px]">
+      <div className="flex flex-row justify-center items-center">
+        <h2 className="min-w-max h-[284px] pt-4 font-NeoSB text-[36px]">
+          이런 사람을
+          <br />
+          지향해요
+        </h2>
+        <div className="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0 mx-[39px] w-[2px] h-[284px]" />
+        <div className="flex flex-col">
+          {items.map((item) => (
+            <IdealItem
+              title={item.title}
+              description={item.description}
+              key={item.title}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

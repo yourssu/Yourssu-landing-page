@@ -9,7 +9,9 @@ function SectionIntro({ title, description, divStyle, color }: IntroProps) {
   return (
     <div className="mb-[52px] flex flex-col items-center mx-[50px]">
       <div className={divStyle} />
-      <h1 className="mt-5 mb-2 font-Roboto font-medium text-[36px]">{title}</h1>
+      <h1 className="mt-[30px] mb-[10px] font-Roboto font-medium text-[36px]">
+        {title}
+      </h1>
       {description.split('<br />').map((des) => (
         <p
           key={des}

@@ -26,14 +26,6 @@ module.exports = {
         gradient_color2: ["#81A0F6"],
       }
     },
-    /* screens: {
-      sm: {"min": "0px", 'max': "375px"},
-      md: {"min": "376px", 'max': "720px"},
-      lg: {"min": "721px", 'max': "1080px"},
-      xl: {"min": "1081px", 'max': "1440px"},
-      xxl: {"min": "1441px", "max": "1920px"},
-      xxxl: {"min": "1921px"}
-    } */
     screens: {
       sm: {"min": "0px", 'max': "720px"},
       md: {"min": "721px", 'max': "1080px"},

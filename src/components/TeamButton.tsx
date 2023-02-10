@@ -5,9 +5,9 @@ type ButtonItem = {
 
 function TeamButton({ img, name }: ButtonItem) {
   return (
-    <div className="mx-[15px] mb-[40px] md:mb-[50px]">
-      <img src={img} alt={img} className="mb-[8px] w-[120px]" />
-      <div className="text-center h-[22px] text-[22px]">
+    <div className="mx-[15px] sm:mb-[24px] mb-[40px]">
+      <img src={img} alt={img} className="mb-[8px] sm:w-[80px] w-[120px]" />
+      <div className="text-center sm:text-[14px] text-[22px]">
         <span className="font-NeoR text-Text_Color2-0">
           {name.split('_')[1]}
         </span>

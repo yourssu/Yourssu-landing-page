@@ -24,20 +24,20 @@ const items = [
     id: '#4',
     title: '자유로운 커뮤니케이션',
     description:
-      '유어슈는 슬랙, 노션, 디스코드 등의 여러 소통 창구를 확용하고 있어요. 늦은 밤에도 @멘션을 꺼리지 않고 소통하는 방식이 유어슈의 자유로운 분위기를 형성합니다.',
+      '유어슈는 슬랙, 노션, 디스코드 등의 여러 소통 창구를 활용하고 있어요. 늦은 밤에도 @멘션을 꺼리지 않고 소통하는 방식이 유어슈의 자유로운 분위기를 형성합니다.',
   },
 ];
 
 function Culture() {
   return (
-    <div className="flex flex-col justify-center items-center md:pt-[40px] pt-[35px] md:pb-[110px] pb-[200px]">
+    <div className="flex flex-col justify-center items-center sm:pb-[100px] md:pb-[170px] pt-[35px] pb-[200px]">
       <SectionIntro
         title="CULTURE"
         description="유어슈는 서로를 존중하며 커뮤니케이션하는 동아리입니다.<br />성장하는 문화를 통해 같이 있는 것만으로도 즐겁고 배울 수 있는 동아리로 나아갑니다."
-        divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0 w-[3px] h-[39px]"
+        divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0"
         color="text-Text_Color1-0"
       />
-      <div className="md:w-[400px] w-[958px] md:h-fit h-[492px] flex flex-wrap justify-between content-between items-center md:mt-[30px] mt-[110px]">
+      <div className="sm:w-[310px] md:w-[400px] w-[958px] sm:h-fit md:h-fit h-[492px] flex flex-wrap justify-between content-between items-center sm:mt-[80px] md:mt-[80px] mt-[110px]">
         {items.map((item) => (
           <CultureItem
             key={item.id}

@@ -10,7 +10,7 @@ type TeamButtonData = {
 
 function Team() {
   const windowSize = useMediaQuery({
-    query: '(min-width: 1080px)',
+    query: '(min-width: 1081px)',
   });
 
   const imgData = useStaticQuery(graphql`
@@ -25,7 +25,7 @@ function Team() {
   `);
   const teamData = imgData.teams.nodes;
   return (
-    <div className="flex flex-col items-center sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
+    <div className="flex flex-col items-center xs:py-[50px] sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
       {windowSize ? (
         <SectionIntro
           title="TEAM YOURSSU"
@@ -41,7 +41,7 @@ function Team() {
           color="text-Text_Color1-0"
         />
       )}
-      <div className="flex flex-row flex-wrap justify-center sm:w-[330px] md:w-[460px] lg:w-[600px] sm:mt-[40px] md:mt-[83px] mt-[52px]">
+      <div className="flex flex-row flex-wrap justify-center xs:w-[220px] sm:w-[330px] md:w-[460px] lg:w-[600px] xs:mt-[30px] sm:mt-[40px] md:mt-[83px] mt-[52px]">
         {teamData.map((data: TeamButtonData) => (
           <TeamButton key={data.name} img={data.publicURL} name={data.name} />
         ))}

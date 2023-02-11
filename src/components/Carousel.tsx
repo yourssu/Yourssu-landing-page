@@ -1,77 +1,27 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import { useState } from 'react';
+import Img from 'gatsby-image';
+import useCarouselDetail from '@/hooks/projects/hook';
 
-type CarouselItemProp = {
-  publicURL: string;
-  name: string;
+type Nodes2 = {
+  childImageSharp: {
+    fluid: {
+      aspectRatio: number;
+      sizes: string;
+      base64: string;
+      src: string;
+      srcSet: string;
+    };
+  };
 };
 
-type CarousleItemsProp = {
-  itemsData: CarouselItemProp[];
-};
+interface CarouselItemDataProp {
+  itemsData: Nodes2[];
+}
 
-// 글데이터 처리하는 방법 생각
-export const projectData = [
-  {
-    title: '숨쉴위키',
-    description:
-      '숭실대만의 정보를 기록 및 공유하는 정보 아카이브 웹페이지예요',
-    list: ['숭실대 필수정보부터 TMI까지', '모두가 공평하게 접근 및 편집'],
-    link: '',
-  },
-  {
-    title: '숨쉴때 커뮤니티',
-    description:
-      '숭실대 학생들의 소통공간을 만드는 프로젝트로, 현재 다양한 기능 개발을 진행하고 있어요.',
-    list: [
-      '숭실대 학생들의 클린한 커뮤니티',
-      '이모지로 게시물 리액션',
-      '댓글과 게시물로 소통',
-    ],
-    link: '',
-  },
-  {
-    title: '숨쉴때 성적표',
-    description:
-      '성적표를 확인하기 번거로웠던 기존의 불편함을 해결한 숨쉴때 성적표 어플리케이션이에요.',
-    list: [
-      '편하게 보는 이번 학기 성적표',
-      '깔끔하게 캡쳐해서 쉽고 빠르게 공유',
-    ],
-    link: '',
-  },
-  {
-    title: '숨쉴때 뭐먹지?',
-    description:
-      '어디서, 무엇을 먹을지 고민인 숭실대생을 위해 숭실대 근처 음식점을 추천해주는 웹페이지예요',
-    list: [
-      '숭실대 근처 음식점 추천',
-      '먹고 싶지 않은 음식 제외 기능',
-      '숭실대로부터 떨어진 거리 노출',
-    ],
-    link: '',
-  },
-  {
-    title: '점뿌',
-    description:
-      '유어슈 뿌슝이 캐릭터를 활용해 만든 프로젝트로 F는 점프하고 A+을 획득하는 게임이에요.',
-    list: ['F는 피하고 A+은 먹는 점뿌 게임', '게임점수 공유하여 친구들과 경쟁'],
-    link: '',
-  },
-];
-
-function Carousel({ itemsData }: CarousleItemsProp) {
+function Carousel({ itemsData }: CarouselItemDataProp) {
   const [currentIndex, setcurrentIndex] = useState(0);
-  const imgData = useStaticQuery(graphql`
-    query {
-      allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
-        nodes {
-          publicURL
-          name
-        }
-      }
-    }
-  `);
+  const { data, projectData } = useCarouselDetail();
+
   function prevSlide() {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? itemsData.length - 1 : currentIndex - 1;
@@ -84,105 +34,112 @@ function Carousel({ itemsData }: CarousleItemsProp) {
   }
 
   return (
-    <div id="carouselItem" className="w-full">
-      <div className="flex justify-between items-center h-[400px] w-full bg-[#FBFBFB]">
-        <button type="button" onClick={prevSlide} className=" pl-10">
-          왼쪽
+    <div id="carouselItem" className="w-full h-auto mt-[450px] sm:mt-[300px]">
+      <div className="flex justify-between items-center h-[400px] md:h-[300px] sm:h-[300px] w-full bg-[#FBFBFB]">
+        <button
+          type="button"
+          onClick={prevSlide}
+          className=" pl-10 sm:pl-[10px]"
+        >
+          <img
+            className="w-[50px] h-[50px] sm:w-[12px] sm:h-[28px]"
+            src={data.carouselItemData.nodes[0].publicURL}
+            alt={data.carouselItemData.nodes[0].name}
+          />
         </button>
-        {currentIndex % 2 === 0 ? (
-          <div className="flex justify-center items-center">
-            <div className="flex flex-col justify-center items-start relative">
-              <span className="text-[70px] text-[#000000] opacity-10 font-NeoSB absolute -top-[60px] -tracking-[1%]">
-                0{currentIndex + 1}
-              </span>
-              <div className="flex flex-col px-[50px]">
-                <div className="flex flex-row justify-start items-center">
-                  <span className=" text-[36px] font-NeoSB text-black leading-[36px] -tracking-wide">
-                    {projectData[currentIndex].title}
-                  </span>
-                  <img
-                    className="w-[26px] h-[26px] ml-[5px]"
-                    src={imgData.allFile.nodes[0].publicURL}
-                    alt={imgData.allFile.nodes[0].name}
-                  />
-                </div>
-                <span className=" text-[22px] w-[405px] text-[#525252] leading-[32px] -tracking-wider font-NeoR mt-5">
-                  {projectData[currentIndex].description}
-                </span>
-                <div className="mt-5 flex flex-col">
-                  {projectData[currentIndex].list.map((data) => {
-                    return (
-                      // eslint-disable-next-line react/jsx-key
-                      <div className="flex flex-row justify-start items-center mt-5">
-                        <img
-                          src={imgData.allFile.nodes[1].publicURL}
-                          alt={imgData.allFile.nodes[1].name}
-                        />
-                        <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
-                          {data}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-            <div className="w-1/2 h-auto">
-              <img
-                src={itemsData[currentIndex].publicURL}
-                alt={itemsData[currentIndex].name}
+        <div className="flex justify-center items-center md:flex-col sm:flex-col">
+          <div className=" md:hidden sm:hidden">
+            {currentIndex % 2 === 0 && currentIndex === 0 ? (
+              <Img
+                className="xxl:w-[656px] xl:w-[656px] lg:w-[550px] h-auto"
+                fluid={itemsData[currentIndex].childImageSharp.fluid}
               />
-            </div>
+            ) : null}
+            {currentIndex % 2 === 0 && currentIndex !== 0 ? (
+              <Img
+                className="w-[500px] h-auto"
+                fluid={itemsData[currentIndex].childImageSharp.fluid}
+              />
+            ) : null}
           </div>
-        ) : (
-          <div className="flex justify-center items-center">
-            <div className="w-1/2 h-auto">
-              <img
-                src={itemsData[currentIndex].publicURL}
-                alt={itemsData[currentIndex].name}
-              />
-            </div>
-            <div className="flex flex-col justify-center items-start relative">
-              <span className="text-[70px] text-[#000000] opacity-10 font-NeoSB absolute -top-[60px] -tracking-[1%]">
-                0{currentIndex + 1}
-              </span>
-              <div className="flex flex-col px-[50px]">
-                <div className="flex flex-row justify-start items-center">
-                  <span className=" text-[36px] font-NeoSB text-black leading-[36px] -tracking-wide">
-                    {projectData[currentIndex].title}
-                  </span>
-                  <img
-                    className="w-[26px] h-[26px] ml-[5px]"
-                    src={imgData.allFile.nodes[0].publicURL}
-                    alt={imgData.allFile.nodes[0].name}
-                  />
-                </div>
-                <span className=" text-[22px] w-[405px] text-[#525252] leading-[32px] -tracking-wider font-NeoR mt-5">
-                  {projectData[currentIndex].description}
+          <div className="flex flex-col justify-center items-start relative md:mb-[10px] sm:mb-[5px]">
+            <span className="text-[70px] text-[#000000] opacity-10 font-NeoSB absolute -top-[60px] sm:-top-[38px] sm:-left-[20px] -tracking-[1%] sm:text-[48px]">
+              0{currentIndex + 1}
+            </span>
+            <div className="flex flex-col px-[50px] sm:px-[10px]">
+              <div className="flex flex-row justify-start items-center">
+                <span className=" text-[36px] sm:text-[24px] font-NeoSB text-black leading-[36px] -tracking-wide">
+                  {projectData[currentIndex].title}
                 </span>
-                <div className="mt-5 flex flex-col">
-                  {projectData[currentIndex].list.map((data) => {
-                    return (
-                      // eslint-disable-next-line react/jsx-key
-                      <div className="flex flex-row justify-start items-center mt-5">
-                        <img
-                          src={imgData.allFile.nodes[1].publicURL}
-                          alt={imgData.allFile.nodes[1].name}
-                        />
-                        <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
-                          {data}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
+                <img
+                  className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px]"
+                  src={data.carouselItemData.nodes[2].publicURL}
+                  alt={data.carouselItemData.nodes[2].name}
+                />
+              </div>
+              <span className=" text-[22px] sm:text-[14px] w-[405px] sm:w-[266px] text-[#525252] leading-[32px] sm:leading-[22px] -tracking-wider font-NeoR xxl:mt-5 xl:mt-5 lg:mt-5 md:mt-5">
+                {projectData[currentIndex].description}
+              </span>
+              <div className="mt-5 flex flex-col md:hidden sm:hidden">
+                {projectData[currentIndex].list.map((listData) => {
+                  return (
+                    // eslint-disable-next-line react/jsx-key
+                    <div className="flex flex-row justify-start items-center mt-5">
+                      <img
+                        src={data.carouselItemData.nodes[3].publicURL}
+                        alt={data.carouselItemData.nodes[3].name}
+                      />
+                      <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
+                        {listData}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
-        )}
-
-        <button type="button" onClick={nextSlide} className=" pr-10">
-          오른쪽
+          <div className="md:hidden sm:hidden">
+            {currentIndex % 2 !== 0 ? (
+              <Img
+                className="w-[500px] h-auto"
+                fluid={itemsData[currentIndex].childImageSharp.fluid}
+              />
+            ) : null}
+          </div>
+          <div className="xxl:hidden xl:hidden lg:hidden md:mb-[10px] sm:mb-[5px]">
+            <Img
+              className="md:w-[400px] sm:w-[300px] h-auto"
+              fluid={itemsData[currentIndex].childImageSharp.fluid}
+            />
+          </div>
+          <div className="flex flex-col justify-start xxl:hidden xl:hidden lg:hidden w-[405px] sm:w-[266px] md:mb-[10px] sm:mb-[5px]">
+            {projectData[currentIndex].list.map((listData) => {
+              return (
+                // eslint-disable-next-line react/jsx-key
+                <div className="flex flex-row justify-start items-center mb-5">
+                  <img
+                    className="sm:w-[18px] sm:h-[18px]"
+                    src={data.carouselItemData.nodes[3].publicURL}
+                    alt={data.carouselItemData.nodes[3].name}
+                  />
+                  <p className="text-[24px] sm:text-[16px] ml-[7px] text-[#525252] font-NeoSB md:leading-[24px] sm:leading-[16px] -tracking-wider">
+                    {listData}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={nextSlide}
+          className=" pr-10 sm:pr-[10px]"
+        >
+          <img
+            className="w-[50px] h-[50px] sm:w-[12px] sm:h-[28px]"
+            src={data.carouselItemData.nodes[1].publicURL}
+            alt={data.carouselItemData.nodes[1].name}
+          />
         </button>
       </div>
     </div>

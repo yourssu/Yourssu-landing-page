@@ -1,21 +1,11 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import Carousel from '@/components/Carousel';
+import useCarouselDetail from '@/hooks/projects/hook';
 
 function Project() {
-  const data = useStaticQuery(graphql`
-    query {
-      projectImage: allFile(filter: { dir: { regex: "/images/project/" } }) {
-        nodes {
-          name
-          publicURL
-        }
-      }
-    }
-  `);
-  const projectData = data.projectImage.nodes;
+  const { data } = useCarouselDetail();
   return (
     <div className="">
-      <div className="flex flex-col justify-center items-center w-full mb-80">
+      <div className="flex flex-col justify-center items-center w-full">
         <div className=" bg-black h-[39px] w-[2px] " />
         <h1 className=" text-2xl font-medium mt-4 mb-2 text-black">Project</h1>
         <p className=" text-center text-gray-500 text-sm mt-3 leading-relaxed -tracking-tighter">
@@ -25,7 +15,7 @@ function Project() {
           있어요.
         </p>
       </div>
-      <Carousel itemsData={projectData} />
+      <Carousel itemsData={data.projectImgData.nodes} />
     </div>
   );
 }

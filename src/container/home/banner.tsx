@@ -4,16 +4,16 @@ import Img from 'gatsby-image';
 function Banner() {
   const bannerData = useStaticQuery(graphql`
     query {
-      desktopImage: file(name: { eq: "banner-desktop" }) {
+      desktopImage: file(name: { eq: "banner-lg" }) {
         childImageSharp {
-          fluid {
+          fluid(pngQuality: 90, maxHeight: 800) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      sm: file(name: { eq: "banner-sm" }) {
+      mobileImage: file(name: { eq: "banner-sm" }) {
         childImageSharp {
-          fluid {
+          fluid(pngQuality: 90, maxHeight: 557) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -21,18 +21,19 @@ function Banner() {
     }
   `);
   return (
-    <div className="relative">
+    <div className="relative flex flex-col justify-center items-center">
       <Img
-        className="sm:h-[557px] md:h-[557px] lg:h-[800px]"
+        className=" sm:h-[557px] md:h-[557px] h-[800px] w-full"
         fluid={[
-          bannerData.sm.childImageSharp.fluid,
+          bannerData.mobileImage.childImageSharp.fluid,
           {
             ...bannerData.desktopImage.childImageSharp.fluid,
-            media: `(min-width: 1160px)`,
+            media: `(min-width: 1080px)`,
           },
         ]}
       />
-      <div className=" flex flex-col justify-center items-center w-full absolute top-[132px] xl:hidden xxl:hidden">
+      {/* 390, 720 화면 */}
+      <div className=" flex flex-col justify-center items-center w-full absolute top-[132px] xxl:hidden xl:hidden lg:hidden">
         <span className=" font-NeoSB font-medium sm:text-[20px] sm:leading-[20px] md:text-[24px] md:leading-[24px] lg:text-[36px] lg:leading-[36px] ">
           함께 만들어가는 당신의 숭실,
         </span>
@@ -40,8 +41,9 @@ function Banner() {
           YOURSSU
         </span>
       </div>
-      <div className="flex justify-start absolute xxl:top-[280px] xl:top-[220px] xxl:left-[320px] xl:left-[140px] sm:hidden md:hidden lg:hidden">
-        <div className=" flex flex-col justify-start items-start">
+      {/* 1080, 1440, 1920 화면 */}
+      <div className="flex justify-start xxl:min-w-[1280px] xl:min-w-[1160px] lg:min-w-[870px] top-[280px] absolute sm:hidden md:hidden">
+        <div className=" flex flex-col items-start ">
           <span className=" font-NeoSB font-medium text-[48px] leading-[48px]">
             함께 만들어가는 당신의 숭실,
           </span>

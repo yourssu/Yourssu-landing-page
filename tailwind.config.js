@@ -27,11 +27,12 @@ module.exports = {
       }
     },
     screens: {
-      sm: {"min": "0px", 'max': "580px"},
-      md: {"min": "580px", 'max': "869px"},
-      lg: {"min": "870px", 'max': "1159px"},
-      xl: {"min": "1160px", 'max': "1440px"},
-      xxl: {"min": "1441px"}
+      xs: {"min": "0px", "max": "350px"},
+      sm: {"min": "350px", 'max': "720px"},
+      md: {"min": "721px", 'max': "1080px"},
+      lg: {"min": "1081px", 'max': "1440px"},
+      xl: {"min": "1441px", 'max': "1920px"},
+      xxl: {"min": "1921px"}
     }
   },
   plugins: [],

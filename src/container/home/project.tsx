@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import Carousel from '@/components/Carousel';
 import SectionIntro from '@/components/SectionIntro';
-import useCarouselDetail from '@/hooks/projects/hook';
+import useCarouselDetail from '@/hooks/container/projects/hook';
 
 function Project() {
   const windowSize = useMediaQuery({
@@ -10,7 +10,12 @@ function Project() {
   const { data } = useCarouselDetail();
 
   return (
-    <div className="xs:mb-[100px] sm:mb-[200px] md:mb-[300px] mb-[350px]">
+    <div className="relative xs:mb-[100px] sm:mb-[200px] md:mb-[300px] mb-[350px]">
+      <img
+        className=" absolute -z-10 w-full top-0"
+        src={data.backgroundImgData.nodes[0].publicURL}
+        alt={data.backgroundImgData.nodes[0].name}
+      />
       <div className="xs:pt-[50px] sm:pt-[60px] pt-[80px]">
         {windowSize ? (
           <SectionIntro

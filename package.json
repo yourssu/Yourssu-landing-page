@@ -13,6 +13,7 @@
   "scripts": {
     "start": "gatsby develop",
     "build": "gatsby build",
+    "deploy": "gatsby build && gh-pages -d public",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "type-check": "tsc --noEmit",
@@ -79,6 +80,7 @@
     "eslint-webpack-plugin": "3.2.0",
     "gatsby-plugin-eslint": "4.0.3",
     "gatsby-plugin-postcss": "6.5.0",
+    "gh-pages": "5.0.0",
     "husky": "8.0.3",
     "identity-obj-proxy": "3.0.0",
     "jsdom": "21.1.0",

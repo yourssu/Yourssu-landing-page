@@ -1,7 +1,7 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import { useMediaQuery } from 'react-responsive';
 import TeamButton from '@/components/TeamButton';
 import SectionIntro from '@/components/SectionIntro';
+import useTeamDetail from '@/hooks/container/team/hook';
 
 type TeamButtonData = {
   publicURL: string;
@@ -13,17 +13,9 @@ function Team() {
     query: '(min-width: 1081px)',
   });
 
-  const imgData = useStaticQuery(graphql`
-    query {
-      teams: allFile(filter: { sourceInstanceName: { eq: "teams" } }) {
-        nodes {
-          publicURL
-          name
-        }
-      }
-    }
-  `);
-  const teamData = imgData.teams.nodes;
+  const { teams } = useTeamDetail();
+  const teamData = teams.nodes;
+
   return (
     <div className="flex flex-col items-center xs:py-[50px] sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
       {windowSize ? (

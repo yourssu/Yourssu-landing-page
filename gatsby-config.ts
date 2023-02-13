@@ -41,7 +41,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: '/assets', // See below to configure properly
+          include: '/assets/', // See below to configure properly
         },
       },
     },
@@ -60,7 +60,7 @@ const config: GatsbyConfig = {
         // The unique name for each instance
         name: `social`,
         // Path to the directory
-        path: `${__dirname}/src/assets/social`,
+        path: `${__dirname}/src/assets/social/`,
       },
     },
     {

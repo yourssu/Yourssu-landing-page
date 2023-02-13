@@ -5,14 +5,14 @@ export default function useBannerDetail() {
     query {
       desktopImage: file(name: { eq: "banner-lg" }) {
         childImageSharp {
-          fluid(pngQuality: 90) {
+          fluid(pngQuality: 90, maxHeight: 800) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       mobileImage: file(name: { eq: "banner-sm" }) {
         childImageSharp {
-          fluid(pngQuality: 90) {
+          fluid(pngQuality: 90, maxHeight: 557) {
             ...GatsbyImageSharpFluid
           }
         }

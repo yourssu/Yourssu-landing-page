@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Img from 'gatsby-image';
-import useCarouselDetail from '@/hooks/projects/hook';
+import useCarouselDetail from '@/hooks/container/projects/hook';
 
-type Nodes2 = {
+type Node = {
   childImageSharp: {
     fluid: {
       aspectRatio: number;
@@ -15,7 +15,7 @@ type Nodes2 = {
 };
 
 interface CarouselItemDataProp {
-  itemsData: Nodes2[];
+  itemsData: Node[];
 }
 
 function Carousel({ itemsData }: CarouselItemDataProp) {
@@ -71,11 +71,13 @@ function Carousel({ itemsData }: CarouselItemDataProp) {
                 <span className=" text-[36px] sm:text-[24px] font-NeoSB text-black leading-[36px] -tracking-wide">
                   {projectData[currentIndex].title}
                 </span>
-                <img
-                  className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px]"
-                  src={data.carouselItemData.nodes[2].publicURL}
-                  alt={data.carouselItemData.nodes[2].name}
-                />
+                <a href={projectData[currentIndex].link}>
+                  <img
+                    className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer"
+                    src={data.carouselItemData.nodes[2].publicURL}
+                    alt={data.carouselItemData.nodes[2].name}
+                  />
+                </a>
               </div>
               <span className=" text-[22px] sm:text-[14px] w-[405px] sm:w-[266px] text-[#525252] leading-[32px] sm:leading-[22px] -tracking-wider font-NeoR xxl:mt-5 xl:mt-5 lg:mt-5 md:mt-5">
                 {projectData[currentIndex].description}

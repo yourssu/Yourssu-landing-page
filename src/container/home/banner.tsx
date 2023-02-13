@@ -1,25 +1,8 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import useBannerDetail from '@/hooks/container/banner/hook';
 
 function Banner() {
-  const bannerData = useStaticQuery(graphql`
-    query {
-      desktopImage: file(name: { eq: "banner-lg" }) {
-        childImageSharp {
-          fluid(pngQuality: 90, maxHeight: 800) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      mobileImage: file(name: { eq: "banner-sm" }) {
-        childImageSharp {
-          fluid(pngQuality: 90, maxHeight: 557) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `);
+  const bannerData = useBannerDetail();
   return (
     <div className="relative flex flex-col justify-center items-center">
       <Img

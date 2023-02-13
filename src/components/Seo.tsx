@@ -1,23 +1,18 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import useSeoDetail from '@/hooks/components/seo/hook';
 
 type SeoDataProp = {
   title: string;
 };
 
 function Seo({ title }: SeoDataProp) {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  const { site } = useSeoDetail();
   return (
-    <title>
-      {data.site.siteMetadata.title} | {title}
-    </title>
+    <>
+      <html lang="ko" />
+      <title>
+        {site.siteMetadata.title} | {title}
+      </title>
+    </>
   );
 }
 

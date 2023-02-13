@@ -14,7 +14,7 @@ export default function Header() {
             alt={logoData.name}
             className=" w-[42px] md:w-[37px] sm:w-[28px]"
           />
-          <span className=" font-Roboto font-bold text-black text-[24px] md:text-[20] sm:text-[16px] -tracking-[1%]">
+          <span className="font-Jost font-bold text-black text-[24px] md:text-[20] sm:text-[16px] -tracking-[1%]">
             YOURSSU
           </span>
         </div>

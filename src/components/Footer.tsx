@@ -1,17 +1,8 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import useFooterDetail from '@/hooks/components/footer/hook';
 
 function Footer() {
-  const data = useStaticQuery(graphql`
-    query {
-      logo: allFile(filter: { sourceInstanceName: { eq: "logo" } }) {
-        nodes {
-          publicURL
-          name
-        }
-      }
-    }
-  `);
-  const logoData = data.logo.nodes[0];
+  const { logo } = useFooterDetail();
+  const logoData = logo.nodes[0];
 
   return (
     <footer className="flex flex-col xs:h-[90px] sm:h-[100px] md:h-[132px] h-[165px] bg-[#F9FAFB] justify-center items-center text-Text_Color2-0">

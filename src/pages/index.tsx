@@ -1,13 +1,19 @@
 import Layout from '../components/Layout';
 import Seo from '@/components/Seo';
 import Team from '@/container/home/Team';
-import Header from '@/components/Header';
+import Banner from '@/container/home/banner';
+import Project from '@/container/home/project';
+import Ideal from '@/container/home/Ideal';
+import Culture from '@/container/home/Culture';
 
 export default function Home() {
   return (
     <Layout>
-      <Header />
+      <Banner />
       <Team />
+      <Ideal />
+      <Project />
+      <Culture />
     </Layout>
   );
 }

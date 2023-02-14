@@ -63,7 +63,7 @@ export default function useCarouselDetail() {
       description:
         '숭실대만의 정보를 기록 및 공유하는 정보 아카이브 웹페이지예요',
       list: ['숭실대 필수정보부터 TMI까지', '모두가 공평하게 접근 및 편집'],
-      link: 'https://wiki.soomsil.de/wiki/%EB%8C%80%EB%AC%B8',
+      link: ['https://wiki.soomsil.de/wiki/%EB%8C%80%EB%AC%B8'],
     },
     {
       title: '숨쉴때 커뮤니티',
@@ -74,7 +74,10 @@ export default function useCarouselDetail() {
         '이모지로 게시물 리액션',
         '댓글과 게시물로 소통',
       ],
-      link: '',
+      link: [
+        'https://play.google.com/store/apps/details?id=com.yourssu.soomsil',
+        'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C-%EC%84%B1%EC%A0%81%ED%91%9C/id1601044486',
+      ],
     },
     {
       title: '숨쉴때 성적표',
@@ -84,7 +87,9 @@ export default function useCarouselDetail() {
         '편하게 보는 이번 학기 성적표',
         '깔끔하게 캡쳐해서 쉽고 빠르게 공유',
       ],
-      link: 'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C-%EC%84%B1%EC%A0%81%ED%91%9C/id1601044486',
+      link: [
+        'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C-%EC%84%B1%EC%A0%81%ED%91%9C/id1601044486',
+      ],
     },
     {
       title: '숨쉴때 뭐먹지?',
@@ -95,7 +100,7 @@ export default function useCarouselDetail() {
         '먹고 싶지 않은 음식 제외 기능',
         '숭실대로부터 떨어진 거리 노출',
       ],
-      link: 'https://eat.soomsil.de/',
+      link: ['https://eat.soomsil.de/'],
     },
     {
       title: '점뿌',
@@ -105,7 +110,7 @@ export default function useCarouselDetail() {
         'F는 피하고 A+은 먹는 점뿌 게임',
         '게임점수 공유하여 친구들과 경쟁',
       ],
-      link: 'https://jumppu.yourssu.com/',
+      link: ['https://jumppu.yourssu.com/'],
     },
   ];
   return { data, projectData };

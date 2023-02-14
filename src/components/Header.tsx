@@ -27,11 +27,13 @@ export default function Header() {
             return (
               // eslint-disable-next-line react/jsx-key
               <a href={link[index]}>
-                <img
-                  src={sns.publicURL}
-                  alt={sns.name}
-                  className="mr-4 cursor-pointer"
-                />
+                <object
+                  type="image/svg+xml"
+                  data={sns.publicURL}
+                  className="ml-4 cursor-pointer pointer-events-none"
+                >
+                  {sns.name}
+                </object>
               </a>
             );
           })}
@@ -56,7 +58,13 @@ export default function Header() {
                 return (
                   // eslint-disable-next-line react/jsx-key
                   <a href={link[index]}>
-                    <img src={sns.publicURL} alt={sns.name} />
+                    <object
+                      type="image/svg+xml"
+                      data={sns.publicURL}
+                      className="mr-4 cursor-pointer pointer-events-none"
+                    >
+                      {sns.name}
+                    </object>
                   </a>
                 );
               })}

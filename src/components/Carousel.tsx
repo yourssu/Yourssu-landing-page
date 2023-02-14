@@ -85,31 +85,34 @@ function Carousel({ itemsData }: CarouselItemDataProp) {
                 <div>
                   {projectData[currentIndex].link.length === 1 ? (
                     <a href={projectData[currentIndex].link[0]}>
-                      <img
-                        className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer"
-                        src={data.carouselItemData.nodes[3].publicURL}
-                        alt={data.carouselItemData.nodes[3].name}
-                      />
+                      <object
+                        className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
+                        data={data.carouselItemData.nodes[3].publicURL}
+                      >
+                        {data.carouselItemData.nodes[3].name}
+                      </object>
                     </a>
                   ) : null}
                   {projectData[currentIndex].link.length === 2 &&
                   isAndroid === true ? (
                     <a href={projectData[currentIndex].link[0]}>
-                      <img
-                        className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer"
-                        src={data.carouselItemData.nodes[3].publicURL}
-                        alt={data.carouselItemData.nodes[3].name}
-                      />
+                      <object
+                        className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
+                        data={data.carouselItemData.nodes[3].publicURL}
+                      >
+                        {data.carouselItemData.nodes[3].name}
+                      </object>
                     </a>
                   ) : null}
                   {projectData[currentIndex].link.length === 2 &&
                   isAndroid === false ? (
                     <a href={projectData[currentIndex].link[1]}>
-                      <img
-                        className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer"
-                        src={data.carouselItemData.nodes[3].publicURL}
-                        alt={data.carouselItemData.nodes[3].name}
-                      />
+                      <object
+                        className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
+                        data={data.carouselItemData.nodes[3].publicURL}
+                      >
+                        {data.carouselItemData.nodes[3].name}
+                      </object>
                     </a>
                   ) : null}
                 </div>

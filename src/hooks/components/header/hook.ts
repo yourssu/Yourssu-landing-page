@@ -43,10 +43,10 @@ export default function useHeaderDetail() {
     }
   `);
   const link = [
-    'https://www.notion.so/yourssu/YOURSSU-Blog-8e064a720d1942d68aa42093b7d2f5b6',
     'https://brunch.co.kr/@yourssu-design',
-    'https://www.instagram.com/yourssu_official/',
     'https://www.youtube.com/user/yourssu',
+    'https://www.instagram.com/yourssu_official/',
+    'https://www.notion.so/yourssu/YOURSSU-Blog-8e064a720d1942d68aa42093b7d2f5b6',
   ];
   return { data, link };
 }

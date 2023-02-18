@@ -12,7 +12,7 @@ function Footer() {
           alt={logoData.name}
           className="mx-1 xs:h-[12px] sm:h-[12px] h-[23px] xs:translate-y-[3px] sm:translate-y-[3px]"
         />
-        <h3 className="xs:text-[14px] sm:text-[14px] text-[20px] font-NeoEB">
+        <h3 className="xs:text-[14px] sm:text-[14px] text-[20px] font-Jost font-semibold">
           YOURSSU
         </h3>
       </div>

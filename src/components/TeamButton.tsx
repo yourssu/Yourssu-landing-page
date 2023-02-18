@@ -5,12 +5,14 @@ type ButtonItem = {
 
 function TeamButton({ img, name }: ButtonItem) {
   return (
-    <div className="xs:mx-[6px] sm:mx-[6px] md:mx-[12px] mx-[15px] sm:mb-[24px] mb-[40px]">
-      <img
-        src={img}
-        alt={img}
+    <div className="mx-[15px] sm:mb-[24px] mb-[40px]">
+      <object
+        type="image/svg+xml"
+        data={img}
         className="mb-[8px] xs:w-[80px] sm:w-[80px] w-[120px]"
-      />
+      >
+        {img}
+      </object>
       <div className="text-center xs:text-[13px] sm:text-[14px] text-[22px]">
         <span className="font-NeoR text-Text_Color2-0">
           {name.split('_')[1]}

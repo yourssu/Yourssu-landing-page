@@ -10,13 +10,13 @@ function Project() {
   const { data } = useCarouselDetail();
 
   return (
-    <div className="relative xs:mb-[100px] sm:mb-[200px] md:mb-[300px] mb-[350px]">
+    <div className="flex flex-col items-center relative xs:mb-[100px] sm:mb-[200px] md:mb-[300px] mb-[350px]">
       <img
-        className=" absolute -z-10 w-full top-0"
+        className="w-full h-[446px] sm:h-[357px] xs:h-[300px]"
         src={data.backgroundImgData.nodes[0].publicURL}
         alt={data.backgroundImgData.nodes[0].name}
       />
-      <div className="xs:pt-[50px] sm:pt-[60px] pt-[80px]">
+      <div className="absolute xs:pt-[50px] sm:pt-[60px] pt-[80px]">
         {windowSize ? (
           <SectionIntro
             title="Project"

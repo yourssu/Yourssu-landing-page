@@ -40,11 +40,15 @@ export default function useCarouselDetail() {
           name
         }
       }
-      projectImgData: allFile(filter: { dir: { regex: "/images/projects/" } }) {
+      projectImgData: allFile(
+        filter: { dir: { regex: "/images/projects/" } }
+        sort: { name: ASC }
+      ) {
         nodes {
           childImageSharp {
-            fluid(pngQuality: 90, maxWidth: 656) {
+            fluid(pngQuality: 90, maxWidth: 750) {
               ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluidLimitPresentationSize
             }
           }
         }
@@ -58,13 +62,6 @@ export default function useCarouselDetail() {
     }
   `);
   const projectData = [
-    {
-      title: '숨쉴위키',
-      description:
-        '숭실대만의 정보를 기록 및 공유하는 정보 아카이브 웹페이지예요',
-      list: ['숭실대 필수정보부터 TMI까지', '모두가 공평하게 접근 및 편집'],
-      link: ['https://wiki.soomsil.de/wiki/%EB%8C%80%EB%AC%B8'],
-    },
     {
       title: '숨쉴때 커뮤니티',
       description:
@@ -111,6 +108,13 @@ export default function useCarouselDetail() {
         '게임점수 공유하여 친구들과 경쟁',
       ],
       link: ['https://jumppu.yourssu.com/'],
+    },
+    {
+      title: '숨쉴위키',
+      description:
+        '숭실대만의 정보를 기록 및 공유하는 정보 아카이브 웹페이지예요',
+      list: ['숭실대 필수정보부터 TMI까지', '모두가 공평하게 접근 및 편집'],
+      link: ['https://wiki.soomsil.de/wiki/%EB%8C%80%EB%AC%B8'],
     },
   ];
   return { data, projectData };

@@ -12,13 +12,13 @@ export default function Header() {
   return (
     <header className="flex flex-col justify-between items-center w-full top-[37px] md:top-[24px] sm:top-[15px] absolute z-10">
       <div className="flex flex-row justify-between items-center xxl:w-[1280px] xl:w-[1160px] lg:w-[870px] md:w-[580px] sm:w-[355px]">
-        <div className="flex flex-row justify-start items-center">
+        <div className="flex flex-row justify-between items-center">
           <img
             src={logoData.publicURL}
             alt={logoData.name}
             className=" w-[42px] md:w-[37px] sm:w-[28px]"
           />
-          <span className=" font-Roboto font-bold text-black text-[24px] md:text-[20] sm:text-[16px] -tracking-[1%]">
+          <span className="w-[111px] md:w-[92px] sm:w-[73px] font-Jost text-center font-semibold text-black text-[24px] md:text-[20px] sm:text-[16px] leading-[26px] md:leading-[20px] sm:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em]">
             YOURSSU
           </span>
         </div>
@@ -48,7 +48,7 @@ export default function Header() {
           •••
         </div>
       </div>
-      <hr className=" bg-[#8F8F90] xxl:w-[1280px] xl:w-[1160px] lg:w-[870px] md:w-[580px] sm:w-[355px] h-0.5 block mt-[5px]" />
+      <hr className=" bg-[#8F8F90] border-none xxl:w-[1280px] xl:w-[1160px] lg:w-[870px] md:w-[580px] sm:w-[355px] h-[1px] block mt-[21px] md:mt-[12px] sm:mt-[6px]" />
       {isClick === true ? (
         <div className=" hidden sm:flex justify-center items-center w-full">
           <div className="relative min-w-[373px] flex flex-row-reverse justify-start">

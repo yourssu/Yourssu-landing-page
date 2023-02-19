@@ -23,7 +23,7 @@ function Carousel({ itemsData }: CarouselItemDataProp) {
   return (
     <div
       id="carouselItem"
-      className="w-full h-auto xxl:mt-[330px] xl:mt-[330px] lg:mt-[300px] md:mt-[400px] sm:mt-[250px]"
+      className="w-full h-auto mt-[539px] md:mt-[734px] sm:mt-[524px]"
     >
       <CarouselContainer
         className="flex justify-between items-center h-[413px] md:h-[401px] sm:h-[222px] w-full bg-[#FBFBFB]"

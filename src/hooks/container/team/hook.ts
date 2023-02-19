@@ -16,7 +16,7 @@ export default function useTeamDetail() {
     query {
       teams: allFile(
         filter: { sourceInstanceName: { eq: "teams" } }
-        sort: { name: ASC }
+        sort: { order: ASC, fields: name }
       ) {
         nodes {
           publicURL

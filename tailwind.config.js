@@ -15,7 +15,8 @@ module.exports = {
         NeoSB: ["NeoSB"],
         NeoR: ["NeoR"],
         NeoEB: ["NeoEB"],
-        Jost: ["Jost"]
+        Jost: ["Jost"],
+        NeoM00: ["NeoM00"]
       },
       textColor: {
         Text_Color1: ["#8D8A93"],

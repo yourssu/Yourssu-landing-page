@@ -5,7 +5,7 @@ import useCultureDetail from '@/hooks/container/culture/hook';
 function Culture() {
   const items = useCultureDetail();
   return (
-    <div className="flex flex-col justify-center items-center xs:pb-[50px] sm:pb-[100px] md:pb-[170px] pt-[35px] pb-[200px]">
+    <div className="flex flex-col justify-center items-center xs:pb-[50px] sm:pb-[100px] md:pb-[170px] sm:pt-[100px] pt-[35px] pb-[200px]">
       <SectionIntro
         title="CULTURE"
         description="유어슈는 서로를 존중하며 커뮤니케이션하는 동아리입니다.<br />성장하는 문화를 통해 같이 있는 것만으로도 즐겁고 배울 수 있는 동아리로 나아갑니다."

@@ -26,7 +26,10 @@ export default function useHeaderDetail() {
           name
         }
       }
-      social: allFile(filter: { sourceInstanceName: { eq: "social" } }) {
+      social: allFile(
+        filter: { sourceInstanceName: { eq: "social" } }
+        sort: { name: ASC }
+      ) {
         nodes {
           publicURL
           name
@@ -43,10 +46,10 @@ export default function useHeaderDetail() {
     }
   `);
   const link = [
-    'https://brunch.co.kr/@yourssu-design',
     'https://www.youtube.com/user/yourssu',
-    'https://www.instagram.com/yourssu_official/',
     'https://www.notion.so/yourssu/YOURSSU-Blog-8e064a720d1942d68aa42093b7d2f5b6',
+    'https://brunch.co.kr/@yourssu-design',
+    'https://www.instagram.com/yourssu_official/',
   ];
   return { data, link };
 }

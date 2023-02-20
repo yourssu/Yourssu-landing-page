@@ -23,14 +23,14 @@ function Project({ isType }: ProjectProp) {
       <div className="absolute w-full xs:pt-[50px] sm:pt-[60px] pt-[80px]">
         {windowSize ? (
           <SectionIntro
-            title="PROJECT"
+            title="PROJECTS"
             description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키,<br />숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
             divStyle="bg-black"
             color="text-Text_Color2-0"
           />
         ) : (
           <SectionIntro
-            title="PROJECT"
+            title="PROJECTS"
             description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키, 숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
             divStyle="bg-black"
             color="text-Text_Color2-0"

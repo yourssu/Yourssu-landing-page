@@ -9,7 +9,7 @@ function SectionIntro({ title, description, divStyle, color }: IntroProps) {
   return (
     <div className="flex flex-col items-center mx-[50px]">
       <div className={`xs:w-[2px] w-[3px] xs:h-[30px] h-[39px] ${divStyle}`} />
-      <h1 className="xs:mt-[30px] mt-[40px] mb-[10px] font-Jost font-semibold xs:text-[20px] sm:text-[24px] md:text-[32px] text-[36px]">
+      <h1 className="xs:mt-[30px] mt-[40px] mb-[10px] font-Jost font-medium xl:font-semibold xxl:font-semibold xs:text-[20px] sm:text-[24px] md:text-[32px] text-[36px] tracking-[.01em]">
         {title}
       </h1>
       {description.split('<br />').map((des) => (

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Img from 'gatsby-image';
 import useCarouselDetail from '@/hooks/container/projects/hook';
 
@@ -18,25 +17,16 @@ type CarouselContentProp = {
   className: string;
   currentIndex: number;
   itemsData: Node[];
+  isType: string | undefined;
 };
 
 function CarouselContent({
   className,
   currentIndex,
   itemsData,
+  isType,
 }: CarouselContentProp) {
-  const [isAndroid, setIsAndroid] = useState<boolean>();
   const { data, projectData } = useCarouselDetail();
-
-  useEffect(() => {
-    const mobileType = navigator.userAgent.toLowerCase();
-    if (mobileType.indexOf('android') > -1) {
-      setIsAndroid(true);
-    }
-    if (mobileType.indexOf('iphone') > -1 || mobileType.indexOf('ipad')) {
-      setIsAndroid(false);
-    }
-  }, []);
 
   return (
     <div className={className}>
@@ -68,7 +58,7 @@ function CarouselContent({
                 </a>
               ) : null}
               {projectData[currentIndex].link.length === 2 &&
-              isAndroid === true ? (
+              isType === 'android' ? (
                 <a href={projectData[currentIndex].link[0]}>
                   <object
                     className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
@@ -79,7 +69,18 @@ function CarouselContent({
                 </a>
               ) : null}
               {projectData[currentIndex].link.length === 2 &&
-              isAndroid === false ? (
+              isType === 'ios' ? (
+                <a href={projectData[currentIndex].link[1]}>
+                  <object
+                    className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
+                    data={data.carouselItemData.nodes[3].publicURL}
+                  >
+                    {data.carouselItemData.nodes[3].name}
+                  </object>
+                </a>
+              ) : null}
+              {projectData[currentIndex].link.length === 2 &&
+              isType === 'pc' ? (
                 <a href={projectData[currentIndex].link[1]}>
                   <object
                     className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"

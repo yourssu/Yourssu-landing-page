@@ -6,7 +6,7 @@ function Banner() {
   return (
     <div className="relative flex flex-col justify-center items-center">
       <Img
-        className=" sm:h-[557px] md:h-[557px] h-[800px] w-full"
+        className="xs:h-[300px] sm:h-[557px] md:h-[557px] h-[800px] w-full"
         fluid={[
           bannerData.mobileImage.childImageSharp.fluid,
           {
@@ -16,21 +16,21 @@ function Banner() {
         ]}
       />
       {/* 390, 720 화면 */}
-      <div className=" flex flex-col justify-center items-center w-full absolute top-[132px] xxl:hidden xl:hidden lg:hidden">
-        <span className=" font-NeoSB font-medium sm:text-[20px] sm:leading-[20px] md:text-[24px] md:leading-[24px] lg:text-[36px] lg:leading-[36px] ">
+      <div className=" flex flex-col justify-center items-center w-full absolute top-[132px] xs:top-[75px] xxl:hidden xl:hidden lg:hidden">
+        <span className=" font-NeoM00 font-normal md:text-[24px] sm:text-[20px] xs:text-[16px] md:leading-[24px] sm:leading-[20px] xs:leading-[16px]">
           함께 만들어가는 당신의 숭실,
         </span>
-        <span className=" font-Roboto font-extrabold sm:text-[40px] md:text-[48px] lg:text-[66px]">
+        <span className="font-Jost font-semibold xs:text-[28px] sm:text-[40px] md:text-[48px] lg:text-[66px] md:leading-[48px] sm:leading-[40px] xs:leading-[30px] md:mt-[11px] sm:mt-[7px] xs:mt-[5px] -tracking-[0.02em]">
           YOURSSU
         </span>
       </div>
       {/* 1080, 1440, 1920 화면 */}
-      <div className="flex justify-start xxl:min-w-[1280px] xl:min-w-[1160px] lg:min-w-[870px] top-[280px] absolute sm:hidden md:hidden">
+      <div className="flex justify-start xxl:min-w-[1280px] xl:min-w-[1160px] lg:min-w-[870px] top-[330px] lg:top-[278px] absolute xs:hidden sm:hidden md:hidden">
         <div className=" flex flex-col items-start ">
-          <span className=" font-NeoSB font-medium text-[48px] leading-[48px]">
+          <span className=" font-NeoM00 font-normal xxl:text-[48px] xl:text-[46px] lg:text-[36px] xxl:leading-[48px] xl:leading-[46px] lg:leading-[36px]">
             함께 만들어가는 당신의 숭실,
           </span>
-          <span className=" font-Roboto font-extrabold text-[90px] leading-[90px]">
+          <span className="font-Jost lg:font-semibold font-bold xxl:text-[90px] xl:text-[86px] lg:text-[68px] xxl:leading-[90px] xl:leading-[96px] lg:leading-[68px] xxl:mt-[15px] xl:mt-[12px] lg:mt-[10px] -tracking-[0.02em]">
             YOURSSU
           </span>
         </div>

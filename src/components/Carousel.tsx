@@ -16,9 +16,10 @@ interface Node {
 
 type CarouselItemDataProp = {
   itemsData: Node[];
+  isType: string | undefined;
 };
 
-function Carousel({ itemsData }: CarouselItemDataProp) {
+function Carousel({ itemsData, isType }: CarouselItemDataProp) {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div
@@ -35,12 +36,14 @@ function Carousel({ itemsData }: CarouselItemDataProp) {
             className="flex justify-between items-center md:flex-col md:h-[600px] sm:flex-col sm:h-[450px] sm:justify-between"
             itemsData={itemsData}
             currentIndex={currentIndex}
+            isType={isType}
           />
         ) : (
           <CarouselContent
             className="flex justify-center items-center md:flex-col sm:flex-col md:h-[800px] md:justify-between sm:h-[530px] sm:justify-between"
             itemsData={itemsData}
             currentIndex={currentIndex}
+            isType={isType}
           />
         )}
       </CarouselContainer>

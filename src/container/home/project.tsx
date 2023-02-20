@@ -3,7 +3,11 @@ import Carousel from '@/components/Carousel';
 import SectionIntro from '@/components/SectionIntro';
 import useCarouselDetail from '@/hooks/container/projects/hook';
 
-function Project() {
+type ProjectProp = {
+  isType: string | undefined;
+};
+
+function Project({ isType }: ProjectProp) {
   const windowSize = useMediaQuery({
     query: '(min-width: 1081px)',
   });
@@ -16,7 +20,7 @@ function Project() {
         src={data.backgroundImgData.nodes[0].publicURL}
         alt={data.backgroundImgData.nodes[0].name}
       />
-      <div className="absolute xs:pt-[50px] sm:pt-[60px] pt-[80px]">
+      <div className="absolute w-full xs:pt-[50px] sm:pt-[60px] pt-[80px]">
         {windowSize ? (
           <SectionIntro
             title="PROJECTS"
@@ -33,7 +37,7 @@ function Project() {
           />
         )}
       </div>
-      <Carousel itemsData={data.projectImgData.nodes} />
+      <Carousel itemsData={data.projectImgData.nodes} isType={isType} />
     </div>
   );
 }

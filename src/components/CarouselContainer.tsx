@@ -15,6 +15,16 @@ function CarouselContainer({
   setCurrentIndex,
 }: CarouselContainerProp) {
   const { data, projectData } = useCarouselDetail();
+  const buttonImgData = {
+    leftButtonImgData: {
+      imgUrl: data.carouselItemButtonImgData.nodes[0].publicURL,
+      imgName: data.carouselItemButtonImgData.nodes[0].name,
+    },
+    rightButtonImgData: {
+      imgUrl: data.carouselItemButtonImgData.nodes[1].publicURL,
+      imgName: data.carouselItemButtonImgData.nodes[1].name,
+    },
+  };
 
   function prevSlide() {
     const isFirstSlide = currentIndex === 0;
@@ -35,8 +45,8 @@ function CarouselContainer({
       >
         <img
           className="w-[50px] h-[50px] sm:w-[12px] sm:h-[28px]"
-          src={data.carouselItemData.nodes[0].publicURL}
-          alt={data.carouselItemData.nodes[0].name}
+          src={buttonImgData.leftButtonImgData.imgUrl}
+          alt={buttonImgData.leftButtonImgData.imgName}
         />
       </button>
       {children}
@@ -47,8 +57,8 @@ function CarouselContainer({
       >
         <img
           className="w-[50px] h-[50px] sm:w-[12px] sm:h-[28px]"
-          src={data.carouselItemData.nodes[1].publicURL}
-          alt={data.carouselItemData.nodes[1].name}
+          src={buttonImgData.rightButtonImgData.imgUrl}
+          alt={buttonImgData.rightButtonImgData.imgName}
         />
       </button>
     </div>

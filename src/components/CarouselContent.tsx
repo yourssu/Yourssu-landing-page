@@ -27,6 +27,14 @@ function CarouselContent({
   isType,
 }: CarouselContentProp) {
   const { data, projectData } = useCarouselDetail();
+  const linkImgData = {
+    imgUrl: data.carouselItemLinkImgData.nodes[0].publicURL,
+    imgName: data.carouselItemLinkImgData.nodes[0].name,
+  };
+  const listImgData = {
+    imgUrl: data.carouselItemListImgData.nodes[0].publicURL,
+    imgName: data.carouselItemListImgData.nodes[0].name,
+  };
 
   return (
     <div className={className}>
@@ -51,9 +59,9 @@ function CarouselContent({
                 <a href={projectData[currentIndex].link[0]}>
                   <object
                     className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
-                    data={data.carouselItemData.nodes[3].publicURL}
+                    data={linkImgData.imgUrl}
                   >
-                    {data.carouselItemData.nodes[3].name}
+                    {linkImgData.imgName}
                   </object>
                 </a>
               ) : null}
@@ -62,9 +70,9 @@ function CarouselContent({
                 <a href={projectData[currentIndex].link[0]}>
                   <object
                     className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
-                    data={data.carouselItemData.nodes[3].publicURL}
+                    data={linkImgData.imgUrl}
                   >
-                    {data.carouselItemData.nodes[3].name}
+                    {linkImgData.imgName}
                   </object>
                 </a>
               ) : null}
@@ -73,9 +81,9 @@ function CarouselContent({
                 <a href={projectData[currentIndex].link[1]}>
                   <object
                     className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
-                    data={data.carouselItemData.nodes[3].publicURL}
+                    data={linkImgData.imgUrl}
                   >
-                    {data.carouselItemData.nodes[3].name}
+                    {linkImgData.imgName}
                   </object>
                 </a>
               ) : null}
@@ -84,9 +92,9 @@ function CarouselContent({
                 <a href={projectData[currentIndex].link[1]}>
                   <object
                     className="w-[26px] h-[26px] ml-[5px] sm:w-[21.46px] sm:h-[18px] cursor-pointer pointer-events-none"
-                    data={data.carouselItemData.nodes[3].publicURL}
+                    data={linkImgData.imgUrl}
                   >
-                    {data.carouselItemData.nodes[3].name}
+                    {linkImgData.imgName}
                   </object>
                 </a>
               ) : null}
@@ -101,10 +109,7 @@ function CarouselContent({
                 return (
                   // eslint-disable-next-line react/jsx-key
                   <div className="flex flex-row justify-start items-center ">
-                    <img
-                      src={data.carouselItemData.nodes[2].publicURL}
-                      alt={data.carouselItemData.nodes[2].name}
-                    />
+                    <img src={listImgData.imgUrl} alt={listImgData.imgName} />
                     <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
                       {listData}
                     </p>
@@ -118,10 +123,7 @@ function CarouselContent({
                 return (
                   // eslint-disable-next-line react/jsx-key
                   <div className="flex flex-row justify-start items-center ">
-                    <img
-                      src={data.carouselItemData.nodes[2].publicURL}
-                      alt={data.carouselItemData.nodes[2].name}
-                    />
+                    <img src={listImgData.imgUrl} alt={listImgData.imgName} />
                     <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
                       {listData}
                     </p>
@@ -159,8 +161,8 @@ function CarouselContent({
             <div className="flex flex-row justify-start items-center mb-5">
               <img
                 className="sm:w-[18px] sm:h-[18px]"
-                src={data.carouselItemData.nodes[2].publicURL}
-                alt={data.carouselItemData.nodes[2].name}
+                src={listImgData.imgUrl}
+                alt={listImgData.imgName}
               />
               <p className="text-[24px] sm:text-[16px] ml-[7px] text-[#525252] font-NeoSB md:leading-[24px] sm:leading-[16px] -tracking-wider">
                 {listData}

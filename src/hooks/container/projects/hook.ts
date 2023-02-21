@@ -18,7 +18,13 @@ type Node2 = {
 };
 
 type Carousel = {
-  carouselItemData: {
+  carouselItemButtonImgData: {
+    nodes: Node[];
+  };
+  carouselItemLinkImgData: {
+    nodes: Node[];
+  };
+  carouselItemListImgData: {
     nodes: Node[];
   };
   projectImgData: {
@@ -32,8 +38,33 @@ type Carousel = {
 export default function useCarouselDetail() {
   const data: Carousel = useStaticQuery(graphql`
     query {
-      carouselItemData: allFile(
-        filter: { sourceInstanceName: { eq: "projects" } }
+      carouselItemButtonImgData: allFile(
+        filter: {
+          sourceInstanceName: { eq: "projects" }
+          name: { regex: "/button/" }
+        }
+      ) {
+        nodes {
+          publicURL
+          name
+        }
+      }
+      carouselItemLinkImgData: allFile(
+        filter: {
+          sourceInstanceName: { eq: "projects" }
+          name: { eq: "project-link" }
+        }
+      ) {
+        nodes {
+          publicURL
+          name
+        }
+      }
+      carouselItemListImgData: allFile(
+        filter: {
+          sourceInstanceName: { eq: "projects" }
+          name: { eq: "project-list" }
+        }
       ) {
         nodes {
           publicURL

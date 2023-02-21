@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 interface Node {
   title: string;
   description: string;
-  image: string;
   siteUrl: string;
 }
 
@@ -20,7 +19,6 @@ export default function useSeoDetail() {
         siteMetadata {
           title
           description
-          image
           siteUrl
         }
       }

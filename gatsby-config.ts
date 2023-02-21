@@ -17,7 +17,6 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: 'YOURSSU',
     description: '',
-    image: 'src/assets/logo/logo.svg',
     siteUrl: 'https://yourssu.com',
   },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you

@@ -10,6 +10,7 @@ function Seo() {
       <meta property="og:title" content={site.siteMetadata.title} />
       <meta property="og:description" content={site.siteMetadata.description} />
       <meta property="og:url" content={site.siteMetadata.siteUrl} />
+      <meta property="og:imamge" />
     </>
   );
 }

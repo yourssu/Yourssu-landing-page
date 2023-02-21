@@ -17,7 +17,7 @@ function Team() {
   const teamData = teams.nodes;
 
   return (
-    <div className="flex flex-col items-center xs:py-[50px] sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
+    <div className="flex flex-col items-center xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
       {windowSize ? (
         <SectionIntro
           title="TEAM YOURSSU"

@@ -2,6 +2,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 interface Node {
   title: string;
+  description: string;
+  image: string;
+  siteUrl: string;
 }
 
 type Seo = {
@@ -16,6 +19,9 @@ export default function useSeoDetail() {
       site {
         siteMetadata {
           title
+          description
+          image
+          siteUrl
         }
       }
     }

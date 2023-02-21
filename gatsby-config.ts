@@ -16,6 +16,9 @@ const gatsbyRequiredRules = path.join(
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'YOURSSU',
+    description: '',
+    image: 'src/assets/logo/logo.svg',
+    siteUrl: 'https://www.yourssu.com',
   },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)

@@ -5,7 +5,7 @@ type ButtonItem = {
 
 function TeamButton({ img, name }: ButtonItem) {
   return (
-    <div className="mx-[15px] sm:mb-[24px] mb-[40px]">
+    <div className="xs:mx-[6px] sm:mx-[6px] md:mx-[12px] mx-[15px] sm:mb-[24px] mb-[40px]">
       <object
         type="image/svg+xml"
         data={img}

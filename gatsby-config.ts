@@ -17,8 +17,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: 'YOURSSU',
     description: '',
-    image: 'src/assets/logo/logo.svg',
-    siteUrl: 'https://www.yourssu.com',
+    siteUrl: 'https://yourssu.com',
   },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)
@@ -38,6 +37,15 @@ const config: GatsbyConfig = {
         exclude: ['node_modules', 'bower_components', '.cache', 'public'],
         // Any additional eslint-webpack-plugin options below
         // ...
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'yourssu',
+        short_name: 'yourssu',
+        start_url: '/',
+        icon: 'src/assets/logo/logo.svg',
       },
     },
     {

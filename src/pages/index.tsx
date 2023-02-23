@@ -31,5 +31,5 @@ export default function Home() {
 }
 
 export function Head() {
-  return <Seo title="home" />;
+  return <Seo />;
 }

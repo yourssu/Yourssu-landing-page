@@ -23,20 +23,17 @@ export default function Header() {
           </span>
         </div>
         <div className="flex flex-row items-center sm:hidden xs:hidden">
-          {snsData.map((sns, index: number) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <a href={link[index]}>
-                <object
-                  type="image/svg+xml"
-                  data={sns.publicURL}
-                  className="ml-4 cursor-pointer pointer-events-none"
-                >
-                  {sns.name}
-                </object>
-              </a>
-            );
-          })}
+          {snsData.map((sns, index: number) => (
+            <a href={link[index]} key={sns.name}>
+              <object
+                type="image/svg+xml"
+                data={sns.publicURL}
+                className="ml-4 cursor-pointer pointer-events-none"
+              >
+                {sns.name}
+              </object>
+            </a>
+          ))}
         </div>
         <div
           aria-hidden="true"

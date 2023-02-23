@@ -108,7 +108,10 @@ function CarouselContent({
               {projectData[currentIndex].list.map((listData) => {
                 return (
                   // eslint-disable-next-line react/jsx-key
-                  <div className="flex flex-row justify-start items-center ">
+                  <div
+                    className="flex flex-row justify-start items-center"
+                    key={listData}
+                  >
                     <img src={listImgData.imgUrl} alt={listImgData.imgName} />
                     <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
                       {listData}
@@ -122,7 +125,10 @@ function CarouselContent({
               {projectData[currentIndex].list.map((listData) => {
                 return (
                   // eslint-disable-next-line react/jsx-key
-                  <div className="flex flex-row justify-start items-center ">
+                  <div
+                    className="flex flex-row justify-start items-center"
+                    key={listData}
+                  >
                     <img src={listImgData.imgUrl} alt={listImgData.imgName} />
                     <p className="text-[24px] ml-[7px] text-[#525252] font-NeoSB leading-[24px] -tracking-wider">
                       {listData}
@@ -158,7 +164,10 @@ function CarouselContent({
         {projectData[currentIndex].list.map((listData) => {
           return (
             // eslint-disable-next-line react/jsx-key
-            <div className="flex flex-row justify-start items-center mb-5">
+            <div
+              className="flex flex-row justify-start items-center mb-5"
+              key={listData}
+            >
               <img
                 className="sm:w-[18px] sm:h-[18px] xs:w-[15px] xs:h-[15px]"
                 src={listImgData.imgUrl}

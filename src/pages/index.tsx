@@ -20,8 +20,8 @@ export default function Home() {
     }
   }, []);
   return (
-    <Layout>
-      <Banner />
+    <Layout isType={isType}>
+      <Banner isType={isType} />
       <Team />
       <Ideal />
       <Project isType={isType} />
@@ -31,5 +31,5 @@ export default function Home() {
 }
 
 export function Head() {
-  return <Seo title="home" />;
+  return <Seo />;
 }

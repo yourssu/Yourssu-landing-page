@@ -1,7 +1,11 @@
 import Img from 'gatsby-image';
 import useBannerDetail from '@/hooks/container/banner/hook';
 
-function Banner() {
+type BannerProp = {
+  isType: string | undefined;
+};
+
+function Banner({ isType }: BannerProp) {
   const bannerData = useBannerDetail();
   return (
     <div className="relative flex flex-col justify-center items-center">
@@ -20,9 +24,15 @@ function Banner() {
         <span className=" font-NeoM00 font-normal md:text-[24px] sm:text-[20px] xs:text-[16px] md:leading-[24px] sm:leading-[20px] xs:leading-[16px]">
           함께 만들어가는 당신의 숭실,
         </span>
-        <span className=" font-Jost font-semibold md:text-[48px] sm:text-[40px] xs:text-[28px] md:leading-[48px] sm:leading-[40px] xs:leading-[30px] -tracking-[0.02em] md:mt-[11px] sm:mt-[7px] xs:mt-[5px]">
-          YOURSSU
-        </span>
+        {isType === 'ios' ? (
+          <span className=" font-Jost font-[550] md:text-[48px] sm:text-[40px] xs:text-[28px] md:leading-[48px] sm:leading-[40px] xs:leading-[30px] -tracking-[0.02em] md:mt-[11px] sm:mt-[7px] xs:mt-[5px]">
+            YOURSSU
+          </span>
+        ) : (
+          <span className=" font-Jost font-semibold md:text-[48px] sm:text-[40px] xs:text-[28px] md:leading-[48px] sm:leading-[40px] xs:leading-[30px] -tracking-[0.02em] md:mt-[11px] sm:mt-[7px] xs:mt-[5px]">
+            YOURSSU
+          </span>
+        )}
       </div>
       {/* 1080, 1440, 1920 화면 */}
       <div className="flex justify-start xxl:min-w-[1280px] xl:min-w-[1160px] lg:min-w-[870px] top-[330px] lg:top-[278px] absolute xs:hidden sm:hidden md:hidden">

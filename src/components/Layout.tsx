@@ -5,14 +5,15 @@ import Header from './Header';
 
 type LayoutProp = {
   children: ReactNode;
+  isType: string | undefined;
 };
 
-function Layout({ children }: LayoutProp) {
+function Layout({ children, isType }: LayoutProp) {
   return (
     <div className="relative">
-      <Header />
+      <Header isType={isType} />
       {children}
-      <Footer />
+      <Footer isType={isType} />
     </div>
   );
 }

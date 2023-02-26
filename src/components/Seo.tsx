@@ -1,7 +1,7 @@
 import useSeoDetail from '@/hooks/components/seo/hook';
 
 function Seo() {
-  const { site } = useSeoDetail();
+  const { site, file } = useSeoDetail();
   return (
     <>
       <html lang="ko" />
@@ -9,8 +9,8 @@ function Seo() {
       <meta name="description" content={site.siteMetadata.description} />
       <meta property="og:title" content={site.siteMetadata.title} />
       <meta property="og:description" content={site.siteMetadata.description} />
-      <meta property="og:url" content={site.siteMetadata.siteUrl} />
-      <meta property="og:imamge" />
+      <meta property="og:image" content={file.childImageSharp.fixed.srcSet} />
+      <meta property="og:type" content="website" />
     </>
   );
 }

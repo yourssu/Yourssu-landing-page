@@ -16,7 +16,8 @@ const gatsbyRequiredRules = path.join(
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'YOURSSU',
-    description: '',
+    description:
+      '숭실대 학우들이 캠퍼스 라이프를 자유롭게 즐기는 모습을 꿈꾸다! 유어슈 동아리원들의 활동성을 원동력으로 숭실대 학우들에게 활동성을 발휘할 공간을 제공합니다.',
     siteUrl: 'https://yourssu.com',
   },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you

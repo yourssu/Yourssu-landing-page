@@ -2,7 +2,11 @@ import { useState } from 'react';
 import useHeaderDetail from '@/hooks/components/header/hook';
 import '../styles/global.css';
 
-export default function Header() {
+type HeaderProp = {
+  isType: string | undefined;
+};
+
+export default function Header({ isType }: HeaderProp) {
   const { data, link } = useHeaderDetail();
   const [isClick, setIsClick] = useState(false);
   const logoData = data.logo.nodes[0];
@@ -18,9 +22,15 @@ export default function Header() {
             alt={logoData.name}
             className=" w-[42px] md:w-[37px] sm:w-[28px] xs:w-[25px]"
           />
-          <span className="w-[111px] md:w-[92px] sm:w-[73px] xs:w-[60px] font-Jost text-center font-semibold text-black text-[24px] md:text-[20px] sm:text-[16px] xs:text-[14px] leading-[26px] md:leading-[20px] sm:leading-[16px] xs:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em] xs:-tracking-[0.02em]">
-            YOURSSU
-          </span>
+          {isType === 'ios' ? (
+            <span className="w-[111px] md:w-[92px] sm:w-[73px] xs:w-[60px] font-Jost font-[550] text-center text-black text-[24px] md:text-[20px] sm:text-[16px] xs:text-[14px] leading-[26px] md:leading-[20px] sm:leading-[16px] xs:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em] xs:-tracking-[0.02em]">
+              YOURSSU
+            </span>
+          ) : (
+            <span className="w-[111px] md:w-[92px] sm:w-[73px] xs:w-[60px] font-Jost text-center font-semibold text-black text-[24px] md:text-[20px] sm:text-[16px] xs:text-[14px] leading-[26px] md:leading-[20px] sm:leading-[16px] xs:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em] xs:-tracking-[0.02em]">
+              YOURSSU
+            </span>
+          )}
         </div>
         <div className="flex flex-row items-center sm:hidden xs:hidden">
           {snsData.map((sns, index: number) => (
@@ -58,7 +68,7 @@ export default function Header() {
                     <object
                       type="image/svg+xml"
                       data={sns.publicURL}
-                      className="mr-4 cursor-pointer pointer-events-none"
+                      className="cursor-pointer pointer-events-none"
                     >
                       {sns.name}
                     </object>

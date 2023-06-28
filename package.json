@@ -13,12 +13,12 @@
   "scripts": {
     "start": "gatsby develop",
     "build": "gatsby build",
+    "deploy": "gatsby build && gh-pages -d public",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "type-check": "tsc --noEmit",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
-    "postinstall": "husky install",
     "test": "vitest",
     "test:watch": "vitest watch"
   },
@@ -32,10 +32,18 @@
     ]
   },
   "dependencies": {
-    "gatsby": "5.5.0",
+    "gatsby": "5.11.0",
+    "gatsby-image": "3.11.0",
+    "gatsby-plugin-image": "3.5.0",
+    "gatsby-plugin-manifest": "5.6.0",
+    "gatsby-plugin-react-svg": "3.3.0",
+    "gatsby-plugin-sharp": "5.5.0",
+    "gatsby-source-filesystem": "5.5.0",
+    "gatsby-transformer-sharp": "5.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tsconfig-paths-webpack-plugin": "4.0.0"
+    "react-responsive": "9.0.2",
+    "tsconfig-paths-webpack-plugin": "4.0.1"
   },
   "devDependencies": {
     "@babel/preset-react": "7.18.6",
@@ -72,7 +80,7 @@
     "eslint-webpack-plugin": "3.2.0",
     "gatsby-plugin-eslint": "4.0.3",
     "gatsby-plugin-postcss": "6.5.0",
-    "husky": "8.0.3",
+    "gh-pages": "5.0.0",
     "identity-obj-proxy": "3.0.0",
     "jsdom": "21.1.0",
     "lint-staged": "13.1.0",

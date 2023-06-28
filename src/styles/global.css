@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/assets/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: "NeoSB";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoSB.ttf");
+}
+
+@font-face {
+  font-family: "NeoR";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoR.ttf");
+}
+
+@font-face {
+  font-family: "NeoEB";
+  src: url("../../src/assets/fonts/AppleSDGothicNeoEB.ttf");
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("../../src/assets/fonts//Jost-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "NeoM00";
+  src: url("../../src/assets//fonts/AppleSDGothicNeoM00.ttf");
+}

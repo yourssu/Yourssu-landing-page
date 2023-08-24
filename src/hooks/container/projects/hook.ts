@@ -104,7 +104,7 @@ export default function useCarouselDetail() {
       ],
       link: [
         'https://play.google.com/store/apps/details?id=com.yourssu.soomsil',
-        'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C-%EC%84%B1%EC%A0%81%ED%91%9C/id1601044486',
+        'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C/id1626690112',
       ],
     },
     {

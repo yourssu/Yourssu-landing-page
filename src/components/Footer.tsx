@@ -1,10 +1,7 @@
 import useFooterDetail from '@/hooks/components/footer/hook';
+import { OSType } from '@/types/types';
 
-type FooterProp = {
-  isType: string | undefined;
-};
-
-function Footer({ isType }: FooterProp) {
+function Footer({ type }: OSType) {
   const { logo } = useFooterDetail();
   const logoData = logo.nodes[0];
 
@@ -16,7 +13,7 @@ function Footer({ isType }: FooterProp) {
           alt={logoData.name}
           className="mx-1 xs:h-[12px] sm:h-[12px] h-[23px]"
         />
-        {isType === 'ios' ? (
+        {type === 'ios' ? (
           <h3 className="xs:text-[14px] sm:text-[14px] text-[20px] font-Jost font-[550]">
             YOURSSU
           </h3>

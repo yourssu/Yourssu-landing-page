@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import useHeaderDetail from '@/hooks/components/header/hook';
 import '../styles/global.css';
+import { OSType } from '@/types/types';
 
-type HeaderProp = {
-  isType: string | undefined;
-};
-
-export default function Header({ isType }: HeaderProp) {
+export default function Header({ type }: OSType) {
   const { data, link } = useHeaderDetail();
   const [isClick, setIsClick] = useState(false);
   const logoData = data.logo.nodes[0];
@@ -22,7 +19,7 @@ export default function Header({ isType }: HeaderProp) {
             alt={logoData.name}
             className=" w-[42px] md:w-[37px] sm:w-[28px] xs:w-[25px]"
           />
-          {isType === 'ios' ? (
+          {type === 'ios' ? (
             <span className="w-[111px] md:w-[92px] sm:w-[73px] xs:w-[60px] font-Jost font-[550] text-center text-black text-[24px] md:text-[20px] sm:text-[16px] xs:text-[14px] leading-[26px] md:leading-[20px] sm:leading-[16px] xs:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em] xs:-tracking-[0.02em]">
               YOURSSU
             </span>

@@ -20,7 +20,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <Layout isType={type}>
+    <Layout type={type}>
       <Banner type={type} />
       <Team />
       <Ideal />

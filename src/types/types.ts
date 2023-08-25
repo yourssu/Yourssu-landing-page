@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface OSType {
-  type: string;
+  type: string | undefined;
 }
 
 export interface IntroElement {
@@ -65,4 +65,9 @@ export interface ButtonItem {
   img: string;
   hoverImg: string;
   notionLink: string;
+}
+
+export interface LayoutData {
+  children: ReactNode;
+  type: string | undefined;
 }

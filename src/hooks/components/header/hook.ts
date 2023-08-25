@@ -1,24 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-
-interface Node {
-  publicURL: string;
-  name: string;
-}
-
-type Header = {
-  logo: {
-    nodes: Node[];
-  };
-  social: {
-    nodes: Node[];
-  };
-  tooltip: {
-    nodes: Node[];
-  };
-};
+import { HeaderData } from '@/types/hook';
 
 export default function useHeaderDetail() {
-  const data: Header = useStaticQuery(graphql`
+  const data: HeaderData = useStaticQuery(graphql`
     query {
       logo: allFile(filter: { sourceInstanceName: { eq: "logo" } }) {
         nodes {

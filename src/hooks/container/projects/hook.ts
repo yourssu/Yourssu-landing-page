@@ -1,42 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-
-interface Node {
-  publicURL: string;
-  name: string;
-}
-
-type Node2 = {
-  childImageSharp: {
-    fluid: {
-      aspectRatio: number;
-      sizes: string;
-      base64: string;
-      src: string;
-      srcSet: string;
-    };
-  };
-};
-
-type Carousel = {
-  carouselItemButtonImgData: {
-    nodes: Node[];
-  };
-  carouselItemLinkImgData: {
-    nodes: Node[];
-  };
-  carouselItemListImgData: {
-    nodes: Node[];
-  };
-  projectImgData: {
-    nodes: Node2[];
-  };
-  backgroundImgData: {
-    nodes: Node[];
-  };
-};
+import { CarouselData } from '@/types/hook';
 
 export default function useCarouselDetail() {
-  const data: Carousel = useStaticQuery(graphql`
+  const data: CarouselData = useStaticQuery(graphql`
     query {
       carouselItemButtonImgData: allFile(
         filter: {

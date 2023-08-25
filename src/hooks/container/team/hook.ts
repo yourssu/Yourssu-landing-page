@@ -1,28 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-
-interface Node {
-  publicURL: string;
-  name: string;
-}
-
-type TeamIcon = {
-  teams: {
-    nodes: Node[];
-  };
-  hovers: {
-    nodes: Node[];
-  };
-};
-
-type Teams = {
-  team: string;
-  img: string;
-  hoverImg: string;
-  notionLink: string;
-};
+import { TeamIconData, TeamsData } from '@/types/hook';
 
 export default function useTeamDetail() {
-  const data: TeamIcon = useStaticQuery(graphql`
+  const data: TeamIconData = useStaticQuery(graphql`
     query {
       teams: allFile(
         filter: { sourceInstanceName: { eq: "teams" } }
@@ -63,7 +43,7 @@ export default function useTeamDetail() {
   const teamsData = data.teams.nodes;
   const hoversData = data.hovers.nodes;
 
-  const teams: Teams[] = teamsData.map((team, index) => {
+  const teams: TeamsData[] = teamsData.map((team, index) => {
     const teamData = {
       team: notionLink[index].team,
       notionLink: notionLink[index].link,

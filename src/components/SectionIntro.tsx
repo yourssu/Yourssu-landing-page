@@ -1,4 +1,4 @@
-import { IntroElement } from '@/types/culture';
+import { IntroElement } from '@/types/types';
 
 function SectionIntro({ title, description, divStyle, color }: IntroElement) {
   return (

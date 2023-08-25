@@ -1,4 +1,4 @@
-import { Culture } from '@/types/culture';
+import { Culture } from '@/types/types';
 
 function CultureItem({ id, title, description }: Culture) {
   return (

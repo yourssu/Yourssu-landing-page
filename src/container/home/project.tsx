@@ -2,12 +2,9 @@ import { useMediaQuery } from 'react-responsive';
 import Carousel from '@/components/Carousel';
 import SectionIntro from '@/components/SectionIntro';
 import useCarouselDetail from '@/hooks/container/projects/hook';
+import { OSType } from '@/types/types';
 
-type ProjectProp = {
-  isType: string | undefined;
-};
-
-function Project({ isType }: ProjectProp) {
+function Project({ type }: OSType) {
   const windowSize = useMediaQuery({
     query: '(min-width: 1081px)',
   });
@@ -37,7 +34,7 @@ function Project({ isType }: ProjectProp) {
           />
         )}
       </div>
-      <Carousel itemsData={data.projectImgData.nodes} isType={isType} />
+      <Carousel itemsData={data.projectImgData.nodes} type={type} />
     </div>
   );
 }

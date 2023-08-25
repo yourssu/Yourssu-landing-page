@@ -1,8 +1,8 @@
 import Img from 'gatsby-image';
 import useBannerDetail from '@/hooks/container/banner/hook';
-import { BannerOS } from '@/types/banner';
+import { OSType } from '@/types/types';
 
-function Banner({ type }: BannerOS) {
+function Banner({ type }: OSType) {
   const bannerData = useBannerDetail();
   return (
     <div className="relative flex flex-col justify-center items-center">

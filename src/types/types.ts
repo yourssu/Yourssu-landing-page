@@ -1,3 +1,7 @@
+export interface OSType {
+  type: string;
+}
+
 export interface IntroElement {
   title: string;
   description: string;
@@ -7,6 +11,11 @@ export interface IntroElement {
 
 export interface Culture {
   id: string;
+  title: string;
+  description: string;
+}
+
+export interface Ideal {
   title: string;
   description: string;
 }

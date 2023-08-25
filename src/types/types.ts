@@ -52,3 +52,17 @@ export interface CarouselContentData {
   itemsData: CarouselNode[];
   isType: string | undefined;
 }
+
+export interface TeamButtonData {
+  team: string;
+  img: string;
+  hoverImg: string;
+  notionLink: string;
+}
+
+export interface ButtonItem {
+  team: string;
+  img: string;
+  hoverImg: string;
+  notionLink: string;
+}

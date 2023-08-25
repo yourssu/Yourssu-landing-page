@@ -1,9 +1,4 @@
-type ButtonItem = {
-  team: string;
-  img: string;
-  hoverImg: string;
-  notionLink: string;
-};
+import { ButtonItem } from '@/types/types';
 
 function TeamButton({ team, img, hoverImg, notionLink }: ButtonItem) {
   return (

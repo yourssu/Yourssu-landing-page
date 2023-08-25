@@ -2,13 +2,7 @@ import { useMediaQuery } from 'react-responsive';
 import TeamButton from '@/components/TeamButton';
 import SectionIntro from '@/components/SectionIntro';
 import useTeamDetail from '@/hooks/container/team/hook';
-
-type TeamButtonData = {
-  team: string;
-  img: string;
-  hoverImg: string;
-  notionLink: string;
-};
+import { TeamButtonData } from '@/types/types';
 
 function Team() {
   const windowSize = useMediaQuery({

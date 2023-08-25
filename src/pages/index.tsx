@@ -24,7 +24,7 @@ export default function Home() {
       <Banner type={type} />
       <Team />
       <Ideal />
-      <Project isType={type} />
+      <Project type={type} />
       <Culture />
     </Layout>
   );

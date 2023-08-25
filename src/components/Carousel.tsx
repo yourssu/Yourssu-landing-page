@@ -1,25 +1,9 @@
 import { useState } from 'react';
 import CarouselContainer from './CarouselContainer';
 import CarouselContent from './CarouselContent';
+import { CarouselItemData } from '@/types/types';
 
-interface Node {
-  childImageSharp: {
-    fluid: {
-      aspectRatio: number;
-      sizes: string;
-      base64: string;
-      src: string;
-      srcSet: string;
-    };
-  };
-}
-
-type CarouselItemDataProp = {
-  itemsData: Node[];
-  type: string | undefined;
-};
-
-function Carousel({ itemsData, type }: CarouselItemDataProp) {
+function Carousel({ itemsData, type }: CarouselItemData) {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div

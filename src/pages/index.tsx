@@ -8,23 +8,23 @@ import Ideal from '@/container/home/Ideal';
 import Culture from '@/container/home/Culture';
 
 export default function Home() {
-  const [isType, setIsType] = useState<string>();
+  const [type, setType] = useState<string>('');
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
     if (osType.indexOf('android') > -1) {
-      setIsType('android');
+      setType('android');
     } else if (osType.indexOf('iphone') > -1 || osType.indexOf('ipad') > -1) {
-      setIsType('ios');
+      setType('ios');
     } else {
-      setIsType('pc');
+      setType('pc');
     }
   }, []);
   return (
-    <Layout isType={isType}>
-      <Banner isType={isType} />
+    <Layout isType={type}>
+      <Banner type={type} />
       <Team />
       <Ideal />
-      <Project isType={isType} />
+      <Project isType={type} />
       <Culture />
     </Layout>
   );

@@ -99,7 +99,16 @@ const config: GatsbyConfig = {
         // The unique name for each instance
         name: `teams`,
         // Path to the directory
-        path: `${__dirname}/src/assets/teams`,
+        path: `${__dirname}/src/assets/icons/teams`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        // The unique name for each instance
+        name: `hovers`,
+        // Path to the directory
+        path: `${__dirname}/src/assets/icons/hovers`,
       },
     },
   ],

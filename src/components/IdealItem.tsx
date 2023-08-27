@@ -1,7 +1,4 @@
-type Ideal = {
-  title: string;
-  description: string;
-};
+import { Ideal } from '@/types/types';
 
 function IdealItem({ title, description }: Ideal) {
   return (

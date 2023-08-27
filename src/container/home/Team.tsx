@@ -2,19 +2,14 @@ import { useMediaQuery } from 'react-responsive';
 import TeamButton from '@/components/TeamButton';
 import SectionIntro from '@/components/SectionIntro';
 import useTeamDetail from '@/hooks/container/team/hook';
-
-type TeamButtonData = {
-  publicURL: string;
-  name: string;
-};
+import { TeamButtonData } from '@/types/types';
 
 function Team() {
   const windowSize = useMediaQuery({
     query: '(min-width: 1081px)',
   });
 
-  const { teams } = useTeamDetail();
-  const teamData = teams.nodes;
+  const teams = useTeamDetail();
 
   return (
     <div className="flex flex-col items-center xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
@@ -34,8 +29,14 @@ function Team() {
         />
       )}
       <div className="flex flex-row flex-wrap justify-center xs:w-[220px] sm:w-[330px] md:w-[460px] lg:w-[600px] xs:mt-[30px] sm:mt-[40px] md:mt-[83px] mt-[52px]">
-        {teamData.map((data: TeamButtonData) => (
-          <TeamButton key={data.name} img={data.publicURL} name={data.name} />
+        {teams.map((team: TeamButtonData) => (
+          <TeamButton
+            key={team.team}
+            team={team.team}
+            img={team.img}
+            hoverImg={team.hoverImg}
+            notionLink={team.notionLink}
+          />
         ))}
       </div>
     </div>

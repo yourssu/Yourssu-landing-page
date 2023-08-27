@@ -1,31 +1,13 @@
 import Img from 'gatsby-image';
 import useCarouselDetail from '@/hooks/container/projects/hook';
-
-interface Node {
-  childImageSharp: {
-    fluid: {
-      aspectRatio: number;
-      sizes: string;
-      base64: string;
-      src: string;
-      srcSet: string;
-    };
-  };
-}
-
-type CarouselContentProp = {
-  className: string;
-  currentIndex: number;
-  itemsData: Node[];
-  isType: string | undefined;
-};
+import { CarouselContentData } from '@/types/types';
 
 function CarouselContent({
   className,
   currentIndex,
   itemsData,
   isType,
-}: CarouselContentProp) {
+}: CarouselContentData) {
   const { data, projectData } = useCarouselDetail();
   const linkImgData = {
     imgUrl: data.carouselItemLinkImgData.nodes[0].publicURL,

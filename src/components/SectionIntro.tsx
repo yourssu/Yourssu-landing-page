@@ -1,11 +1,6 @@
-type IntroProps = {
-  title: string;
-  description: string;
-  divStyle: string;
-  color: string;
-};
+import { IntroElement } from '@/types/types';
 
-function SectionIntro({ title, description, divStyle, color }: IntroProps) {
+function SectionIntro({ title, description, divStyle, color }: IntroElement) {
   return (
     <div className="flex flex-col items-center mx-[50px]">
       <div className={`xs:w-[2px] w-[3px] xs:h-[22px] h-[39px] ${divStyle}`} />

@@ -1,19 +1,14 @@
-import { ReactNode } from 'react';
 import '../styles/global.css';
 import Footer from './Footer';
 import Header from './Header';
+import { LayoutData } from '@/types/types';
 
-type LayoutProp = {
-  children: ReactNode;
-  isType: string | undefined;
-};
-
-function Layout({ children, isType }: LayoutProp) {
+function Layout({ children, type }: LayoutData) {
   return (
     <div className="relative">
-      <Header isType={isType} />
+      <Header type={type} />
       {children}
-      <Footer isType={isType} />
+      <Footer type={type} />
     </div>
   );
 }

@@ -1,17 +1,28 @@
+import { useState } from 'react';
 import { ButtonItem } from '@/types/types';
 
 function TeamButton({ team, img, hoverImg, notionLink }: ButtonItem) {
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   return (
     <div className="xs:mx-[6px] sm:mx-[6px] md:mx-[12px] mx-[15px] sm:mb-[24px] mb-[40px]">
-      <a href={notionLink} className="relative group">
+      <a
+        href={notionLink}
+        className="relative group"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <img
           className="mb-[8px] xs:w-[80px] sm:w-[80px] w-[120px]"
-          src={hoverImg}
-          alt={team}
-        />
-        <img
-          className="mb-[8px] xs:w-[80px] sm:w-[80px] w-[120px] absolute top-0 group-hover:invisible"
-          src={img}
+          src={isHover ? hoverImg : img}
           alt={team}
         />
       </a>

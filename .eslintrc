@@ -13,12 +13,7 @@
     "es6": true,
     "node": true
   },
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "jsx-a11y", "prettier", "@typescript-eslint"],
   "extends": [
     "airbnb",
     "airbnb-typescript",
@@ -28,7 +23,36 @@
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
-  "rules": {},
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react", "react-dom"],
+        "alphabetize": { "order": "asc" }
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": 0
+  },
   "settings": {
     "import/resolver": {
       "typescript": {
@@ -38,8 +62,5 @@
     "react": {
       "version": "detect"
     }
-  },
-  "ignorePatterns": [
-    "gatsby-config.ts"
-  ]
+  }
 }

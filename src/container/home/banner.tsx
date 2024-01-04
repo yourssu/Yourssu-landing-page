@@ -12,7 +12,7 @@ function Banner({ type }: OSType) {
           bannerData.mobileImage.childImageSharp.fluid,
           {
             ...bannerData.desktopImage.childImageSharp.fluid,
-            media: `(min-width: 1080px)`,
+            media: '(min-width: 1080px)',
           },
         ]}
       />

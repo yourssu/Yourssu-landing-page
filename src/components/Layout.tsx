@@ -1,7 +1,7 @@
 import '../styles/global.css';
+import { LayoutData } from '@/types/types';
 import Footer from './Footer';
 import Header from './Header';
-import { LayoutData } from '@/types/types';
 
 function Layout({ children, type }: LayoutData) {
   return (

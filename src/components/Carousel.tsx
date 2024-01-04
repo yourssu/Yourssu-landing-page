@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { CarouselItemData } from '@/types/types';
 import CarouselContainer from './CarouselContainer';
 import CarouselContent from './CarouselContent';
-import { CarouselItemData } from '@/types/types';
 
 function Carousel({ itemsData, type }: CarouselItemData) {
   const [currentIndex, setCurrentIndex] = useState(0);

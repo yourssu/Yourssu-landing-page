@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import Layout from '../components/Layout';
 import Seo from '@/components/Seo';
+import Culture from '@/container/home/Culture';
+import Ideal from '@/container/home/Ideal';
 import Team from '@/container/home/Team';
 import Banner from '@/container/home/banner';
 import Project from '@/container/home/project';
-import Ideal from '@/container/home/Ideal';
-import Culture from '@/container/home/Culture';
+import Layout from '../components/Layout';
 
 export default function Home() {
   const [type, setType] = useState<string>('');

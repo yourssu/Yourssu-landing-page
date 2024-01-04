@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
-import TeamButton from '@/components/TeamButton';
 import SectionIntro from '@/components/SectionIntro';
+import TeamButton from '@/components/TeamButton';
 import useTeamDetail from '@/hooks/container/team/hook';
 import { TeamButtonData } from '@/types/types';
 

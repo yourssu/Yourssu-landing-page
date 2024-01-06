@@ -12,7 +12,7 @@ function Team() {
   const teams = useTeamDetail();
 
   return (
-    <div className="flex flex-col items-center xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px] py-[105px]">
+    <div className="flex flex-col items-center py-[105px] xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px]">
       {windowSize ? (
         <SectionIntro
           title="TEAM YOURSSU"
@@ -28,7 +28,7 @@ function Team() {
           color="text-Text_Color1-0"
         />
       )}
-      <div className="flex flex-row flex-wrap justify-center xs:w-[220px] sm:w-[330px] md:w-[460px] lg:w-[600px] xs:mt-[30px] sm:mt-[40px] md:mt-[83px] mt-[52px]">
+      <div className="mt-[52px] flex flex-row flex-wrap justify-center xs:mt-[30px] xs:w-[220px] sm:mt-[40px] sm:w-[330px] md:mt-[83px] md:w-[460px] lg:w-[600px]">
         {teams.map((team: TeamButtonData) => (
           <TeamButton
             key={team.team}

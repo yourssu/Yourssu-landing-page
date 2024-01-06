@@ -11,31 +11,31 @@ export default function Header({ type }: OSType) {
   const tooltip = data.tooltip.nodes[0];
 
   return (
-    <header className="flex flex-col justify-between items-center w-full top-[37px] md:top-[24px] sm:top-[15px] xs:top-[15px] absolute z-10">
-      <div className="flex flex-row justify-between items-center xxl:w-[1280px] xl:w-[1160px] lg:w-[870px] md:w-[580px] sm:w-[355px] xs:w-[260px]">
-        <div className="flex flex-row justify-between items-center">
+    <header className="absolute top-[37px] z-10 flex w-full flex-col items-center justify-between xs:top-[15px] sm:top-[15px] md:top-[24px]">
+      <div className="flex flex-row items-center justify-between xs:w-[260px] sm:w-[355px] md:w-[580px] lg:w-[870px] xl:w-[1160px] xxl:w-[1280px]">
+        <div className="flex flex-row items-center justify-between">
           <img
             src={logoData.publicURL}
             alt={logoData.name}
-            className=" w-[42px] md:w-[37px] sm:w-[28px] xs:w-[25px]"
+            className=" w-[42px] xs:w-[25px] sm:w-[28px] md:w-[37px]"
           />
           {type === 'ios' ? (
-            <span className="w-[111px] md:w-[92px] sm:w-[73px] xs:w-[60px] font-Jost font-[550] text-center text-black text-[24px] md:text-[20px] sm:text-[16px] xs:text-[14px] leading-[26px] md:leading-[20px] sm:leading-[16px] xs:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em] xs:-tracking-[0.02em]">
+            <span className="w-[111px] text-center font-Jost text-[24px] font-[550] leading-[26px] -tracking-[0.04em] text-black xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
               YOURSSU
             </span>
           ) : (
-            <span className="w-[111px] md:w-[92px] sm:w-[73px] xs:w-[60px] font-Jost text-center font-semibold text-black text-[24px] md:text-[20px] sm:text-[16px] xs:text-[14px] leading-[26px] md:leading-[20px] sm:leading-[16px] xs:leading-[16px] -tracking-[0.04em] md:-tracking-[0.02em] sm:-tracking-[0.02em] xs:-tracking-[0.02em]">
+            <span className="w-[111px] text-center font-Jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] text-black xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
               YOURSSU
             </span>
           )}
         </div>
-        <div className="flex flex-row items-center sm:hidden xs:hidden">
+        <div className="flex flex-row items-center xs:hidden sm:hidden">
           {snsData.map((sns, index: number) => (
             <a href={link[index]} key={sns.name}>
               <object
                 type="image/svg+xml"
                 data={sns.publicURL}
-                className="ml-4 cursor-pointer pointer-events-none"
+                className="pointer-events-none ml-4 cursor-pointer"
               >
                 {sns.name}
               </object>
@@ -44,7 +44,7 @@ export default function Header({ type }: OSType) {
         </div>
         <div
           aria-hidden="true"
-          className="xs:block sm:block hidden cursor-pointer"
+          className="hidden cursor-pointer xs:block sm:block"
           onClick={() => {
             setIsClick(!isClick);
           }}
@@ -52,12 +52,12 @@ export default function Header({ type }: OSType) {
           •••
         </div>
       </div>
-      <hr className=" bg-[#8F8F90] border-none xxl:w-[1280px] xl:w-[1160px] lg:w-[870px] md:w-[580px] sm:w-[355px] xs:w-[260px] h-[1px] block mt-[21px] md:mt-[12px] sm:mt-[6px] xs:mt-[4px]" />
+      <hr className=" mt-[21px] block h-[1px] border-none bg-[#8F8F90] xs:mt-[4px] xs:w-[260px] sm:mt-[6px] sm:w-[355px] md:mt-[12px] md:w-[580px] lg:w-[870px] xl:w-[1160px] xxl:w-[1280px]" />
       {isClick === true ? (
-        <div className=" hidden sm:flex xs:flex justify-center items-center w-full">
-          <div className="relative min-w-[373px] xs:min-w-[275px] flex flex-row-reverse justify-start">
+        <div className=" hidden w-full items-center justify-center xs:flex sm:flex">
+          <div className="relative flex min-w-[373px] flex-row-reverse justify-start xs:min-w-[275px]">
             <img src={tooltip.publicURL} alt={tooltip.name} />
-            <div className="flex flex-row justify-between items-center absolute w-[150px] top-[15px] right-[10px]">
+            <div className="absolute right-[10px] top-[15px] flex w-[150px] flex-row items-center justify-between">
               {snsData.map((sns, index: number) => {
                 return (
                   // eslint-disable-next-line react/jsx-key
@@ -65,7 +65,7 @@ export default function Header({ type }: OSType) {
                     <object
                       type="image/svg+xml"
                       data={sns.publicURL}
-                      className="cursor-pointer pointer-events-none"
+                      className="pointer-events-none cursor-pointer"
                     >
                       {sns.name}
                     </object>

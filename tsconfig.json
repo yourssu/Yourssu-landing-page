@@ -21,7 +21,6 @@
     "./src/**/*",
     "./gatsby-node.ts",
     "./gatsby-config.ts",
-    "./plugins/**/*",
-    "./tailwind.config.js"
+    "./plugins/**/*"
   ]
 }

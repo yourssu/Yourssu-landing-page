@@ -6,24 +6,24 @@ function Footer({ type }: OSType) {
   const logoData = logo.nodes[0];
 
   return (
-    <footer className="flex flex-col xs:h-[90px] sm:h-[100px] md:h-[132px] h-[165px] bg-[#F9FAFB] justify-center items-center text-Text_Color2-0">
-      <div className="flex flex-row items-center mb-1">
+    <footer className="flex h-[165px] flex-col items-center justify-center bg-[#F9FAFB] text-Text_Color2-0 xs:h-[90px] sm:h-[100px] md:h-[132px]">
+      <div className="mb-1 flex flex-row items-center">
         <img
           src={logoData.publicURL}
           alt={logoData.name}
-          className="mx-1 xs:h-[12px] sm:h-[12px] h-[23px]"
+          className="mx-1 h-[23px] xs:h-[12px] sm:h-[12px]"
         />
         {type === 'ios' ? (
-          <h3 className="xs:text-[14px] sm:text-[14px] text-[20px] font-Jost font-[550]">
+          <h3 className="font-Jost text-[20px] font-[550] xs:text-[14px] sm:text-[14px]">
             YOURSSU
           </h3>
         ) : (
-          <h3 className="xs:text-[14px] sm:text-[14px] text-[20px] font-Jost font-semibold">
+          <h3 className="font-Jost text-[20px] font-semibold xs:text-[14px] sm:text-[14px]">
             YOURSSU
           </h3>
         )}
       </div>
-      <div className="xs:text-[13px] sm:text-[13px] md:text-[14px] text-[16px] text-center font-NeoR">
+      <div className="text-center font-NeoR text-[16px] xs:text-[13px] sm:text-[13px] md:text-[14px]">
         <p>동아리방 : 숭실대학교 학생회관 244호</p>
         <p>ⓒ Yourssu. All rights reserved.</p>
       </div>

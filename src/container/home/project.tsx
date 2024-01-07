@@ -11,13 +11,13 @@ function Project({ type }: OSType) {
   const { data } = useCarouselDetail();
 
   return (
-    <div className="flex flex-col items-center relative xs:mb-[260px] sm:mb-[200px] md:mb-[300px] mb-[350px]">
+    <div className="relative mb-[350px] flex flex-col items-center xs:mb-[260px] sm:mb-[200px] md:mb-[300px]">
       <img
-        className=" absolute -z-10 w-full h-[446px] xs:h-[270px] sm:h-[357px] top-0"
+        className=" absolute top-0 -z-10 h-[446px] w-full xs:h-[270px] sm:h-[357px]"
         src={data.backgroundImgData.nodes[0].publicURL}
         alt={data.backgroundImgData.nodes[0].name}
       />
-      <div className="absolute w-full xs:pt-[50px] sm:pt-[60px] pt-[80px]">
+      <div className="absolute w-full pt-[80px] xs:pt-[50px] sm:pt-[60px]">
         {windowSize ? (
           <SectionIntro
             title="PROJECTS"

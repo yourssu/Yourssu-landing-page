@@ -5,10 +5,11 @@ import Ideal from '@/container/home/Ideal';
 import Team from '@/container/home/Team';
 import Banner from '@/container/home/banner';
 import Project from '@/container/home/project';
+import { OSType } from '@/types/types';
 import Layout from '../components/Layout';
 
 export default function Home() {
-  const [type, setType] = useState<string>('');
+  const [type, setType] = useState<OSType>();
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
     if (osType.indexOf('android') > -1) {

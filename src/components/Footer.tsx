@@ -1,7 +1,11 @@
 import useFooterDetail from '@/hooks/components/footer/hook';
 import { OSType } from '@/types/types';
 
-function Footer({ type }: OSType) {
+interface Props {
+  type: OSType;
+}
+
+function Footer({ type }: Props) {
   const { logo } = useFooterDetail();
   const logoData = logo.nodes[0];
 

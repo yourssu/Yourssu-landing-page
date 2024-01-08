@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface OSType {
-  type: string | undefined;
-}
+export type OSType = 'android' | 'ios' | 'pc' | undefined;
 
 export interface IntroElement {
   title: string;

@@ -33,7 +33,7 @@ function CarouselContent({
         <div className="flex flex-col px-[50px] xs:px-[32px] sm:px-[10px]">
           <div className="flex flex-row items-center justify-start">
             {/* 여기 작업 중 */}
-            <span className=" font-NeoSB text-[36px] leading-[36px] -tracking-[0.01em] text-black xs:text-[24px] sm:text-[24px]">
+            <span className=" text-black font-NeoSB text-[36px] leading-[36px] -tracking-[0.01em] xs:text-[24px] sm:text-[24px]">
               {projectData[currentIndex].title}
             </span>
             <div>

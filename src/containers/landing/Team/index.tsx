@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
-import SectionIntro from '@/components/SectionIntro';
-import TeamButton from '@/components/TeamButton';
+import SectionIntro from '@/components/Intro/SectionIntro';
 import useTeamDetail from '@/hooks/container/team/hook';
 import { TeamButtonData } from '@/types/types';
+import TeamButton from './TeamButton';
 
 function Team() {
   const windowSize = useMediaQuery({
@@ -17,15 +17,15 @@ function Team() {
         <SectionIntro
           title="TEAM YOURSSU"
           description="안녕하세요. 숭실인을 위한. 숭실인에 의해 당신의 숭실을 만들어가는 동아리 유어슈입니다.<br />숭실대 학생들의 즐거운 캠퍼스 라이프를 위한 서비스를 만들고 있습니다."
-          divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0"
-          color="text-Text_Color1-0"
+          linerColor="gra"
+          textColor="ver1"
         />
       ) : (
         <SectionIntro
           title="TEAM YOURSSU"
           description="안녕하세요. 숭실인을 위한. 숭실인에 의해 당신의 숭실을 만들어가는 동아리 유어슈입니다. 숭실대 학생들의 즐거운 캠퍼스 라이프를 위한 서비스를 만들고 있습니다."
-          divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0"
-          color="text-Text_Color1-0"
+          linerColor="gra"
+          textColor="ver1"
         />
       )}
       <div className="mt-[52px] flex flex-row flex-wrap justify-center xs:mt-[30px] xs:w-[220px] sm:mt-[40px] sm:w-[330px] md:mt-[83px] md:w-[460px] lg:w-[600px]">
@@ -34,7 +34,7 @@ function Team() {
             key={team.team}
             team={team.team}
             img={team.img}
-            hoverImg={team.hoverImg}
+            hoverImg={team.notionLink}
             notionLink={team.notionLink}
           />
         ))}

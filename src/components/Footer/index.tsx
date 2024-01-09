@@ -1,5 +1,21 @@
-import useFooterDetail from '@/hooks/components/footer/hook';
+// import useFooterDetail from '@/hooks/components/footer/hook';
+import { graphql, useStaticQuery } from 'gatsby';
+import { FooterData } from '@/types/hook';
 import { OSType } from '@/types/types';
+
+function useFooterDetail() {
+  const data: FooterData = useStaticQuery(graphql`
+    query {
+      logo: allFile(filter: { sourceInstanceName: { eq: "logo" } }) {
+        nodes {
+          publicURL
+          name
+        }
+      }
+    }
+  `);
+  return data;
+}
 
 function Footer({ type }: OSType) {
   const { logo } = useFooterDetail();
@@ -24,8 +40,8 @@ function Footer({ type }: OSType) {
         )}
       </div>
       <div className="text-center font-NeoR text-[16px] xs:text-[13px] sm:text-[13px] md:text-[14px]">
-        <p>동아리방 : 숭실대학교 학생회관 244호</p>
-        <p>ⓒ Yourssu. All rights reserved.</p>
+        <div className="font-NeoR">동아리방 : 숭실대학교 학생회관 244호</div>
+        <div>ⓒ Yourssu. All rights reserved.</div>
       </div>
     </footer>
   );

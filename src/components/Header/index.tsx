@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import useHeaderDetail from '@/hooks/components/header/hook';
-import '../styles/global.css';
 import { OSType } from '@/types/types';
 
 export default function Header({ type }: OSType) {
@@ -20,11 +19,11 @@ export default function Header({ type }: OSType) {
             className=" w-[42px] xs:w-[25px] sm:w-[28px] md:w-[37px]"
           />
           {type === 'ios' ? (
-            <span className="w-[111px] text-center font-Jost text-[24px] font-[550] leading-[26px] -tracking-[0.04em] text-black xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
+            <span className="text-black w-[111px] text-center font-Jost text-[24px] font-[550] leading-[26px] -tracking-[0.04em] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
               YOURSSU
             </span>
           ) : (
-            <span className="w-[111px] text-center font-Jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] text-black xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
+            <span className="text-black w-[111px] text-center font-Jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
               YOURSSU
             </span>
           )}

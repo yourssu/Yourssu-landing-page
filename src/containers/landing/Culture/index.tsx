@@ -1,6 +1,6 @@
-import CultureItem from '@/components/CultureItem';
-import SectionIntro from '@/components/SectionIntro';
+import SectionIntro from '@/components/Intro/SectionIntro';
 import useCultureDetail from '@/hooks/container/culture/hook';
+import CultureItem from './CultureItem';
 
 function Culture() {
   const items = useCultureDetail();
@@ -9,8 +9,8 @@ function Culture() {
       <SectionIntro
         title="CULTURE"
         description="유어슈는 서로를 존중하며 커뮤니케이션하는 동아리입니다.<br />성장하는 문화를 통해 같이 있는 것만으로도 즐겁고 배울 수 있는 동아리로 나아갑니다."
-        divStyle="bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0"
-        color="text-Text_Color1-0"
+        linerColor="gra"
+        textColor="ver1"
       />
       <div className="mt-[110px] flex h-[492px] w-[958px] flex-wrap content-between items-center justify-between xs:mt-[50px] xs:h-fit xs:w-[250px] sm:mt-[80px] sm:h-fit sm:w-[310px] md:mt-[80px] md:h-fit md:w-[400px]">
         {items.map((item) => (

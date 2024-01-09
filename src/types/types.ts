@@ -7,8 +7,8 @@ export interface OSType {
 export interface IntroElement {
   title: string;
   description: string;
-  divStyle: string;
-  color: string;
+  linerColor: string;
+  textColor: string;
 }
 
 export interface Culture {

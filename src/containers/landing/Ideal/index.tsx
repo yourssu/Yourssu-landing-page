@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
-import IdealItem from '@/components/IdealItem';
 import useIdealDetail from '@/hooks/container/ideal/hook';
+import IdealItem from './IdealItem';
 
 function Ideal() {
   const { items } = useIdealDetail();

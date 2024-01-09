@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
-import Carousel from '@/components/Carousel';
-import SectionIntro from '@/components/SectionIntro';
+import SectionIntro from '@/components/Intro/SectionIntro';
 import useCarouselDetail from '@/hooks/container/projects/hook';
 import { OSType } from '@/types/types';
+import Carousel from './Carousel';
 
 function Project({ type }: OSType) {
   const windowSize = useMediaQuery({
@@ -22,15 +22,15 @@ function Project({ type }: OSType) {
           <SectionIntro
             title="PROJECTS"
             description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키,<br />숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
-            divStyle="bg-black"
-            color="text-Text_Color2-0"
+            linerColor="black"
+            textColor="ver2"
           />
         ) : (
           <SectionIntro
             title="PROJECTS"
             description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키, 숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
-            divStyle="bg-black"
-            color="text-Text_Color2-0"
+            linerColor="black"
+            textColor="ver2"
           />
         )}
       </div>

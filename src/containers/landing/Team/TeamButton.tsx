@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ButtonItem } from '@/types/types';
+import { TeamButtonItem } from '@/types/landing.type';
 
-function TeamButton({ team, img, hoverImg, notionLink }: ButtonItem) {
+function TeamButton({ team, img, hoverImg, notionLink }: TeamButtonItem) {
   const [isHover, setIsHover] = useState(false);
 
   const handleMouseEnter = () => {

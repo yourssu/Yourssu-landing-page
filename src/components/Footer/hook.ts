@@ -1,5 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { FooterData } from '@/types/hook';
+import { NodeListType } from '@/types/hook';
+
+interface FooterData {
+  logo: NodeListType;
+}
 
 export default function useFooterDetail() {
   const data: FooterData = useStaticQuery(graphql`

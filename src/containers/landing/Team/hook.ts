@@ -1,5 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { TeamIconData, TeamsData } from '@/types/hook';
+import { NodeListType } from '@/types/hook';
+import { TeamButtonItem } from '@/types/landing.type';
+
+interface TeamIconData {
+  teams: NodeListType;
+  hovers: NodeListType;
+}
 
 export default function useTeamDetail() {
   const data: TeamIconData = useStaticQuery(graphql`
@@ -71,7 +77,7 @@ export default function useTeamDetail() {
   const teamsData = data.teams.nodes;
   const hoversData = data.hovers.nodes;
 
-  const teams: TeamsData[] = teamsData.map((team, index) => {
+  const teams: TeamButtonItem[] = teamsData.map((team, index) => {
     const teamData = {
       team: notionLink[index].team,
       notionLink: notionLink[index].link,

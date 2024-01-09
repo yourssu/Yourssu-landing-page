@@ -1,9 +1,13 @@
-// import '@/styles/global.css';
-import { LayoutData } from '@/types/types';
+import { OSType } from '@/types/landing.type';
 import Footer from '../Footer';
 import Header from '../Header';
 
-function Layout({ children, type }: LayoutData) {
+interface Props {
+  children: React.ReactNode;
+  type: OSType;
+}
+
+function Layout({ children, type }: Props) {
   return (
     <div className="relative">
       <Header type={type} />

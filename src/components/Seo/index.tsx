@@ -1,4 +1,4 @@
-import useSeoDetail from '@/hooks/components/seo/hook';
+import useSeoDetail from '@/components/Seo/hook';
 
 function Seo() {
   const { site, file } = useSeoDetail();

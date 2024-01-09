@@ -1,6 +1,9 @@
-import { Ideal } from '@/types/types';
+interface Props {
+  title: string;
+  description: string;
+}
 
-function IdealItem({ title, description }: Ideal) {
+function IdealItem({ title, description }: Props) {
   return (
     <div className="my-5 flex-row">
       <div>

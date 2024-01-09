@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import useHeaderDetail from '@/hooks/components/header/hook';
-import { OSType } from '@/types/types';
+import useHeaderDetail from '@/components/Header/hook';
+import { OSType } from '@/types/landing.type';
 
-export default function Header({ type }: OSType) {
+interface Props {
+  type: OSType;
+}
+
+function Header({ type }: Props) {
   const { data, link } = useHeaderDetail();
   const [isClick, setIsClick] = useState(false);
   const logoData = data.logo.nodes[0];
@@ -78,3 +82,5 @@ export default function Header({ type }: OSType) {
     </header>
   );
 }
+
+export default Header;

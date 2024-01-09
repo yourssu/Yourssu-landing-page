@@ -1,13 +1,20 @@
 import Img from 'gatsby-image';
-import useCarouselDetail from '@/hooks/container/projects/hook';
-import { CarouselContentData } from '@/types/types';
+import useCarouselDetail from '@/containers/landing/Project/hook';
+import { CarouselNode, OSType } from '@/types/landing.type';
+
+interface Props {
+  className: string;
+  currentIndex: number;
+  itemsData: CarouselNode[];
+  isType: OSType;
+}
 
 function CarouselContent({
   className,
   currentIndex,
   itemsData,
   isType,
-}: CarouselContentData) {
+}: Props) {
   const { data, projectData } = useCarouselDetail();
   const linkImgData = {
     imgUrl: data.carouselItemLinkImgData.nodes[0].publicURL,

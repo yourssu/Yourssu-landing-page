@@ -1,10 +1,14 @@
 import { useMediaQuery } from 'react-responsive';
 import SectionIntro from '@/components/Intro/SectionIntro';
-import useCarouselDetail from '@/hooks/container/projects/hook';
-import { OSType } from '@/types/types';
+import useCarouselDetail from '@/containers/landing/Project/hook';
+import { OSType } from '@/types/landing.type';
 import Carousel from './Carousel';
 
-function Project({ type }: OSType) {
+interface Props {
+  type: OSType;
+}
+
+function Project({ type }: Props) {
   const windowSize = useMediaQuery({
     query: '(min-width: 1081px)',
   });

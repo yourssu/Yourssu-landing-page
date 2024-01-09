@@ -1,5 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-import useIdealDetail from '@/hooks/container/ideal/hook';
+import useIdealDetail from '@/containers/landing/Ideal/hook';
 import IdealItem from './IdealItem';
 
 function Ideal() {

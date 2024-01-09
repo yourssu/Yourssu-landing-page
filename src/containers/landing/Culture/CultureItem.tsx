@@ -1,6 +1,10 @@
-import { Culture } from '@/types/types';
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+}
 
-function CultureItem({ id, title, description }: Culture) {
+function CultureItem({ id, title, description }: Props) {
   return (
     <div className="flex w-fit flex-row justify-between xs:mb-[30px] sm:mb-[50px] md:mb-[60px]">
       <span className="mr-6 -translate-y-1 bg-gradient-to-r from-gradient_color2-0 to-gradient_color1-0 bg-clip-text font-NeoEB text-[32px] text-transparent xs:mr-4 xs:translate-y-0 xs:text-[16px] sm:mr-4 sm:translate-y-0 sm:text-[18px] md:translate-y-0 md:text-[24px]">

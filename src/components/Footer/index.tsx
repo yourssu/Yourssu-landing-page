@@ -1,23 +1,11 @@
-// import useFooterDetail from '@/hooks/components/footer/hook';
-import { graphql, useStaticQuery } from 'gatsby';
-import { FooterData } from '@/types/hook';
-import { OSType } from '@/types/types';
+import { OSType } from '@/types/landing.type';
+import useFooterDetail from './hook';
 
-function useFooterDetail() {
-  const data: FooterData = useStaticQuery(graphql`
-    query {
-      logo: allFile(filter: { sourceInstanceName: { eq: "logo" } }) {
-        nodes {
-          publicURL
-          name
-        }
-      }
-    }
-  `);
-  return data;
+interface Props {
+  type: OSType;
 }
 
-function Footer({ type }: OSType) {
+function Footer({ type }: Props) {
   const { logo } = useFooterDetail();
   const logoData = logo.nodes[0];
 

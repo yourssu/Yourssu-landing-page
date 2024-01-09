@@ -1,5 +1,5 @@
 import SectionIntro from '@/components/Intro/SectionIntro';
-import useCultureDetail from '@/hooks/container/culture/hook';
+import useCultureDetail from '@/containers/landing/Culture/hook';
 import CultureItem from './CultureItem';
 
 function Culture() {

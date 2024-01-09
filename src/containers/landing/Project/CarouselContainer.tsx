@@ -1,12 +1,18 @@
-import useCarouselDetail from '@/hooks/container/projects/hook';
-import { CarouselContainerData } from '@/types/types';
+import useCarouselDetail from '@/containers/landing/Project/hook';
+
+interface Props {
+  children: React.ReactNode;
+  className: string;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+}
 
 function CarouselContainer({
   children,
   className,
   currentIndex,
   setCurrentIndex,
-}: CarouselContainerData) {
+}: Props) {
   const { data, projectData } = useCarouselDetail();
   const buttonImgData = {
     leftButtonImgData: {

@@ -1,5 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { HeaderData } from '@/types/hook';
+import { NodeListType } from '@/types/hook';
+
+interface HeaderData {
+  logo: NodeListType;
+  social: NodeListType;
+  tooltip: NodeListType;
+}
 
 export default function useHeaderDetail() {
   const data: HeaderData = useStaticQuery(graphql`

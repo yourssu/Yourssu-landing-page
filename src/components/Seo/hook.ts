@@ -1,5 +1,29 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { SeoData } from '@/types/hook';
+
+type SeoSiteNode = {
+  title: string;
+  description: string;
+  siteUrl: string;
+};
+
+type SeoFileNode = {
+  base64: string;
+  height: number;
+  src: string;
+  srcSet: string;
+  width: number;
+};
+
+interface SeoData {
+  site: {
+    siteMetadata: SeoSiteNode;
+  };
+  file: {
+    childImageSharp: {
+      fixed: SeoFileNode;
+    };
+  };
+}
 
 export default function useSeoDetail() {
   const data: SeoData = useStaticQuery(graphql`

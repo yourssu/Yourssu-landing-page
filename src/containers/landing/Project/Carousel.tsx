@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import { CarouselItemData } from '@/types/types';
+import { CarouselNode, OSType } from '@/types/landing.type';
 import CarouselContainer from './CarouselContainer';
 import CarouselContent from './CarouselContent';
 
-function Carousel({ itemsData, type }: CarouselItemData) {
+interface Props {
+  itemsData: CarouselNode[];
+  type: OSType;
+}
+
+function Carousel({ itemsData, type }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div

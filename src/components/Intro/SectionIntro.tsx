@@ -1,11 +1,11 @@
-import { IntroElement } from '@/types/types';
+interface Props {
+  title: string;
+  description: string;
+  linerColor: string;
+  textColor: string;
+}
 
-function SectionIntro({
-  title,
-  description,
-  linerColor,
-  textColor,
-}: IntroElement) {
+function SectionIntro({ title, description, linerColor, textColor }: Props) {
   const textColorVariants: { [key: string]: string } = {
     ver1: 'text-Text_Color1-0',
     ver2: 'text-Text_Color2-0',

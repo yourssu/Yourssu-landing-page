@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
+import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
-import Culture from '@/container/home/Culture';
-import Ideal from '@/container/home/Ideal';
-import Team from '@/container/home/Team';
-import Banner from '@/container/home/banner';
-import Project from '@/container/home/project';
-import { OSType } from '@/types/types';
-import Layout from '../components/Layout';
+import Banner from '@/containers/landing/Banner';
+import Culture from '@/containers/landing/Culture';
+import Ideal from '@/containers/landing/Ideal';
+import Project from '@/containers/landing/Project';
+import Team from '@/containers/landing/Team';
+import { OSType } from '@/types/landing.type';
 
 export default function Home() {
   const [type, setType] = useState<OSType>();

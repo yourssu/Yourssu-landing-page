@@ -90,7 +90,7 @@ const config: GatsbyConfig = {
         // The unique name for each instance
         name: 'image',
         // Path to the directory
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {

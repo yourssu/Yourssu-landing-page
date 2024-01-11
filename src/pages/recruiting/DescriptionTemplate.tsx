@@ -6,9 +6,9 @@ import Information from '@/containers/description/Infromation';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
-import { OSType } from '@/types/types';
+import { OSType } from '@/types/landing.type';
 
-function Test() {
+function DescriptionTemplate() {
   const [type, setType] = useState<OSType>();
 
   useEffect(() => {
@@ -38,4 +38,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default DescriptionTemplate;

@@ -66,6 +66,7 @@ const NavigationList = tw.div`
 const NavigationItem = tw.button<{ $active: boolean }>`
   flex
   justify-between
+  items-center
   rounded-[30px]
   w-full
   px-[18px]

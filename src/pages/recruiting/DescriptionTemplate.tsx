@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Layout from '@/components/Layout';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
-import Information from '@/containers/description/Infromation';
+import Information from '@/containers/description/Information';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';

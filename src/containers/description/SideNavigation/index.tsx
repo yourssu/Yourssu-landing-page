@@ -20,7 +20,7 @@ function SideNavigation() {
   const data = useSideNavigationDetail();
 
   return (
-    <div className="w-[320px] pt-[50px]">
+    <Container>
       <NavigationContainer>
         <div className="h4">TEAM</div>
         <NavigationList>
@@ -35,15 +35,18 @@ function SideNavigation() {
         </NavigationList>
       </NavigationContainer>
       <Link to={dummyLink}>
-        <Button type="button">
-          <div className="h4">지원하기</div>
-        </Button>
+        <Button type="button">지원하기</Button>
       </Link>
-    </div>
+    </Container>
   );
 }
 
 export default SideNavigation;
+
+const Container = tw.div`
+  w-[320px]
+  pt-[50px]
+`;
 
 const NavigationContainer = tw.div`
   flex
@@ -82,4 +85,5 @@ const Button = tw.button`
   w-full
   py-5
   rounded-[12px]
+  h4
 `;

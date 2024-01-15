@@ -17,6 +17,8 @@ module.exports = {
         NeoEB: ['NeoEB'],
         Jost: ['Jost'],
         NeoM00: ['NeoM00'],
+        PretendardSB: ['PretendardSB'],
+        PretendardR: ['PretendardR'],
       },
       textColor: {
         Text_Color1: ['#8D8A93'],

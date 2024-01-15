@@ -17,7 +17,7 @@ function InaWord() {
       <div className="body1 pb-6 text-black-0">{dummy.name}의 한마디</div>
       <InaWordContainer>
         <TitleContainer>
-          <img src={data.legal.publicURL} alt={dummy.name} />
+          <img src={data.legal.publicURL} alt={dummy.name} className="h-14" />
           <Title>{dummy.title}</Title>
         </TitleContainer>
         <DescriptionContainer>{dummy.description}</DescriptionContainer>

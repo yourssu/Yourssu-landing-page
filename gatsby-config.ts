@@ -111,6 +111,15 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/assets/icons/hovers`,
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        // The unique name for each instance
+        name: 'icons',
+        // Path to the directory
+        path: `${__dirname}/src/assets/icons`,
+      },
+    },
   ],
   jsxRuntime: 'automatic',
 };

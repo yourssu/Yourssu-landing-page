@@ -1,8 +1,19 @@
+import tw from 'tailwind-styled-components';
 import Seo from '@/components/Seo';
+import About from '@/containers/select/About';
 
 function Recruiting() {
-  return <div>부서 선택 화면</div>;
+  return (
+    <Container className="flex flex-col items-center">
+      <About />
+    </Container>
+  );
 }
+
+const Container = tw.div`
+  w-full
+  bg-bluegray4-0
+`;
 
 export default Recruiting;
 

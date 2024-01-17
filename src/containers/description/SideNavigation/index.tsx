@@ -43,7 +43,7 @@ function SideNavigation() {
 
 export default SideNavigation;
 
-const Container = tw.div`
+const Container = tw.aside`
   w-[320px]
   pt-[50px]
 `;

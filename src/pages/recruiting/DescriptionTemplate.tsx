@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import tw from 'tailwind-styled-components';
 import Layout from '@/components/Layout';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
@@ -25,17 +26,32 @@ function DescriptionTemplate() {
   return (
     <Layout type={type}>
       <TeamHeader />
-      <article>
-        <Information />
-        <ApplyProcedure />
-        <RoadToPro />
-        <InaWord />
-      </article>
-      <aside>
+      <InnerContainer>
+        <SectionContainer>
+          <Information />
+          <ApplyProcedure />
+          <RoadToPro />
+          <InaWord />
+        </SectionContainer>
         <SideNavigation />
-      </aside>
+      </InnerContainer>
     </Layout>
   );
 }
 
 export default DescriptionTemplate;
+
+const InnerContainer = tw.div`
+  mx-auto
+  my-0
+  flex
+  max-w-[1280px]
+  gap-[100px]
+`;
+
+const SectionContainer = tw.div`
+  mb-[180px]
+  mt-[88px]
+  flex w-[902px]
+  flex-col gap-[60px]
+`;

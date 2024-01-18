@@ -46,7 +46,7 @@ const Container = tw.footer<{ $bg: string }>`
   text-gray1-0
   py-10
   xs:py-[20px]
-  sm:py-[30px]
+  sm:py-[20px]
   ${(props) => props.$bg}
 `;
 

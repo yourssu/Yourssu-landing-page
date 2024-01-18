@@ -57,6 +57,7 @@ const InformationContainer = tw.ul`
   body2
   list-outside
   list-disc
-  pl-6
+  pl-7
   text-gray1-0
+  text-justify
 `;

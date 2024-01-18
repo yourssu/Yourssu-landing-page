@@ -47,6 +47,7 @@ const InnerContainer = tw.div`
   flex
   max-w-[1280px]
   gap-[100px]
+  h-fit
 `;
 
 const SectionContainer = tw.div`

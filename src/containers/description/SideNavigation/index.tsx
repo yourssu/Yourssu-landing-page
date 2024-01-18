@@ -37,6 +37,13 @@ function SideNavigation() {
       <Link to={dummyLink}>
         <Button type="button">지원하기</Button>
       </Link>
+      <button type="button" className="ml-auto w-fit">
+        <InquiryButtonText>
+          <span>채용관련</span>
+          <span>문의하기</span>
+        </InquiryButtonText>
+        <img src={data.inquiryButton.publicURL} alt="문의하기" />
+      </button>
     </Container>
   );
 }
@@ -45,7 +52,13 @@ export default SideNavigation;
 
 const Container = tw.aside`
   w-[320px]
-  pt-[50px]
+  flex
+  flex-col
+  gap-6
+  sticky
+  top-[50px]
+  mt-[130px]
+  h-fit
 `;
 
 const NavigationContainer = tw.div`
@@ -57,7 +70,6 @@ const NavigationContainer = tw.div`
   border-gray3-0
   bg-white-0
   p-6
-  mb-6
 `;
 
 const NavigationList = tw.div`
@@ -86,4 +98,13 @@ const Button = tw.button`
   py-5
   rounded-[12px]
   h4
+`;
+
+const InquiryButtonText = tw.div`
+  body4
+  mb-[1px]
+  flex
+  flex-col
+  items-center
+  text-gray1-0
 `;

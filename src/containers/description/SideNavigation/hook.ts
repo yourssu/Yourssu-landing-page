@@ -6,6 +6,9 @@ export default function useSideNavigationDetail() {
       smallArrow: file(name: { eq: "small-arrow-left" }) {
         publicURL
       }
+      inquiryButton: file(name: { eq: "inquiry-button" }) {
+        publicURL
+      }
     }
   `);
 

@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components';
 import Seo from '@/components/Seo';
 import About from '@/containers/select/About';
+import ApplyProcedure from '@/containers/select/ApplyProcedure';
 import Banner from '@/containers/select/Banner';
 
 function Recruiting() {
@@ -8,6 +9,7 @@ function Recruiting() {
     <Container className="flex flex-col items-center">
       <Banner />
       <About />
+      <ApplyProcedure />
     </Container>
   );
 }

@@ -18,7 +18,7 @@ export default function useSupportingDetail() {
   const imgData: SupportingData = useStaticQuery(graphql`
     query {
       iconImgData: allFile(
-        filter: { sourceInstanceName: { eq: "team" } }
+        filter: { sourceInstanceName: { eq: "department_icons" } }
         sort: { order: ASC, fields: name }
       ) {
         nodes {

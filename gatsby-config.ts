@@ -118,6 +118,16 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/assets/icons/`,
       },
     },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `xsbgojh6`,
+        dataset: `production`,
+        // a token with read permissions is required
+        // if you have a private dataset
+        token: process.env.SANITY_TOKEN,
+      },
+    },
   ],
   jsxRuntime: 'automatic',
 };

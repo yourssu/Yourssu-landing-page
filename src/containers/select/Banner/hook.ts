@@ -25,7 +25,10 @@ export default function useBannerDetail() {
       month: [4, 4],
       day: [1, 20],
     },
-    title: '당신의 손으로 바꿔나갈, 당신의 숭실',
+    title: [
+      '당신의 손으로 바꿔나갈, 당신의 숭실',
+      '당신의 손으로 바꿔나갈,\n 당신의 숭실',
+    ],
   };
   return { imgData, bannerDescription };
 }

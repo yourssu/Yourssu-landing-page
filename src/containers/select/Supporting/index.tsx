@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import DepartmentCard from './DepartmentCard';
 import DepartmentSearch from './DepartmentSearch';
@@ -5,6 +6,16 @@ import useSupportingDetail from './hook';
 
 function Supporting() {
   const { data, imgData } = useSupportingDetail();
+  const [searchText, setSearchText] = useState<string>('');
+
+  useEffect(() => {
+    setSearchText('');
+  }, []);
+
+  const filterData = data.filter((item) =>
+    item.description.searchKeyword.includes(searchText),
+  );
+
   return (
     <Container>
       <div className="flex flex-col items-center gap-[20px]">
@@ -18,15 +29,26 @@ function Supporting() {
       </div>
 
       <div className="flex flex-col items-center gap-[39px]">
-        <DepartmentSearch imgData={imgData.readingGlasses.nodes[0]} />
-        <div className=" grid grid-cols-5 gap-4">
-          {data.map((value) => {
+        <DepartmentSearch
+          setSearchText={setSearchText}
+          imgData={imgData.readingGlasses.nodes[0]}
+        />
+        <div
+          className={`gap-4 
+            ${filterData.length === 9 ? 'grid grid-cols-10' : 'flex'}
+            `}
+        >
+          {filterData.map((value, index) => {
             return (
               // eslint-disable-next-line react/jsx-key
-              <DepartmentCard
-                data={value}
-                buttonImgData={imgData.buttonImgData.nodes[0]}
-              />
+              <div
+                className={`col-span-2 ${index === 5 ? 'col-start-2' : null}`}
+              >
+                <DepartmentCard
+                  data={value}
+                  buttonImgData={imgData.buttonImgData.nodes[0]}
+                />
+              </div>
             );
           })}
         </div>

@@ -1,32 +1,30 @@
 import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
-import useTeamHeaderDetail from './hook';
+import { BasicInformation } from '@/types/recruiting.type';
+import extractImagUrl from '@/utils/extractImageUrl';
 
-const dummy = {
-  name: 'Legal Officer',
-  title: '권리와 의무 사이에서의 끊임없는 고민',
-  description:
-    '학생들을 위한 서비스를 만들며 발생할 수 있는 문제를 검토하고,\n유어슈와 숭실대 학생 모두의 권리 보장을 위해 힘씁니다.',
-  applyLink: 'https://www.naver.com',
-};
-
-function TeamHeader() {
-  const data = useTeamHeaderDetail();
-
+function TeamHeader({
+  basicInformation,
+}: {
+  basicInformation: BasicInformation;
+}) {
   return (
     <Container>
       <InnerContainer>
         <div>
           <TeamIntroContainer>
-            <Title>{dummy.title}</Title>
-            <TeamName>{dummy.name}</TeamName>
-            <Description>{dummy.description}</Description>
+            <Title>{basicInformation.short_introduction}</Title>
+            <TeamName>{basicInformation.name}</TeamName>
+            <Description>{basicInformation.long_introduction}</Description>
           </TeamIntroContainer>
-          <Link to={dummy.applyLink}>
+          <Link to={basicInformation.apply_link}>
             <ApplyButton>바로 지원하기</ApplyButton>
           </Link>
         </div>
-        <img src={data.legal.publicURL} alt="legal" />
+        <img
+          src={extractImagUrl(basicInformation._rawIcon.asset._ref)}
+          alt={basicInformation.name}
+        />
       </InnerContainer>
     </Container>
   );

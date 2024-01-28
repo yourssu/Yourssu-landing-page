@@ -1,3 +1,4 @@
+import { DATASET, PROJECT_ID } from '@/constants/sanity';
 import { GatsbyConfig } from 'gatsby';
 
 const path = require('path');
@@ -121,8 +122,10 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-sanity`,
       options: {
-        projectId: `xsbgojh6`,
-        dataset: `production`,
+        /* projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET, */
+        projectId: PROJECT_ID,
+        dataset: DATASET,
         // a token with read permissions is required
         // if you have a private dataset
         token: process.env.SANITY_TOKEN,

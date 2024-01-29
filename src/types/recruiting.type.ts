@@ -7,3 +7,8 @@ export interface BasicInformation {
     asset: { _ref: string };
   };
 }
+
+export interface DefaultContent {
+  title: string;
+  content: string[];
+}

@@ -9,7 +9,7 @@ import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
 import { OSType } from '@/types/landing.type';
-import { BasicInformation } from '@/types/recruiting.type';
+import { BasicInformation, DefaultContent } from '@/types/recruiting.type';
 
 interface DescriptionTemplateProps {
   data: {
@@ -17,6 +17,9 @@ interface DescriptionTemplateProps {
       edges: {
         node: {
           basicInformation: BasicInformation;
+          task: DefaultContent;
+          ideal: DefaultContent;
+          experience: DefaultContent;
         };
       }[];
     };
@@ -46,7 +49,11 @@ function DescriptionTemplate({
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <InnerContainer>
         <SectionContainer>
-          <Information />
+          <Information
+            task={edges[0].node.task}
+            ideal={edges[0].node.ideal}
+            experience={edges[0].node.experience}
+          />
           <ApplyProcedure />
           <RoadToPro />
           <InaWord />
@@ -70,6 +77,18 @@ export const querySanityDataByName = graphql`
             long_introduction
             apply_link
             _rawIcon
+          }
+          task {
+            title
+            content
+          }
+          ideal {
+            title
+            content
+          }
+          experience {
+            title
+            content
           }
         }
       }

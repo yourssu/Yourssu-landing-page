@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import tw from 'tailwind-styled-components';
 import Layout from '@/components/Layout';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
@@ -9,8 +9,25 @@ import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
 import { OSType } from '@/types/landing.type';
+import { BasicInformation } from '@/types/recruiting.type';
 
-function DescriptionTemplate() {
+interface DescriptionTemplateProps {
+  data: {
+    allSanityDepartment: {
+      edges: {
+        node: {
+          basicInformation: BasicInformation;
+        };
+      }[];
+    };
+  };
+}
+
+function DescriptionTemplate({
+  data: {
+    allSanityDepartment: { edges },
+  },
+}: DescriptionTemplateProps) {
   const [type, setType] = useState<OSType>();
 
   useEffect(() => {
@@ -26,7 +43,7 @@ function DescriptionTemplate() {
 
   return (
     <Layout type={type}>
-      <TeamHeader />
+      <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <InnerContainer>
         <SectionContainer>
           <Information />
@@ -42,23 +59,41 @@ function DescriptionTemplate() {
 
 export default DescriptionTemplate;
 
-/* export const queryMarkdownDataBySlug = graphql`
-  query queryMarkdownDataBySlug($slug: String) {
-    allMarkdownRemark(filter: { fields: { slug: { eq: $slug } } }) {
+export const querySanityDataByName = graphql`
+  query querySanityDataByName($name: String) {
+    allSanityDepartment(filter: { basicInformation: { name: { eq: $name } } }) {
       edges {
         node {
-          html
-          frontmatter {
-            title
-            summary
-            date(formatString: "YYYY.MM.DD.")
-            categories
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
+          basicInformation {
+            name
+            short_introduction
+            long_introduction
+            apply_link
+            _rawIcon
           }
+        }
+      }
+    }
+  }
+`;
+
+/* export const querySanityDataByName = graphql`
+  query querySanityDataByName($name: String) {
+    allSanityDepartment(filter: { basicInformation: { name: { eq: $name } } }) {
+      edges {
+        node {
+          basicInformation {
+            name
+            short_introduction
+            long_introduction
+            apply_link
+          }
+          task {}
+          ideal {}
+          experience {}
+          applyProcedure {}
+          roadToPro {}
+          inaWord {}
         }
       }
     }

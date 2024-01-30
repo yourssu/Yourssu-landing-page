@@ -1,10 +1,10 @@
 import tw from 'tailwind-styled-components';
-import { DefaultContent } from '@/types/recruiting.type';
+import { DefaultContentInformation } from '@/types/recruiting.type';
 
 interface InformationProps {
-  task: DefaultContent;
-  ideal: DefaultContent;
-  experience: DefaultContent;
+  task: DefaultContentInformation;
+  ideal: DefaultContentInformation;
+  experience: DefaultContentInformation;
 }
 
 function Information({ task, ideal, experience }: InformationProps) {

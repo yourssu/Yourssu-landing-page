@@ -8,7 +8,12 @@ export interface BasicInformation {
   };
 }
 
-export interface DefaultContent {
+export interface DefaultContentInformation {
   title: string;
   content: string[];
+}
+
+export interface ApplyProcedureInformation {
+  schedule: string;
+  step: string;
 }

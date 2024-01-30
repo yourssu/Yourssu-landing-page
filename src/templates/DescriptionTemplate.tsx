@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import tw from 'tailwind-styled-components';
-import Layout from '@/components/Layout';
+// import Layout from '@/components/Layout';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
-import { OSType } from '@/types/landing.type';
-import { BasicInformation, DefaultContent } from '@/types/recruiting.type';
+// import { OSType } from '@/types/landing.type';
+import {
+  ApplyProcedureInformation,
+  BasicInformation,
+  DefaultContentInformation,
+} from '@/types/recruiting.type';
 
 interface DescriptionTemplateProps {
   data: {
@@ -17,9 +21,10 @@ interface DescriptionTemplateProps {
       edges: {
         node: {
           basicInformation: BasicInformation;
-          task: DefaultContent;
-          ideal: DefaultContent;
-          experience: DefaultContent;
+          task: DefaultContentInformation;
+          ideal: DefaultContentInformation;
+          experience: DefaultContentInformation;
+          applyProcedure: ApplyProcedureInformation[];
         };
       }[];
     };
@@ -31,7 +36,7 @@ function DescriptionTemplate({
     allSanityDepartment: { edges },
   },
 }: DescriptionTemplateProps) {
-  const [type, setType] = useState<OSType>();
+  /* const [type, setType] = useState<OSType>();
 
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
@@ -42,10 +47,10 @@ function DescriptionTemplate({
     } else {
       setType('pc');
     }
-  }, []);
+  }, []); */
 
   return (
-    <Layout type={type}>
+    <>
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <InnerContainer>
         <SectionContainer>
@@ -54,13 +59,13 @@ function DescriptionTemplate({
             ideal={edges[0].node.ideal}
             experience={edges[0].node.experience}
           />
-          <ApplyProcedure />
+          <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
           <RoadToPro />
           <InaWord />
         </SectionContainer>
         <SideNavigation />
       </InnerContainer>
-    </Layout>
+    </>
   );
 }
 
@@ -90,34 +95,15 @@ export const querySanityDataByName = graphql`
             title
             content
           }
+          applyProcedure {
+            schedule
+            step
+          }
         }
       }
     }
   }
 `;
-
-/* export const querySanityDataByName = graphql`
-  query querySanityDataByName($name: String) {
-    allSanityDepartment(filter: { basicInformation: { name: { eq: $name } } }) {
-      edges {
-        node {
-          basicInformation {
-            name
-            short_introduction
-            long_introduction
-            apply_link
-          }
-          task {}
-          ideal {}
-          experience {}
-          applyProcedure {}
-          roadToPro {}
-          inaWord {}
-        }
-      }
-    }
-  }
-`; */
 
 const InnerContainer = tw.div`
   mx-auto

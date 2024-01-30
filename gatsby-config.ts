@@ -124,8 +124,8 @@ const config: GatsbyConfig = {
       options: {
         /* projectId: process.env.SANITY_PROJECT_ID,
         dataset: process.env.SANITY_DATASET, */
-        projectId: PROJECT_ID,
-        dataset: DATASET,
+        projectId: 'xsbgojh6',
+        dataset: 'production',
         // a token with read permissions is required
         // if you have a private dataset
         token: process.env.SANITY_TOKEN,

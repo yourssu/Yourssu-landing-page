@@ -5,7 +5,6 @@ import tw from 'tailwind-styled-components';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
-import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
 // import { OSType } from '@/types/landing.type';
@@ -13,6 +12,7 @@ import {
   ApplyProcedureInformation,
   BasicInformation,
   DefaultContentInformation,
+  InaWordInformation,
 } from '@/types/recruiting.type';
 
 interface DescriptionTemplateProps {
@@ -25,6 +25,7 @@ interface DescriptionTemplateProps {
           ideal: DefaultContentInformation;
           experience: DefaultContentInformation;
           applyProcedure: ApplyProcedureInformation[];
+          inaWord: InaWordInformation;
         };
       }[];
     };
@@ -60,8 +61,10 @@ function DescriptionTemplate({
             experience={edges[0].node.experience}
           />
           <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
-          <RoadToPro />
-          <InaWord />
+          <InaWord
+            departmentImage={edges[0].node.basicInformation._rawIcon.asset._ref}
+            inaWord={edges[0].node.inaWord}
+          />
         </SectionContainer>
         <SideNavigation />
       </InnerContainer>
@@ -98,6 +101,14 @@ export const querySanityDataByName = graphql`
           applyProcedure {
             schedule
             step
+          }
+          roadToPro {
+            presenter
+            _rawVideo
+          }
+          inaWord {
+            title
+            content
           }
         }
       }

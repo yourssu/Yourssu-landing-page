@@ -1,5 +1,6 @@
 import tw from 'tailwind-styled-components';
-import useInaWordDetail from './hook';
+import { InaWordInformation } from '@/types/recruiting.type';
+import extractImagUrl from '@/utils/extractImageUrl';
 
 const dummy = {
   name: '리걸팀',
@@ -9,18 +10,25 @@ const dummy = {
     '유어슈의 리걸팀은 서비스 기획부터 출시, 나아가 홍보까지\n모든 과정에서 발생할 수 있는 법적 이슈를 검토할 뿐만 아니라,\n서비스 내외로 유어슈와 이용자인 학생 모두가 만족할 수 있는 각종 정책을 수립하는 역할을 하고 있어요.\n서비스를 만들며 제작자와 이용자의 권리와 의무를 고민하는 과정을 통해 시야를 넓히고,\n여러 분야의 전공자와 협업하는 경험을 쌓고 싶다면 리걸팀과 함께해요!',
 };
 
-function InaWord() {
-  const data = useInaWordDetail();
+interface InaWordProps {
+  departmentImage: string;
+  inaWord: InaWordInformation;
+}
 
+function InaWord({ departmentImage, inaWord }: InaWordProps) {
   return (
     <section>
       <div className="body1 pb-6 text-black-0">{dummy.name}의 한마디</div>
       <InaWordContainer>
         <TitleContainer>
-          <img src={data.legal.publicURL} alt={dummy.name} className="h-14" />
-          <Title>{dummy.title}</Title>
+          <img
+            src={extractImagUrl(departmentImage)}
+            alt={inaWord.title}
+            className="h-14"
+          />
+          <Title>{inaWord.title}</Title>
         </TitleContainer>
-        <DescriptionContainer>{dummy.description}</DescriptionContainer>
+        <DescriptionContainer>{inaWord.content}</DescriptionContainer>
       </InaWordContainer>
     </section>
   );

@@ -17,3 +17,8 @@ export interface ApplyProcedureInformation {
   schedule: string;
   step: string;
 }
+
+export interface InaWordInformation {
+  title: string;
+  content: string;
+}

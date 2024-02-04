@@ -19,6 +19,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "dotenv": "^16.4.1",
     "gatsby": "^5.13.1",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-image": "^3.13.0",

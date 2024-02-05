@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 import { InaWordInformation } from '@/types/recruiting.type';
-import extractImagUrl from '@/utils/extractImageUrl';
+import extractImageUrl from '@/utils/extractImageUrl';
 
 const dummy = {
   name: '리걸팀',
@@ -22,7 +22,7 @@ function InaWord({ departmentImage, inaWord }: InaWordProps) {
       <InaWordContainer>
         <TitleContainer>
           <img
-            src={extractImagUrl(departmentImage)}
+            src={extractImageUrl(departmentImage)}
             alt={inaWord.title}
             className="h-14"
           />

@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
 import { BasicInformation } from '@/types/recruiting.type';
-import extractImagUrl from '@/utils/extractImageUrl';
+import extractImageUrl from '@/utils/extractImageUrl';
 
 function TeamHeader({
   basicInformation,
@@ -22,7 +22,7 @@ function TeamHeader({
           </Link>
         </div>
         <img
-          src={extractImagUrl(basicInformation._rawIcon.asset._ref)}
+          src={extractImageUrl(basicInformation._rawIcon.asset._ref)}
           alt={basicInformation.name}
         />
       </InnerContainer>

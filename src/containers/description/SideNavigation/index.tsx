@@ -2,21 +2,17 @@ import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
 import useSideNavigationDetail from './hook';
 
-const dummyLink = 'https://www.naver.com';
+const KAKAO_LINK = 'http://pf.kakao.com/_AxfrxeT';
 
-const dummyTeamList = [
-  { name: 'HR Manager', link: 'hr', active: true },
-  { name: 'iOS Developer', link: 'ios', active: false },
-  { name: 'Android Developer', link: 'android', active: false },
-  { name: 'Frontend Developer', link: 'frontend', active: false },
-  { name: 'Backend Developer', link: 'backend', active: false },
-  { name: 'Product Manager', link: 'pm', active: false },
-  { name: 'Product Designer', link: 'designer', active: false },
-  { name: 'Contents Marketer', link: 'marketer', active: false },
-  { name: 'Legal Officer', link: 'legal', active: false },
-];
+interface SideNavigationProps {
+  currentTeam: {
+    name: string;
+    applyLink: string;
+  };
+  teamList: string[];
+}
 
-function SideNavigation() {
+function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
   const data = useSideNavigationDetail();
 
   return (
@@ -24,26 +20,23 @@ function SideNavigation() {
       <NavigationContainer>
         <div className="h4">TEAM</div>
         <NavigationList>
-          {dummyTeamList.map((team) => (
-            <Link to={team.link} key={team.name}>
-              <NavigationItem type="button" $active={team.active}>
-                <img src={data.smallArrow.publicURL} alt="small-arrow" />
-                <div className="body5 text-gray1-0">{team.name}</div>
-              </NavigationItem>
-            </Link>
+          {teamList.map((team) => (
+            <NavigationItem
+              to={team.toLowerCase().replaceAll(' ', '_')}
+              key={team}
+              $active={currentTeam.name === team}
+            >
+              <img src={data.smallArrow.publicURL} alt="small-arrow" />
+              <div className="body5 text-gray1-0">{team}</div>
+            </NavigationItem>
           ))}
         </NavigationList>
       </NavigationContainer>
-      <Link to={dummyLink}>
-        <Button type="button">지원하기</Button>
-      </Link>
-      <button type="button" className="ml-auto w-fit">
-        <InquiryButtonText>
-          <span>채용관련</span>
-          <span>문의하기</span>
-        </InquiryButtonText>
+      <ApplyButton to={currentTeam.applyLink}>지원하기</ApplyButton>
+      <Link to={KAKAO_LINK} className="ml-auto w-fit">
+        <InquiryButtonText>문의하기</InquiryButtonText>
         <img src={data.inquiryButton.publicURL} alt="문의하기" />
-      </button>
+      </Link>
     </Container>
   );
 }
@@ -78,7 +71,7 @@ const NavigationList = tw.div`
   gap-[10px]
 `;
 
-const NavigationItem = tw.button<{ $active: boolean }>`
+const NavigationItem = tw(Link)<{ $active: boolean }>`
   flex
   justify-between
   items-center
@@ -89,15 +82,16 @@ const NavigationItem = tw.button<{ $active: boolean }>`
   ${(props) => (props.$active ? 'bg-bluegray4-0' : 'bg-white-0')}
 `;
 
-const Button = tw.button`
+const ApplyButton = tw(Link)`
+  h4
+  w-full
+  rounded-[12px]
   bg-gradient-to-r
   from-mainGra1-0
   to-mainGra2-0
-  text-white-0
-  w-full
   py-5
-  rounded-[12px]
-  h4
+  text-center
+  text-white-0
 `;
 
 const InquiryButtonText = tw.div`

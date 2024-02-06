@@ -30,12 +30,17 @@ interface DescriptionTemplateProps {
       }[];
     };
   };
+  pageContext: {
+    name: string;
+    nameList: string[];
+  };
 }
 
 function DescriptionTemplate({
   data: {
     allSanityDepartment: { edges },
   },
+  pageContext: { name, nameList },
 }: DescriptionTemplateProps) {
   /* const [type, setType] = useState<OSType>();
 
@@ -66,7 +71,13 @@ function DescriptionTemplate({
             inaWord={edges[0].node.inaWord}
           />
         </SectionContainer>
-        <SideNavigation />
+        <SideNavigation
+          currentTeam={{
+            name,
+            applyLink: edges[0].node.basicInformation.apply_link,
+          }}
+          teamList={nameList}
+        />
       </InnerContainer>
     </>
   );

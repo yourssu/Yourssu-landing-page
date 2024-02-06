@@ -55,6 +55,10 @@ export const createPages: GatsbyNode['createPages'] = async ({
     'src/templates/DescriptionTemplate.tsx',
   );
 
+  const nameList = queryAllSanityData.data?.allSanityDepartment.edges.map(
+    (edge) => edge.node.basicInformation.name,
+  );
+
   const generateDescriptionPage = ({
     node: {
       basicInformation: { name },
@@ -69,7 +73,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     const pageOptions = {
       path: `recruiting/${name.toLowerCase().replaceAll(' ', '_')}`,
       component: DescriptionTemplateComponent,
-      context: { name },
+      context: { name, nameList },
     };
 
     createPage(pageOptions);

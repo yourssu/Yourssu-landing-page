@@ -41,7 +41,7 @@ const InnerContainer = tw.div`
   mx-auto
   my-0
   flex
-  max-w-[1280px]
+  max-w-[1364px]
   items-center
   justify-between
 `;
@@ -78,5 +78,4 @@ const ApplyButton = tw.button`
   px-7
   py-[14px]
   text-white-0
-
 `;

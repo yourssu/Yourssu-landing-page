@@ -1,6 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import { ApplyProcedureInformation } from '@/types/recruiting.type';
 import ProcedureSVG from './ProcedureSVG';
+import WarningDescription from './WarningDescription';
 import useApplyProcedureDetail from './hook';
 
 interface ApplyProcedureProps {
@@ -9,17 +11,43 @@ interface ApplyProcedureProps {
 
 function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   const data = useApplyProcedureDetail();
+  const [isWarningOpen, setIsWarningOpen] = useState(false);
+  const warningRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClose = (e: MouseEvent) => {
+      if (
+        isWarningOpen &&
+        !warningRef.current?.contains(e.target as HTMLDivElement)
+      )
+        setIsWarningOpen(false);
+    };
+    document.addEventListener('mousedown', handleClose);
+
+    return () => document.removeEventListener('mousedown', handleClose);
+  }, [isWarningOpen]);
 
   return (
     <section>
       <TitleContainer>
         <div className="body1 text-black-0">지원절차</div>
-        <NoticeButton type="button">
-          <img src={data.noticeIcon.publicURL} alt="정보 더보기" />
+        <NoticeButton
+          type="button"
+          onClick={() => {
+            setIsWarningOpen((prev) => !prev);
+          }}
+        >
+          <img src={data.warningLightIcon.publicURL} alt="정보 더보기" />
           <span className="body4 text-gray2-0">
             주의사항을 반드시 읽어주세요
           </span>
         </NoticeButton>
+        {isWarningOpen && (
+          <WarningDescription
+            iconURL={data.warningDarkIcon.publicURL}
+            warningRef={warningRef}
+          />
+        )}
       </TitleContainer>
       <ProcedureContainer>
         <ProcedureDate>
@@ -41,6 +69,8 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
 export default ApplyProcedure;
 
 const TitleContainer = tw.div`
+  relative
+
   flex
   items-center
   gap-3

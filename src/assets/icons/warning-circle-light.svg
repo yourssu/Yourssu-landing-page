@@ -1,0 +1,12 @@
+<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame" clip-path="url(#clip0_2678_39)">
+<path id="Vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.30558 2 1.5 5.80558 1.5 10.5C1.5 15.1944 5.30558 19 10 19C14.6944 19 18.5 15.1944 18.5 10.5C18.5 5.80558 14.6944 2 10 2ZM0 10.5C0 4.97715 4.47715 0.5 10 0.5C15.5228 0.5 20 4.97715 20 10.5C20 16.0228 15.5228 20.5 10 20.5C4.47715 20.5 0 16.0228 0 10.5Z" fill="#D4D7DB"/>
+<path id="Vector (Stroke)_2" fill-rule="evenodd" clip-rule="evenodd" d="M10 3.75C10.4142 3.75 10.75 4.08579 10.75 4.5V12.5C10.75 12.9142 10.4142 13.25 10 13.25C9.58579 13.25 9.25 12.9142 9.25 12.5V4.5C9.25 4.08579 9.58579 3.75 10 3.75Z" fill="#D4D7DB"/>
+<path id="Vector" d="M10 16.25C10.4142 16.25 10.75 15.9142 10.75 15.5C10.75 15.0858 10.4142 14.75 10 14.75C9.58579 14.75 9.25 15.0858 9.25 15.5C9.25 15.9142 9.58579 16.25 10 16.25Z" fill="#D4D7DB"/>
+</g>
+<defs>
+<clipPath id="clip0_2678_39">
+<rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
+</clipPath>
+</defs>
+</svg>

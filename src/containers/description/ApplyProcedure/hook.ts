@@ -3,7 +3,10 @@ import { graphql, useStaticQuery } from 'gatsby';
 export default function useApplyProcedureDetail() {
   const data = useStaticQuery(graphql`
     query {
-      noticeIcon: file(name: { eq: "notice" }) {
+      warningLightIcon: file(name: { eq: "warning-circle-light" }) {
+        publicURL
+      }
+      warningDarkIcon: file(name: { eq: "warning-circle-dark" }) {
         publicURL
       }
     }

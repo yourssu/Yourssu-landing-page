@@ -2,14 +2,6 @@ import tw from 'tailwind-styled-components';
 import { InaWordInformation } from '@/types/recruiting.type';
 import extractImageUrl from '@/utils/extractImageUrl';
 
-const dummy = {
-  name: '리걸팀',
-  title:
-    '“법조문만 해석하고 있는 당신!\n학생들을 위한 서비스를 만들며 자신의 법 지식을 활용해 보고 싶지 않나요?”',
-  description:
-    '유어슈의 리걸팀은 서비스 기획부터 출시, 나아가 홍보까지\n모든 과정에서 발생할 수 있는 법적 이슈를 검토할 뿐만 아니라,\n서비스 내외로 유어슈와 이용자인 학생 모두가 만족할 수 있는 각종 정책을 수립하는 역할을 하고 있어요.\n서비스를 만들며 제작자와 이용자의 권리와 의무를 고민하는 과정을 통해 시야를 넓히고,\n여러 분야의 전공자와 협업하는 경험을 쌓고 싶다면 리걸팀과 함께해요!',
-};
-
 interface InaWordProps {
   departmentImage: string;
   inaWord: InaWordInformation;
@@ -18,16 +10,16 @@ interface InaWordProps {
 function InaWord({ departmentImage, inaWord }: InaWordProps) {
   return (
     <section>
-      <div className="body1 pb-6 text-black-0">{dummy.name}의 한마디</div>
+      <Title>{inaWord.title}</Title>
       <InaWordContainer>
-        <TitleContainer>
+        <WordContainer>
           <img
             src={extractImageUrl(departmentImage)}
             alt={inaWord.title}
             className="h-14"
           />
-          <Title>{inaWord.title}</Title>
-        </TitleContainer>
+          <Word>“{inaWord.word}”</Word>
+        </WordContainer>
         <DescriptionContainer>{inaWord.content}</DescriptionContainer>
       </InaWordContainer>
     </section>
@@ -42,17 +34,26 @@ const InaWordContainer = tw.div`
   pl-5
 `;
 
-const TitleContainer = tw.div`
-  mb-5
+const Title = tw.div`
+  body1
+  pb-6
+  text-black-0
+`;
+
+const WordContainer = tw.div`
   flex
   gap-5
+  items-center
+  
   rounded-[12px]
   bg-bluegray4-0
+  
+  mb-5
   px-6
   py-5
 `;
 
-const Title = tw.div`
+const Word = tw.div`
   h4
   whitespace-pre-wrap
   text-blue-0

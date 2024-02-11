@@ -34,6 +34,7 @@ const Container = tw.div`
   absolute
   left-[345px]
   top-[-22px]
+  z-10
 
   rounded-[12px]
   bg-gray4-0
@@ -48,7 +49,7 @@ const TitleContainer = tw.div`
   gap-2
 `;
 
-const Line = tw.div`
+const Line = tw.hr`
   my-4
   h-[2px]
   border-none

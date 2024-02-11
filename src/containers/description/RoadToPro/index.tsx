@@ -1,15 +1,25 @@
 import tw from 'tailwind-styled-components';
+import { RoadToProInformation } from '@/types/recruiting.type';
+import extractImageUrl from '@/utils/extractImageUrl';
 
-const dummy = '유어슈와 리걸팀의 이야기';
+interface RoadToProProps {
+  roadToPro: RoadToProInformation;
+}
 
-function RoadToPro() {
+function RoadToPro({ roadToPro }: RoadToProProps) {
   return (
     <section>
       <TitleContainer>
         <Title>Road to Pro</Title>
-        <SubTitle>{dummy}</SubTitle>
+        <SubTitle>{roadToPro.title}</SubTitle>
       </TitleContainer>
-      {/* TODO: 영상 넣기 */}
+      {roadToPro.roadToPro_list.map((video) => (
+        <img
+          key={video.video_link}
+          src={extractImageUrl(video.video_thumbnail._rawAsset._ref)}
+          alt={video.video_link}
+        />
+      ))}
     </section>
   );
 }

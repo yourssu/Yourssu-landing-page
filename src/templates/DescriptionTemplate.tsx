@@ -5,6 +5,7 @@ import tw from 'tailwind-styled-components';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
+import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
 // import { OSType } from '@/types/landing.type';
@@ -13,6 +14,7 @@ import {
   BasicInformation,
   DefaultContentInformation,
   InaWordInformation,
+  RoadToProInformation,
 } from '@/types/recruiting.type';
 
 interface DescriptionTemplateProps {
@@ -25,6 +27,7 @@ interface DescriptionTemplateProps {
           ideal: DefaultContentInformation;
           experience: DefaultContentInformation;
           applyProcedure: ApplyProcedureInformation[];
+          roadToProVideo: RoadToProInformation;
           inaWord: InaWordInformation;
         };
       }[];
@@ -60,12 +63,16 @@ function DescriptionTemplate({
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <InnerContainer>
         <SectionContainer>
-          <Information
-            task={edges[0].node.task}
-            ideal={edges[0].node.ideal}
-            experience={edges[0].node.experience}
-          />
-          <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
+          <DefaultInformationContainer>
+            <Information
+              task={edges[0].node.task}
+              ideal={edges[0].node.ideal}
+              experience={edges[0].node.experience}
+            />
+            <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
+          </DefaultInformationContainer>
+          <Line />
+          <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
           <InaWord
             departmentImage={edges[0].node.basicInformation._rawIcon.asset._ref}
             inaWord={edges[0].node.inaWord}
@@ -109,16 +116,29 @@ export const querySanityDataByName = graphql`
             title
             content
           }
+          skill {
+            title
+            content
+            notice
+          }
           applyProcedure {
             schedule
             step
           }
-          roadToPro {
-            presenter
-            _rawVideo
+          roadToProVideo {
+            title
+            roadToPro_list {
+              video_thumbnail {
+                _rawAsset
+              }
+              presenter_nickname
+              presenter_name
+              video_link
+            }
           }
           inaWord {
             title
+            word
             content
           }
         }
@@ -128,17 +148,31 @@ export const querySanityDataByName = graphql`
 `;
 
 const InnerContainer = tw.div`
-  mx-auto
-  my-0
   flex
-  max-w-[1280px]
   gap-[100px]
+
+  max-w-[1364px]
   h-fit
+  mx-auto
+  my-20
 `;
 
 const SectionContainer = tw.div`
-  mb-[180px]
-  mt-[88px]
-  flex w-[902px]
-  flex-col gap-[60px]
+  flex
+  flex-1
+  flex-col
+  gap-[70px]
+`;
+
+const DefaultInformationContainer = tw.div`
+  flex
+  flex-col
+  gap-[60px]
+`;
+
+const Line = tw.hr`
+  my-4
+  h-[2px]
+  border-none
+  bg-gray3-0
 `;

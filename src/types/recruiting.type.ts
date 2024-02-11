@@ -1,3 +1,10 @@
+interface VideoInformation {
+  video_thumbnail: { _rawAsset: { _ref: string } };
+  presenter_nickname: string;
+  presenter_name: string;
+  video_link: string;
+}
+
 export interface BasicInformation {
   name: string;
   short_introduction: string;
@@ -17,8 +24,13 @@ export interface ApplyProcedureInformation {
   schedule: string;
   step: string;
 }
+export interface RoadToProInformation {
+  title: string;
+  roadToPro_list: VideoInformation[];
+}
 
 export interface InaWordInformation {
   title: string;
   content: string;
+  word: string;
 }

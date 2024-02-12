@@ -33,7 +33,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   const queryAllSanityData = await graphql<QueryResult>(`
     {
-      allSanityDepartment {
+      allSanityDepartment(sort: { num: ASC }) {
         edges {
           node {
             basicInformation {

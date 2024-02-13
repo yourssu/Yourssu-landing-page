@@ -15,6 +15,7 @@ import {
   DefaultContentInformation,
   InaWordInformation,
   RoadToProInformation,
+  SkillContentInformation,
 } from '@/types/recruiting.type';
 
 interface DescriptionTemplateProps {
@@ -26,6 +27,7 @@ interface DescriptionTemplateProps {
           task: DefaultContentInformation;
           ideal: DefaultContentInformation;
           experience: DefaultContentInformation;
+          skill: SkillContentInformation | null;
           applyProcedure: ApplyProcedureInformation[];
           roadToProVideo: RoadToProInformation;
           inaWord: InaWordInformation;
@@ -68,6 +70,7 @@ function DescriptionTemplate({
               task={edges[0].node.task}
               ideal={edges[0].node.ideal}
               experience={edges[0].node.experience}
+              skill={edges[0].node.skill}
             />
             <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
           </DefaultInformationContainer>
@@ -131,8 +134,10 @@ export const querySanityDataByName = graphql`
               video_thumbnail {
                 _rawAsset
               }
-              presenter_nickname
-              presenter_name
+              presenter {
+                presenter_nickname
+                presenter_name
+              }
               video_link
             }
           }

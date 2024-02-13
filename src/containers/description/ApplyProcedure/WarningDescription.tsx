@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components';
+import InformationTooltip from '@/components/Tooltip/InformationTooltip';
 
 const WARNING_DESCRIPTIONS = [
   '기재된 내용이 사실과 다를 경우 합격이 취소될 수 있음을 유의하여 주시길 바랍니다.',
@@ -13,59 +13,14 @@ interface WarningDescriptionProps {
 
 function WarningDescription({ iconURL, warningRef }: WarningDescriptionProps) {
   return (
-    <Container ref={warningRef}>
-      <TitleContainer>
-        <img src={iconURL} alt="정보 더보기" />
-        <span className="body4 text-gray1-0">지원 시 유의사항</span>
-      </TitleContainer>
-      <Line />
-      <DescriptionContainer>
-        {WARNING_DESCRIPTIONS.map((description) => (
-          <li key={description}>{description}</li>
-        ))}
-      </DescriptionContainer>
-    </Container>
+    <InformationTooltip
+      iconURL={iconURL}
+      activeRef={warningRef}
+      title="지원 시 유의사항"
+      descriptions={WARNING_DESCRIPTIONS}
+      absolutePosition="left-[345px] top-[-22px]"
+    />
   );
 }
 
 export default WarningDescription;
-
-const Container = tw.div`
-  absolute
-  left-[345px]
-  top-[-22px]
-  z-10
-
-  rounded-[12px]
-  bg-gray4-0
-
-  px-6
-  pb-[26px]
-  pt-[22px]
-`;
-
-const TitleContainer = tw.div`
-  flex
-  gap-2
-`;
-
-const Line = tw.hr`
-  my-4
-  h-[2px]
-  border-none
-  bg-gray3-0
-`;
-
-const DescriptionContainer = tw.div`
-  flex
-  flex-col
-  gap-4
-
-  pl-7
-  
-  list-outside
-  list-disc
-  body5
-  whitespace-nowrap
-  text-gray1-0
-`;

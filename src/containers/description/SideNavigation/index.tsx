@@ -22,7 +22,7 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         <NavigationList>
           {teamList.map((team) => (
             <NavigationItem
-              to={team.toLowerCase().replaceAll(' ', '_')}
+              to={`/recruiting/${team.toLowerCase().replaceAll(' ', '_')}`}
               key={team}
               $active={currentTeam.name === team}
             >

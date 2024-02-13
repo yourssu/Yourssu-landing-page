@@ -28,7 +28,14 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
               <Gradient src={data.gradientImg.publicURL} alt="gradient" />
               <PlayButton src={data.playIcon.publicURL} alt="play-icon" />
             </VideoContainer>
-            <Presenter>{`${video.presenter_name} (${video.presenter_nickname})`}</Presenter>
+            <Presenter>
+              {video.presenter
+                .map(
+                  ({ presenter_name, presenter_nickname }) =>
+                    `${presenter_name} (${presenter_nickname})`,
+                )
+                .join(', ')}
+            </Presenter>
           </div>
         ))}
       </VideoInfoContainer>

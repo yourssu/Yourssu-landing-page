@@ -35,13 +35,17 @@ export default TeamHeader;
 const Container = tw.section`
   w-full
   bg-bluegray4-0
+  h-[460px]
+
+  flex
+  items-center
 `;
 
 const InnerContainer = tw.div`
   mx-auto
   my-0
   flex
-  max-w-[1364px]
+  w-[1364px]
   items-center
   justify-between
 `;

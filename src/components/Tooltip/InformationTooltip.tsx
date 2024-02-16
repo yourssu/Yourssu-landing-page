@@ -19,7 +19,7 @@ function InformationTooltip({
     <Container ref={activeRef} className={`${absolutePosition}`}>
       <TitleContainer>
         <img src={iconURL} alt="icon" />
-        <span className="body4 text-gray1-0">{title}</span>
+        <Title>{title}</Title>
       </TitleContainer>
       <Line />
       <DescriptionContainer>
@@ -41,14 +41,34 @@ const Container = tw.div`
   bg-gray4-0
 
   min-w-[720px]
+  lg:min-w-[598px]
+  md:min-w-[322px]
+  sm:min-w-[258px]
+
   px-6
+  md:px-4
+  sm:px-4
+
   pb-[26px]
+  md:pb-5
+  sm:pb-5
+
   pt-[22px]
+  md:pt-4
+  sm:pt-4
 `;
 
 const TitleContainer = tw.div`
   flex
   gap-2
+  items-center
+`;
+
+const Title = tw.span`
+  body4
+  md:body6
+  sm:body8-1
+  text-gray1-0
 `;
 
 const Line = tw.hr`
@@ -58,16 +78,17 @@ const Line = tw.hr`
   bg-gray3-0
 `;
 
-const DescriptionContainer = tw.div`
+const DescriptionContainer = tw.ul`
   flex
   flex-col
   gap-4
 
-  pl-3
+  pl-5
   
   list-outside
   list-disc
   body5
-  whitespace-nowrap
+  md:body8
+  sm:body8
   text-gray1-0
 `;

@@ -59,19 +59,33 @@ const TitleContainer = tw.div`
 
 const Title = tw.div`
   h3
+  md:body4
+  sm:body4
+  xs:body4
   text-black-0
 `;
 
 const SubTitle = tw.div`
   body3
+  md:body7
+  sm:body7
+  xs:body7
   text-gray1-0
 `;
 
 const VideoInfoContainer = tw.div`
   flex
   flex-wrap
+
   gap-x-5
+  md:gap-x-2
+  sm:gap-x-2
+  xs:gap-x-2
+
   gap-y-10
+  md:gap-y-5
+  sm:gap-y-5
+  xs:gap-y-5
 `;
 
 const VideoContainer = tw(Link)`
@@ -82,11 +96,28 @@ const VideoContainer = tw(Link)`
 
 const Thumbnail = tw.img`
   h-[224px]
+  md:h-[188px]
+  sm:h-[188px]
+  xs:h-[188px]
+
   w-[400px]
+  md:w-[336px]
+  sm:w-[336px]
+  xs:w-[336px]
+
   rounded-[16px]
 `;
 
 const Gradient = tw.img`
+  h-[224px]
+  md:h-[188px]
+  sm:h-[188px]
+  xs:h-[188px]
+
+  w-[400px]
+  md:w-[336px]
+  sm:w-[336px]
+  xs:w-[336px]
   absolute
   top-0
   rounded-[16px]
@@ -97,10 +128,18 @@ const PlayButton = tw.img`
   absolute
   left-[148px]
   top-[54px]
+
+  w-[108px]
+  xs:w-[91px]
+  sm:w-[91px]
+  md:w-[91px]
 `;
 
 const Presenter = tw.div`
   body3
+  md:body8
+  sm:body8
+  xs:body8
   mt-4
   text-black-0
 `;

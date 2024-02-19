@@ -52,7 +52,7 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
       {skill && (
         <div className="relative">
           <SkillTitleContainer>
-            <div className="body1 text-black-0">{skill.title}</div>
+            <InformationTitle>{skill.title}</InformationTitle>
             {skill.notice.length > 0 && (
               <NoticeButton
                 type="button"
@@ -93,21 +93,42 @@ const Container = tw.section`
   flex
   flex-col
   gap-[60px]
+  lg:gap-[50px]
+  md:gap-[50px]
+  sm:gap-[50px]
+  xs:gap-[50px]
 `;
 
 const InformationTitle = tw.div`
   body1
+  md:body4
+  sm:body4
+  xs:body4
+
   mb-5
+
+  lg:mb-4
+  md:mb-4
+  sm:mb-4
+  
   text-black-0
 `;
 
 const InformationContainer = tw.ul`
   body2
+  md:body7
+  sm:body7
+  xs:body7
+
   list-outside
   list-disc
   text-gray1-0
   text-justify
-  pl-9
+
+  pl-7
+  md:pl-5
+  sm:pl-5
+  xs:pl-6
   whitespace-pre-wrap
 `;
 

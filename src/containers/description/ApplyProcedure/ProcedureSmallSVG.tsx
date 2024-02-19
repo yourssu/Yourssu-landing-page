@@ -1,11 +1,11 @@
-const LINE_HEIGHT = 36;
+const LINE_HEIGHT = 24;
 const GAP_HEIGHT = 22;
 const WIDTH = 20;
 
 const MAIN_GRA_1 = '#f953ff';
 const MAIN_GRA_2 = '#5a89ff';
 
-function ProcedureSVG({ count }: { count: number }) {
+function ProcedureSmallSVG({ count }: { count: number }) {
   const totalHeight = count * LINE_HEIGHT + GAP_HEIGHT * (count - 1);
   const totalArray = Array.from({ length: count }, (_, index) => index + 1);
 
@@ -43,7 +43,7 @@ function ProcedureSVG({ count }: { count: number }) {
           x1={WIDTH / 2}
           y1={LINE_HEIGHT / 2}
           x2={WIDTH / 2}
-          y2={totalHeight - 26}
+          y2={totalHeight - 22}
           stroke="black"
         />
         {totalArray.map((num) =>
@@ -74,4 +74,4 @@ function ProcedureSVG({ count }: { count: number }) {
   );
 }
 
-export default ProcedureSVG;
+export default ProcedureSmallSVG;

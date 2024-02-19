@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import tw from 'tailwind-styled-components';
 import { ApplyProcedureInformation } from '@/types/recruiting.type';
-import ProcedureSVG from './ProcedureSVG';
+import ProcedureLargeSVG from './ProcedureLargeSVG';
+import ProcedureSmallSVG from './ProcedureSmallSVG';
 import WarningDescription from './WarningDescription';
 import useApplyProcedureDetail from './hook';
 
@@ -13,6 +15,10 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   const data = useApplyProcedureDetail();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const warningRef = useRef<HTMLDivElement>(null);
+
+  const windowSize = useMediaQuery({
+    query: '(min-width: 1081px)',
+  });
 
   useEffect(() => {
     const handleClose = (e: MouseEvent) => {
@@ -30,7 +36,7 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   return (
     <section>
       <TitleContainer>
-        <div className="body1 text-black-0">지원절차</div>
+        <Title>지원절차</Title>
         <NoticeButton
           type="button"
           onClick={() => {
@@ -38,9 +44,7 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
           }}
         >
           <img src={data.warningLightIcon.publicURL} alt="정보 더보기" />
-          <span className="body4 text-gray2-0">
-            주의사항을 반드시 읽어주세요
-          </span>
+          <NoticeText>주의사항을 반드시 읽어주세요</NoticeText>
         </NoticeButton>
         {isWarningOpen && (
           <WarningDescription
@@ -55,7 +59,11 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
             <div key={item.schedule}>{item.schedule}</div>
           ))}
         </ProcedureDate>
-        <ProcedureSVG count={applyProcedure.length} />
+        {windowSize ? (
+          <ProcedureLargeSVG count={applyProcedure.length} />
+        ) : (
+          <ProcedureSmallSVG count={applyProcedure.length} />
+        )}
         <ProcedureStep>
           {applyProcedure.map((item) => (
             <div key={item.schedule}>{item.step}</div>
@@ -77,6 +85,24 @@ const TitleContainer = tw.div`
   pb-6
 `;
 
+const Title = tw.div`
+  body1
+  md:body4
+  sm:body4
+  xs:body4
+
+  text-black-0
+`;
+
+const NoticeText = tw.span`
+  body4
+  md:body6
+  sm:body6
+  xs:body6
+  
+  text-gray2-0
+`;
+
 const NoticeButton = tw.button`
   flex
   items-center
@@ -87,11 +113,14 @@ const ProcedureContainer = tw.div`
   relative
   flex
   gap-[27px]
+  md:gap-3
+  sm:gap-3
+  xs:gap-3
 `;
 
 const ProcedureDate = tw.div`
   flex
-  min-w-28
+  min-w-fit
   flex-col
   gap-[22px]
   bg-gradient-to-b
@@ -100,7 +129,12 @@ const ProcedureDate = tw.div`
   bg-clip-text
   text-end
   font-PretendardSB
+  
   text-xl
+  md:text-base
+  sm:text-base
+  xs:text-base
+
   leading-9
   text-transparent
 `;
@@ -114,4 +148,8 @@ const ProcedureStep = tw.div`
   text-xl
   leading-9
   text-gray1-0
+
+  md:body7
+  sm:body7
+  xs:body7
 `;

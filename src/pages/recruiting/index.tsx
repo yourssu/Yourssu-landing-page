@@ -9,7 +9,7 @@ import Supporting from '@/containers/select/Supporting';
 
 function Recruiting() {
   return (
-    <Container className="flex flex-col items-center gap-[150px]">
+    <Container className="flex w-full flex-col items-center justify-center gap-[180px]">
       <Banner />
       <Ideal />
       <About />
@@ -21,8 +21,8 @@ function Recruiting() {
 }
 
 const Container = tw.div`
-  w-full
   bg-bluegray4-0
+  overflow-auto
 `;
 
 export default Recruiting;

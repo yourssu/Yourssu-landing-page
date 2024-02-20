@@ -14,7 +14,7 @@ function Ideal() {
             className="relative flex h-[982px] w-full items-center  justify-center xs:h-[542px] sm:h-[542px] md:h-[666px]"
           >
             <div className="overflow-y-auto">
-              <span className=" font-Pretendard h-full w-full text-[50px] font-[700] leading-[59.67px] tracking-[-1%] xs:text-[15px] xs:font-[600] xs:leading-[20.19px] sm:text-[15px] sm:font-[600] sm:leading-[20.19px] md:text-[40px] md:leading-[47.74px]">
+              <span className=" font-Pretendard h-full w-full text-[50px] font-[700] leading-[59.67px] tracking-[-1%] xs:text-[32px] xs:font-[600] xs:leading-[38.19px] sm:text-[32px] sm:font-[600] sm:leading-[38.19px] md:text-[40px] md:leading-[47.74px]">
                 {value}
               </span>
             </div>

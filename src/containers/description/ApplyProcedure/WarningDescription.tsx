@@ -18,7 +18,7 @@ function WarningDescription({ iconURL, warningRef }: WarningDescriptionProps) {
       activeRef={warningRef}
       title="지원 시 유의사항"
       descriptions={WARNING_DESCRIPTIONS}
-      absolutePosition="left-[345px] top-[-22px] sm:left-[56px] sm:top-[33px]"
+      absolutePosition="left-[345px] top-[-22px] md:left-[300px] md:top-0 sm:left-[56px] sm:top-[33px] xs:left-[56px] xs:top-[33px]"
     />
   );
 }

@@ -18,7 +18,7 @@ function InformationTooltip({
   return (
     <Container ref={activeRef} className={`${absolutePosition}`}>
       <TitleContainer>
-        <img src={iconURL} alt="icon" />
+        <img src={iconURL} alt="정보 더보기" />
         <Title>{title}</Title>
       </TitleContainer>
       <Line />
@@ -36,26 +36,29 @@ export default InformationTooltip;
 const Container = tw.div`
   absolute
   z-10
-
   rounded-[12px]
   bg-gray4-0
 
-  min-w-[720px]
-  lg:min-w-[598px]
-  md:min-w-[322px]
-  sm:min-w-[258px]
+  w-[720px]
+  lg:w-[598px]
+  md:w-[322px]
+  sm:w-[258px]
+  xs:max-w-[200px]
 
   px-6
   md:px-4
   sm:px-4
+  xs:px-4
 
   pb-[26px]
   md:pb-5
   sm:pb-5
+  xs:pb-5
 
   pt-[22px]
   md:pt-4
   sm:pt-4
+  xs:pt-4
 `;
 
 const TitleContainer = tw.div`
@@ -68,12 +71,13 @@ const Title = tw.span`
   body4
   md:body6
   sm:body8-1
+  xs:body8-1
   text-gray1-0
 `;
 
 const Line = tw.hr`
-  my-4
   h-[2px]
+  my-4
   border-none
   bg-gray3-0
 `;
@@ -87,8 +91,10 @@ const DescriptionContainer = tw.ul`
   
   list-outside
   list-disc
+
   body5
   md:body8
   sm:body8
+  xs:body8
   text-gray1-0
 `;

@@ -1,16 +1,16 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { useMediaQuery } from 'react-responsive';
 import tw from 'tailwind-styled-components';
-// import Layout from '@/components/Layout';
 import ApplyButton from '@/components/Button/ApplyButton';
+import Layout from '@/components/Layout';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
-// import { OSType } from '@/types/landing.type';
+import { OSType } from '@/types/landing.type';
 import {
   ApplyProcedureInformation,
   BasicInformation,
@@ -49,7 +49,7 @@ function DescriptionTemplate({
   },
   pageContext: { name, nameList },
 }: DescriptionTemplateProps) {
-  /* const [type, setType] = useState<OSType>();
+  const [type, setType] = useState<OSType>();
 
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
@@ -60,14 +60,14 @@ function DescriptionTemplate({
     } else {
       setType('pc');
     }
-  }, []); */
+  }, []);
 
   const windowSize = useMediaQuery({
     query: '(min-width: 1081px)',
   });
 
   return (
-    <>
+    <Layout type={type}>
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <Container>
         <InnerContainer>
@@ -109,7 +109,7 @@ function DescriptionTemplate({
           />
         )}
       </ApplyButtonContainer>
-    </>
+    </Layout>
   );
 }
 

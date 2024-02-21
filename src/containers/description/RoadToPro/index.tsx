@@ -26,7 +26,7 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
                 alt={video.video_link}
               />
               <Gradient src={data.gradientImg.publicURL} alt="gradient" />
-              <PlayButton src={data.playIcon.publicURL} alt="play-icon" />
+              <PlayButton src={data.playIcon.publicURL} alt="play" />
             </VideoContainer>
             <Presenter>
               {video.presenter
@@ -118,6 +118,7 @@ const Gradient = tw.img`
   md:w-[336px]
   sm:w-[336px]
   xs:w-[336px]
+
   absolute
   top-0
   rounded-[16px]
@@ -126,8 +127,11 @@ const Gradient = tw.img`
 
 const PlayButton = tw.img`
   absolute
-  left-[148px]
-  top-[54px]
+  left-1/2
+  top-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  transform
 
   w-[108px]
   xs:w-[91px]
@@ -136,10 +140,10 @@ const PlayButton = tw.img`
 `;
 
 const Presenter = tw.div`
+  mt-4
   body3
   md:body8
   sm:body8
   xs:body8
-  mt-4
   text-black-0
 `;

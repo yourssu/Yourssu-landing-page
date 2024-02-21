@@ -78,11 +78,12 @@ export default ApplyProcedure;
 
 const TitleContainer = tw.div`
   relative
+  pb-6
 
   flex
   items-center
+  flex-wrap
   gap-3
-  pb-6
 `;
 
 const Title = tw.div`
@@ -90,7 +91,6 @@ const Title = tw.div`
   md:body4
   sm:body4
   xs:body4
-
   text-black-0
 `;
 
@@ -99,14 +99,13 @@ const NoticeText = tw.span`
   md:body6
   sm:body6
   xs:body6
-  
   text-gray2-0
 `;
 
 const NoticeButton = tw.button`
   flex
-  items-center
   gap-1
+  items-center
 `;
 
 const ProcedureContainer = tw.div`
@@ -120,31 +119,33 @@ const ProcedureContainer = tw.div`
 
 const ProcedureDate = tw.div`
   flex
-  min-w-fit
   flex-col
   gap-[22px]
+
+  min-w-fit
   bg-gradient-to-b
   from-mainGra1-0
   to-mainGra2-0
   bg-clip-text
-  text-end
+
   font-PretendardSB
-  
   text-xl
   md:text-base
   sm:text-base
   xs:text-base
-
+  text-end
   leading-9
   text-transparent
 `;
 
 const ProcedureStep = tw.div`
-  font-PrtendardR
   flex
-  min-w-max
   flex-col
   gap-[22px]
+  
+  min-w-max
+  
+  font-PrtendardR
   text-xl
   leading-9
   text-gray1-0

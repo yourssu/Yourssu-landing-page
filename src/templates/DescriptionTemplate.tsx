@@ -1,7 +1,9 @@
 // import { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
+import { useMediaQuery } from 'react-responsive';
 import tw from 'tailwind-styled-components';
 // import Layout from '@/components/Layout';
+import ApplyButton from '@/components/Button/ApplyButton';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
@@ -60,35 +62,53 @@ function DescriptionTemplate({
     }
   }, []); */
 
+  const windowSize = useMediaQuery({
+    query: '(min-width: 1081px)',
+  });
+
   return (
     <>
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
-      <InnerContainer>
-        <SectionContainer>
-          <DefaultInformationContainer>
-            <Information
-              task={edges[0].node.task}
-              ideal={edges[0].node.ideal}
-              experience={edges[0].node.experience}
-              skill={edges[0].node.skill}
+      <Container>
+        <InnerContainer>
+          <SectionContainer>
+            <DefaultInformationContainer>
+              <Information
+                task={edges[0].node.task}
+                ideal={edges[0].node.ideal}
+                experience={edges[0].node.experience}
+                skill={edges[0].node.skill}
+              />
+              <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
+            </DefaultInformationContainer>
+            <Line />
+            <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+            <InaWord
+              departmentImage={
+                edges[0].node.basicInformation._rawIcon.asset._ref
+              }
+              inaWord={edges[0].node.inaWord}
             />
-            <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
-          </DefaultInformationContainer>
-          <Line />
-          <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-          <InaWord
-            departmentImage={edges[0].node.basicInformation._rawIcon.asset._ref}
-            inaWord={edges[0].node.inaWord}
+          </SectionContainer>
+          {windowSize && (
+            <SideNavigation
+              currentTeam={{
+                name,
+                applyLink: edges[0].node.basicInformation.apply_link,
+              }}
+              teamList={nameList}
+            />
+          )}
+        </InnerContainer>
+      </Container>
+      <ApplyButtonContainer>
+        {!windowSize && (
+          <ApplyButton
+            link={edges[0].node.basicInformation.apply_link}
+            $testSize="body4"
           />
-        </SectionContainer>
-        <SideNavigation
-          currentTeam={{
-            name,
-            applyLink: edges[0].node.basicInformation.apply_link,
-          }}
-          teamList={nameList}
-        />
-      </InnerContainer>
+        )}
+      </ApplyButtonContainer>
     </>
   );
 }
@@ -152,14 +172,33 @@ export const querySanityDataByName = graphql`
   }
 `;
 
+const Container = tw.div`
+  flex
+  justify-center
+  
+  md:pb-20
+  sm:pb-20
+  xs:pb-20
+`;
+
 const InnerContainer = tw.div`
   flex
   gap-[100px]
+  lg:gap-[50px]
+  md:gap-0
+  sm:gap-0
+  xs:gap-0
 
   max-w-[1364px]
   h-fit
-  mx-auto
+
+  mx-10
+  sm:mx-5
+
   my-20
+  md:my-[50px]
+  sm:my-8
+  xs:my-8 
 `;
 
 const SectionContainer = tw.div`
@@ -167,17 +206,34 @@ const SectionContainer = tw.div`
   flex-1
   flex-col
   gap-[70px]
+  md:gap-[50px]
+  sm:gap-[50px]
+  xs:gap-[50px]
 `;
 
 const DefaultInformationContainer = tw.div`
   flex
   flex-col
   gap-[60px]
+  lg:gap-[50px]
+  md:gap-[50px]
+  sm:gap-[50px]
+  xs:gap-[50px]
 `;
 
 const Line = tw.hr`
-  my-4
   h-[2px]
+  my-4
   border-none
   bg-gray3-0
+`;
+
+const ApplyButtonContainer = tw.div`
+  fixed
+  bottom-0
+  
+  flex
+  
+  w-full
+  p-5
 `;

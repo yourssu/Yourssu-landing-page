@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
-import InformationTooltip from '@/components/Tooltip/InformationTooltip';
 import {
   DefaultContentInformation,
   SkillContentInformation,
 } from '@/types/recruiting.type';
+import SkillDescription from './SkillDescription';
 import useInformationDetail from './hook';
 
 interface InformationProps {
@@ -36,7 +36,7 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
   return (
     <Container>
       {information.map((info) => (
-        <div key={data.title}>
+        <TitleContainer key={data.title}>
           <InformationTitle>{info.title}</InformationTitle>
           <InformationContainer>
             {info.content.map((content) => (
@@ -47,35 +47,36 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
               </li>
             ))}
           </InformationContainer>
-        </div>
+        </TitleContainer>
       ))}
       {skill && (
         <div className="relative">
           <SkillTitleContainer>
             <InformationTitle>{skill.title}</InformationTitle>
             {skill.notice.length > 0 && (
-              <NoticeButton
-                type="button"
-                onClick={() => {
-                  setIsTooltipOpen((prev) => !prev);
-                }}
-              >
-                <img src={data.warningLightIcon.publicURL} alt="정보 더보기" />
-                <span className="body4 text-gray2-0">
-                  참고사항을 반드시 읽어주세요
-                </span>
-              </NoticeButton>
+              <div className="relative">
+                <NoticeButton
+                  type="button"
+                  onClick={() => {
+                    setIsTooltipOpen((prev) => !prev);
+                  }}
+                >
+                  <img
+                    src={data.warningLightIcon.publicURL}
+                    alt="정보 더보기"
+                  />
+                  <NoticeText>참고사항을 반드시 읽어주세요</NoticeText>
+                </NoticeButton>
+                {isTooltipOpen && (
+                  <SkillDescription
+                    iconURL={data.warningDarkIcon.publicURL}
+                    activeRef={tooltipRef}
+                    descriptions={skill.notice}
+                  />
+                )}
+              </div>
             )}
           </SkillTitleContainer>
-          {isTooltipOpen && (
-            <InformationTooltip
-              iconURL={data.warningDarkIcon.publicURL}
-              activeRef={tooltipRef}
-              title="참고사항"
-              descriptions={skill.notice}
-              absolutePosition="left-[441px] top-[40px]"
-            />
-          )}
           <InformationContainer>
             {skill.content.map((item) => (
               <li key={item}>{item}</li>
@@ -99,18 +100,20 @@ const Container = tw.section`
   xs:gap-[50px]
 `;
 
+const TitleContainer = tw.div`
+  flex
+  flex-col
+  gap-5
+  lg:gap-4
+  md:gap-4
+  sm:gap-4
+`;
+
 const InformationTitle = tw.div`
   body1
   md:body4
   sm:body4
   xs:body4
-
-  mb-5
-
-  lg:mb-4
-  md:mb-4
-  sm:mb-4
-  
   text-black-0
 `;
 
@@ -137,10 +140,19 @@ const SkillTitleContainer = tw.div`
   flex
   items-center
   gap-3
+  flex-wrap
 `;
 
 const NoticeButton = tw.button`
   flex
   items-center
   gap-1
+`;
+
+const NoticeText = tw.span`
+  body4
+  md:body6
+  sm:body6
+  xs:body6
+  text-gray2-0
 `;

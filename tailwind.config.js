@@ -6,6 +6,9 @@ module.exports = {
     './src/containers/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
+    scale: {
+      '-100': '-1',
+    },
     borderRadius: {
       project: '35px',
     },

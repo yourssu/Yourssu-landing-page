@@ -3,31 +3,126 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Roboto";
-  src: url("../../src/assets/fonts/Roboto-Medium.ttf");
+  font-family: 'Roboto';
+  src: url('../../src/assets/fonts/Roboto-Medium.ttf');
 }
 
 @font-face {
-  font-family: "NeoSB";
-  src: url("../../src/assets/fonts/AppleSDGothicNeoSB.ttf");
+  font-family: 'NeoSB';
+  src: url('../../src/assets/fonts/AppleSDGothicNeoSB.ttf');
 }
 
 @font-face {
-  font-family: "NeoR";
-  src: url("../../src/assets/fonts/AppleSDGothicNeoR.ttf");
+  font-family: 'NeoR';
+  src: url('../../src/assets/fonts/AppleSDGothicNeoR.ttf');
 }
 
 @font-face {
-  font-family: "NeoEB";
-  src: url("../../src/assets/fonts/AppleSDGothicNeoEB.ttf");
+  font-family: 'NeoEB';
+  src: url('../../src/assets/fonts/AppleSDGothicNeoEB.ttf');
 }
 
 @font-face {
-  font-family: "Jost";
-  src: url("../../src/assets/fonts//Jost-VariableFont_wght.ttf");
+  font-family: 'Jost';
+  src: url('../../src/assets/fonts//Jost-VariableFont_wght.ttf');
 }
 
 @font-face {
-  font-family: "NeoM00";
-  src: url("../../src/assets//fonts/AppleSDGothicNeoM00.ttf");
+  font-family: 'NeoM00';
+  src: url('../../src/assets//fonts/AppleSDGothicNeoM00.ttf');
+}
+
+@font-face {
+  font-family: 'PretendardB';
+  src: url('../../src/assets//fonts/Pretendard-Bold.woff');
+}
+
+@font-face {
+  font-family: 'PretendardSB';
+  src: url('../../src/assets//fonts/Pretendard-SemiBold.woff');
+}
+
+@font-face {
+  font-family: 'PretendardR';
+  src: url('../../src/assets//fonts/Pretendard-Regular.woff');
+}
+
+@layer utilities {
+  .h1 {
+    font-family: 'PretendardB';
+    font-size: 60px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.6px;
+  }
+
+  .h2 {
+    font-family: 'PretendardSB';
+    font-size: 50px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+
+  .h3 {
+    font-family: 'PretendardSB';
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  .h4 {
+    font-family: 'PretendardSB';
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .body1 {
+    font-family: 'PretendardSB';
+    font-size: 26px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.26px;
+  }
+
+  .body2 {
+    font-family: 'PretendardR';
+    font-size: 22px;
+    font-style: normal;
+    line-height: 36px; /* 163.636% */
+    letter-spacing: -0.44px;
+  }
+
+  .body3 {
+    font-family: 'PretendardR';
+    font-size: 20px;
+    font-style: normal;
+    line-height: 30px; /* 150% */
+    letter-spacing: -0.4px;
+  }
+
+  .body4 {
+    font-family: 'PretendardSB';
+    font-size: 18px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .body5 {
+    font-family: 'PretendardR';
+    font-size: 18px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .jost {
+    font-family: 'Jost';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.36px;
+  }
 }

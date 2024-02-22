@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import Layout from '../components/Layout';
+import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
-import Team from '@/container/home/Team';
-import Banner from '@/container/home/banner';
-import Project from '@/container/home/project';
-import Ideal from '@/container/home/Ideal';
-import Culture from '@/container/home/Culture';
+import Banner from '@/containers/landing/Banner';
+import Culture from '@/containers/landing/Culture';
+import Ideal from '@/containers/landing/Ideal';
+import Project from '@/containers/landing/Project';
+import Team from '@/containers/landing/Team';
+import { OSType } from '@/types/landing.type';
 
 export default function Home() {
-  const [type, setType] = useState<string>('');
+  const [type, setType] = useState<OSType>();
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
     if (osType.indexOf('android') > -1) {

@@ -14,8 +14,13 @@
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"]
     },
-    "types": ["node", "@testing-library/jest-dom"]
+    "types": ["node"]
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*", "src/custom.ts"]
+  "include": [
+    "./src/**/*",
+    "./gatsby-node.ts",
+    "./gatsby-config.ts",
+    "./plugins/**/*"
+  ]
 }

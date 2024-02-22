@@ -24,9 +24,9 @@ const config: GatsbyConfig = {
   // don't need to define it here (just if you need to change the options)
   plugins: [
     'gatsby-plugin-postcss',
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp', // Needed for dynamic images
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
@@ -58,61 +58,61 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: `logo`,
+        name: 'logo',
         // Path to the directory
         path: `${__dirname}/src/assets/logo`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: `social`,
+        name: 'social',
         // Path to the directory
         path: `${__dirname}/src/assets/social/`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: `projects`,
+        name: 'projects',
         // Path to the directory
         path: `${__dirname}/src/assets/projects`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: `image`,
+        name: 'image',
         // Path to the directory
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: `teams`,
+        name: 'teams',
         // Path to the directory
         path: `${__dirname}/src/assets/icons/teams`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: `hovers`,
+        name: 'hovers',
         // Path to the directory
         path: `${__dirname}/src/assets/icons/hovers`,
       },
     },
   ],
-  jsxRuntime: `automatic`,
+  jsxRuntime: 'automatic',
 };
 
 export default config;

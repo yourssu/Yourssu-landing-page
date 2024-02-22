@@ -1,38 +1,89 @@
+import tw from 'tailwind-styled-components';
 import { OSType } from '@/types/landing.type';
 import useFooterDetail from './hook';
 
 interface Props {
   type: OSType;
+  backgroundColor: string;
 }
 
-function Footer({ type }: Props) {
+function Footer({ type, backgroundColor }: Props) {
   const { logo } = useFooterDetail();
   const logoData = logo.nodes[0];
 
+  const background: { [key: string]: string } = {
+    gray4: 'bg-gray4-0',
+    bluegray4: 'bg-bluegray4-0',
+  };
+
   return (
-    <footer className="flex h-[165px] flex-col items-center justify-center bg-[#F9FAFB] text-Text_Color2-0 xs:h-[90px] sm:h-[100px] md:h-[132px]">
-      <div className="mb-1 flex flex-row items-center">
-        <img
-          src={logoData.publicURL}
-          alt={logoData.name}
-          className="mx-1 h-[23px] xs:h-[12px] sm:h-[12px]"
-        />
+    <Container $bg={background[backgroundColor]}>
+      <LogoContainer>
+        <LogoImg src={logoData.publicURL} alt={logoData.name} />
         {type === 'ios' ? (
-          <h3 className="font-Jost text-[20px] font-[550] xs:text-[14px] sm:text-[14px]">
-            YOURSSU
-          </h3>
+          <IosLogo>YOURSSU</IosLogo>
         ) : (
-          <h3 className="font-Jost text-[20px] font-semibold xs:text-[14px] sm:text-[14px]">
-            YOURSSU
-          </h3>
+          <DefaultLogo>YOURSSU</DefaultLogo>
         )}
-      </div>
-      <div className="text-center font-NeoR text-[16px] xs:text-[13px] sm:text-[13px] md:text-[14px]">
-        <div className="font-NeoR">동아리방 : 숭실대학교 학생회관 244호</div>
+      </LogoContainer>
+      <InfoContainer>
+        <div className="py-[3px] xs:py-[2px]">
+          동아리방 : 숭실대학교 학생회관 244호
+        </div>
         <div>ⓒ Yourssu. All rights reserved.</div>
-      </div>
-    </footer>
+      </InfoContainer>
+    </Container>
   );
 }
 
 export default Footer;
+
+const Container = tw.footer<{ $bg: string }>`
+  flex
+  flex-col
+  items-center
+  justify-center
+  text-gray1-0
+  py-10
+  xs:py-[20px]
+  sm:py-[20px]
+  ${(props) => props.$bg}
+`;
+
+const LogoContainer = tw.div`
+  mb-1
+  flex
+  flex-row
+  items-center
+`;
+
+const LogoImg = tw.img`
+  mr-1
+  h-[23px]
+  xs:h-[12px]
+  sm:h-[12px]
+`;
+
+// TODO: Ios 버전 css 확인
+const IosLogo = tw.div`
+  body3
+  py-1
+  font-[550]
+  xs:text-[14px]
+  sm:text-[14px]
+`;
+
+const DefaultLogo = tw.div`
+  body3
+  py-1
+  xs:text-[14px]
+  sm:text-[14px]
+`;
+
+const InfoContainer = tw.div`
+  text-center
+  body5
+  xs:text-[13px]
+  sm:text-[13px]
+  md:text-[14px]
+`;

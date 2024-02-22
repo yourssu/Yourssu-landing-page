@@ -1,6 +1,10 @@
 import { GatsbyConfig } from 'gatsby';
 
 const path = require('path');
+
+require('dotenv').config({
+  path: '.env',
+});
 // Get paths of Gatsby's required rules, which as of writing is located at:
 // https://github.com/gatsbyjs/gatsby/tree/fbfe3f63dec23d279a27b54b4057dd611dce74bb/packages/
 // gatsby/src/utils/eslint-rules
@@ -123,10 +127,18 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        // The unique name for each instance
         name: 'icons',
-        // Path to the directory
-        path: `${__dirname}/src/assets/icons`,
+        path: `${__dirname}/src/assets/icons/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: process.env.GATSBY_APP_SANITY_PROJECT_ID,
+        dataset: process.env.GATSBY_APP_SANITY_DATASET,
+        // a token with read permissions is required
+        // if you have a private dataset
+        token: process.env.GATSBY_APP_SANITY_TOKEN,
       },
     },
   ],

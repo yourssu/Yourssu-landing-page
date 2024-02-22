@@ -12,7 +12,7 @@ function Layout({ children, type }: Props) {
     <div className="relative">
       <Header type={type} />
       {children}
-      <Footer type={type} />
+      <Footer type={type} backgroundColor="gray4" />
     </div>
   );
 }

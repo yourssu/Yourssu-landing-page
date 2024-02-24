@@ -1,5 +1,3 @@
-// 이미지 정보, 부서 이름, 부서 설명, 이동 버튼, 관련 검색어
-
 import { useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import { NodeType } from '@/types/hook';
@@ -14,6 +12,7 @@ export default function DepartmentCard({
     description: {
       departmentName: string;
       departmentDescription: string;
+      departmentDescriptionLink: string;
     };
   };
   buttonImgData: NodeType;
@@ -33,7 +32,10 @@ export default function DepartmentCard({
             {data.description.departmentDescription}
           </span>
           <div className="ml-auto">
-            <DepartmentLinkButton buttonImgData={buttonImgData} />
+            <DepartmentLinkButton
+              linkData={data.description.departmentDescriptionLink}
+              buttonImgData={buttonImgData}
+            />
           </div>
         </>
       ) : (

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkyourssu=self.webpackChunkyourssu||[]).push([[49],{1008:function(u,s,e){e.r(s);var n=e(5893);s.default=function(){return(0,n.jsx)("div",{children:"부서 설명 화면"})}}}]);
+//# sourceMappingURL=component---src-pages-recruiting-test-tsx-735c53c87e3c98a8a78e.js.map

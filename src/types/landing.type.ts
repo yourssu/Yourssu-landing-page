@@ -1,7 +1,6 @@
 export interface TeamButtonItem {
   team: string;
   img: string;
-  hoverImg: string;
   notionLink: string;
 }
 

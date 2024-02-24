@@ -3,11 +3,13 @@ import { NodeType } from '@/types/hook';
 
 export default function DepartmentLinkButton({
   buttonImgData,
+  linkData,
 }: {
   buttonImgData: NodeType;
+  linkData: string;
 }) {
   return (
-    <Link to="/">
+    <Link to={`${linkData}`}>
       <div className="flex h-[44px] w-[44px] items-center justify-center rounded-[999px] bg-gradient-to-r from-mainGra2-0 to-mainGra1-0">
         <img
           className="h-[20px] w-[10px]"

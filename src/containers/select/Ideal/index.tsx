@@ -9,8 +9,7 @@ function Ideal() {
       {ideal.map((value, index) => {
         return (
           <div
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={value}
             className="relative flex h-[982px] w-full items-center  justify-center xs:h-[542px] sm:h-[542px] md:h-[666px]"
           >
             <div className="overflow-y-auto">

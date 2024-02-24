@@ -5,14 +5,22 @@ import Header from '../Header';
 interface Props {
   children: React.ReactNode;
   type: OSType;
+  pageType: string;
 }
 
-function Layout({ children, type }: Props) {
+function Layout({ children, type, pageType }: Props) {
   return (
-    <div className="relative">
-      <Header type={type} />
+    <div
+      className={`relative ${
+        pageType === 'recruiting' ? 'overflow-auto bg-bluegray4-0' : null
+      }`}
+    >
+      <Header pageType={pageType} type={type} />
       {children}
-      <Footer type={type} backgroundColor="gray4" />
+      <Footer
+        backgroundColor={pageType === 'recruiting' ? 'bluegray4' : 'gray4'}
+        type={type}
+      />
     </div>
   );
 }

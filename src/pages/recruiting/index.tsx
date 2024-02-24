@@ -1,29 +1,29 @@
-import tw from 'tailwind-styled-components';
+import { useEffect, useState } from 'react';
+import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
-import About from '@/containers/select/About';
-import ApplyProcedure from '@/containers/select/ApplyProcedure';
 import Banner from '@/containers/select/Banner';
-import FAQ from '@/containers/select/FAQ';
-import Ideal from '@/containers/select/Ideal';
-import Supporting from '@/containers/select/Supporting';
+import { OSType } from '@/types/landing.type';
 
 function Recruiting() {
+  const [type, setType] = useState<OSType>();
+  useEffect(() => {
+    const osType = navigator.userAgent.toLowerCase();
+    if (osType.indexOf('android') > -1) {
+      setType('android');
+    } else if (osType.indexOf('iphone') > -1 || osType.indexOf('ipad') > -1) {
+      setType('ios');
+    } else {
+      setType('pc');
+    }
+  }, []);
   return (
-    <Container className="flex w-full flex-col items-center justify-center gap-[180px]">
-      <Banner />
-      <Ideal />
-      <About />
-      <ApplyProcedure />
-      <Supporting />
-      <FAQ />
-    </Container>
+    <Layout pageType="recruiting" type={type}>
+      <div className="flex w-full flex-col items-center justify-center gap-[180px] py-[50px]">
+        <Banner />
+      </div>
+    </Layout>
   );
 }
-
-const Container = tw.div`
-  bg-bluegray4-0
-  overflow-auto
-`;
 
 export default Recruiting;
 

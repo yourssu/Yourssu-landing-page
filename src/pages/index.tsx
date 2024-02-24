@@ -21,7 +21,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <Layout type={type}>
+    <Layout pageType="main" type={type}>
       <Banner type={type} />
       <Team />
       <Ideal />

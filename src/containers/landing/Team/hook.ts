@@ -3,24 +3,14 @@ import { NodeListType } from '@/types/hook';
 import { TeamButtonItem } from '@/types/landing.type';
 
 interface TeamIconData {
-  teams: NodeListType;
-  hovers: NodeListType;
+  department_icons: NodeListType;
 }
 
 export default function useTeamDetail() {
   const data: TeamIconData = useStaticQuery(graphql`
     query {
-      teams: allFile(
-        filter: { sourceInstanceName: { eq: "teams" } }
-        sort: { order: ASC, fields: name }
-      ) {
-        nodes {
-          publicURL
-          name
-        }
-      }
-      hovers: allFile(
-        filter: { sourceInstanceName: { eq: "hovers" } }
+      department_icons: allFile(
+        filter: { sourceInstanceName: { eq: "department_icons" } }
         sort: { order: ASC, fields: name }
       ) {
         nodes {
@@ -39,7 +29,7 @@ export default function useTeamDetail() {
     },
     {
       id: 2,
-      team: 'Marketer',
+      team: 'Manager',
       link: 'https://www.notion.so/yourssu/Content-Marketer-22bbcfde499243f489c47dcb48f32e68',
     },
     {
@@ -72,10 +62,14 @@ export default function useTeamDetail() {
       team: 'Frontend',
       link: 'https://www.notion.so/yourssu/Web-Front-end-Developer-9d21da290a5148588f4fad2ae58a3279',
     },
+    {
+      id: 9,
+      team: 'Maketer',
+      link: 'https://www.notion.so/yourssu/Web-Front-end-Developer-9d21da290a5148588f4fad2ae58a3279',
+    },
   ];
 
-  const teamsData = data.teams.nodes;
-  const hoversData = data.hovers.nodes;
+  const teamsData = data.department_icons.nodes;
 
   const teams: TeamButtonItem[] = teamsData.map((team, index) => {
     const teamData = {
@@ -84,7 +78,6 @@ export default function useTeamDetail() {
     };
     const imgData = {
       img: team.publicURL,
-      hoverImg: hoversData[index].publicURL,
     };
     return Object.assign(teamData, imgData, teamData);
   });

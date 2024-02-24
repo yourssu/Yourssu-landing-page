@@ -34,7 +34,6 @@ function Team() {
             key={team.team}
             team={team.team}
             img={team.img}
-            hoverImg={team.hoverImg}
             notionLink={team.notionLink}
           />
         ))}

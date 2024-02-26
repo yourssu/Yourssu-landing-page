@@ -102,7 +102,7 @@ function DescriptionTemplate({
           )}
         </InnerContainer>
       </Container>
-      <ApplyButtonContainer>
+      <ApplyButtonContainer className="">
         {!windowSize && (
           <ApplyButton
             link={edges[0].node.basicInformation.apply_link}
@@ -242,4 +242,9 @@ const ApplyButtonContainer = tw.div`
   
   w-full
   p-5
+
+  bg-gradient-to-t
+  from-white-0
+  from-80%
+  to-transparent
 `;

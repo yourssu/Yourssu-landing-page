@@ -136,8 +136,8 @@ const BannerSubTitle = tw.span`
   md:text-[43px]
   md:leading-[51.31px]
 
-  sm: h3
-  xs: h3
+  sm:h3
+  xs:h3
 
   text-center
 `;

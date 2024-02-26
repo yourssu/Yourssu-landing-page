@@ -14,28 +14,27 @@ function About() {
       windowSize={windowSize}
       className="flex items-center justify-center xs:flex-col sm:flex-col md:flex-col"
     >
-      <img
+      <AboutImage
         src={imgData.aboutImgData.nodes[0].publicURL}
         alt={imgData.aboutImgData.nodes[0].name}
-        className="w-[498px] xs:w-[255px] sm:w-[255px]"
       />
-      <SubContainer className="flex h-full w-auto flex-col items-start justify-center sm:items-center">
-        <div className="flex items-center sm:justify-center">
-          <span className=" bg-gradient-to-r from-mainGra2-0 to-mainGra1-0 bg-clip-text font-Jost text-[18px] font-[600] leading-[26.01px] tracking-[-2%] text-transparent">
-            ABOUT YOURSSU
-          </span>
-          <Link to="/">
-            <img
-              src={imgData.smallarrow.nodes[0].publicURL}
-              alt={imgData.smallarrow.nodes[0].name}
-              className="pl-[7px]"
-            />
-          </Link>
-        </div>
+      <SubContainer className="flex flex-col items-start justify-center sm:items-center">
+        <SubContainerTop className="flex flex-col items-start sm:items-center sm:justify-center ">
+          <div className="flex items-center">
+            <Title>ABOUT YOURSSU</Title>
+            <Link to="/">
+              <img
+                src={imgData.smallarrow.nodes[0].publicURL}
+                alt={imgData.smallarrow.nodes[0].name}
+                className="pl-[7px]"
+              />
+            </Link>
+          </div>
+          <AboutTitle>
+            유어슈는 여러분의 더 나은 <br /> 캠퍼스라이프를 위해 달립니다.
+          </AboutTitle>
+        </SubContainerTop>
 
-        <AboutTitle>
-          유어슈는 여러분의 더 나은 <br /> 캠퍼스라이프를 위해 달립니다.
-        </AboutTitle>
         <ListSection className="flex flex-col">
           {aboutDescription.map((value, index) => {
             return (
@@ -54,35 +53,61 @@ function About() {
   );
 }
 const Container = tw.div<{ windowSize: boolean }>`
+  bg-white-0
+
   rounded-[30px]
+
   py-[32px]
   px-[100px]
   ${(prop) => (prop.windowSize ? 'sm:px-[160px]' : 'sm:px-[20px]')}
-  bg-white-0
+  xs:px-[20px]
+  
   w-[1220px]
-  md:w-[960px]
-
-  sm:gap-[15px]
+  lg:w-[1080px]
+  md:w-[720px]
   ${(prop) => (prop.windowSize ? 'sm:w-[640px]' : 'sm:w-[310px]')}
+  xs:w-[310px]
+
+  gap-[40px]
+  sm:gap-[15px]
+  xs:gap-[15px]
+  
+`;
+
+const AboutImage = tw.img`
+  w-[498px] 
+  xs:w-[255px] 
+  sm:w-[255px]
 `;
 
 const SubContainer = tw.div`
-  xxl:pl-[40px]
-  xl:pl-[40px]
-  lg:pl-[40px]
-
+  w-auto
   sm:w-[216px]
+  h-full 
+  
+  gap-[40px] 
+  sm:gap-[20px]
+  xs:gap-[20px]
+`;
+
+const SubContainerTop = tw.div`
+  gap-[20px]
+  sm:gap-[14px]
+`;
+
+const Title = tw.span`
+  jost5
+
+  bg-gradient-to-r 
+  from-mainGra2-0 
+  to-mainGra1-0 
+  bg-clip-text
+  text-transparent
 `;
 
 const AboutTitle = tw.p`
-  font-pretendard 
-  pt-[20px] 
-  text-[32px] 
-  font-[600] 
-  leading-[38.19px]
-  tracking-[-1%]
+  h3
 
-  sm:pt-[14px]
   sm:text-[18px]
   sm:leading-[21px]
   sm:tracking-[0%]
@@ -90,18 +115,16 @@ const AboutTitle = tw.p`
 `;
 
 const ListSection = tw.div`
-  w-auto
+  w-full
   h-auto
-  pt-[40px]
-  sm:pt-[20px]
   gap-[12px]
 `;
 
 const List = tw.div`
-  w-auto
-  h-[36px]
-  md:h-[30px]
-  sm:h-auto
+  w-max
+  sm:w-full
+  h-auto
+  gap-[12px]
 `;
 
 const ListImage = tw.img`
@@ -110,19 +133,13 @@ const ListImage = tw.img`
 `;
 
 const ListItem = tw.p`
-  font-pretendard
-  pl-[10px]
-  text-[22px]
-  font-[400]
-  leading-[36px] 
-  tracking-[-2%] 
+  body2
   text-Text_Color2-0
 
-  md:text-[20px]
-  md:leading-[30px]
+  md:body3
 
-  sm:text-[12px]
-  sm:leading-[14px]
+  sm:body8
+  xs:body8
 `;
 
 export default About;

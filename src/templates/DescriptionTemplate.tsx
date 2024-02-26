@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import tw from 'tailwind-styled-components';
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
@@ -114,6 +115,10 @@ function DescriptionTemplate({
 }
 
 export default DescriptionTemplate;
+
+export function Head() {
+  return <Seo />;
+}
 
 export const querySanityDataByName = graphql`
   query querySanityDataByName($name: String) {

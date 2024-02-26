@@ -10,8 +10,13 @@ function ApplyProcedure() {
       <Text2>유어슈에 지원하면 다음과 같은 과정을 거쳐 선발돼요.</Text2>
       <ApplyProcedureStepContainer className="flex justify-between">
         {data.map((value, index) => {
-          // eslint-disable-next-line react/jsx-key
-          return <ApplyProcedureStep data={value} index={index} />;
+          return (
+            <ApplyProcedureStep
+              data={value}
+              key={value.description.stepTitle}
+              index={index}
+            />
+          );
         })}
       </ApplyProcedureStepContainer>
       <Text3>*세부사항은 지원 분야마다 차이가 있을 수 있습니다.</Text3>
@@ -22,7 +27,7 @@ function ApplyProcedure() {
 const Container = tw.div`
   flex
   flex-col
-  max-w-[1280px]
+  w-fit
   items-center
 `;
 
@@ -68,23 +73,18 @@ const ApplyProcedureStepContainer = tw.div`
 `;
 
 const Text3 = tw.p`
-  font-Pretendard 
-  ml-auto 
+  ml-auto
 
   xxl:pt-[32px]
   xl:pt-[30px]
   pt-[44px]
 
-  text-[20px] 
-  sm:text-[14px]
-  xs:text-[14px]
-
-  font-[400] 
-  leading-[30px] 
-  sm:leading-[16.71px]
-  xs:leading-[16.71px]
-  tracking-[-2%] 
   text-gray1-0
+
+  body3
+
+  sm:body8
+  xs:body8
 `;
 
 export default ApplyProcedure;

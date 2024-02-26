@@ -18,7 +18,7 @@ export default function DepartmentCard({
   buttonImgData: NodeType;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const ref = useRef<any>();
+  const ref = useRef<HTMLDivElement>(null);
   return (
     <Container
       isHovered={isHovered}

@@ -6,7 +6,7 @@ function ApplyProcedure() {
   const data = useApplyProcedureDetail();
   return (
     <Container>
-      <Text1>합류 여정</Text1>
+      <ApplyProcedureText>합류 여정</ApplyProcedureText>
       <Text2>유어슈에 지원하면 다음과 같은 과정을 거쳐 선발돼요.</Text2>
       <ApplyProcedureStepContainer className="flex justify-between">
         {data.map((value, index) => {
@@ -26,46 +26,23 @@ const Container = tw.div`
   items-center
 `;
 
-const Text1 = tw.span`
-  font-Pretendard 
-  text-[50px] 
-  font-[600] 
-  leading-[59.67px] 
-  tracking-[-1%]
-
-  sm:text-[32px]
-  sm:leading-[38.19px]
-  sm:tracking-[-1%]
-
-  xs:text-[32px]
-  xs:leading-[38.19px]
-  xs:tracking-[-1%]
+const ApplyProcedureText = tw.span`
+  h2
+  sm:h4
+  xs:h4
 `;
 
 const Text2 = tw.p`
   pt-[20px]
-  text-[24px] 
-  font-[600] 
-  leading-[28.64px]
-  text-Text_Color2-0
-
-  lg:text-[26px]
-  lg:leading-[31.03px]
-  lg:tracking-[1%]
-
-  md:text-[26px]
-  md:leading-[31.03px]
-  md:tracking-[1%]
-
   sm:pt-[10px]
-  sm:text-[14px]
-  sm:leading-[16.71px]
-  sm:font-[400]
-
   xs:pt-[10px]
-  xs:text-[14px]
-  xs:leading-[16.71px]
-  xs:font-[400]
+
+  text-gray1-0
+
+  h4
+  md:body1
+  sm:body8
+  xs:body8
 `;
 
 const ApplyProcedureStepContainer = tw.div`

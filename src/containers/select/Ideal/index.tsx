@@ -1,34 +1,81 @@
+import tw from 'tailwind-styled-components';
 import useIdealDetail from './hook';
 
 function Ideal() {
   const { imgData } = useIdealDetail();
-  const ideal = ['자발적인', '도전적인', '능동적인', '당신을 기다려왔습니다!'];
+  const ideal = [
+    {
+      id: 1,
+      title: '자발적인',
+    },
+    {
+      id: 2,
+      title: '도전적인',
+    },
+    {
+      id: 3,
+      title: '능동적인',
+    },
+    {
+      id: 4,
+      title: '당신을\n기다려왔습니다!',
+    },
+  ];
 
   return (
     <>
       {ideal.map((value, index) => {
         return (
-          <div
-            key={value}
-            className="relative flex h-[982px] w-full items-center justify-center xs:h-[542px] sm:h-[542px] md:h-[666px]"
+          <Container
+            key={value.id}
+            className="relative flex items-center justify-center"
           >
-            <div className="overflow-y-auto">
-              <span className=" font-Pretendard h-full w-full text-[50px] font-[700] leading-[59.67px] tracking-[-1%] xs:text-[32px] xs:font-[600] xs:leading-[38.19px] sm:text-[32px] sm:font-[600] sm:leading-[38.19px] md:text-[40px] md:leading-[47.74px]">
-                {value}
-              </span>
+            <div className=" text-center">
+              <IdealText>{value.title}</IdealText>
             </div>
-            <img
-              className={`absolute ${
-                index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform'
-              } xs:w-[128px] sm:w-[128px] md:w-[260px]`}
+            <IdealImage
+              index={index}
               src={imgData.idealImgData.nodes[0].publicURL}
               alt={imgData.idealImgData.nodes[0].name}
             />
-          </div>
+          </Container>
         );
       })}
     </>
   );
 }
 
+const Container = tw.div`
+  w-full
+  h-[982px]
+  md:h-[666px]
+  sm:h-[542px]
+  xs:h-[542px]
+`;
+
+const IdealText = tw.span`
+  text-center
+
+  h2
+
+  md:font-family: Pretendard;
+  md:font-size: 40px;
+  md:font-style: normal;
+  md:font-weight: 700;
+  md:line-height: normal;
+  md:letter-spacing: -0.4px;
+
+  sm:h3
+  sm:whitespace-pre-line
+  xs:h3
+  xs:whitespace-pre-line
+`;
+
+const IdealImage = tw.img<{ index: number }>`
+  absolute
+  ${(prop) => (prop.index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform')}
+  md:w-[260px]
+  sm:w-[110px]
+  xs:w-[100px]
+`;
 export default Ideal;

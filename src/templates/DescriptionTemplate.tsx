@@ -67,7 +67,7 @@ function DescriptionTemplate({
   });
 
   return (
-    <Layout type={type}>
+    <Layout pageType="recruiting" type={type}>
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <Container>
         <InnerContainer>
@@ -175,6 +175,7 @@ export const querySanityDataByName = graphql`
 const Container = tw.div`
   flex
   justify-center
+  bg-white-0
   
   md:pb-20
   sm:pb-20

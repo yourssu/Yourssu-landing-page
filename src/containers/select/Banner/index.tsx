@@ -1,10 +1,9 @@
-import { Link } from 'gatsby';
 import { useMediaQuery } from 'react-responsive';
 import tw from 'tailwind-styled-components';
 import useBannerDetail from './hook';
 import '@/styles/global.css';
 
-function Banner() {
+function Banner({ moveSupporting }: { moveSupporting: () => void }) {
   const { imgData, bannerDescription } = useBannerDetail();
   const windowSize = useMediaQuery({
     query: `(min-width: 669px)`,
@@ -48,11 +47,9 @@ function Banner() {
         <BannerSubTitle>
           {windowSize ? bannerDescription.title[0] : bannerDescription.title[1]}
         </BannerSubTitle>
-        <Link to="/">
-          <Button type="button">
-            <ButtonText>지원하기</ButtonText>
-          </Button>
-        </Link>
+        <Button type="button" onClick={moveSupporting}>
+          <ButtonText>지원하기</ButtonText>
+        </Button>
       </SubContainer3>
     </Container>
   );

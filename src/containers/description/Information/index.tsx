@@ -36,7 +36,7 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
   return (
     <Container>
       {information.map((info) => (
-        <TitleContainer key={data.title}>
+        <TitleContainer key={info.title}>
           <InformationTitle>{info.title}</InformationTitle>
           <InformationContainer>
             {info.content.map((content) => (

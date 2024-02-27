@@ -30,12 +30,7 @@ function Team() {
       )}
       <div className="mt-[52px] flex flex-row flex-wrap justify-center xs:mt-[30px] xs:w-[220px] sm:mt-[40px] sm:w-[330px] md:mt-[83px] md:w-[460px] lg:w-[600px]">
         {teams.map((team: TeamButtonItem) => (
-          <TeamButton
-            key={team.team}
-            team={team.team}
-            img={team.img}
-            notionLink={team.notionLink}
-          />
+          <TeamButton key={team.team[0]} team={team.team} img={team.img} />
         ))}
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import { ApplyProcedureInformation } from '@/types/recruiting.type';
 import ProcedureLargeSVG from './ProcedureLargeSVG';
@@ -15,10 +15,7 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   const data = useApplyProcedureDetail();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const warningRef = useRef<HTMLDivElement>(null);
-
-  const windowSize = useMediaQuery({
-    query: '(min-width: 1081px)',
-  });
+  const breakpoints = useBreakpoint();
 
   useEffect(() => {
     const handleClose = (e: MouseEvent) => {
@@ -59,10 +56,10 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
             <div key={item.schedule}>{item.schedule}</div>
           ))}
         </ProcedureDate>
-        {windowSize ? (
-          <ProcedureLargeSVG count={applyProcedure.length} />
-        ) : (
+        {breakpoints.md ? (
           <ProcedureSmallSVG count={applyProcedure.length} />
+        ) : (
+          <ProcedureLargeSVG count={applyProcedure.length} />
         )}
         <ProcedureStep>
           {applyProcedure.map((item) => (

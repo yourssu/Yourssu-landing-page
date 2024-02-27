@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
@@ -51,6 +51,7 @@ function DescriptionTemplate({
   pageContext: { name, nameList },
 }: DescriptionTemplateProps) {
   const [type, setType] = useState<OSType>();
+  const breakpoints = useBreakpoint();
 
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
@@ -62,10 +63,6 @@ function DescriptionTemplate({
       setType('pc');
     }
   }, []);
-
-  const windowSize = useMediaQuery({
-    query: '(min-width: 1081px)',
-  });
 
   return (
     <Layout pageType="recruiting" type={type}>
@@ -91,7 +88,7 @@ function DescriptionTemplate({
               inaWord={edges[0].node.inaWord}
             />
           </SectionContainer>
-          {windowSize && (
+          {!breakpoints.md && (
             <SideNavigation
               currentTeam={{
                 name,
@@ -103,7 +100,7 @@ function DescriptionTemplate({
         </InnerContainer>
       </Container>
       <ApplyButtonContainer>
-        {!windowSize && (
+        {breakpoints.md && (
           <ApplyButton
             link={edges[0].node.basicInformation.apply_link}
             $testSize="body4"

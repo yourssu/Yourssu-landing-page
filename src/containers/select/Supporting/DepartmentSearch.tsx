@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import { NodeType } from '@/types/hook';
 
@@ -11,17 +11,16 @@ export default function DepartmentSearch({
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const Ref = useRef<HTMLInputElement>(null);
-  const windowSize = useMediaQuery({
-    query: `(min-width: 1080px)`,
-  });
+  const breakpoints = useBreakpoint();
+
   return (
     <Container className="flex h-auto justify-between">
       <SearchBox
         ref={Ref}
         placeholder={
-          windowSize
-            ? `관심있는 분야에 대해 검색해보세요 ex) 인사, 기획, ...`
-            : '키워드 검색'
+          breakpoints.md
+            ? '키워드 검색'
+            : `관심있는 분야에 대해 검색해보세요 ex) 인사, 기획, ...`
         }
         onChange={() => {
           setTimeout(() => {

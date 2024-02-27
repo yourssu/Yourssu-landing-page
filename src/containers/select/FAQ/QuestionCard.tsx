@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import { NodeType } from '@/types/hook';
 
@@ -9,12 +9,11 @@ export default function QuestionCard({
   question: string;
   smallArrow: NodeType;
 }) {
-  const windowSize = useMediaQuery({
-    query: `(min-width: 550px)`,
-  });
+  const breakpoints = useBreakpoint();
+
   return (
     <Container
-      $windowSize={windowSize}
+      $windowSize={!breakpoints.query550}
       className="flex items-center justify-between"
     >
       <div className="flex items-center gap-[12px] sm:gap-[8px]">

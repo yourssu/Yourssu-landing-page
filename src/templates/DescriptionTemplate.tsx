@@ -102,7 +102,7 @@ function DescriptionTemplate({
           )}
         </InnerContainer>
       </Container>
-      <ApplyButtonContainer className="">
+      <ApplyButtonContainer>
         {!windowSize && (
           <ApplyButton
             link={edges[0].node.basicInformation.apply_link}

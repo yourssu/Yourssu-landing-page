@@ -4,7 +4,7 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
-import Seo from '@/components/Seo';
+import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
@@ -21,23 +21,24 @@ import {
   SkillContentInformation,
 } from '@/types/recruiting.type';
 
-interface DescriptionTemplateProps {
-  data: {
-    allSanityDepartment: {
-      edges: {
-        node: {
-          basicInformation: BasicInformation;
-          task: DefaultContentInformation;
-          ideal: DefaultContentInformation;
-          experience: DefaultContentInformation;
-          skill: SkillContentInformation | null;
-          applyProcedure: ApplyProcedureInformation[];
-          roadToProVideo: RoadToProInformation;
-          inaWord: InaWordInformation;
-        };
-      }[];
-    };
+interface SanityDeparmentData {
+  allSanityDepartment: {
+    edges: {
+      node: {
+        basicInformation: BasicInformation;
+        task: DefaultContentInformation;
+        ideal: DefaultContentInformation;
+        experience: DefaultContentInformation;
+        skill: SkillContentInformation | null;
+        applyProcedure: ApplyProcedureInformation[];
+        roadToProVideo: RoadToProInformation;
+        inaWord: InaWordInformation;
+      };
+    }[];
   };
+}
+interface DescriptionTemplateProps {
+  data: SanityDeparmentData;
   pageContext: {
     name: string;
     nameList: string[];
@@ -113,8 +114,18 @@ function DescriptionTemplate({
 
 export default DescriptionTemplate;
 
-export function Head() {
-  return <Seo />;
+export function Head({
+  data: { allSanityDepartment },
+}: {
+  data: SanityDeparmentData;
+}) {
+  return (
+    <DepartmentSeo
+      image={
+        allSanityDepartment.edges[0].node.basicInformation._rawIcon.asset._ref
+      }
+    />
+  );
 }
 
 export const querySanityDataByName = graphql`

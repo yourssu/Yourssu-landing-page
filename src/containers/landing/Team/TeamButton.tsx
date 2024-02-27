@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'gatsby';
+import tw from 'tailwind-styled-components';
 import { TeamButtonItem } from '@/types/landing.type';
 
 function TeamButton({ team, img }: TeamButtonItem) {
@@ -25,19 +26,30 @@ function TeamButton({ team, img }: TeamButtonItem) {
           onMouseLeave={handleMouseLeave}
         >
           <img
-            className="w-[80px] xs:w-[70px] sm:w-[70px]"
+            className="w-[85px] xs:w-[70px] sm:w-[70px]"
             src={img}
             alt={team[0]}
           />
         </Link>
       </div>
 
-      <div className="flex items-center justify-center text-[22px] xs:text-[13px] sm:text-[14px]">
-        <span className=" font-NeoR text-Text_Color2-0">{team[0]}</span>
-        <span className=" ml-[2px]  text-Text_Color3-0">&#62;</span>
+      <div className="flex items-center justify-center gap-[4px]">
+        <Team>{team[0]}</Team>
+        <span className="flex-shrink-0 leading-[1px] text-Text_Color3-0">
+          &#62;
+        </span>
       </div>
     </div>
   );
 }
+
+const Team = tw.span`
+  text-Text_Color2-0
+
+  body3
+
+  sm:body8
+  xs:body8
+`;
 
 export default TeamButton;

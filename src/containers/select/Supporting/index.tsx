@@ -22,56 +22,39 @@ function Supporting() {
 
   return (
     <Container>
-      <div className="flex flex-col items-center gap-[20px]">
-        <span className="font-Pretendard text-[50px] font-[600] leading-[59.67px] tracking-[-1%] xs:text-[32px] xs:leading-[38.19px] sm:text-[32px] sm:leading-[38.19px] ">
-          지원 분야
-        </span>
+      <SubContainer1 className="flex flex-col items-center">
+        <SupportingText>지원 분야</SupportingText>
         {windowSize ? (
-          <p className="font-Pretendard text-center text-[24px] font-[600] leading-[28.64px] text-gray1-0 xs:text-[14px] xs:leading-[16.71px] sm:text-[14px] sm:leading-[16.71px]">
+          <SupportingDescription>
             총 9개의 분야에서 지원자를 모집하고 있어요. 관심 있는 직군의 카드에
             마우스를 올려보세요!
-          </p>
+          </SupportingDescription>
         ) : (
-          <p className="font-Pretendard text-center text-[24px] font-[600] leading-[28.64px] text-gray1-0 xs:text-[14px] xs:leading-[16.71px] sm:text-[14px] sm:leading-[16.71px]">
+          <SupportingDescription>
             총 9개의 분야에서 지원자를 모집하고 있어요.
             <br /> 관심 있는 직군의 카드에 마우스를 올려보세요!
-          </p>
+          </SupportingDescription>
         )}
-      </div>
+      </SubContainer1>
 
-      <div className="flex flex-col items-center gap-[39px]">
+      <SubContainer2 className="flex flex-col items-center ">
         <DepartmentSearch
           setSearchText={setSearchText}
           imgData={imgData.readingGlasses.nodes[0]}
         />
-        <div
-          className={`gap-4 
-            ${
-              filterData.length === 9
-                ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-9'
-                : 'flex flex-col lg:flex-row xl:flex-row xxl:flex-row'
-            }
-            `}
-        >
+        <StepBox $length={filterData.length} className="">
           {filterData.map((value, index) => {
             return (
-              // eslint-disable-next-line react/jsx-key
-              <div
-                className={`col-span-2 lg:col-span-3 ${
-                  index === 5
-                    ? 'col-start-2 xs:col-start-1 sm:col-start-1 md:col-start-3'
-                    : null
-                }`}
-              >
+              <StepWapper $index={index} key={value.description.departmentName}>
                 <DepartmentCard
                   data={value}
                   buttonImgData={imgData.buttonImgData.nodes[0]}
                 />
-              </div>
+              </StepWapper>
             );
           })}
-        </div>
-      </div>
+        </StepBox>
+      </SubContainer2>
     </Container>
   );
 }
@@ -85,6 +68,44 @@ const Container = tw.div`
   flex
   flex-col
   gap-[60px]
+`;
+
+const SubContainer1 = tw.div`
+  gap-[20px]
+`;
+
+const SubContainer2 = tw.div`
+  gap-[39px]
+`;
+
+const StepBox = tw.div<{ $length: number }>`
+  gap-4 
+  ${(prop) =>
+    prop.$length === 9
+      ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-9'
+      : 'flex flex-col lg:flex-row xl:flex-row xxl:flex-row'}
+`;
+
+const StepWapper = tw.div<{ $index: number }>`
+  col-span-2 
+  lg:col-span-3
+  ${(prop) =>
+    prop.$index === 5
+      ? 'col-start-2 xs:col-start-1 sm:col-start-1 md:col-start-3'
+      : null}
+`;
+
+const SupportingText = tw.span`
+  h2
+  sm:h3
+  xs:h3
+`;
+
+const SupportingDescription = tw.p`
+  h4
+  md:body4
+  sm:body8
+  xs:body8
 `;
 
 export default Supporting;

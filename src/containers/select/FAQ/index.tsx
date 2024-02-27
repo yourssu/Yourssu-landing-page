@@ -7,14 +7,12 @@ function FAQ() {
 
   return (
     <Container className="flex flex-col items-center">
-      <span className="font-Pretendard text-[50px] font-[600] leading-[59.67px] tracking-[-1%]">
-        자주 묻는 질문
-      </span>
+      <FAQText>자주 묻는 질문</FAQText>
       <div className="flex flex-col items-center gap-[20px]">
         {faq.map((value) => {
           return (
-            // eslint-disable-next-line react/jsx-key
             <QuestionCard
+              key={value.question}
               question={value.question}
               smallArrow={imgData.smallarrow.nodes[0]}
             />
@@ -27,6 +25,17 @@ function FAQ() {
 
 const Container = tw.div`
   gap-[60px]
+`;
+
+const FAQText = tw.span`
+  font-PretendardSB
+  text-[50px] 
+  font-[600] 
+  leading-[59.67px] 
+  tracking-[-1%]
+
+  sm:h3
+  xs:h3
 `;
 
 export default FAQ;

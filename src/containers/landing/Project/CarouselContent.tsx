@@ -46,45 +46,41 @@ function CarouselContent({
             <div>
               {projectData[currentIndex].link.length === 1 ? (
                 <a href={projectData[currentIndex].link[0]}>
-                  <object
+                  <img
                     className="pointer-events-none ml-[5px] h-[26px] w-[26px] cursor-pointer xs:h-[15px] xs:w-[15px] sm:h-[18px] sm:w-[21.46px]"
-                    data={linkImgData.imgUrl}
-                  >
-                    {linkImgData.imgName}
-                  </object>
+                    src={linkImgData.imgUrl}
+                    alt={linkImgData.imgName}
+                  />
                 </a>
               ) : null}
               {projectData[currentIndex].link.length === 2 &&
               isType === 'android' ? (
                 <a href={projectData[currentIndex].link[0]}>
-                  <object
+                  <img
                     className="pointer-events-none ml-[5px] h-[26px] w-[26px] cursor-pointer xs:h-[15px] xs:w-[15px] sm:h-[18px] sm:w-[21.46px]"
-                    data={linkImgData.imgUrl}
-                  >
-                    {linkImgData.imgName}
-                  </object>
+                    src={linkImgData.imgUrl}
+                    alt={linkImgData.imgName}
+                  />
                 </a>
               ) : null}
               {projectData[currentIndex].link.length === 2 &&
               isType === 'ios' ? (
                 <a href={projectData[currentIndex].link[1]}>
-                  <object
+                  <img
                     className="pointer-events-none ml-[5px] h-[26px] w-[26px] cursor-pointer xs:h-[15px] xs:w-[15px] sm:h-[18px] sm:w-[21.46px]"
-                    data={linkImgData.imgUrl}
-                  >
-                    {linkImgData.imgName}
-                  </object>
+                    src={linkImgData.imgUrl}
+                    alt={linkImgData.imgName}
+                  />
                 </a>
               ) : null}
               {projectData[currentIndex].link.length === 2 &&
               isType === 'pc' ? (
                 <a href={projectData[currentIndex].link[1]}>
-                  <object
+                  <img
                     className="pointer-events-none ml-[5px] h-[26px] w-[26px] cursor-pointer xs:h-[15px] xs:w-[15px] sm:h-[18px] sm:w-[21.46px]"
-                    data={linkImgData.imgUrl}
-                  >
-                    {linkImgData.imgName}
-                  </object>
+                    src={linkImgData.imgUrl}
+                    alt={linkImgData.imgName}
+                  />
                 </a>
               ) : null}
             </div>

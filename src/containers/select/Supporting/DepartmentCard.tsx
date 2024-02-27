@@ -28,9 +28,9 @@ export default function DepartmentCard({
     >
       {isHovered ? (
         <>
-          <span className="font-Pretendard whitespace-pre-line text-[24px] font-[600] leading-[28.64px]">
+          <DepartmentDescription>
             {data.description.departmentDescription}
-          </span>
+          </DepartmentDescription>
           <div className="ml-auto">
             <DepartmentLinkButton
               linkData={data.description.departmentDescriptionLink}
@@ -40,14 +40,8 @@ export default function DepartmentCard({
         </>
       ) : (
         <>
-          <span className=" font-Pretendard whitespace-pre-line text-[32px] font-[600] leading-[38.19px] tracking-[-1%]">
-            {data.description.departmentName}
-          </span>
-          <img
-            className="ml-auto w-[100px]"
-            src={data.imgData.publicURL}
-            alt={data.imgData.name}
-          />
+          <DepartmentText>{data.description.departmentName}</DepartmentText>
+          <DepartmentImg src={data.imgData.publicURL} alt={data.imgData.name} />
         </>
       )}
     </Container>
@@ -64,4 +58,19 @@ const Container = tw.div<{ isHovered: boolean }>`
   bg-white-0
   justify-between
   ${(prop) => (prop.isHovered ? 'bg-glass-0' : 'bg-white-0')}
+`;
+
+const DepartmentText = tw.span`
+  whitespace-pre-line
+  h3
+`;
+
+const DepartmentImg = tw.img`
+  ml-auto
+  w-[100px]
+`;
+
+const DepartmentDescription = tw.p`
+  whitespace-pre-line
+  h4
 `;

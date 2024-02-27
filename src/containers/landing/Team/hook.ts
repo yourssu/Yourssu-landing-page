@@ -54,13 +54,13 @@ export default function useTeamDetail() {
     },
     {
       id: 7,
-      team: 'Backend',
-      link: 'https://www.notion.so/yourssu/Back-end-Developer-72d85c8ba8164f8c946fa83067e8e0e3',
+      team: 'Frontend',
+      link: 'https://www.notion.so/yourssu/Web-Front-end-Developer-9d21da290a5148588f4fad2ae58a3279',
     },
     {
       id: 8,
-      team: 'Frontend',
-      link: 'https://www.notion.so/yourssu/Web-Front-end-Developer-9d21da290a5148588f4fad2ae58a3279',
+      team: 'Backend',
+      link: 'https://www.notion.so/yourssu/Back-end-Developer-72d85c8ba8164f8c946fa83067e8e0e3',
     },
     {
       id: 9,

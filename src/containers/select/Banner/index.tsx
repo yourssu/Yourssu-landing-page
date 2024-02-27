@@ -1,9 +1,9 @@
-import { Link } from 'gatsby';
 import { useMediaQuery } from 'react-responsive';
 import tw from 'tailwind-styled-components';
 import useBannerDetail from './hook';
+import '@/styles/global.css';
 
-function Banner() {
+function Banner({ moveSupporting }: { moveSupporting: () => void }) {
   const { imgData, bannerDescription } = useBannerDetail();
   const windowSize = useMediaQuery({
     query: `(min-width: 669px)`,
@@ -47,11 +47,9 @@ function Banner() {
         <BannerSubTitle>
           {windowSize ? bannerDescription.title[0] : bannerDescription.title[1]}
         </BannerSubTitle>
-        <Link to="/">
-          <Button type="button">
-            <ButtonText>지원하기</ButtonText>
-          </Button>
-        </Link>
+        <Button type="button" onClick={moveSupporting}>
+          <ButtonText>지원하기</ButtonText>
+        </Button>
       </SubContainer3>
     </Container>
   );
@@ -74,21 +72,11 @@ const Container = tw.div`
 const SubContainer1 = tw.div`
   w-full
 
-  flex
-  font-Pretendard
-  font-[600]
-  text-[32px] 
-  leading-[38.19px] 
-  tracking-[-1%]
+  h3
 
-  md:text-[24px]
-  md:leading-[28.64px]
-
-  sm:text-[24px]
-  sm:leading-[28.64px]
-
-  xs:text-[24px]
-  xs:leading-[28.64px]
+  md:h4
+  sm:h4
+  xs:h4
 `;
 
 const SubContainer2 = tw.div`
@@ -142,34 +130,22 @@ const BannerTitle = tw.p`
 const BannerSubTitle = tw.span`
   whitespace-pre-line
 
-  font-Pretendard
-  font-[700]
-  text-[60px] 
-  leading-[71.6px] 
-  tracking-[-1%]
+  h1
 
   md:font-[600]
   md:text-[43px]
   md:leading-[51.31px]
 
-  sm:font-[600]
-  sm:text-[32px]
-  sm:leading-[38.19px]
-
-  xs:font-[600]
-  xs:text-[32px]
-  xs:leading-[38.19px]
+  sm:h3
+  xs:h3
 
   text-center
 `;
 
 const ButtonText = tw.span`
-  font-Pretendard
-  font-[600]
-  text-[26px] 
   text-white-0
-  leading-[31.03px] 
-  tracking-[-1%] 
+
+  body1
 
   sm:text-[20px]
   sm:leading-[30px]

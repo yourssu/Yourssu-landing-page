@@ -21,7 +21,7 @@ export default function DepartmentCard({
   const ref = useRef<HTMLDivElement>(null);
   return (
     <Container
-      isHovered={isHovered}
+      $isHovered={isHovered}
       ref={ref}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -48,7 +48,7 @@ export default function DepartmentCard({
   );
 }
 
-const Container = tw.div<{ isHovered: boolean }>`
+const Container = tw.div<{ $isHovered: boolean }>`
   flex
   flex-col
   w-[236.8px]
@@ -57,7 +57,7 @@ const Container = tw.div<{ isHovered: boolean }>`
   rounded-[20px]
   bg-white-0
   justify-between
-  ${(prop) => (prop.isHovered ? 'bg-glass-0' : 'bg-white-0')}
+  ${(prop) => (prop.$isHovered ? 'bg-glass-0' : 'bg-white-0')}
 `;
 
 const DepartmentText = tw.span`

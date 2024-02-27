@@ -34,7 +34,7 @@ function Ideal() {
               <IdealText>{value.title}</IdealText>
             </div>
             <IdealImage
-              index={index}
+              $index={index}
               src={imgData.idealImgData.nodes[0].publicURL}
               alt={imgData.idealImgData.nodes[0].name}
             />
@@ -71,9 +71,9 @@ const IdealText = tw.span`
   xs:whitespace-pre-line
 `;
 
-const IdealImage = tw.img<{ index: number }>`
+const IdealImage = tw.img<{ $index: number }>`
   absolute
-  ${(prop) => (prop.index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform')}
+  ${(prop) => (prop.$index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform')}
   md:w-[260px]
   sm:w-[110px]
   xs:w-[100px]

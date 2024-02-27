@@ -42,10 +42,10 @@ function Supporting() {
           setSearchText={setSearchText}
           imgData={imgData.readingGlasses.nodes[0]}
         />
-        <StepBox length={filterData.length} className="">
+        <StepBox $length={filterData.length} className="">
           {filterData.map((value, index) => {
             return (
-              <StepWapper index={index} key={value.description.departmentName}>
+              <StepWapper $index={index} key={value.description.departmentName}>
                 <DepartmentCard
                   data={value}
                   buttonImgData={imgData.buttonImgData.nodes[0]}
@@ -78,19 +78,19 @@ const SubContainer2 = tw.div`
   gap-[39px]
 `;
 
-const StepBox = tw.div<{ length: number }>`
+const StepBox = tw.div<{ $length: number }>`
   gap-4 
   ${(prop) =>
-    prop.length === 9
+    prop.$length === 9
       ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-9'
       : 'flex flex-col lg:flex-row xl:flex-row xxl:flex-row'}
 `;
 
-const StepWapper = tw.div<{ index: number }>`
+const StepWapper = tw.div<{ $index: number }>`
   col-span-2 
   lg:col-span-3
   ${(prop) =>
-    prop.index === 5
+    prop.$index === 5
       ? 'col-start-2 xs:col-start-1 sm:col-start-1 md:col-start-3'
       : null}
 `;

@@ -11,7 +11,7 @@ function About() {
 
   return (
     <Container
-      windowSize={windowSize}
+      $windowSize={windowSize}
       className="flex items-center justify-center xs:flex-col sm:flex-col md:flex-col"
     >
       <AboutImage
@@ -52,20 +52,20 @@ function About() {
     </Container>
   );
 }
-const Container = tw.div<{ windowSize: boolean }>`
+const Container = tw.div<{ $windowSize: boolean }>`
   bg-white-0
 
   rounded-[30px]
 
   py-[32px]
   px-[100px]
-  ${(prop) => (prop.windowSize ? 'sm:px-[160px]' : 'sm:px-[20px]')}
+  ${(prop) => (prop.$windowSize ? 'sm:px-[160px]' : 'sm:px-[20px]')}
   xs:px-[20px]
   
   w-[1220px]
   lg:w-[1080px]
   md:w-[720px]
-  ${(prop) => (prop.windowSize ? 'sm:w-[640px]' : 'sm:w-[310px]')}
+  ${(prop) => (prop.$windowSize ? 'sm:w-[640px]' : 'sm:w-[310px]')}
   xs:w-[310px]
 
   gap-[40px]

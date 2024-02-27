@@ -46,7 +46,7 @@ function Header({ type, pageType }: Props) {
               className={`${
                 pageType === 'main'
                   ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-black-0'
-                  : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-Text_Color2-0'
+                  : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-bluegray1-0'
               }`}
             >
               MAIN
@@ -56,7 +56,7 @@ function Header({ type, pageType }: Props) {
             <span
               className={`${
                 pageType === 'main'
-                  ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-Text_Color2-0'
+                  ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-bluegray1-0'
                   : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-black-0'
               }`}
             >

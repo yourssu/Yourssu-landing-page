@@ -1,4 +1,5 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import tw from 'tailwind-styled-components';
 import SectionIntro from '@/components/Intro/SectionIntro';
 import useTeamDetail from '@/containers/landing/Team/hook';
 import { TeamButtonItem } from '@/types/landing.type';
@@ -25,18 +26,34 @@ function Team() {
           textColor="ver1"
         />
       )}
-      <div className="mt-[52px] flex flex-row flex-wrap justify-center xs:mt-[30px] xs:w-[220px] sm:mt-[40px] sm:w-[330px] md:mt-[83px] md:w-[460px] lg:w-[600px]">
-        {teams.map((team: TeamButtonItem) => (
-          <TeamButton
-            key={team.team}
-            team={team.team}
-            img={team.img}
-            notionLink={team.notionLink}
-          />
+      <TeamButtonBox>
+        {teams.map((team: TeamButtonItem, index) => (
+          <TeamButtonWapper $index={index} key={team.team[0]}>
+            <TeamButton team={team.team} img={team.img} />
+          </TeamButtonWapper>
         ))}
-      </div>
+      </TeamButtonBox>
     </div>
   );
 }
+
+const TeamButtonBox = tw.div`
+  mt-[52px]
+
+  grid
+  grid-cols-9
+  lg:grid-cols-10
+  justify-center
+`;
+
+const TeamButtonWapper = tw.div<{ $index: number }>`
+  col-span-1
+  lg:col-span-2
+  ${(prop) => (prop.$index === 5 ? 'lg:col-start-2' : null)}
+  md:col-span-3
+  sm:col-span-3
+  xs:col-span-3
+
+`;
 
 export default Team;

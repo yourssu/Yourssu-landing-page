@@ -17,6 +17,16 @@ const gatsbyRequiredRules = path.join(
   'eslint-rules',
 );
 
+const myCustomQueries = {
+  xs: '(max-width: 390px)',
+  query550: '(max-width: 550px)',
+  query669: '(max-width: 669px)',
+  sm: '(max-width: 720px)',
+  md: '(max-width: 1080px)',
+  lg: '(max-width: 1440px)',
+  xl: '(max-width: 1920px)',
+};
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'YOURSSU',
@@ -139,6 +149,12 @@ const config: GatsbyConfig = {
         // a token with read permissions is required
         // if you have a private dataset
         token: process.env.GATSBY_APP_SANITY_TOKEN,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-breakpoints',
+      options: {
+        queries: myCustomQueries,
       },
     },
   ],

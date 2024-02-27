@@ -13,7 +13,6 @@ interface SupportingData {
   };
 }
 
-//
 export default function useSupportingDetail() {
   const imgData: SupportingData = useStaticQuery(graphql`
     query {

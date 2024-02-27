@@ -19,7 +19,7 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
       </TitleContainer>
       <VideoInfoContainer>
         {roadToPro.roadToPro_list.map((video) => (
-          <div key={video.video_link}>
+          <div key={video.video_link} className="flex flex-col gap-4">
             <VideoContainer to={video.video_link}>
               <Thumbnail
                 src={extractImageUrl(video.video_thumbnail._rawAsset._ref)}

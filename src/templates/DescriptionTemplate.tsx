@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
+import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
@@ -20,23 +21,24 @@ import {
   SkillContentInformation,
 } from '@/types/recruiting.type';
 
-interface DescriptionTemplateProps {
-  data: {
-    allSanityDepartment: {
-      edges: {
-        node: {
-          basicInformation: BasicInformation;
-          task: DefaultContentInformation;
-          ideal: DefaultContentInformation;
-          experience: DefaultContentInformation;
-          skill: SkillContentInformation | null;
-          applyProcedure: ApplyProcedureInformation[];
-          roadToProVideo: RoadToProInformation;
-          inaWord: InaWordInformation;
-        };
-      }[];
-    };
+interface SanityDeparmentData {
+  allSanityDepartment: {
+    edges: {
+      node: {
+        basicInformation: BasicInformation;
+        task: DefaultContentInformation;
+        ideal: DefaultContentInformation;
+        experience: DefaultContentInformation;
+        skill: SkillContentInformation | null;
+        applyProcedure: ApplyProcedureInformation[];
+        roadToProVideo: RoadToProInformation;
+        inaWord: InaWordInformation;
+      };
+    }[];
   };
+}
+interface DescriptionTemplateProps {
+  data: SanityDeparmentData;
   pageContext: {
     name: string;
     nameList: string[];
@@ -50,6 +52,7 @@ function DescriptionTemplate({
   pageContext: { name, nameList },
 }: DescriptionTemplateProps) {
   const [type, setType] = useState<OSType>();
+  const breakpoints = useBreakpoint();
 
   useEffect(() => {
     const osType = navigator.userAgent.toLowerCase();
@@ -62,12 +65,8 @@ function DescriptionTemplate({
     }
   }, []);
 
-  const windowSize = useMediaQuery({
-    query: '(min-width: 1081px)',
-  });
-
   return (
-    <Layout type={type}>
+    <Layout pageType="recruiting" type={type}>
       <TeamHeader basicInformation={edges[0].node.basicInformation} />
       <Container>
         <InnerContainer>
@@ -90,7 +89,7 @@ function DescriptionTemplate({
               inaWord={edges[0].node.inaWord}
             />
           </SectionContainer>
-          {windowSize && (
+          {!breakpoints.md && (
             <SideNavigation
               currentTeam={{
                 name,
@@ -102,7 +101,7 @@ function DescriptionTemplate({
         </InnerContainer>
       </Container>
       <ApplyButtonContainer>
-        {!windowSize && (
+        {breakpoints.md && (
           <ApplyButton
             link={edges[0].node.basicInformation.apply_link}
             $testSize="body4"
@@ -114,6 +113,20 @@ function DescriptionTemplate({
 }
 
 export default DescriptionTemplate;
+
+export function Head({
+  data: { allSanityDepartment },
+}: {
+  data: SanityDeparmentData;
+}) {
+  return (
+    <DepartmentSeo
+      image={
+        allSanityDepartment.edges[0].node.basicInformation._rawIcon.asset._ref
+      }
+    />
+  );
+}
 
 export const querySanityDataByName = graphql`
   query querySanityDataByName($name: String) {
@@ -175,6 +188,7 @@ export const querySanityDataByName = graphql`
 const Container = tw.div`
   flex
   justify-center
+  bg-white-0
   
   md:pb-20
   sm:pb-20
@@ -236,4 +250,9 @@ const ApplyButtonContainer = tw.div`
   
   w-full
   p-5
+
+  bg-gradient-to-t
+  from-white-0
+  from-80%
+  to-transparent
 `;

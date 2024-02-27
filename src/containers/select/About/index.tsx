@@ -1,17 +1,15 @@
 import { Link } from 'gatsby';
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import useAboutDetail from './hook';
 
 function About() {
   const { imgData, aboutDescription } = useAboutDetail();
-  const windowSize = useMediaQuery({
-    query: `(min-width: 669px)`,
-  });
+  const breakpoints = useBreakpoint();
 
   return (
     <Container
-      $windowSize={windowSize}
+      $windowSize={!breakpoints.query669}
       className="flex items-center justify-center xs:flex-col sm:flex-col md:flex-col"
     >
       <AboutImage

@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import SectionIntro from '@/components/Intro/SectionIntro';
 import useCarouselDetail from '@/containers/landing/Project/hook';
 import { OSType } from '@/types/landing.type';
@@ -9,9 +9,7 @@ interface Props {
 }
 
 function Project({ type }: Props) {
-  const windowSize = useMediaQuery({
-    query: '(min-width: 1081px)',
-  });
+  const breakpoints = useBreakpoint();
   const { data } = useCarouselDetail();
 
   return (
@@ -22,17 +20,17 @@ function Project({ type }: Props) {
         alt={data.backgroundImgData.nodes[0].name}
       />
       <div className="absolute w-full pt-[80px] xs:pt-[50px] sm:pt-[60px]">
-        {windowSize ? (
+        {breakpoints.md ? (
           <SectionIntro
             title="PROJECTS"
-            description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키,<br />숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
+            description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키, 숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
             linerColor="black"
             textColor="ver2"
           />
         ) : (
           <SectionIntro
             title="PROJECTS"
-            description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키, 숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
+            description="유어슈는 다양한 tf팀들의 프로젝트를 통해 숨쉴때 성적표, 숨쉴때 커뮤니티, 숨실위키,<br />숨쉴때 뭐먹지, 뿌슝이 테스트, 점뿌 등의 서비스를 만들어가고 있어요."
             linerColor="black"
             textColor="ver2"
           />

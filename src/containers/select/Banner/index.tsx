@@ -1,17 +1,16 @@
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import useBannerDetail from './hook';
 import '@/styles/global.css';
 
 function Banner({ moveSupporting }: { moveSupporting: () => void }) {
   const { imgData, bannerDescription } = useBannerDetail();
-  const windowSize = useMediaQuery({
-    query: `(min-width: 669px)`,
-  });
+  const breakpoints = useBreakpoint();
+
   return (
     <Container className="flex flex-col items-center">
-      {windowSize ? (
-        <SubContainer1 className="flex justify-between">
+      {breakpoints.query669 ? (
+        <SubContainer1 className="flex flex-col items-center justify-center gap-[5px]">
           <span>
             20{bannerDescription.recruitingDate.year}.0
             {bannerDescription.recruitingDate.month[0]}.0
@@ -22,7 +21,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
           <span>유어슈 전직군 리크루팅</span>
         </SubContainer1>
       ) : (
-        <SubContainer1 className="flex flex-col items-center justify-center gap-[5px]">
+        <SubContainer1 className="flex justify-between">
           <span>
             20{bannerDescription.recruitingDate.year}.0
             {bannerDescription.recruitingDate.month[0]}.0
@@ -45,7 +44,9 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
       </SubContainer2>
       <SubContainer3 className="flex flex-col items-center">
         <BannerSubTitle>
-          {windowSize ? bannerDescription.title[0] : bannerDescription.title[1]}
+          {breakpoints.query669
+            ? bannerDescription.title[1]
+            : bannerDescription.title[0]}
         </BannerSubTitle>
         <Button type="button" onClick={moveSupporting}>
           <ButtonText>지원하기</ButtonText>

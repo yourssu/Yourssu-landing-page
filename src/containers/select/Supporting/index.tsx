@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import DepartmentCard from './DepartmentCard';
 import DepartmentSearch from './DepartmentSearch';
@@ -8,9 +8,7 @@ import useSupportingDetail from './hook';
 function Supporting() {
   const { data, imgData } = useSupportingDetail();
   const [searchText, setSearchText] = useState<string>('');
-  const windowSize = useMediaQuery({
-    query: `(min-width: 1080px)`,
-  });
+  const breakpoints = useBreakpoint();
 
   useEffect(() => {
     setSearchText('');
@@ -24,15 +22,15 @@ function Supporting() {
     <Container>
       <SubContainer1 className="flex flex-col items-center">
         <SupportingText>지원 분야</SupportingText>
-        {windowSize ? (
-          <SupportingDescription>
-            총 9개의 분야에서 지원자를 모집하고 있어요. 관심 있는 직군의 카드에
-            마우스를 올려보세요!
-          </SupportingDescription>
-        ) : (
+        {breakpoints.md ? (
           <SupportingDescription>
             총 9개의 분야에서 지원자를 모집하고 있어요.
             <br /> 관심 있는 직군의 카드에 마우스를 올려보세요!
+          </SupportingDescription>
+        ) : (
+          <SupportingDescription>
+            총 9개의 분야에서 지원자를 모집하고 있어요. 관심 있는 직군의 카드에
+            마우스를 올려보세요!
           </SupportingDescription>
         )}
       </SubContainer1>

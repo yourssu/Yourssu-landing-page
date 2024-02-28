@@ -100,14 +100,14 @@ function DescriptionTemplate({
           )}
         </InnerContainer>
       </Container>
-      <ApplyButtonContainer>
-        {breakpoints.md && (
+      {breakpoints.md && (
+        <ApplyButtonContainer>
           <ApplyButton
             link={edges[0].node.basicInformation.apply_link}
             $testSize="body4"
           />
-        )}
-      </ApplyButtonContainer>
+        </ApplyButtonContainer>
+      )}
     </Layout>
   );
 }

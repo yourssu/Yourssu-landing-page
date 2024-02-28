@@ -140,7 +140,6 @@ const PlayButton = tw.img`
 `;
 
 const Presenter = tw.div`
-  mt-4
   body3
   md:body8
   sm:body8

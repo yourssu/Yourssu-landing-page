@@ -1,4 +1,4 @@
-import Img from 'gatsby-image';
+import GatsbyImage from 'gatsby-image';
 import useBannerDetail from '@/containers/landing/Banner/hook';
 import { OSType } from '@/types/landing.type';
 
@@ -10,7 +10,7 @@ function Banner({ type }: Props) {
   const bannerData = useBannerDetail();
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <Img
+      <GatsbyImage
         loading="eager"
         className="h-[800px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
         fluid={[

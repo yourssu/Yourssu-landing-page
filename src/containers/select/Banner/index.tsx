@@ -18,7 +18,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
             {bannerDescription.recruitingDate.month[1]}.
             {bannerDescription.recruitingDate.day[1]}
           </span>
-          <span>유어슈 전직군 리크루팅</span>
+          <span>유어슈 정기 리크루팅</span>
         </SubContainer1>
       ) : (
         <SubContainer1 className="flex justify-between">
@@ -29,7 +29,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
             {bannerDescription.recruitingDate.month[1]}.
             {bannerDescription.recruitingDate.day[1]}
           </span>
-          <span>유어슈 전직군 리크루팅</span>
+          <span>유어슈 정기 리크루팅</span>
         </SubContainer1>
       )}
 

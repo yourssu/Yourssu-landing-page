@@ -7,16 +7,23 @@ interface ApplyButtonProps {
 }
 
 function ApplyButton({ link, $testSize }: ApplyButtonProps) {
+  if (link)
+    return (
+      <ActiveContainer to={link} $testSize={$testSize}>
+        지원하기
+      </ActiveContainer>
+    );
+
   return (
-    <Container to={link} $testSize={$testSize}>
-      지원하기
-    </Container>
+    <NoActiveContainer $testSize={$testSize}>
+      지원 기간이 아닙니다
+    </NoActiveContainer>
   );
 }
 
 export default ApplyButton;
 
-const Container = tw(Link)<{ $testSize: string }>`
+const ActiveContainer = tw(Link)<{ $testSize: string }>`
   ${(props) => props.$testSize}
   w-full
   rounded-[12px]
@@ -26,4 +33,16 @@ const Container = tw(Link)<{ $testSize: string }>`
   py-5
   text-center
   text-white-0
+`;
+
+const NoActiveContainer = tw.button<{ $testSize: string }>`
+  ${(props) => props.$testSize}
+  w-full
+  rounded-[12px]
+  bg-bluegray3-0
+  py-5
+  text-center
+  text-bluegray1-0
+
+  cursor-default
 `;

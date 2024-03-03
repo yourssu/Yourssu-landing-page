@@ -84,7 +84,7 @@ function Header({ type, pageType }: Props) {
         } block h-[1px] w-full border-none bg-bluegray2-0`}
       />
       {isClick ? (
-        <nav className="flex h-auto w-full flex-col items-start justify-start md:hidden lg:hidden xl:hidden xxl:hidden ">
+        <nav className="flex h-auto w-full flex-col items-start justify-start bg-white-0 md:hidden lg:hidden xl:hidden xxl:hidden">
           <span
             className={`
               p-[20px]

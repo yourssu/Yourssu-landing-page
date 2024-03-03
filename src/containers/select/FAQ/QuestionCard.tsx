@@ -1,26 +1,43 @@
+import { useState } from 'react';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import { NodeType } from '@/types/hook';
 
 export default function QuestionCard({
   question,
+  answer,
   smallArrow,
 }: {
   question: string;
+  answer: string;
   smallArrow: NodeType;
 }) {
   const breakpoints = useBreakpoint();
+  const [onClick, setOnClick] = useState(false);
+
+  const handlerQuestionOnclick = () => {
+    setOnClick((prev) => !prev);
+  };
 
   return (
-    <Container
-      $windowSize={!breakpoints.query550}
-      className="flex items-center justify-between"
-    >
-      <div className="flex items-center gap-[12px] sm:gap-[8px]">
-        <Q>Q</Q>
-        <Question>{question}</Question>
+    <Container $windowSize={!breakpoints.query550} className="flex flex-col">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-[12px] sm:gap-[8px]">
+          <Q>Q</Q>
+          <Text>{question}</Text>
+        </div>
+        <QuestionIcon
+          className={`${onClick ? 'rotate-90' : ''} transform cursor-pointer`}
+          onClick={handlerQuestionOnclick}
+          src={smallArrow.publicURL}
+          alt={smallArrow.name}
+        />
       </div>
-      <QuestionIcon src={smallArrow.publicURL} alt={smallArrow.name} />
+      {onClick && (
+        <AnswerBox>
+          <AnswerText>{answer}</AnswerText>
+        </AnswerBox>
+      )}
     </Container>
   );
 }
@@ -35,6 +52,9 @@ const Container = tw.div<{ $windowSize: boolean }>`
   rounded-[16px] 
   bg-white-0 
   p-[32px]
+
+  gap-[20px]
+
 `;
 
 const Q = tw.span`
@@ -51,7 +71,7 @@ const Q = tw.span`
   text-transparent
 `;
 
-const Question = tw.p`
+const Text = tw.p`
   w-full
   h-auto
   text-gray1-0
@@ -78,4 +98,22 @@ const QuestionIcon = tw.img`
   sm:h-[12px]
   md:h-[12px]
   -rotate-90
+`;
+
+const AnswerBox = tw.div`
+  bg-bluegray4-0
+  rounded-[12px]
+  px-[36px]
+  py-[24px]
+  sm:px-[20px]
+  sm:py-[16px]
+  xs:px-[20px]
+  xs:py-[16px]
+`;
+
+const AnswerText = tw.p`
+  text-gray1-0
+  body2
+  sm:body7
+  xs:body7
 `;

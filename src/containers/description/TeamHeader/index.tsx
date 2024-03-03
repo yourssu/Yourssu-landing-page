@@ -82,10 +82,10 @@ const TeamIntroInnerContainer = tw.div`
 `;
 
 const Title = tw.div`
-  body2
-  md:body5
-  sm:body8
-  xs:body8
+  h4
+  md:body4
+  sm:body6
+  xs:body6
   text-black-0
 `;
 

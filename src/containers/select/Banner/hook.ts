@@ -22,8 +22,8 @@ export default function useBannerDetail() {
   const bannerDescription = {
     recruitingDate: {
       year: 24,
-      month: [4, 4],
-      day: [1, 20],
+      month: [3, 3],
+      day: [8, 17],
     },
     title: [
       '당신의 손으로 바꿔나갈, 당신의 숭실',

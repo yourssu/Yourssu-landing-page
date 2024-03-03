@@ -14,6 +14,7 @@ function FAQ() {
             <QuestionCard
               key={value.question}
               question={value.question}
+              answer={value.answer}
               smallArrow={imgData.smallarrow.nodes[0]}
             />
           );

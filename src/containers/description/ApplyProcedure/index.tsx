@@ -142,7 +142,7 @@ const ProcedureStep = tw.div`
   
   min-w-max
   
-  font-PrtendardR
+  font-PretendardR
   text-xl
   leading-9
   text-gray1-0

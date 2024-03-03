@@ -24,7 +24,7 @@ function Header({ type, pageType }: Props) {
       }`}
     >
       <div className="flex w-full items-center justify-between py-[24px] xs:px-[20px] xs:py-[12px] sm:px-[20px] sm:py-[12px] md:px-[40px] md:py-[24px] lg:px-[40px] lg:py-[24px] xl:w-[1326px] xxl:w-[1326px]">
-        <div className="flex items-center justify-between">
+        <Link to="/" className="flex items-center justify-between">
           <img
             src={logoData.publicURL}
             alt={logoData.name}
@@ -39,7 +39,7 @@ function Header({ type, pageType }: Props) {
               YOURSSU
             </span>
           )}
-        </div>
+        </Link>
         <div className="flex flex-row items-center gap-[24px] xs:hidden sm:hidden">
           <Link to="/">
             <span
@@ -81,10 +81,10 @@ function Header({ type, pageType }: Props) {
       <hr
         className={`${
           isClick ? 'hidden' : null
-        } block h-[1px] w-full border-none bg-bluegray2-0`}
+        } block h-[1px] w-full border-none ${pageType !== 'main' && 'bg-bluegray2-0'}`}
       />
       {isClick ? (
-        <nav className="flex h-auto w-full flex-col items-start justify-start md:hidden lg:hidden xl:hidden xxl:hidden ">
+        <nav className="flex h-auto w-full flex-col items-start justify-start bg-white-0 md:hidden lg:hidden xl:hidden xxl:hidden">
           <span
             className={`
               p-[20px]

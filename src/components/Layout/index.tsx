@@ -12,7 +12,7 @@ function Layout({ children, type, pageType }: Props) {
   return (
     <div
       className={`relative ${
-        pageType === 'recruiting' ? 'overflow-auto bg-bluegray4-0' : null
+        pageType === 'recruiting' ? 'bg-bluegray4-0' : null
       }`}
     >
       <Header pageType={pageType} type={type} />

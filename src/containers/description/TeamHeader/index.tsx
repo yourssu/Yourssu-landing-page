@@ -17,9 +17,15 @@ function TeamHeader({
             <TeamName>{basicInformation.name}</TeamName>
             <Description>{basicInformation.long_introduction}</Description>
           </TeamIntroInnerContainer>
-          <Link to={basicInformation.apply_link}>
-            <ApplyButton>바로 지원하기</ApplyButton>
-          </Link>
+          {basicInformation.apply_link ? (
+            <Link to={basicInformation.apply_link}>
+              <ApplyButton>바로 지원하기</ApplyButton>
+            </Link>
+          ) : (
+            <div>
+              <NoApplyButton>지원 기간이 아닙니다</NoApplyButton>
+            </div>
+          )}
         </TeamIntroContainer>
         <TeamImageContainer>
           <TeamImage
@@ -76,10 +82,10 @@ const TeamIntroInnerContainer = tw.div`
 `;
 
 const Title = tw.div`
-  body2
-  md:body5
-  sm:body8
-  xs:body8
+  h4
+  md:body4
+  sm:body6
+  xs:body6
   text-black-0
 `;
 
@@ -117,6 +123,25 @@ const ApplyButton = tw.button`
   md:py-3
   sm:py-3
   xs:py-3
+`;
+
+const NoApplyButton = tw.button`
+  body4
+  md:body6
+  sm:body6
+  xs:body6
+  text-bluegray1-0
+
+  rounded-[50px]
+  bg-bluegray2-0
+
+  px-7
+  py-[14px]
+  md:py-3
+  sm:py-3
+  xs:py-3
+
+  cursor-default
 `;
 
 const TeamImageContainer = tw.div`

@@ -11,6 +11,16 @@ interface QueryResult {
       };
     }[];
   };
+  allSanityRecruitingSchedule: {
+    edges: {
+      node: {
+        applyProcedure: {
+          schedule: string;
+          step: string;
+        }[];
+      };
+    }[];
+  };
 }
 
 const path = require('path');
@@ -42,6 +52,16 @@ export const createPages: GatsbyNode['createPages'] = async ({
           }
         }
       }
+      allSanityRecruitingSchedule {
+        edges {
+          node {
+            applyProcedure {
+              schedule
+              step
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -59,6 +79,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
     (edge) => edge.node.basicInformation.name,
   );
 
+  const schedule =
+    queryAllSanityData.data?.allSanityRecruitingSchedule.edges[
+      queryAllSanityData.data.allSanityRecruitingSchedule.edges.length - 1
+    ].node.applyProcedure;
+
   const generateDescriptionPage = ({
     node: {
       basicInformation: { name },
@@ -73,7 +98,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     const pageOptions = {
       path: `recruiting/${name.toLowerCase().replaceAll(' ', '_')}`,
       component: DescriptionTemplateComponent,
-      context: { name, nameList },
+      context: { name, nameList, schedule },
     };
 
     createPage(pageOptions);

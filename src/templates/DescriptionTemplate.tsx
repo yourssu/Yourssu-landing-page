@@ -21,7 +21,7 @@ import {
   SkillContentInformation,
 } from '@/types/recruiting.type';
 
-interface SanityDeparmentData {
+interface SanityDepartmentData {
   allSanityDepartment: {
     edges: {
       node: {
@@ -37,11 +37,13 @@ interface SanityDeparmentData {
     }[];
   };
 }
+
 interface DescriptionTemplateProps {
-  data: SanityDeparmentData;
+  data: SanityDepartmentData;
   pageContext: {
     name: string;
     nameList: string[];
+    schedule: ApplyProcedureInformation[];
   };
 }
 
@@ -49,7 +51,7 @@ function DescriptionTemplate({
   data: {
     allSanityDepartment: { edges },
   },
-  pageContext: { name, nameList },
+  pageContext: { name, nameList, schedule },
 }: DescriptionTemplateProps) {
   const [type, setType] = useState<OSType>();
   const breakpoints = useBreakpoint();
@@ -78,7 +80,13 @@ function DescriptionTemplate({
                 experience={edges[0].node.experience}
                 skill={edges[0].node.skill}
               />
-              <ApplyProcedure applyProcedure={edges[0].node.applyProcedure} />
+              <ApplyProcedure
+                applyProcedure={
+                  edges[0].node.applyProcedure.length === 0
+                    ? schedule
+                    : edges[0].node.applyProcedure
+                }
+              />
             </DefaultInformationContainer>
             <Line />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
@@ -117,7 +125,7 @@ export default DescriptionTemplate;
 export function Head({
   data: { allSanityDepartment },
 }: {
-  data: SanityDeparmentData;
+  data: SanityDepartmentData;
 }) {
   return (
     <DepartmentSeo

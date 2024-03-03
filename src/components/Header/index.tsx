@@ -81,7 +81,7 @@ function Header({ type, pageType }: Props) {
       <hr
         className={`${
           isClick ? 'hidden' : null
-        } block h-[1px] w-full border-none bg-bluegray2-0`}
+        } block h-[1px] w-full border-none ${pageType !== 'main' && 'bg-bluegray2-0'}`}
       />
       {isClick ? (
         <nav className="flex h-auto w-full flex-col items-start justify-start bg-white-0 md:hidden lg:hidden xl:hidden xxl:hidden">

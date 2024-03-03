@@ -10,11 +10,15 @@ export default function DepartmentLinkButton({
   linkData: string;
 }) {
   return (
-    <Link to={`${linkData}`}>
-      <Container className="flex items-center justify-center">
+    <Container className="flex items-center justify-center">
+      {linkData === 'product_manager' ? (
         <ArrowImg src={buttonImgData.publicURL} alt={buttonImgData.name} />
-      </Container>
-    </Link>
+      ) : (
+        <Link to={`${linkData}`}>
+          <ArrowImg src={buttonImgData.publicURL} alt={buttonImgData.name} />
+        </Link>
+      )}
+    </Container>
   );
 }
 

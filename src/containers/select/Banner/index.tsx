@@ -8,8 +8,11 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
   const breakpoints = useBreakpoint();
 
   return (
-    <Container className="flex flex-col items-center">
-      {breakpoints.query669 ? (
+    <Container
+      $breakPoint={breakpoints.query669 as boolean}
+      className="flex flex-col items-center"
+    >
+      {(breakpoints.query669 as boolean) ? (
         <SubContainer1 className="flex flex-col items-center justify-center gap-[5px]">
           <span>
             20{bannerDescription.recruitingDate.year}.0
@@ -57,7 +60,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
 }
 
 // Container component
-const Container = tw.div`
+const Container = tw.div<{ $breakPoint: boolean }>`
   w-[1326px]
   gap-[30px]
   lg:gap-[100px]
@@ -66,7 +69,7 @@ const Container = tw.div`
 
   lg:w-[980px]
   md:w-[628px]
-  sm:w-[628px]
+  ${(prop) => (prop.$breakPoint ? 'sm:w-[337px]' : 'sm:w-[628px]')}
   xs:w-[337px]
 `;
 

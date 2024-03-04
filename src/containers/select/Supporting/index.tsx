@@ -59,7 +59,11 @@ function Supporting() {
         <StepBox $length={filterData.length}>
           {filterData.map((value, index) => {
             return (
-              <StepWapper $index={index} key={value.description.departmentName}>
+              <StepWapper
+                $length={filterData.length}
+                $index={index}
+                key={value.description.departmentName}
+              >
                 <DepartmentCard
                   data={value}
                   buttonImgData={imgData.buttonImgData.nodes[0]}
@@ -95,18 +99,23 @@ const SubContainer2 = tw.div`
 const StepBox = tw.div<{ $length: number }>`
   gap-4 
   ${(prop) =>
-    prop.$length === 9
-      ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-9'
+    prop.$length === 9 || prop.$length === 5
+      ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12'
       : 'flex flex-col lg:flex-row xl:flex-row xxl:flex-row'}
+
 `;
 
-const StepWapper = tw.div<{ $index: number }>`
+const StepWapper = tw.div<{ $index: number; $length: number }>`
   col-span-2 
-  lg:col-span-3
+  lg:col-span-4
   ${(prop) =>
-    prop.$index === 5
-      ? 'col-start-2 xs:col-start-1 sm:col-start-1 md:col-start-3'
-      : null}
+    prop.$index === 5 &&
+    prop.$length === 9 &&
+    'col-start-2 xs:col-start-1 sm:col-start-1 md:col-start-3'}
+  ${(prop) =>
+    prop.$length === 5 &&
+    prop.$index === 3 &&
+    'xs:col-start-1 sm:col-start-1 md:col-start-3 lg:col-start-3'}
 `;
 
 const SupportingText = tw.span`

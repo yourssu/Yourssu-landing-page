@@ -1,0 +1,38 @@
+name: build-and-deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "GATSBY_APP_SANITY_TOKEN=$GATSBY_APP_SANITY_TOKEN" >> .env
+          echo "GATSBY_APP_SANITY_PROJECT_ID=$GATSBY_APP_SANITY_PROJECT_ID" >> .env
+          echo "GATSBY_APP_SANITY_DATASET=$GATSBY_APP_SANITY_DATASET" >> .env
+        env:
+          GATSBY_APP_SANITY_TOKEN: ${{ secrets.GATSBY_APP_SANITY_TOKEN }}
+          GATSBY_APP_SANITY_PROJECT_ID: ${{ secrets.GATSBY_APP_SANITY_PROJECT_ID }}
+          GATSBY_APP_SANITY_DATASET: ${{ secrets.GATSBY_APP_SANITY_DATASET }}
+
+      - name: build application
+        run: gatsby build
+
+      - name: Deploy to s3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp \
+            --recursive \
+            --region ap-northeast-2 \
+            dist s3://yourssu.com

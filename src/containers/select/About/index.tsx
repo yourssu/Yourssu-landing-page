@@ -97,8 +97,8 @@ const Title = tw.span`
   jost5
 
   bg-gradient-to-r 
-  from-mainGra2-0 
-  to-mainGra1-0 
+  from-mainGra1-0
+  to-mainGra2-0
   bg-clip-text
   text-transparent
 `;

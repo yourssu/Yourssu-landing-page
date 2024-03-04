@@ -60,11 +60,8 @@ const StepBox = tw.div<{ $index: number }>`
 `;
 
 const Line = tw.hr`
-  w-[340px]
-  sm:w-[259px]
-  xs:w-[259px] 
-  
-  border-[2px] 
+  w-full
+  h-[2px]
   border-purple-0 
 `;
 

@@ -1,6 +1,10 @@
 import { GatsbyConfig } from 'gatsby';
 
 const path = require('path');
+
+require('dotenv').config({
+  path: '.env',
+});
 // Get paths of Gatsby's required rules, which as of writing is located at:
 // https://github.com/gatsbyjs/gatsby/tree/fbfe3f63dec23d279a27b54b4057dd611dce74bb/packages/
 // gatsby/src/utils/eslint-rules
@@ -12,6 +16,16 @@ const gatsbyRequiredRules = path.join(
   'utils',
   'eslint-rules',
 );
+
+const myCustomQueries = {
+  xs: '(max-width: 390px)',
+  query550: '(max-width: 550px)',
+  query669: '(max-width: 669px)',
+  sm: '(max-width: 720px)',
+  md: '(max-width: 1080px)',
+  lg: '(max-width: 1440px)',
+  xl: '(max-width: 1920px)',
+};
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -106,9 +120,41 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
+        name: 'department_icons',
+        // Path to the directory
+        path: `${__dirname}/src/assets/icons/department_icons`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        // The unique name for each instance
         name: 'hovers',
         // Path to the directory
         path: `${__dirname}/src/assets/icons/hovers`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'icons',
+        path: `${__dirname}/src/assets/icons/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: process.env.GATSBY_APP_SANITY_PROJECT_ID,
+        dataset: process.env.GATSBY_APP_SANITY_DATASET,
+        // a token with read permissions is required
+        // if you have a private dataset
+        token: process.env.GATSBY_APP_SANITY_TOKEN,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-breakpoints',
+      options: {
+        queries: myCustomQueries,
       },
     },
   ],

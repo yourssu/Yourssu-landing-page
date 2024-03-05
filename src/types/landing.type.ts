@@ -1,8 +1,7 @@
 export interface TeamButtonItem {
-  team: string;
+  team: string[];
   img: string;
-  hoverImg: string;
-  notionLink: string;
+  notionLink?: string;
 }
 
 export interface CarouselNode {

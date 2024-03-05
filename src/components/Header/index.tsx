@@ -1,22 +1,30 @@
 import { useState } from 'react';
+import { Link } from 'gatsby';
 import useHeaderDetail from '@/components/Header/hook';
 import { OSType } from '@/types/landing.type';
 
 interface Props {
   type: OSType;
+  pageType: string;
 }
 
-function Header({ type }: Props) {
-  const { data, link } = useHeaderDetail();
+function Header({ type, pageType }: Props) {
+  const { data } = useHeaderDetail();
   const [isClick, setIsClick] = useState(false);
   const logoData = data.logo.nodes[0];
-  const snsData = data.social.nodes;
-  const tooltip = data.tooltip.nodes[0];
+  const listIconData = data.listIcon.nodes[0];
+  const xIconData = data.xIcon.nodes[0];
 
   return (
-    <header className="absolute top-[37px] z-10 flex w-full flex-col items-center justify-between xs:top-[15px] sm:top-[15px] md:top-[24px]">
-      <div className="flex flex-row items-center justify-between xs:w-[260px] sm:w-[355px] md:w-[580px] lg:w-[870px] xl:w-[1160px] xxl:w-[1280px]">
-        <div className="flex flex-row items-center justify-between">
+    <header
+      className={`${
+        pageType === 'main' ? 'absolute z-10' : 'bg-bluegray4-0'
+      } z-10 flex w-full flex-col items-center justify-between ${
+        isClick && pageType === 'main' ? 'bg-white-0' : 'null'
+      }`}
+    >
+      <div className="flex w-full items-center justify-between py-[24px] xs:px-[20px] xs:py-[12px] sm:px-[20px] sm:py-[12px] md:px-[40px] md:py-[24px] lg:px-[40px] lg:py-[24px] xl:w-[1326px] xxl:w-[1326px]">
+        <Link to="/" className="flex items-center justify-between">
           <img
             src={logoData.publicURL}
             alt={logoData.name}
@@ -31,19 +39,30 @@ function Header({ type }: Props) {
               YOURSSU
             </span>
           )}
-        </div>
-        <div className="flex flex-row items-center xs:hidden sm:hidden">
-          {snsData.map((sns, index: number) => (
-            <a href={link[index]} key={sns.name}>
-              <object
-                type="image/svg+xml"
-                data={sns.publicURL}
-                className="pointer-events-none ml-4 cursor-pointer"
-              >
-                {sns.name}
-              </object>
-            </a>
-          ))}
+        </Link>
+        <div className="flex flex-row items-center gap-[24px] xs:hidden sm:hidden">
+          <Link to="/">
+            <span
+              className={`${
+                pageType === 'main'
+                  ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-black-0'
+                  : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-bluegray1-0'
+              }`}
+            >
+              MAIN
+            </span>
+          </Link>
+          <Link to="/recruiting">
+            <span
+              className={`${
+                pageType === 'main'
+                  ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-bluegray1-0'
+                  : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-black-0'
+              }`}
+            >
+              RECRUITING
+            </span>
+          </Link>
         </div>
         <div
           aria-hidden="true"
@@ -52,32 +71,43 @@ function Header({ type }: Props) {
             setIsClick(!isClick);
           }}
         >
-          •••
+          {isClick ? (
+            <img src={xIconData.publicURL} alt={xIconData.name} />
+          ) : (
+            <img src={listIconData.publicURL} alt={listIconData.name} />
+          )}
         </div>
       </div>
-      <hr className=" mt-[21px] block h-[1px] border-none bg-[#8F8F90] xs:mt-[4px] xs:w-[260px] sm:mt-[6px] sm:w-[355px] md:mt-[12px] md:w-[580px] lg:w-[870px] xl:w-[1160px] xxl:w-[1280px]" />
-      {isClick === true ? (
-        <div className=" hidden w-full items-center justify-center xs:flex sm:flex">
-          <div className="relative flex min-w-[373px] flex-row-reverse justify-start xs:min-w-[275px]">
-            <img src={tooltip.publicURL} alt={tooltip.name} />
-            <div className="absolute right-[10px] top-[15px] flex w-[150px] flex-row items-center justify-between">
-              {snsData.map((sns, index: number) => {
-                return (
-                  // eslint-disable-next-line react/jsx-key
-                  <a href={link[index]}>
-                    <object
-                      type="image/svg+xml"
-                      data={sns.publicURL}
-                      className="pointer-events-none cursor-pointer"
-                    >
-                      {sns.name}
-                    </object>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+      <hr
+        className={`${
+          isClick ? 'hidden' : null
+        } block h-[1px] w-full border-none ${pageType !== 'main' && 'bg-bluegray2-0'}`}
+      />
+      {isClick ? (
+        <nav className="flex h-auto w-full flex-col items-start justify-start bg-white-0 md:hidden lg:hidden xl:hidden xxl:hidden">
+          <span
+            className={`
+              p-[20px]
+              ${
+                pageType === 'main'
+                  ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-black-0'
+                  : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-Text_Color2-0'
+              }`}
+          >
+            <Link to="/">MAIN</Link>
+          </span>
+          <span
+            className={`
+              p-[20px]
+              ${
+                pageType === 'main'
+                  ? ' font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-Text_Color2-0'
+                  : 'font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] text-black-0'
+              }`}
+          >
+            <Link to="/recruiting">RECRUITING</Link>
+          </span>
+        </nav>
       ) : null}
     </header>
   );

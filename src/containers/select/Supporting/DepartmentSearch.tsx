@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import { NodeType } from '@/types/hook';
@@ -11,6 +11,7 @@ export default function DepartmentSearch({
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const Ref = useRef<HTMLInputElement>(null);
+  const [onFocus, setOnFocus] = useState(false);
   const breakpoints = useBreakpoint();
 
   return (
@@ -27,6 +28,13 @@ export default function DepartmentSearch({
             setSearchText(Ref.current!.value);
           }, 2000);
         }}
+        onFocus={() => {
+          setOnFocus(!onFocus);
+        }}
+        onBlur={() => {
+          setOnFocus(!onFocus);
+        }}
+        focus={onFocus}
       />
       <IconWapper
         type="button"
@@ -53,14 +61,16 @@ const Container = tw.div`
   py-[17px]    
 `;
 
-const SearchBox = tw.input`
+const SearchBox = tw.input<{ focus: boolean }>`
   w-[800px]
   lg:w-[600px]
   md:w-[350px] 
   sm:w-[100px]
   xs:w-[100px]
 
-  text-bluegray1-0 
+  text-black-0
+
+  ${(prop) => (prop.focus ? 'placeholder-bluegray2-0' : 'placeholder-bluegray1-0')}
 
   bg-bluegray3-0 
   border-none

@@ -31,7 +31,7 @@ export default function QuestionCard({
           <Text>{question}</Text>
         </div>
         <QuestionIcon
-          className={`${onClick ? 'rotate-90' : ''} transform cursor-pointer`}
+          className={`${onClick ? 'rotate-90' : ''} transform`}
           src={smallArrow.publicURL}
           alt={smallArrow.name}
         />
@@ -58,6 +58,7 @@ const Container = tw.div<{ $windowSize: boolean }>`
 
   gap-[20px]
 
+  cursor-pointer
 `;
 
 const Q = tw.span`

@@ -66,7 +66,7 @@ export default function useFAQDetail() {
     },
     {
       question: '동아리 회비가 있나요?',
-      answer: '동아리 회비는 지난 학기 기준 학기 당 20,000원입니다.',
+      answer: '동아리 회비는 이번 학기 기준 학기 당 20,000원입니다.',
     },
   ];
 

@@ -20,7 +20,11 @@ export default function QuestionCard({
   };
 
   return (
-    <Container $windowSize={!breakpoints.query550} className="flex flex-col">
+    <Container
+      $windowSize={!breakpoints.query550}
+      className="flex flex-col"
+      onClick={handlerQuestionOnclick}
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-[12px] sm:gap-[8px]">
           <Q>Q</Q>
@@ -28,7 +32,6 @@ export default function QuestionCard({
         </div>
         <QuestionIcon
           className={`${onClick ? 'rotate-90' : ''} transform cursor-pointer`}
-          onClick={handlerQuestionOnclick}
           src={smallArrow.publicURL}
           alt={smallArrow.name}
         />

@@ -41,19 +41,20 @@ const TeamButtonBox = tw.div`
   mt-[52px]
 
   grid
-  grid-cols-9
-  lg:grid-cols-10
+  grid-cols-8
+  md:grid-cols-12
+  sm:grid-cols-12
+  xs:grid-cols-12
   justify-center
 `;
 
 const TeamButtonWapper = tw.div<{ $index: number }>`
   col-span-1
   lg:col-span-2
-  ${(prop) => (prop.$index === 5 ? 'lg:col-start-2' : null)}
-  md:col-span-3
-  sm:col-span-3
-  xs:col-span-3
-
+  md:col-span-4
+  sm:col-span-4
+  ${(prop) => prop.$index === 6 && 'md:col-start-3 sm:col-start-3 xs:col-start-3'}
+  xs:col-span-4
 `;
 
 export default Team;

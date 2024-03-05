@@ -49,21 +49,16 @@ export default function useTeamDetail() {
     },
     {
       id: 6,
-      team: ['Manager', 'product_manager'],
-      link: 'https://www.notion.so/yourssu/Content-Marketer-22bbcfde499243f489c47dcb48f32e68',
-    },
-    {
-      id: 7,
       team: ['Designer', 'product_designer'],
       link: 'https://www.notion.so/yourssu/Product-Designer-d354b42dbe154f6bbf22de157b440e60',
     },
     {
-      id: 8,
+      id: 7,
       team: ['Marketer', 'contents_marketer'],
       link: 'https://www.notion.so/yourssu/Web-Front-end-Developer-9d21da290a5148588f4fad2ae58a3279',
     },
     {
-      id: 9,
+      id: 8,
       team: ['Legal', 'legal_officer'],
       link: 'https://www.notion.so/yourssu/Legal-Officer-12b3c4c24089466b994d65b40fb1e368',
     },

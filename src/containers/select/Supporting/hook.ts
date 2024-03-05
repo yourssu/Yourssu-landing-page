@@ -79,14 +79,6 @@ export default function useSupportingDetail() {
       deplartmentApply: false,
     },
     {
-      departmentName: `Product\nManager`,
-      departmentDescription: `서비스 기획부터\n매니징까지!`,
-      searchKeyword:
-        '기획자 아이디어 브랜딩 시장조사 제품전략 로드맵 데이터 분석 사용자 경험 고객 니즈 피드백',
-      departmentDescriptionLink: 'product_manager',
-      deplartmentApply: false,
-    },
-    {
       departmentName: `Product\nDesigner`,
       departmentDescription: `경험을 디자인하는\n사람들`,
       searchKeyword:

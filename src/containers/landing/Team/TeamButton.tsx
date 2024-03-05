@@ -19,28 +19,18 @@ function TeamButton({ team, img }: TeamButtonItem) {
       <div
         className={`mb-[8px] flex h-[120px] w-[120px] items-center justify-center rounded-[999px] xs:h-[80px] xs:w-[80px] sm:h-[80px] sm:w-[80px] ${isHover ? 'bg-[#F2E4FF]' : 'bg-[#F5F5F5]'}`}
       >
-        {team[0] === 'Manager' ? (
+        <Link
+          to={`recruiting/${team[1]}`}
+          className="group relative"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <img
             className="w-[85px] xs:w-[60px] sm:w-[60px]"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             src={img}
             alt={team[0]}
           />
-        ) : (
-          <Link
-            to={`recruiting/${team[1]}`}
-            className="group relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <img
-              className="w-[85px] xs:w-[60px] sm:w-[60px]"
-              src={img}
-              alt={team[0]}
-            />
-          </Link>
-        )}
+        </Link>
       </div>
 
       <div className="flex items-center justify-center gap-[4px]">

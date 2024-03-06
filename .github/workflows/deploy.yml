@@ -35,4 +35,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            s3://yourssu.com
+            build s3://yourssu.com

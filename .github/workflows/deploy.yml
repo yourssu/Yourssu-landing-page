@@ -33,6 +33,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp \
-            --recursive \
+            --recursive 
             --region ap-northeast-2 \
-            dist s3://yourssu.com
+            public s3://yourssu.com

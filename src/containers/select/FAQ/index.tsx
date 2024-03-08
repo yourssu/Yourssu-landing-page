@@ -29,12 +29,7 @@ const Container = tw.div`
 `;
 
 const FAQText = tw.span`
-  font-PretendardSB
-  text-[50px] 
-  font-[600] 
-  leading-[59.67px] 
-  tracking-[-1%]
-
+  h2
   sm:h3
   xs:h3
 `;

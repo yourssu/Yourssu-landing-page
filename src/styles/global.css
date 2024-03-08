@@ -4,27 +4,27 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('../../src/assets/fonts/Roboto-Medium.ttf');
+  src: url('../../src/assets/fonts/Roboto-Medium.woff');
 }
 
 @font-face {
   font-family: 'NeoSB';
-  src: url('../../src/assets/fonts/AppleSDGothicNeoSB.ttf');
+  src: url('../../src/assets/fonts/AppleSDGothicNeoSB.woff');
 }
 
 @font-face {
   font-family: 'NeoR';
-  src: url('../../src/assets/fonts/AppleSDGothicNeoR.ttf');
+  src: url('../../src/assets/fonts/AppleSDGothicNeoR.woff');
 }
 
 @font-face {
   font-family: 'NeoEB';
-  src: url('../../src/assets/fonts/AppleSDGothicNeoEB.ttf');
+  src: url('../../src/assets/fonts/AppleSDGothicNeoEB.woff');
 }
 
 @font-face {
   font-family: 'Jost';
-  src: url('../../src/assets/fonts//Jost-VariableFont_wght.ttf');
+  src: url('../../src/assets/fonts//Jost-VariableFont.woff');
 }
 
 @font-face {

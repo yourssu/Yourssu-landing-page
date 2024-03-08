@@ -25,8 +25,8 @@ export default function QuestionCard({
       className="flex flex-col"
       onClick={handlerQuestionOnclick}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-[12px] sm:gap-[8px]">
+      <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
+        <div className="flex items-center gap-[12px] xs:gap-[8px] sm:gap-[8px]">
           <Q>Q</Q>
           <Text>{question}</Text>
         </div>
@@ -49,24 +49,27 @@ const Container = tw.div<{ $windowSize: boolean }>`
   w-[1280px]
   lg:w-[1080px]
   md:w-[720px]
-  ${(prop) => (prop.$windowSize ? 'sm:w-[530px]' : 'w-[330px]')}
-  xs:w-[330px]
+  ${(prop) => (prop.$windowSize ? 'sm:w-[530px]' : 'w-[350px]')}
+  xs:w-[350px]
 
   rounded-[16px] 
   bg-white-0 
   p-[32px]
 
-  gap-[20px]
+  sm:p-[20px]
+  xs:p-[20px]
+
+  sm:gap-[15px]
+  xs:gap-[15px]
 
   cursor-pointer
 `;
 
 const Q = tw.span`
-  font-PretendardSB
-  text-[32px] 
-  font-[700] 
-  leading-[28px] 
-  tracking-[-0.64px] 
+  h3
+
+  sm:h4
+  xs:h4
 
   bg-gradient-to-r 
   from-mainGra2-0 
@@ -76,24 +79,15 @@ const Q = tw.span`
 `;
 
 const Text = tw.p`
-  w-full
+  w-auto
   h-auto
   text-gray1-0
-  font-PretendardR
-  text-[24px]
-  font-[500] 
-  leading-[24px] 
-  tracking-[-2%] 
-  
-  sm:text-[21px]
-  sm:font
-  sm:leading-[24px]
-  sm:tracking-[-0.42px]
+  font-[600]
 
-  xs:text-[21px]
-  xs:font
-  xs:leading-[24px]
-  xs:tracking-[-0.42px]
+  h4
+  
+  sm:body4
+  xs:body4
 `;
 
 const QuestionIcon = tw.img`

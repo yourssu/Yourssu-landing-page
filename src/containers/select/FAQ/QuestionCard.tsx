@@ -79,7 +79,7 @@ const Q = tw.span`
 `;
 
 const Text = tw.p`
-  w-auto
+  w-full
   h-auto
   text-gray1-0
   font-[600]

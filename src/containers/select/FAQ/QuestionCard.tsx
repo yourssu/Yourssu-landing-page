@@ -59,8 +59,7 @@ const Container = tw.div<{ $windowSize: boolean }>`
   sm:p-[20px]
   xs:p-[20px]
 
-  sm:gap-[15px]
-  xs:gap-[15px]
+  gap-[20px]
 
   cursor-pointer
 `;

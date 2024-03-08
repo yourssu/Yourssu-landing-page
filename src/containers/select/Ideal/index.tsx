@@ -33,11 +33,13 @@ function Ideal() {
             <div className=" text-center">
               <IdealText>{value.title}</IdealText>
             </div>
-            <IdealImage
-              $index={index}
-              src={imgData.idealImgData.nodes[0].publicURL}
-              alt={imgData.idealImgData.nodes[0].name}
-            />
+            {index !== 3 ? (
+              <IdealImage
+                $index={index}
+                src={imgData.idealImgData.nodes[0].publicURL}
+                alt={imgData.idealImgData.nodes[0].name}
+              />
+            ) : null}
           </Container>
         );
       })}

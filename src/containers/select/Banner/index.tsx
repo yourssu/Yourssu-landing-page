@@ -36,7 +36,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
         </SubContainer1>
       )}
 
-      <SubContainer2 className="flex flex-col items-center text-center">
+      <SubContainer2 className="flex flex-col items-center text-center font-Roboto">
         <BannerTitle>
           {bannerDescription.recruitingDate.year}&apos;YOURSSU <br /> RECRUITING
         </BannerTitle>
@@ -107,7 +107,6 @@ const BannerImage = tw.img`
 
 // text component
 const BannerTitle = tw.p`
-  font-Roboto 
   font-[900] 
   text-[230px]
   text-bluegray2-0

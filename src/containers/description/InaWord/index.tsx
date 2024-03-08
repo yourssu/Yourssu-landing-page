@@ -63,6 +63,8 @@ const Word = tw.div`
   xs:body6
 
   whitespace-pre-wrap
+  sm:whitespace-normal
+  xs:whitespace-normal
   text-blue-0
 `;
 
@@ -73,6 +75,8 @@ const DescriptionContainer = tw.div`
   xs:body7
 
   whitespace-pre-wrap
+  sm:whitespace-normal
+  xs:whitespace-normal
   text-gray1-0
 `;
 

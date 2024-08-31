@@ -88,8 +88,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
       queryAllSanityData.data.allSanityRecruitingSchedule.edges.length - 1
     ].node.applyProcedure;
 
-  console.log(scheduleContainsAssignment, scheduleWithoutAssignment);
-
   const generateDescriptionPage = ({
     node: {
       basicInformation: { name },

@@ -40,8 +40,6 @@ export default function useSupportingDetail() {
     }
   `);
 
-  console.log(imgData);
-
   const description = [
     {
       departmentName: `HR\nManager`,

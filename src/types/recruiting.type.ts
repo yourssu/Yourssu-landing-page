@@ -39,3 +39,8 @@ export interface InaWordInformation {
   content: string;
   word: string;
 }
+
+export interface GrowthAndDiffInformation {
+  title: string;
+  content: string;
+}

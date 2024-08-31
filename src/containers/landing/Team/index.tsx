@@ -8,20 +8,24 @@ import TeamButton from './TeamButton';
 function Team() {
   const breakpoints = useBreakpoint();
   const teams = useTeamDetail();
+  const descriptions = [
+    '안녕하세요. 숭실인을 위한. 숭실인에 의해 당신의 숭실을 만들어나가는 동아리 유어슈입니다.',
+    '유어슈의 힘으로, 숭실대학교의 재학생 모두가 사용하는 서비스를 만들고자 합니다.',
+  ];
 
   return (
     <div className="flex flex-col items-center py-[105px] xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px]">
       {breakpoints.md ? (
         <SectionIntro
           title="TEAM YOURSSU"
-          description="안녕하세요. 숭실인을 위한. 숭실인에 의해 당신의 숭실을 만들어가는 동아리 유어슈입니다. 숭실대 학생들의 즐거운 캠퍼스 라이프를 위한 서비스를 만들고 있습니다."
+          description={descriptions.join(' ')}
           linerColor="gra"
           textColor="ver1"
         />
       ) : (
         <SectionIntro
           title="TEAM YOURSSU"
-          description="안녕하세요. 숭실인을 위한. 숭실인에 의해 당신의 숭실을 만들어가는 동아리 유어슈입니다.<br />숭실대 학생들의 즐거운 캠퍼스 라이프를 위한 서비스를 만들고 있습니다."
+          description={descriptions.join('<br />')}
           linerColor="gra"
           textColor="ver1"
         />

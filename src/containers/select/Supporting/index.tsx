@@ -98,11 +98,12 @@ const SubContainer2 = tw.div`
 
 const StepBox = tw.div<{ $length: number }>`
   gap-4 
+  
   ${(prop) =>
     // eslint-disable-next-line no-nested-ternary
-    prop.$length === 8
+    prop.$length >= 7
       ? 'grid grid-cols-8 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-8 lg:grid-cols-12'
-      : prop.$length === 5
+      : prop.$length >= 5
         ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12'
         : 'flex xs:flex-col sm:flex-col md:flex-col'}
 `;
@@ -111,9 +112,9 @@ const StepWapper = tw.div<{ $index: number; $length: number }>`
   col-span-2
   lg:col-span-4
   
-  ${(prop) => prop.$length === 8 && 'md:col-span-4'}
+  ${(prop) => prop.$length === 7 && 'md:col-span-4'}
   ${(prop) =>
-    prop.$length === 8 &&
+    prop.$length === 7 &&
     prop.$index === 6 &&
     'xs:col-start-1 sm:col-start-1 lg:col-start-3'}
   ${(prop) => prop.$length === 5 && prop.$index === 4 && 'xs:col-start-1 sm:col-start-1 md:col-start-2'}

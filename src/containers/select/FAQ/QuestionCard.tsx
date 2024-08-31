@@ -9,7 +9,7 @@ export default function QuestionCard({
   smallArrow,
 }: {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
   smallArrow: NodeType;
 }) {
   const breakpoints = useBreakpoint();

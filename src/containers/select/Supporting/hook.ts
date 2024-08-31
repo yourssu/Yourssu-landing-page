@@ -40,6 +40,8 @@ export default function useSupportingDetail() {
     }
   `);
 
+  console.log(imgData);
+
   const description = [
     {
       departmentName: `HR\nManager`,
@@ -47,21 +49,21 @@ export default function useSupportingDetail() {
       searchKeyword:
         '인사 운영 채용 경영 사회복지 관리 직원온보딩 성과관리 노사관계 복지 조직문화 직원만족도 인재유치 다양성 포용',
       departmentDescriptionLink: 'hr_manager',
-      deplartmentApply: false,
+      deplartmentApply: true,
     },
     {
       departmentName: `IOS\nDeveloper`,
       departmentDescription: `백설공주와\n일곱 사과 농부들`,
       searchKeyword: '모바일 개발자 swift mac Xcode apple 애플',
       departmentDescriptionLink: 'ios_developer',
-      deplartmentApply: true,
+      deplartmentApply: false,
     },
     {
       departmentName: `Android\nDeveloper`,
       departmentDescription: `유저의 사용성을\n위해 고민하는\n녹색 깡통들`,
       searchKeyword: '모바일 개발자 kotlin java 안드로이드스튜디오 Android SDK',
       departmentDescriptionLink: 'android_developer',
-      deplartmentApply: false,
+      deplartmentApply: true,
     },
     {
       departmentName: `Frontend\nDeveloper`,
@@ -69,14 +71,22 @@ export default function useSupportingDetail() {
       searchKeyword:
         '개발자 프론트엔드 웹 html css javascript react typescript',
       departmentDescriptionLink: 'frontend_developer',
-      deplartmentApply: true,
+      deplartmentApply: false,
     },
     {
       departmentName: `Backend\nDeveloper`,
       departmentDescription: `보이지 않는 곳에\n서 묵묵히 일하는\n 조용한 영웅들`,
       searchKeyword: 'java 서버 DB API AWS 서버 최적화 spring 인프라',
       departmentDescriptionLink: 'backend_developer',
-      deplartmentApply: false,
+      deplartmentApply: true,
+    },
+    {
+      departmentName: `Product\nManager`,
+      departmentDescription: `서비스 기획부터 매니징까지!`,
+      searchKeyword:
+        '기획 기획자 아이디어 브랜딩 시장 조사 제품 전략 로드맵 데이터 분석 사용자 경험 고객 니즈 피드백',
+      departmentDescriptionLink: 'product_manager',
+      deplartmentApply: true,
     },
     {
       departmentName: `Product\nDesigner`,

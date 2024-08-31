@@ -14,7 +14,7 @@ function Ideal() {
     },
     {
       id: 3,
-      title: '능동적인',
+      title: '공감하는',
     },
     {
       id: 4,
@@ -30,7 +30,7 @@ function Ideal() {
             key={value.id}
             className="relative flex items-center justify-center"
           >
-            <div className=" text-center">
+            <div className="text-center ">
               <IdealText>{value.title}</IdealText>
             </div>
             {index !== 3 ? (

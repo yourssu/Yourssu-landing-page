@@ -4,7 +4,7 @@ module.exports = {
     './src/pages/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}',
     './src/containers/**/*.{js,jsx,ts,tsx}',
-    './src/templates/**/*.{js,jsx,ts,tsx}'
+    './src/templates/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     scale: {
@@ -14,6 +14,9 @@ module.exports = {
       project: '35px',
     },
     extend: {
+      gridTemplateColumns: {
+        16: 'repeat(16, minmax(0, 1fr))',
+      },
       fontFamily: {
         Roboto: ['Roboto'],
         NeoSB: ['NeoSB'],

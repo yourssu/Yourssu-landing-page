@@ -22,6 +22,7 @@ export default function DepartmentCard({
 
   return (
     <motion.div
+      className="flex justify-center"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
@@ -71,13 +72,14 @@ const Container = tw.div`
   relative
   flex
   flex-col
-  w-[236.8px]
+  w-full
+  max-w-[236.8px]
   h-[283.5px]
   rounded-[20px]
   bg-white-0
   justify-between
   overflow-hidden
-`;
+  `;
 
 const Stack = tw(motion.div)`
   absolute

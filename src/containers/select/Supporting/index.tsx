@@ -51,7 +51,7 @@ function Supporting() {
         )}
       </SubContainer1>
 
-      <SubContainer2 className="flex flex-col items-center ">
+      <SubContainer2 className="flex flex-col items-center">
         <DepartmentSearch
           setSearchText={setSearchText}
           imgData={imgData.readingGlasses.nodes[0]}
@@ -78,7 +78,7 @@ function Supporting() {
 }
 
 const Container = tw.div`
-  w-[1376px]
+  w-[1280px]
   lg:w-[924px]
   md:w-[500px]
   sm:w-auto
@@ -98,26 +98,28 @@ const SubContainer2 = tw.div`
 
 const StepBox = tw.div<{ $length: number }>`
   gap-4 
-  ${(prop) =>
+  w-full
+  
+  ${({ $length }) =>
     // eslint-disable-next-line no-nested-ternary
-    prop.$length === 8
-      ? 'grid grid-cols-8 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-8 lg:grid-cols-12'
-      : prop.$length === 5
-        ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12'
-        : 'flex xs:flex-col sm:flex-col md:flex-col'}
+    $length >= 7
+      ? 'grid grid-cols-10 lg:grid-cols-16 md:grid-cols-8'
+      : 'flex md:grid md:grid-cols-8 sm:flex sm:flex-col xs:flex-col justify-center'}
 `;
 
 const StepWapper = tw.div<{ $index: number; $length: number }>`
+  w-full
+  max-w-[236.8px]
+
   col-span-2
+  sm:col-span-10
   lg:col-span-4
-  
-  ${(prop) => prop.$length === 8 && 'md:col-span-4'}
-  ${(prop) =>
-    prop.$length === 8 &&
-    prop.$index === 6 &&
-    'xs:col-start-1 sm:col-start-1 lg:col-start-3'}
-  ${(prop) => prop.$length === 5 && prop.$index === 4 && 'xs:col-start-1 sm:col-start-1 md:col-start-2'}
-  ${(prop) => prop.$length === 5 && prop.$index === 3 && 'lg:col-start-3'}
+  md:col-span-4
+  xs:col-span-10
+
+  ${({ $index }) => $index === 0 && 'col-start-2'}
+  ${({ $index }) => $index === 4 && 'col-start-3 lg:col-start-3'}
+  ${({ $length, $index }) => $length % 2 === 1 && $index === $length - 1 && 'md:col-start-3'}
 `;
 
 const SupportingText = tw.span`

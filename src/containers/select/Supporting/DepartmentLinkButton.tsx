@@ -10,11 +10,11 @@ export default function DepartmentLinkButton({
   linkData: string;
 }) {
   return (
-    <Container className="flex items-center justify-center">
-      <Link to={`${linkData}`}>
+    <Link to={`${linkData}`}>
+      <Container className="flex items-center justify-center">
         <ArrowImg src={buttonImgData.publicURL} alt={buttonImgData.name} />
-      </Link>
-    </Container>
+      </Container>
+    </Link>
   );
 }
 

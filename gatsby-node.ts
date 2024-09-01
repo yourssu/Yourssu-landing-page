@@ -79,7 +79,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
     (edge) => edge.node.basicInformation.name,
   );
 
-  const schedule =
+  const scheduleContainsAssignment =
+    queryAllSanityData.data?.allSanityRecruitingSchedule.edges[0].node
+      .applyProcedure;
+
+  const scheduleWithoutAssignment =
     queryAllSanityData.data?.allSanityRecruitingSchedule.edges[
       queryAllSanityData.data.allSanityRecruitingSchedule.edges.length - 1
     ].node.applyProcedure;
@@ -95,10 +99,22 @@ export const createPages: GatsbyNode['createPages'] = async ({
       };
     };
   }) => {
+    const pathName = name.toLowerCase().replaceAll(' ', '_');
+    const teamNamesContainsAssignmentInSchedule = [
+      'backend_developer',
+      'product_designer',
+    ];
+
     const pageOptions = {
-      path: `recruiting/${name.toLowerCase().replaceAll(' ', '_')}`,
+      path: `recruiting/${pathName}`,
       component: DescriptionTemplateComponent,
-      context: { name, nameList, schedule },
+      context: {
+        name,
+        nameList,
+        schedule: teamNamesContainsAssignmentInSchedule.includes(pathName)
+          ? scheduleContainsAssignment
+          : scheduleWithoutAssignment,
+      },
     };
 
     createPage(pageOptions);

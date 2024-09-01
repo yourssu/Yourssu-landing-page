@@ -8,9 +8,9 @@ export default function useCultureDetail() {
     },
     {
       id: '#2',
-      title: 'TF 단위로 활동',
+      title: 'PT, TF 단위로 활동',
       description:
-        "TF는 Task Force의 약자예요. '어떠한 목적을 갖는 임시 조직' 이라고 볼 수 있습니다. 해보고 싶은 프로젝트가 있다면 자유롭게 TF를 조직하고 다른 부서의 팀원들과 협업할 수 있어요.",
+        'PT는 Project Team, TF는 Task Force의 약자예요. PT는 장기간 대규모로 모여 진행되고, TF는 단기간 소규모로 모여 다른 부서의 멤버들과 협업할 수 있어요.',
     },
     {
       id: '#3',

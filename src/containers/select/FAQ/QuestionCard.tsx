@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 import { NodeType } from '@/types/hook';
@@ -9,21 +10,21 @@ export default function QuestionCard({
   smallArrow,
 }: {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
   smallArrow: NodeType;
 }) {
   const breakpoints = useBreakpoint();
-  const [onClick, setOnClick] = useState(false);
+  const [active, setActive] = useState(false);
 
-  const handlerQuestionOnclick = () => {
-    setOnClick((prev) => !prev);
+  const onClick = () => {
+    setActive((prev) => !prev);
   };
 
   return (
     <Container
       $windowSize={!breakpoints.query550}
-      className="flex flex-col"
-      onClick={handlerQuestionOnclick}
+      className=""
+      onClick={onClick}
     >
       <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
         <div className="flex items-center gap-[12px] xs:gap-[8px] sm:gap-[8px]">
@@ -31,19 +32,40 @@ export default function QuestionCard({
           <Text>{question}</Text>
         </div>
         <QuestionIcon
-          className={`${onClick ? 'rotate-90' : ''} transform`}
+          className={`${active ? 'rotate-90' : ''} transform`}
           src={smallArrow.publicURL}
           alt={smallArrow.name}
         />
       </div>
-      {onClick && (
-        <AnswerBox>
-          <AnswerText>{answer}</AnswerText>
-        </AnswerBox>
-      )}
+
+      <AnimatePresence initial={false}>
+        {active && (
+          <motion.div
+            initial="initial"
+            animate="animate"
+            exit="initial"
+            variants={AnswerBoxVariants}
+            transition={{ ease: 'easeOut', duration: 0.3 }}
+          >
+            <AnswerSpace />
+            <AnswerBox>
+              <AnswerText>{answer}</AnswerText>
+            </AnswerBox>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Container>
   );
 }
+
+const AnswerBoxVariants: Variants = {
+  initial: {
+    height: 0,
+  },
+  animate: {
+    height: 'auto',
+  },
+};
 
 const Container = tw.div<{ $windowSize: boolean }>`
   w-[1280px]
@@ -58,8 +80,6 @@ const Container = tw.div<{ $windowSize: boolean }>`
 
   sm:p-[20px]
   xs:p-[20px]
-
-  gap-[20px]
 
   cursor-pointer
 `;
@@ -106,6 +126,12 @@ const AnswerBox = tw.div`
   sm:py-[16px]
   xs:px-[20px]
   xs:py-[16px]
+`;
+
+const AnswerSpace = tw.div`
+  h-[32px]
+  sm:h-[20px]
+  xs:h-[20px]
 `;
 
 const AnswerText = tw.p`

@@ -26,8 +26,12 @@ export default function useFAQDetail() {
     },
     {
       question: '두 개 이상의 직군을 중복으로 지원해도 되나요?',
-      answer:
-        '중복 지원은 불가능합니다. 활동하고자 하는 직군을 선택하여 지원해주세요.',
+      answer: (
+        <>
+          중복 지원은 <b>절대</b> 불가능합니다. 활동하고자 하는 직군을 하나만
+          선택하여 지원해주세요. 중복 지원 시 불이익이 있을 수 있습니다.
+        </>
+      ),
     },
     {
       question: '휴학생도 지원이 가능한가요?',
@@ -67,6 +71,22 @@ export default function useFAQDetail() {
     {
       question: '동아리 회비가 있나요?',
       answer: '동아리 회비는 이번 학기 기준 학기 당 20,000원입니다.',
+    },
+    {
+      question: '기타 문의사항이 있습니다. 어디로 질문하면 되나요?',
+      answer: (
+        <>
+          유어슈 카카오톡채널로 문의해주세요.{' '}
+          <a
+            href="http://pf.kakao.com/_AxfrxeT/chat"
+            className="underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            http://pf.kakao.com/_AxfrxeT/chat
+          </a>
+        </>
+      ),
     },
   ];
 

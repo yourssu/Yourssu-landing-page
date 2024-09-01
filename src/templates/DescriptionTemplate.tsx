@@ -6,6 +6,7 @@ import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
 import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
+import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
 import RoadToPro from '@/containers/description/RoadToPro';
@@ -16,6 +17,7 @@ import {
   ApplyProcedureInformation,
   BasicInformation,
   DefaultContentInformation,
+  GrowthAndDiffInformation,
   InaWordInformation,
   RoadToProInformation,
   SkillContentInformation,
@@ -31,6 +33,7 @@ interface SanityDepartmentData {
         experience: DefaultContentInformation;
         skill: SkillContentInformation | null;
         applyProcedure: ApplyProcedureInformation[];
+        growthAndDiff: GrowthAndDiffInformation;
         roadToProVideo: RoadToProInformation;
         inaWord: InaWordInformation;
       };
@@ -90,6 +93,7 @@ function DescriptionTemplate({
             </DefaultInformationContainer>
             <Line />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+            <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
             <InaWord
               departmentImage={
                 edges[0].node.basicInformation._rawIcon.asset._ref
@@ -181,6 +185,10 @@ export const querySanityDataByName = graphql`
               }
               video_link
             }
+          }
+          growthAndDiff {
+            title
+            content
           }
           inaWord {
             title

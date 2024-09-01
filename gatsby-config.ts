@@ -37,6 +37,17 @@ const config: GatsbyConfig = {
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [process.env.GATSBY_APP_GA_ID],
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+          delayOnRouteUpdate: 1000,
+        },
+      },
+    },
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
@@ -155,19 +166,6 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-breakpoints',
       options: {
         queries: myCustomQueries,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [
-          process.env.GATSBY_APP_GA_ID, // Google Analytics
-        ],
-        pluginConfig: {
-          head: false,
-          respectDNT: true,
-          delayOnRouteUpdate: 1000,
-        },
       },
     },
   ],

@@ -22,10 +22,12 @@ jobs:
           echo "GATSBY_APP_SANITY_TOKEN=$GATSBY_APP_SANITY_TOKEN" >> .env
           echo "GATSBY_APP_SANITY_PROJECT_ID=$GATSBY_APP_SANITY_PROJECT_ID" >> .env
           echo "GATSBY_APP_SANITY_DATASET=$GATSBY_APP_SANITY_DATASET" >> .env
+          echo "GATSBY_APP_GA_ID=$GATSBY_APP_GA_ID" >> .env
         env:
           GATSBY_APP_SANITY_TOKEN: ${{ secrets.GATSBY_APP_SANITY_TOKEN }}
           GATSBY_APP_SANITY_PROJECT_ID: ${{ secrets.GATSBY_APP_SANITY_PROJECT_ID }}
           GATSBY_APP_SANITY_DATASET: ${{ secrets.GATSBY_APP_SANITY_DATASET }}
+          GATSBY_APP_GA_ID: ${{ secrets.GATSBY_APP_GA_ID }}
 
       - name: build application
         run: ./node_modules/.bin/gatsby build

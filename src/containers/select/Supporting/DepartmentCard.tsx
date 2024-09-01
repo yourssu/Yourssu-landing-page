@@ -73,7 +73,6 @@ const Container = tw.div`
   flex
   flex-col
   w-full
-  max-w-[236.8px]
   h-[283.5px]
   rounded-[20px]
   bg-white-0

@@ -104,12 +104,13 @@ const StepBox = tw.div<{ $length: number }>`
     // eslint-disable-next-line no-nested-ternary
     $length >= 7
       ? 'grid grid-cols-10 lg:grid-cols-16 md:grid-cols-8'
-      : $length >= 5
-        ? 'grid grid-cols-10 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-16'
-        : 'flex xs:flex-col sm:flex-col'}
+      : 'flex md:grid md:grid-cols-8 sm:flex sm:flex-col xs:flex-col justify-center'}
 `;
 
 const StepWapper = tw.div<{ $index: number; $length: number }>`
+  w-full
+  max-w-[236.8px]
+
   col-span-2
   sm:col-span-10
   lg:col-span-4

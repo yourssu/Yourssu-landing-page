@@ -21,10 +21,10 @@ export default function DepartmentCard({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
+    <div
       className="flex justify-center"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Container>
         {isHovered && (
@@ -55,7 +55,7 @@ export default function DepartmentCard({
           <DepartmentImg src={data.imgData.publicURL} alt={data.imgData.name} />
         </Stack>
       </Container>
-    </motion.div>
+    </div>
   );
 }
 

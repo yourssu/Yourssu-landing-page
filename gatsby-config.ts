@@ -157,6 +157,19 @@ const config: GatsbyConfig = {
         queries: myCustomQueries,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          process.env.GATSBY_APP_GA_ID, // Google Analytics
+        ],
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+          delayOnRouteUpdate: 1000,
+        },
+      },
+    },
   ],
   jsxRuntime: 'automatic',
 };

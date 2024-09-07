@@ -18,7 +18,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
             20{bannerDescription.recruitingDate.year}.0
             {bannerDescription.recruitingDate.month[0]}.0
             {bannerDescription.recruitingDate.day[0]}-0
-            {bannerDescription.recruitingDate.month[1]}.
+            {bannerDescription.recruitingDate.month[1]}.0
             {bannerDescription.recruitingDate.day[1]}
           </span>
           <span>유어슈 정기 리크루팅</span>

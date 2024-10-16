@@ -1,9 +1,10 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
+
 import SectionIntro from '@/components/Intro/SectionIntro';
+import TeamButton from '@/containers/landing/Team/TeamButton';
 import useTeamDetail from '@/containers/landing/Team/hook';
 import { TeamButtonItem } from '@/types/landing.type';
-import TeamButton from './TeamButton';
 
 function Team() {
   const breakpoints = useBreakpoint();
@@ -31,10 +32,11 @@ function Team() {
         />
       )}
       <TeamButtonBox>
-        {teams.map((team: TeamButtonItem, index) => (
-          <TeamButtonWapper $index={index} key={team.team[0]}>
-            <TeamButton team={team.team} img={team.img} />
-          </TeamButtonWapper>
+        {teams.map((team: TeamButtonItem, index: number) => (
+          <TeamButtonWrapper key={team.longName} $index={index}>
+            {/* TODO: shortName 추가 */}
+            <TeamButton longName={team.longName} image={team.image} />
+          </TeamButtonWrapper>
         ))}
       </TeamButtonBox>
     </div>
@@ -53,7 +55,7 @@ const TeamButtonBox = tw.div`
   justify-center
 `;
 
-const TeamButtonWapper = tw.div<{ $index: number }>`
+const TeamButtonWrapper = tw.div<{ $index: number }>`
   col-span-1
   lg:col-span-1
   /* lg:col-span-2 */

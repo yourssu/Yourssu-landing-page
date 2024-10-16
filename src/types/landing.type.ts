@@ -1,7 +1,7 @@
 export interface TeamButtonItem {
-  team: string[];
-  img: string;
-  notionLink?: string;
+  // TODO: shortName: string; 추가
+  longName: string;
+  image: string;
 }
 
 export interface CarouselNode {

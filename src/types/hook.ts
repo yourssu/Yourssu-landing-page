@@ -6,3 +6,16 @@ export interface NodeType {
 export interface NodeListType {
   nodes: NodeType[];
 }
+
+export interface TeamButtonEdge {
+  node: {
+    basicInformation: {
+      name: string;
+      _rawIcon: {
+        asset: {
+          _ref: string;
+        };
+      };
+    };
+  };
+}

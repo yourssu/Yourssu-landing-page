@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
+
 import DepartmentCard from './DepartmentCard';
 import DepartmentSearch from './DepartmentSearch';
 import useSupportingDetail from './hook';
@@ -9,7 +9,6 @@ function Supporting() {
   const { data, imgData } = useSupportingDetail();
   const [searchText, setSearchText] = useState<string>('');
   const [supportingTeam, setSupportingTeam] = useState<number>(0);
-  const breakpoints = useBreakpoint();
 
   useEffect(() => {
     setSearchText('');
@@ -38,17 +37,11 @@ function Supporting() {
     <Container>
       <SubContainer1 className="flex flex-col items-center">
         <SupportingText>지원 분야</SupportingText>
-        {breakpoints.md ? (
-          <SupportingDescription>
-            총 {supportingTeam}개의 분야에서 지원자를 모집하고 있어요.
-            <br /> 관심 있는 직군의 카드에 마우스를 올려보세요!
-          </SupportingDescription>
-        ) : (
-          <SupportingDescription>
-            총 {supportingTeam}개의 분야에서 지원자를 모집하고 있어요. 관심 있는
-            직군의 카드에 마우스를 올려보세요!
-          </SupportingDescription>
-        )}
+        <SupportingDescription>
+          {supportingTeam > 0
+            ? `총 ${supportingTeam}개의 분야에서 지원자를 모집하고 있어요.\n관심 있는 직군의 카드에 마우스를 올려보세요!`
+            : '현재 지원자를 모집하고 있는 분야가 없습니다.'}
+        </SupportingDescription>
       </SubContainer1>
 
       <SubContainer2 className="flex flex-col items-center">
@@ -72,6 +65,12 @@ function Supporting() {
             );
           })}
         </StepBox>
+        {supportingTeam === 0 && filterData.length === 0 && (
+          <ErrorImage
+            src={imgData.errorImgData.nodes[0].publicURL}
+            alt="뿌슝이 이미지"
+          />
+        )}
       </SubContainer2>
     </Container>
   );
@@ -133,6 +132,17 @@ const SupportingDescription = tw.p`
   md:body4
   sm:body8
   xs:body8
+  
+  md:whitespace-pre-wrap
+  sm:whitespace-pre-wrap
+  xs:whitespace-pre-wrap
+`;
+
+const ErrorImage = tw.img`
+  h-[285px]
+  md:h-[200px]
+  sm:h-[150px]
+  xs:h-[150px]
 `;
 
 export default Supporting;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
 import Banner from '@/containers/landing/Banner';

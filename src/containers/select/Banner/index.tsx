@@ -1,10 +1,13 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
-import useBannerDetail from './hook';
+
 import '@/styles/global.css';
+import formatDate from '@/utils/formatDate';
+
+import useBannerDetail from './hook';
 
 function Banner({ moveSupporting }: { moveSupporting: () => void }) {
-  const { imgData, bannerDescription } = useBannerDetail();
+  const bannerData = useBannerDetail();
   const breakpoints = useBreakpoint();
 
   return (
@@ -14,42 +17,31 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
     >
       {(breakpoints.query669 as boolean) ? (
         <SubContainer1 className="flex flex-col items-center justify-center gap-[5px]">
-          <span>
-            20{bannerDescription.recruitingDate.year}.0
-            {bannerDescription.recruitingDate.month[0]}.0
-            {bannerDescription.recruitingDate.day[0]}-0
-            {bannerDescription.recruitingDate.month[1]}.0
-            {bannerDescription.recruitingDate.day[1]}
-          </span>
+          <span>{formatDate(bannerData.periodData.formSchedule)}</span>
           <span>유어슈 정기 리크루팅</span>
         </SubContainer1>
       ) : (
         <SubContainer1 className="flex justify-between">
-          <span>
-            20{bannerDescription.recruitingDate.year}.0
-            {bannerDescription.recruitingDate.month[0]}.0
-            {bannerDescription.recruitingDate.day[0]}-0
-            {bannerDescription.recruitingDate.month[1]}.
-            {bannerDescription.recruitingDate.day[1]}
-          </span>
+          <span>{formatDate(bannerData.periodData.formSchedule)}</span>
           <span>유어슈 정기 리크루팅</span>
         </SubContainer1>
       )}
 
       <SubContainer2 className="flex flex-col items-center text-center font-Roboto">
         <BannerTitle>
-          {bannerDescription.recruitingDate.year}&apos;YOURSSU <br /> RECRUITING
+          {bannerData.periodData.formSchedule.start.slice(2, 4)}&apos;YOURSSU{' '}
+          <br /> RECRUITING
         </BannerTitle>
         <BannerImage
-          src={imgData.bannerImgData.nodes[0].publicURL}
-          alt={imgData.bannerImgData.nodes[0].name}
+          src={bannerData.imgData.publicURL}
+          alt={bannerData.imgData.name}
         />
       </SubContainer2>
       <SubContainer3 className="flex flex-col items-center">
-        <BannerSubTitle>
-          {breakpoints.query669
-            ? bannerDescription.title[1]
-            : bannerDescription.title[0]}
+        <BannerSubTitle
+          className={`${breakpoints.query669 ? 'whitespace-pre-wrap' : 'whitespace-normal'}`}
+        >
+          {`당신의 손으로 바꿔나갈,\n당신의 숭실`}
         </BannerSubTitle>
         <Button type="button" onClick={moveSupporting}>
           <ButtonText>지원하기</ButtonText>
@@ -143,6 +135,8 @@ const BannerSubTitle = tw.span`
   xs:h3
 
   text-center
+
+  
 `;
 
 const ButtonText = tw.span`

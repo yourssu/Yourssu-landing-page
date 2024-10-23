@@ -11,9 +11,7 @@ interface Props {
 function Layout({ children, type, pageType }: Props) {
   return (
     <div
-      className={`relative ${
-        pageType === 'recruiting' ? 'bg-bluegray4-0' : null
-      }`}
+      className={`relative ${pageType === 'recruiting' && 'bg-bluegray4-0'}`}
     >
       <Header pageType={pageType} type={type} />
       {children}

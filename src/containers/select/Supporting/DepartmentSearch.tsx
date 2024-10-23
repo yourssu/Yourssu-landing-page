@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
+
 import { NodeType } from '@/types/hook';
 
 export default function DepartmentSearch({
@@ -11,7 +13,6 @@ export default function DepartmentSearch({
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const Ref = useRef<HTMLInputElement>(null);
-  const [onFocus, setOnFocus] = useState(false);
   const breakpoints = useBreakpoint();
 
   return (
@@ -28,22 +29,15 @@ export default function DepartmentSearch({
             setSearchText(Ref.current!.value);
           }, 2000);
         }}
-        onFocus={() => {
-          setOnFocus(!onFocus);
-        }}
-        onBlur={() => {
-          setOnFocus(!onFocus);
-        }}
-        focus={onFocus}
       />
-      <IconWapper
+      <button
         type="button"
         onClick={() => {
           setSearchText(Ref.current!.value);
         }}
       >
         <SearchIcon src={imgData.publicURL} alt={imgData.name} />
-      </IconWapper>
+      </button>
     </Container>
   );
 }
@@ -61,7 +55,7 @@ const Container = tw.div`
   py-[17px]    
 `;
 
-const SearchBox = tw.input<{ focus: boolean }>`
+const SearchBox = tw.input`
   w-[800px]
   lg:w-[600px]
   md:w-[350px] 
@@ -70,8 +64,9 @@ const SearchBox = tw.input<{ focus: boolean }>`
 
   text-black-0
 
-  ${(prop) => (prop.focus ? 'placeholder-bluegray2-0' : 'placeholder-bluegray1-0')}
-
+  placeholder-bluegray1-0
+  focus:placeholder-bluegray2-0
+  
   bg-bluegray3-0 
   border-none
   outline-none
@@ -80,8 +75,6 @@ const SearchBox = tw.input<{ focus: boolean }>`
   sm:body8
   xs:body8
 `;
-
-const IconWapper = tw.button``;
 
 const SearchIcon = tw.img`
   w-[32px] 

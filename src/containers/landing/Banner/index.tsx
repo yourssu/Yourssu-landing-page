@@ -1,4 +1,5 @@
 import GatsbyImage from 'gatsby-image';
+
 import useBannerDetail from '@/containers/landing/Banner/hook';
 import { OSType } from '@/types/landing.type';
 

@@ -3,15 +3,14 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { TeamButtonEdge } from '@/types/hook';
 
 export default function useTeamDetail() {
-  // TODO: sort 기준을 key로 변경
-  // TODO: sub_name도 가져오도록 변경
   const data = useStaticQuery(graphql`
     query {
-      allSanityDepartment(sort: { basicInformation: { name: ASC } }) {
+      allSanityDepartment(sort: { basicInformation: { key: ASC } }) {
         edges {
           node {
             basicInformation {
               name
+              sub_name
               _rawIcon
             }
           }
@@ -23,9 +22,9 @@ export default function useTeamDetail() {
   const teamsData = data.allSanityDepartment.edges;
 
   const teams = teamsData.map((team: TeamButtonEdge) => {
-    // TODO: sub_name을 shortName으로 받아오도록
     return {
       longName: team.node.basicInformation.name,
+      shortName: team.node.basicInformation.sub_name,
       image: team.node.basicInformation._rawIcon.asset._ref,
     };
   });

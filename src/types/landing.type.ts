@@ -1,5 +1,5 @@
 export interface TeamButtonItem {
-  // TODO: shortName: string; 추가
+  shortName: string;
   longName: string;
   image: string;
 }

@@ -1,7 +1,10 @@
 import { useState } from 'react';
+
 import { motion, Variants } from 'framer-motion';
 import tw from 'tailwind-styled-components';
+
 import { NodeType } from '@/types/hook';
+import extractImageUrl from '@/utils/extractImageUrl';
 import DepartmentLinkButton from './DepartmentLinkButton';
 
 export default function DepartmentCard({
@@ -9,16 +12,18 @@ export default function DepartmentCard({
   buttonImgData,
 }: {
   data: {
-    imgData: NodeType;
-    description: {
-      departmentName: string;
-      departmentDescription: string;
-      departmentDescriptionLink: string;
+    name: string;
+    short_introduction: string;
+    _rawIcon: {
+      asset: {
+        _ref: string;
+      };
     };
   };
   buttonImgData: NodeType;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const fixedDescription = data.short_introduction.replace(/\\n/g, '\n');
 
   return (
     <div
@@ -38,12 +43,10 @@ export default function DepartmentCard({
               duration: 0.3,
             }}
           >
-            <DepartmentDescription>
-              {data.description.departmentDescription}
-            </DepartmentDescription>
+            <DepartmentDescription>{fixedDescription}</DepartmentDescription>
             <div className="ml-auto">
               <DepartmentLinkButton
-                linkData={data.description.departmentDescriptionLink}
+                linkData={data.name.replace(' ', '').toLowerCase()}
                 buttonImgData={buttonImgData}
               />
             </div>
@@ -51,8 +54,11 @@ export default function DepartmentCard({
         )}
 
         <Stack>
-          <DepartmentText>{data.description.departmentName}</DepartmentText>
-          <DepartmentImg src={data.imgData.publicURL} alt={data.imgData.name} />
+          <DepartmentText>{data.name}</DepartmentText>
+          <DepartmentImg
+            src={extractImageUrl(data._rawIcon.asset._ref)}
+            alt={data.name}
+          />
         </Stack>
       </Container>
     </div>
@@ -102,5 +108,6 @@ const DepartmentImg = tw.img`
 
 const DepartmentDescription = tw.p`
   whitespace-pre-line
+  break-words
   h4
 `;

@@ -1,36 +1,41 @@
 import { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 
+import isTodayInRange from '@/utils/isTodayInRange';
 import DepartmentCard from './DepartmentCard';
 import DepartmentSearch from './DepartmentSearch';
 import useSupportingDetail from './hook';
 
 function Supporting() {
-  const { data, imgData } = useSupportingDetail();
+  const { teamData, scheduleData, imgData } = useSupportingDetail();
   const [searchText, setSearchText] = useState<string>('');
+  const [isInPeriod, setIsInPeriod] = useState(true);
   const [supportingTeam, setSupportingTeam] = useState<number>(0);
 
   useEffect(() => {
     setSearchText('');
-  }, []);
+    setIsInPeriod(isTodayInRange(scheduleData));
+  }, [scheduleData]);
 
   useEffect(() => {
     let count = 0;
 
-    data.forEach((value) => {
-      if (value.description.deplartmentApply) {
-        count += 1;
-      }
-    });
+    if (isInPeriod) {
+      teamData.forEach((data) => {
+        if (data.isRecruiting) {
+          count += 1;
+        }
+      });
+    }
 
     setSupportingTeam(count);
-  }, [data]);
+  }, [teamData, isInPeriod]);
 
-  const filterData = data.filter((item) => {
+  const filterData = teamData.filter((data) => {
     if (searchText === '') {
-      return item.description.deplartmentApply;
+      return data.isRecruiting;
     }
-    return item.description.searchKeyword.includes(searchText);
+    return data.searchKeyword.includes(searchText);
   });
 
   return (
@@ -47,27 +52,25 @@ function Supporting() {
       <SubContainer2 className="flex flex-col items-center">
         <DepartmentSearch
           setSearchText={setSearchText}
-          imgData={imgData.readingGlasses.nodes[0]}
+          imgData={imgData.readingGlasses}
         />
         <StepBox $length={filterData.length}>
-          {filterData.map((value, index) => {
-            return (
-              <StepWapper
-                $length={filterData.length}
-                $index={index}
-                key={value.description.departmentName}
-              >
-                <DepartmentCard
-                  data={value}
-                  buttonImgData={imgData.buttonImgData.nodes[0]}
-                />
-              </StepWapper>
-            );
-          })}
+          {filterData.map((value, index) => (
+            <StepWrapper
+              $length={filterData.length}
+              $index={index}
+              key={value.information.name}
+            >
+              <DepartmentCard
+                data={value.information}
+                buttonImgData={imgData.buttonImgData}
+              />
+            </StepWrapper>
+          ))}
         </StepBox>
         {supportingTeam === 0 && filterData.length === 0 && (
           <ErrorImage
-            src={imgData.errorImgData.nodes[0].publicURL}
+            src={imgData.errorImgData.publicURL}
             alt="뿌슝이 이미지"
           />
         )}
@@ -98,26 +101,27 @@ const SubContainer2 = tw.div`
 const StepBox = tw.div<{ $length: number }>`
   gap-4 
   w-full
+  lg:px-20
   
   ${({ $length }) =>
     // eslint-disable-next-line no-nested-ternary
     $length >= 7
-      ? 'grid grid-cols-10 lg:grid-cols-16 md:grid-cols-8'
+      ? 'grid grid-cols-10 lg:grid-cols-3 md:grid-cols-8'
       : 'flex md:grid md:grid-cols-8 sm:flex sm:flex-col xs:flex-col justify-center'}
 `;
 
-const StepWapper = tw.div<{ $index: number; $length: number }>`
+const StepWrapper = tw.div<{ $index: number; $length: number }>`
   w-full
   max-w-[236.8px]
 
   col-span-2
   sm:col-span-10
-  lg:col-span-4
+  lg:col-span-1
+  lg:justify-self-center
   md:col-span-4
   xs:col-span-10
 
-  ${({ $index }) => $index === 0 && 'col-start-2'}
-  ${({ $index }) => $index === 4 && 'col-start-3 lg:col-start-3'}
+  ${({ $index }) => $index === 0 && 'col-start-2 lg:col-start-1'}
   ${({ $length, $index }) => $length % 2 === 1 && $index === $length - 1 && 'md:col-start-3'}
 `;
 

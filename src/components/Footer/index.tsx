@@ -1,13 +1,11 @@
 import tw from 'tailwind-styled-components';
-import { OSType } from '@/types/landing.type';
 import useFooterDetail from './hook';
 
 interface Props {
-  type: OSType;
   backgroundColor: string;
 }
 
-function Footer({ type, backgroundColor }: Props) {
+function Footer({ backgroundColor }: Props) {
   const { logo } = useFooterDetail();
   const logoData = logo.nodes[0];
 
@@ -20,11 +18,7 @@ function Footer({ type, backgroundColor }: Props) {
     <Container $bg={background[backgroundColor]}>
       <LogoContainer>
         <LogoImg src={logoData.publicURL} alt={logoData.name} />
-        {type === 'ios' ? (
-          <IosLogo>YOURSSU</IosLogo>
-        ) : (
-          <DefaultLogo>YOURSSU</DefaultLogo>
-        )}
+        <Logo>YOURSSU</Logo>
       </LogoContainer>
       <InfoContainer>
         <div className="py-[3px] xs:py-[2px]">
@@ -45,8 +39,8 @@ const Container = tw.footer<{ $bg: string }>`
   justify-center
   text-gray1-0
   py-10
-  xs:py-[20px]
-  sm:py-[20px]
+  xs:py-5
+  sm:py-5
   ${(props) => props.$bg}
 `;
 
@@ -64,16 +58,7 @@ const LogoImg = tw.img`
   sm:h-[12px]
 `;
 
-// TODO: Ios 버전 css 확인
-const IosLogo = tw.div`
-  body3
-  py-1
-  font-[550]
-  xs:text-[14px]
-  sm:text-[14px]
-`;
-
-const DefaultLogo = tw.div`
+const Logo = tw.div`
   body3
   py-1
   xs:text-[14px]

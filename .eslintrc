@@ -42,6 +42,11 @@
             "position": "before"
           },
           {
+            "pattern": "gatsby",
+            "group": "external",
+            "position": "after"
+          },
+          {
             "pattern": "@/**",
             "group": "internal",
             "position": "after"
@@ -51,6 +56,7 @@
         "alphabetize": { "order": "asc" }
       }
     ],
+    "react/require-default-props": "off",
     "@typescript-eslint/no-use-before-define": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-props-no-spreading": "off",

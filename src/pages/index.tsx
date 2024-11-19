@@ -22,7 +22,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <Layout pageType="main" type={type}>
+    <Layout isMainPage>
       <Banner type={type} />
       <Team />
       <Ideal />

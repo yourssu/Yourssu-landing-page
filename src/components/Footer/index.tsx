@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components';
+
 import useFooterDetail from './hook';
 
 interface Props {

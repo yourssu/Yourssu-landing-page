@@ -40,10 +40,10 @@ function CarouselContainer({
       <button
         type="button"
         onClick={prevSlide}
-        className=" pl-10 xs:pl-[8px] sm:pl-[10px] lg:pl-[10px]"
+        className="pl-10 xs:pl-2 sm:pl-[10px] lg:pl-[10px]"
       >
         <img
-          className="h-[50px] w-[50px] xs:h-[28px] xs:w-[12px] sm:h-[28px] sm:w-[12px]"
+          className="h-[50px] w-[50px] xs:h-7 xs:w-3 sm:h-7 sm:w-3"
           src={buttonImgData.leftButtonImgData.imgUrl}
           alt={buttonImgData.leftButtonImgData.imgName}
         />
@@ -52,10 +52,10 @@ function CarouselContainer({
       <button
         type="button"
         onClick={nextSlide}
-        className=" pr-10 xs:pr-[8px] sm:pr-[10px] lg:pr-[10px]"
+        className="pr-10 xs:pr-2 sm:pr-[10px] lg:pr-[10px]"
       >
         <img
-          className="h-[50px] w-[50px] xs:h-[20px] xs:w-[10px] sm:h-[28px] sm:w-[12px]"
+          className="h-[50px] w-[50px] xs:h-5 xs:w-[10px] sm:h-7 sm:w-3"
           src={buttonImgData.rightButtonImgData.imgUrl}
           alt={buttonImgData.rightButtonImgData.imgName}
         />

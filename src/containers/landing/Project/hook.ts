@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+
 import { NodeListType, NodeType } from '@/types/hook';
 
 interface ProjectImgNode {

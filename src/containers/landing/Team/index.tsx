@@ -3,6 +3,7 @@ import tw from 'tailwind-styled-components';
 
 import SectionIntro from '@/components/Intro/SectionIntro';
 import { TeamButtonItem } from '@/types/landing.type';
+
 import TeamButton from './TeamButton';
 import useTeamDetail from './hook';
 
@@ -15,7 +16,7 @@ function Team() {
   ];
 
   return (
-    <div className="flex flex-col items-center py-[105px] xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px]">
+    <div className="flex flex-col items-center py-[105px] xs:py-10 sm:py-[70px] md:py-[90px] lg:py-[90px]">
       {breakpoints.md ? (
         <SectionIntro
           title="TEAM YOURSSU"

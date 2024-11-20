@@ -1,14 +1,11 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+
 import SectionIntro from '@/components/Intro/SectionIntro';
 import useCarouselDetail from '@/containers/landing/Project/hook';
-import { OSType } from '@/types/landing.type';
+
 import Carousel from './Carousel';
 
-interface Props {
-  type: OSType;
-}
-
-function Project({ type }: Props) {
+function Project() {
   const breakpoints = useBreakpoint();
   const { data } = useCarouselDetail();
 
@@ -36,7 +33,7 @@ function Project({ type }: Props) {
           />
         )}
       </div>
-      <Carousel itemsData={data.projectImgData.nodes} type={type} />
+      <Carousel itemsData={data.projectImgData.nodes} />
     </div>
   );
 }

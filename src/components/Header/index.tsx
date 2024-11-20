@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
 import { Link } from 'gatsby';
+import { useState } from 'react';
 
 import useHeaderDetail from '@/components/Header/hook';
 
@@ -37,7 +36,7 @@ function Header({ isMainPage }: Props) {
         <nav className="flex flex-row items-center gap-6 xs:hidden sm:hidden">
           <Link to="/">
             <p
-              className={`font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px]${
+              className={`font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] ${
                 isMainPage ? 'text-black-0' : 'text-bluegray1-0'
               }`}
             >
@@ -46,8 +45,8 @@ function Header({ isMainPage }: Props) {
           </Link>
           <Link to="/recruiting">
             <p
-              className={`font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px]${
-                isMainPage ? 'text-black-0' : 'text-bluegray1-0'
+              className={`font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] ${
+                isMainPage ? 'text-bluegray1-0' : 'text-black-0'
               }`}
             >
               RECRUITING
@@ -79,7 +78,7 @@ function Header({ isMainPage }: Props) {
           <Link
             to="/"
             className={`
-              p-5 font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px]
+              p-5 font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] 
               ${isMainPage ? 'text-black-0' : 'text-Text_Color2-0'}`}
           >
             MAIN
@@ -87,8 +86,8 @@ function Header({ isMainPage }: Props) {
           <Link
             to="/recruiting"
             className={`
-              p-5 font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px]
-              ${isMainPage ? 'text-black-0' : 'text-Text_Color2-0'}`}
+              p-5 font-Jost text-[18px] font-[600] leading-normal tracking-[-0.36px] 
+              ${isMainPage ? 'text-Text_Color2-0' : 'text-black-0'}`}
           >
             RECRUITING
           </Link>

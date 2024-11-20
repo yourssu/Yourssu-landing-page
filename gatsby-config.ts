@@ -112,24 +112,6 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        // The unique name for each instance
-        name: 'teams',
-        // Path to the directory
-        path: `${__dirname}/src/assets/icons/teams`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        // The unique name for each instance
-        name: 'department_icons',
-        // Path to the directory
-        path: `${__dirname}/src/assets/icons/department_icons`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         name: 'icons',
         path: `${__dirname}/src/assets/icons/`,
       },

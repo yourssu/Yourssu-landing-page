@@ -16,7 +16,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
       className="z-50 flex flex-col items-center"
     >
       <SubContainer1
-        className={`flex ${(breakpoints.query669 as boolean) ? ' flex-col items-center justify-center gap-[5px]' : 'justify-between'}`}
+        className={`flex ${(breakpoints.query669 as boolean) ? 'mt-12 flex-col items-center justify-center gap-[5px]' : 'mt-20 justify-between'}`}
       >
         <span>{formatDate(bannerData.periodData.formSchedule)}</span>
         <span>유어슈 정기 리크루팅</span>

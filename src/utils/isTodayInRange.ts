@@ -2,8 +2,8 @@ export default function isTodayInRange({
   start,
   end,
 }: {
-  start: string;
-  end: string;
+  start: Date;
+  end: Date;
 }) {
   const startDate = new Date(start);
   startDate.setHours(0, 0, 0, 0);

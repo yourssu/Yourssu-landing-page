@@ -8,35 +8,36 @@ import DepartmentSearch from './DepartmentSearch';
 import useSupportingDetail from './hook';
 
 function Supporting() {
-  const { teamData, scheduleData, imgData } = useSupportingDetail();
+  const { teamData, imgData } = useSupportingDetail();
   const [searchText, setSearchText] = useState<string>('');
-  const [isInPeriod, setIsInPeriod] = useState(true);
   const [supportingTeam, setSupportingTeam] = useState<number>(0);
 
   useEffect(() => {
     setSearchText('');
-    setIsInPeriod(isTodayInRange(scheduleData));
-  }, [scheduleData]);
+  }, []);
 
   useEffect(() => {
     let count = 0;
 
-    if (isInPeriod) {
-      teamData.forEach((data) => {
-        if (data.isRecruiting) {
-          count += 1;
-        }
-      });
-    }
+    teamData.forEach((value) => {
+      if (
+        value.recruitingData &&
+        isTodayInRange(value.recruitingData.formSchedule)
+      ) {
+        count += 1;
+      }
+    });
 
     setSupportingTeam(count);
-  }, [teamData, isInPeriod]);
+  }, [teamData]);
 
-  const filterData = teamData.filter((data) => {
+  const filterData = teamData.filter((item) => {
     if (searchText === '') {
-      return data.isRecruiting;
+      return (
+        item.recruitingData && isTodayInRange(item.recruitingData.formSchedule)
+      );
     }
-    return data.searchKeyword.includes(searchText);
+    return item.searchKeyword.includes(searchText);
   });
 
   return (

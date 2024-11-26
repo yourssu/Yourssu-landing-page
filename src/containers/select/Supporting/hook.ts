@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
 import { NodeType } from '@/types/hook';
+import recruitingSchedule from '@/utils/recruitingSchedule';
 
 interface SupportingData {
   buttonImgData: {
@@ -12,7 +13,17 @@ interface SupportingData {
   errorImgData: {
     nodes: NodeType[];
   };
-  scheduleData: {
+  scheduleWithAssignmentData: {
+    edges: {
+      node: {
+        formSchedule: {
+          start: Date;
+          end: Date;
+        };
+      };
+    }[];
+  };
+  scheduleWithoutAssignmentData: {
     edges: {
       node: {
         formSchedule: {
@@ -29,6 +40,10 @@ interface SupportingData {
           scheduleWithoutAssignment: boolean;
           scheduleWithAssignment: boolean;
           individualSchedule: boolean;
+          formSchedule: {
+            start: Date;
+            end: Date;
+          } | null;
         };
         basicInformation: {
           name: string;
@@ -66,8 +81,20 @@ export default function useSupportingDetail() {
           name
         }
       }
-      scheduleData: allSanityRecruitingSchedule(
+      scheduleWithAssignmentData: allSanityRecruitingSchedule(
         filter: { title: { regex: "/과제 O$/" } }
+      ) {
+        edges {
+          node {
+            formSchedule {
+              start
+              end
+            }
+          }
+        }
+      }
+      scheduleWithoutAssignmentData: allSanityRecruitingSchedule(
+        filter: { title: { regex: "/과제 X$/" } }
       ) {
         edges {
           node {
@@ -87,6 +114,10 @@ export default function useSupportingDetail() {
               scheduleWithoutAssignment
               scheduleWithAssignment
               individualSchedule
+              formSchedule {
+                start
+                end
+              }
             }
             basicInformation {
               name
@@ -108,10 +139,18 @@ export default function useSupportingDetail() {
     } = value.node.applyProcedure;
     return {
       information: value.node.basicInformation,
-      isRecruiting:
-        individualSchedule ||
-        scheduleWithAssignment ||
-        scheduleWithoutAssignment,
+      recruitingData: recruitingSchedule({
+        recruitingType: {
+          individualSchedule,
+          scheduleWithAssignment,
+          scheduleWithoutAssignment,
+        },
+        scheduleWithAssignmentData:
+          data.scheduleWithAssignmentData.edges[0].node.formSchedule,
+        scheduleWithoutAssignmentData:
+          data.scheduleWithoutAssignmentData.edges[0].node.formSchedule,
+        scheduleIndividualData: value.node.applyProcedure.formSchedule,
+      }),
       searchKeyword: value.node.searchKeyword,
     };
   });
@@ -122,7 +161,6 @@ export default function useSupportingDetail() {
       readingGlasses: data.readingGlasses.nodes[0],
       errorImgData: data.errorImgData.nodes[0],
     },
-    scheduleData: data.scheduleData.edges[0].node.formSchedule,
     teamData,
   };
 }

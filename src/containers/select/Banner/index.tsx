@@ -15,18 +15,12 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
       $breakPoint={breakpoints.query669 as boolean}
       className="z-50 flex flex-col items-center"
     >
-      {(breakpoints.query669 as boolean) ? (
-        <SubContainer1 className="flex flex-col items-center justify-center gap-[5px]">
-          <span>{formatDate(bannerData.periodData.formSchedule)}</span>
-          <span>유어슈 정기 리크루팅</span>
-        </SubContainer1>
-      ) : (
-        <SubContainer1 className="flex justify-between">
-          <span>{formatDate(bannerData.periodData.formSchedule)}</span>
-          <span>유어슈 정기 리크루팅</span>
-        </SubContainer1>
-      )}
-
+      <SubContainer1
+        className={`flex ${(breakpoints.query669 as boolean) ? ' flex-col items-center justify-center gap-[5px]' : 'justify-between'}`}
+      >
+        <span>{formatDate(bannerData.periodData.formSchedule)}</span>
+        <span>유어슈 정기 리크루팅</span>
+      </SubContainer1>
       <SubContainer2 className="flex flex-col items-center text-center font-Roboto">
         <BannerTitle>
           {bannerData.periodData.formSchedule.start.slice(2, 4)}&apos;YOURSSU{' '}
@@ -67,7 +61,6 @@ const Container = tw.div<{ $breakPoint: boolean }>`
 
 const SubContainer1 = tw.div`
   w-full
-
   h3
 
   md:h4
@@ -135,8 +128,6 @@ const BannerSubTitle = tw.span`
   xs:h3
 
   text-center
-
-  
 `;
 
 const ButtonText = tw.span`

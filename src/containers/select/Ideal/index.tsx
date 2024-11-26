@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import { motion, transform, useScroll } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
+
 import useIdealDetail from './hook';
 
 function Ideal() {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import isTodayInRange from '@/utils/isTodayInRange';
+
 import DepartmentCard from './DepartmentCard';
 import DepartmentSearch from './DepartmentSearch';
 import useSupportingDetail from './hook';

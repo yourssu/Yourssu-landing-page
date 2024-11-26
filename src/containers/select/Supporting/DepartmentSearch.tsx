@@ -1,6 +1,5 @@
-import { useRef } from 'react';
-
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { useRef } from 'react';
 import tw from 'tailwind-styled-components';
 
 import { NodeType } from '@/types/hook';

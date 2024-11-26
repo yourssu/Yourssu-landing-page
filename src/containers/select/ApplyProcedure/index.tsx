@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components';
+
 import ApplyProcedureStep from './ApplyProcedureStep';
 import useApplyProcedureDetail from './hook';
 
@@ -53,7 +54,7 @@ const Text2 = tw.p`
 const ApplyProcedureStepContainer = tw.div`
   pt-[60px]
   gap-[32px]
-   
+
   lg:grid 
   lg:grid-cols-4 
   lg:gap-x-[22px]

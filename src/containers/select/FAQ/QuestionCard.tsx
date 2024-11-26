@@ -1,7 +1,8 @@
-import { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { useState } from 'react';
 import tw from 'tailwind-styled-components';
+
 import { NodeType } from '@/types/hook';
 
 export default function QuestionCard({

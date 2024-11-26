@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
+
 import { NodeType } from '@/types/hook';
 
 export default function DepartmentLinkButton({

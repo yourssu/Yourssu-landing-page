@@ -1,10 +1,10 @@
-import { useState } from 'react';
-
 import { motion, Variants } from 'framer-motion';
+import { useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import { NodeType } from '@/types/hook';
 import extractImageUrl from '@/utils/extractImageUrl';
+
 import DepartmentLinkButton from './DepartmentLinkButton';
 
 export default function DepartmentCard({
@@ -46,7 +46,7 @@ export default function DepartmentCard({
             <DepartmentDescription>{fixedDescription}</DepartmentDescription>
             <div className="ml-auto">
               <DepartmentLinkButton
-                linkData={data.name.replace(' ', '').toLowerCase()}
+                linkData={data.name.toLowerCase().replaceAll(' ', '_')}
                 buttonImgData={buttonImgData}
               />
             </div>

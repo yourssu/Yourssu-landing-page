@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
+
 import useAboutDetail from './hook';
 
 function About() {

@@ -16,8 +16,8 @@ interface SupportingData {
     edges: {
       node: {
         formSchedule: {
-          start: string;
-          end: string;
+          start: Date;
+          end: Date;
         };
       };
     }[];

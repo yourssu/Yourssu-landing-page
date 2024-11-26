@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+
 import { NodeType } from '@/types/hook';
 
 interface ApplyProcedureData {

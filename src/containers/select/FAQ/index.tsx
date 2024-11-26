@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components';
+
 import QuestionCard from './QuestionCard';
 import useFAQDetail from './hook';
 

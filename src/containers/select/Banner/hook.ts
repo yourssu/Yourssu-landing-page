@@ -28,7 +28,7 @@ export default function useBannerDetail() {
         }
       }
       recruitingSchedule: allSanityRecruitingSchedule(
-        filter: { title: { regex: "/과제 O$/" } }
+        filter: { title: { regex: "/과제 X$/" } }
       ) {
         edges {
           node {

@@ -22,7 +22,7 @@ function Header({ isMainPage }: Props) {
         isClick && 'bg-white-0'
       }`}
     >
-      <div className="flex w-full items-center justify-between py-6 xs:px-5 xs:py-3 sm:px-5 sm:py-3 md:px-10 md:py-6 lg:px-10 lg:py-6 xl:w-[1326px] xxl:w-[1326px]">
+      <div className="flex h-[74px] w-full items-center justify-between xs:h-[51px] xs:px-5 sm:h-[51px] sm:px-5 md:px-10 lg:px-10 xl:w-[1326px] xxl:w-[1326px]">
         <Link to="/" className="flex items-center justify-between">
           <img
             src={logoData.publicURL}

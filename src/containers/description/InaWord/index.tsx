@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components';
+
 import { InaWordInformation } from '@/types/recruiting.type';
 import extractImageUrl from '@/utils/extractImageUrl';
 

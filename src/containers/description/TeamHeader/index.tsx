@@ -1,29 +1,37 @@
 import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
+
 import { BasicInformation } from '@/types/recruiting.type';
 import extractImageUrl from '@/utils/extractImageUrl';
 
 function TeamHeader({
   basicInformation,
+  isRecruiting,
 }: {
   basicInformation: BasicInformation;
+  isRecruiting: boolean;
 }) {
+  const introduction = basicInformation.short_introduction.replaceAll(
+    /\\n/g,
+    ' ',
+  );
+
   return (
     <Container>
       <InnerContainer>
         <TeamIntroContainer>
           <TeamIntroInnerContainer>
-            <Title>{basicInformation.short_introduction}</Title>
+            <Title>{introduction}</Title>
             <TeamName>{basicInformation.name}</TeamName>
             <Description>{basicInformation.long_introduction}</Description>
           </TeamIntroInnerContainer>
-          {basicInformation.apply_link ? (
+          {basicInformation.apply_link && isRecruiting ? (
             <Link to={basicInformation.apply_link}>
               <ApplyButton>바로 지원하기</ApplyButton>
             </Link>
           ) : (
             <div>
-              <NoApplyButton>지원 기간이 아닙니다</NoApplyButton>
+              <NoApplyButton disabled>지원 기간이 아닙니다</NoApplyButton>
             </div>
           )}
         </TeamIntroContainer>
@@ -46,6 +54,11 @@ const Container = tw.section`
 
   w-full
   bg-bluegray4-0
+
+  pt-20
+  md:pt-12
+  sm:pt-12
+  xs:pt-12
 `;
 
 const InnerContainer = tw.div`
@@ -140,8 +153,6 @@ const NoApplyButton = tw.button`
   md:py-3
   sm:py-3
   xs:py-3
-
-  cursor-default
 `;
 
 const TeamImageContainer = tw.div`

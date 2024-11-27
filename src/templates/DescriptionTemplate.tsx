@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
+
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
 import DepartmentSeo from '@/components/Seo/DepartmentSeo';
@@ -12,9 +12,7 @@ import Information from '@/containers/description/Information';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
-import { OSType } from '@/types/landing.type';
 import {
-  ApplyProcedureInformation,
   BasicInformation,
   DefaultContentInformation,
   GrowthAndDiffInformation,
@@ -22,6 +20,7 @@ import {
   RoadToProInformation,
   SkillContentInformation,
 } from '@/types/recruiting.type';
+import isTodayInRange from '@/utils/isTodayInRange';
 
 interface SanityDepartmentData {
   allSanityDepartment: {
@@ -32,9 +31,8 @@ interface SanityDepartmentData {
         ideal: DefaultContentInformation;
         experience: DefaultContentInformation;
         skill: SkillContentInformation | null;
-        applyProcedure: ApplyProcedureInformation[];
-        growthAndDiff: GrowthAndDiffInformation;
         roadToProVideo: RoadToProInformation;
+        growthAndDiff: GrowthAndDiffInformation;
         inaWord: InaWordInformation;
       };
     }[];
@@ -46,7 +44,13 @@ interface DescriptionTemplateProps {
   pageContext: {
     name: string;
     nameList: string[];
-    schedule: ApplyProcedureInformation[];
+    formSchedule: { start: Date | null; end: Date | null } | null;
+    procedure:
+      | {
+          step: string;
+          schedule: string;
+        }[]
+      | null;
   };
 }
 
@@ -54,25 +58,17 @@ function DescriptionTemplate({
   data: {
     allSanityDepartment: { edges },
   },
-  pageContext: { name, nameList, schedule },
+  pageContext: { name, nameList, formSchedule, procedure },
 }: DescriptionTemplateProps) {
-  const [type, setType] = useState<OSType>();
+  const isRecruiting = formSchedule ? isTodayInRange(formSchedule) : false;
   const breakpoints = useBreakpoint();
 
-  useEffect(() => {
-    const osType = navigator.userAgent.toLowerCase();
-    if (osType.indexOf('android') > -1) {
-      setType('android');
-    } else if (osType.indexOf('iphone') > -1 || osType.indexOf('ipad') > -1) {
-      setType('ios');
-    } else {
-      setType('pc');
-    }
-  }, []);
-
   return (
-    <Layout pageType="recruiting" type={type}>
-      <TeamHeader basicInformation={edges[0].node.basicInformation} />
+    <Layout isMainPage={false}>
+      <TeamHeader
+        basicInformation={edges[0].node.basicInformation}
+        isRecruiting={isRecruiting}
+      />
       <Container>
         <InnerContainer>
           <SectionContainer>
@@ -84,11 +80,8 @@ function DescriptionTemplate({
                 skill={edges[0].node.skill}
               />
               <ApplyProcedure
-                applyProcedure={
-                  edges[0].node.applyProcedure.length === 0
-                    ? schedule
-                    : edges[0].node.applyProcedure
-                }
+                applyProcedure={procedure}
+                isRecruiting={isRecruiting}
               />
             </DefaultInformationContainer>
             <Line />
@@ -105,6 +98,7 @@ function DescriptionTemplate({
             <SideNavigation
               currentTeam={{
                 name,
+                isRecruiting,
                 applyLink: edges[0].node.basicInformation.apply_link,
               }}
               teamList={nameList}
@@ -116,6 +110,7 @@ function DescriptionTemplate({
         <ApplyButtonContainer>
           <ApplyButton
             link={edges[0].node.basicInformation.apply_link}
+            isRecruiting={isRecruiting}
             $testSize="body4"
           />
         </ApplyButtonContainer>
@@ -168,10 +163,6 @@ export const querySanityDataByName = graphql`
             title
             content
             notice
-          }
-          applyProcedure {
-            schedule
-            step
           }
           roadToProVideo {
             title

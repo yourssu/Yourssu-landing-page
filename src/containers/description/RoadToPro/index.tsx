@@ -1,7 +1,9 @@
 import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
+
 import { RoadToProInformation } from '@/types/recruiting.type';
 import extractImageUrl from '@/utils/extractImageUrl';
+
 import useRoadToProDetail from './hook';
 
 interface RoadToProProps {

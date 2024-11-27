@@ -4,9 +4,17 @@ interface RecruitingSchedule {
     scheduleWithAssignment: boolean;
     scheduleWithoutAssignment: boolean;
   };
-  scheduleWithAssignmentData: { start: Date; end: Date } | null;
-  scheduleWithoutAssignmentData: { start: Date; end: Date } | null;
-  scheduleIndividualData: { start: Date; end: Date } | null;
+  scheduleWithAssignmentData: { start: Date | null; end: Date | null } | null;
+  scheduleWithoutAssignmentData: {
+    start: Date | null;
+    end: Date | null;
+  } | null;
+  scheduleIndividualData: { start: Date | null; end: Date | null } | null;
+}
+
+interface ScheduleResult {
+  type: 'individual' | 'withAssignment' | 'withoutAssignment' | 'none';
+  formSchedule: { start: Date | null; end: Date | null } | null;
 }
 
 export default function recruitingSchedule({
@@ -14,13 +22,13 @@ export default function recruitingSchedule({
   scheduleWithAssignmentData,
   scheduleWithoutAssignmentData,
   scheduleIndividualData,
-}: RecruitingSchedule) {
+}: RecruitingSchedule): ScheduleResult | null {
   if (recruitingType.individualSchedule) {
     return {
       type: 'individual',
       formSchedule: {
-        start: scheduleIndividualData?.start!,
-        end: scheduleIndividualData?.end!,
+        start: scheduleIndividualData?.start || null,
+        end: scheduleIndividualData?.end || null,
       },
     };
   }
@@ -29,8 +37,8 @@ export default function recruitingSchedule({
     return {
       type: 'withAssignment',
       formSchedule: {
-        start: scheduleWithAssignmentData?.start!,
-        end: scheduleWithAssignmentData?.end!,
+        start: scheduleWithAssignmentData?.start || null,
+        end: scheduleWithAssignmentData?.end || null,
       },
     };
   }
@@ -39,8 +47,8 @@ export default function recruitingSchedule({
     return {
       type: 'withoutAssignment',
       formSchedule: {
-        start: scheduleWithoutAssignmentData?.start!,
-        end: scheduleWithoutAssignmentData?.end!,
+        start: scheduleWithoutAssignmentData?.start || null,
+        end: scheduleWithoutAssignmentData?.end || null,
       },
     };
   }

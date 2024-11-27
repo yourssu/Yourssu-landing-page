@@ -1,37 +1,40 @@
-import Img from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import useCarouselDetail from '@/containers/landing/Project/hook';
-import { CarouselNode, OSType } from '@/types/landing.type';
+import { OSType } from '@/types/landing.type';
 
 interface Props {
-  className: string;
   currentIndex: number;
-  itemsData: CarouselNode[];
   isType: OSType;
 }
 
-function CarouselContent({
-  className,
-  currentIndex,
-  itemsData,
-  isType,
-}: Props) {
-  const { data, projectData } = useCarouselDetail();
+function CarouselContent({ currentIndex, isType }: Props) {
+  const {
+    carouselItemLinkImgData,
+    carouselItemListImgData,
+    projectImgData,
+    projectData,
+  } = useCarouselDetail();
+
   const linkImgData = {
-    imgUrl: data.carouselItemLinkImgData.nodes[0].publicURL,
-    imgName: data.carouselItemLinkImgData.nodes[0].name,
+    imgUrl: carouselItemLinkImgData.nodes[0].publicURL,
+    imgName: carouselItemLinkImgData.nodes[0].name,
   };
+
   const listImgData = {
-    imgUrl: data.carouselItemListImgData.nodes[0].publicURL,
-    imgName: data.carouselItemListImgData.nodes[0].name,
+    imgUrl: carouselItemListImgData.nodes[0].publicURL,
+    imgName: carouselItemListImgData.nodes[0].name,
   };
 
   return (
-    <div className={className}>
+    <div
+      className={`flex items-center justify-between xs:w-[240px] xs:flex-col xs:justify-between sm:flex-col sm:justify-between md:flex-col ${currentIndex === 4 ? 'xs:h-[400px] sm:h-[450px] md:h-[600px]' : 'xs:h-[500px] sm:h-[530px] md:h-[800px] md:justify-between'}`}
+    >
       {currentIndex % 2 !== 0 && (
-        <Img
-          className="h-auto xs:hidden sm:hidden md:hidden lg:w-[530px] xl:w-[732px] xxl:w-[732px]"
-          fluid={itemsData[currentIndex].childImageSharp.fluid}
+        <GatsbyImage
+          alt={projectData[currentIndex].title}
+          className="h-auto w-full max-w-[732px] xs:hidden sm:hidden md:hidden lg:w-[530px]"
+          image={projectImgData[currentIndex]?.image as IGatsbyImageData}
         />
       )}
       <div className="relative flex flex-col items-start justify-center xs:mb-[5px] sm:mb-[5px] md:mb-[10px]">
@@ -74,7 +77,7 @@ function CarouselContent({
             {projectData[currentIndex].description}
           </span>
           <div
-            className={`mt-[35px] flex h-[132px] flex-col justify-between xs:hidden sm:hidden md:hidden ${currentIndex === 1 || currentIndex === 3 || currentIndex === 4 ? 'h-20' : 'h-[132px]'}`}
+            className={`mt-[35px] flex flex-col justify-between xs:hidden sm:hidden md:hidden ${currentIndex === 1 || currentIndex === 3 || currentIndex === 4 ? 'h-20' : 'h-[132px]'}`}
           >
             {projectData[currentIndex].list.map((listData) => (
               <div
@@ -92,22 +95,25 @@ function CarouselContent({
       </div>
       <div className="xs:hidden sm:hidden md:hidden">
         {currentIndex % 2 === 0 && currentIndex !== 4 && (
-          <Img
-            className="h-auto lg:w-[530px] xl:w-[750px] xxl:w-[750px]"
-            fluid={itemsData[currentIndex].childImageSharp.fluid}
+          <GatsbyImage
+            alt={projectData[currentIndex].title}
+            className="h-auto w-full max-w-[750px] lg:w-[530px]"
+            image={projectImgData[currentIndex]?.image as IGatsbyImageData}
           />
         )}
         {currentIndex % 2 === 0 && currentIndex === 4 && (
-          <Img
+          <GatsbyImage
+            alt={projectData[currentIndex].title}
             className="h-auto lg:w-[550px] xl:w-[750px] xxl:w-[750px]"
-            fluid={itemsData[currentIndex].childImageSharp.fluid}
+            image={projectImgData[currentIndex]?.image as IGatsbyImageData}
           />
         )}
       </div>
       <div className="xs:mb-[5px] sm:mb-[5px] md:mb-[10px] lg:hidden xl:hidden xxl:hidden">
-        <Img
+        <GatsbyImage
+          alt={projectData[currentIndex].title}
           className="h-auto xs:w-[220px] sm:w-[300px] md:w-[400px]"
-          fluid={itemsData[currentIndex].childImageSharp.fluid}
+          image={projectImgData[currentIndex]?.image as IGatsbyImageData}
         />
       </div>
       <div className="flex w-[405px] flex-col justify-start xs:mb-[5px] xs:w-[210px] sm:mb-[5px] sm:w-[266px] md:mb-[10px] lg:hidden xl:hidden xxl:hidden">

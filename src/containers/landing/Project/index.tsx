@@ -1,20 +1,19 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 import SectionIntro from '@/components/Intro/SectionIntro';
+import Carousel from '@/containers/landing/Project/Carousel';
 import useCarouselDetail from '@/containers/landing/Project/hook';
-
-import Carousel from './Carousel';
 
 function Project() {
   const breakpoints = useBreakpoint();
-  const { data } = useCarouselDetail();
+  const { backgroundImgData } = useCarouselDetail();
 
   return (
     <div className="relative mb-[350px] flex flex-col items-center xs:mb-[260px] sm:mb-[200px] md:mb-[300px]">
       <img
         className=" absolute top-0 -z-10 h-[446px] w-full xs:h-[270px] sm:h-[357px]"
-        src={data.backgroundImgData.nodes[0].publicURL}
-        alt={data.backgroundImgData.nodes[0].name}
+        src={backgroundImgData.nodes[0].publicURL}
+        alt={backgroundImgData.nodes[0].name}
       />
       <div className="absolute w-full pt-[80px] xs:pt-[50px] sm:pt-[60px]">
         {breakpoints.md ? (
@@ -33,7 +32,7 @@ function Project() {
           />
         )}
       </div>
-      <Carousel itemsData={data.projectImgData.nodes} />
+      <Carousel />
     </div>
   );
 }

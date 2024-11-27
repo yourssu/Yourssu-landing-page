@@ -1,22 +1,22 @@
-import GatsbyImage from 'gatsby-image';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import useBannerDetail from '@/containers/landing/Banner/hook';
 
 function Banner() {
-  const bannerData = useBannerDetail();
+  const { desktopImage, mobileImage } = useBannerDetail();
+  const breakpoints = useBreakpoint();
+
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <GatsbyImage
-        loading="eager"
-        className="h-[800px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
-        fluid={[
-          bannerData.mobileImage.childImageSharp.fluid,
-          {
-            ...bannerData.desktopImage.childImageSharp.fluid,
-            media: '(min-width: 1080px)',
-          },
-        ]}
-      />
+      {mobileImage && desktopImage && (
+        <GatsbyImage
+          alt="배너 이미지"
+          loading="eager"
+          className="h-[800px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
+          image={breakpoints.md ? mobileImage : desktopImage}
+        />
+      )}
       {/* 390, 720 화면 */}
       <div className="absolute top-[132px] flex w-full flex-col items-center justify-center xs:top-[75px] lg:hidden xl:hidden xxl:hidden">
         <span className="font-NeoM00 font-normal xs:text-[16px] xs:leading-[16px] sm:text-[20px] sm:leading-[20px] md:text-[24px] md:leading-[24px]">

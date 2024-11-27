@@ -13,7 +13,7 @@ function SectionIntro({ title, description, linerColor, textColor }: Props) {
 
   const linearVariants: { [key: string]: string } = {
     gra: 'bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0',
-    black: 'bg-black',
+    black: 'bg-black-0',
   };
 
   return (

@@ -127,11 +127,12 @@ export function Head({
 }: {
   data: SanityDepartmentData;
 }) {
+  const data = allSanityDepartment.edges[0].node.basicInformation;
   return (
     <DepartmentSeo
-      image={
-        allSanityDepartment.edges[0].node.basicInformation._rawIcon.asset._ref
-      }
+      title={`${data.short_introduction} ${data.name}`}
+      description={data.long_introduction}
+      image={data._rawIcon.asset._ref}
     />
   );
 }

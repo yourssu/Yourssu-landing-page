@@ -13,15 +13,15 @@ function CarouselContainer({
   currentIndex,
   setCurrentIndex,
 }: Props) {
-  const { data, projectData } = useCarouselDetail();
+  const { carouselItemButtonImgData, projectData } = useCarouselDetail();
   const buttonImgData = {
     leftButtonImgData: {
-      imgUrl: data.carouselItemButtonImgData.nodes[0].publicURL,
-      imgName: data.carouselItemButtonImgData.nodes[0].name,
+      imgUrl: carouselItemButtonImgData.nodes[0].publicURL,
+      imgName: carouselItemButtonImgData.nodes[0].name,
     },
     rightButtonImgData: {
-      imgUrl: data.carouselItemButtonImgData.nodes[1].publicURL,
-      imgName: data.carouselItemButtonImgData.nodes[1].name,
+      imgUrl: carouselItemButtonImgData.nodes[1].publicURL,
+      imgName: carouselItemButtonImgData.nodes[1].name,
     },
   };
 

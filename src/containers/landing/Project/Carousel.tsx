@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { CarouselNode, OSType } from '@/types/landing.type';
+import { OSType } from '@/types/landing.type';
 
 import CarouselContainer from './CarouselContainer';
 import CarouselContent from './CarouselContent';
 
-interface Props {
-  itemsData: CarouselNode[];
-}
-
-function Carousel({ itemsData }: Props) {
+function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [type, setType] = useState<OSType>();
 
@@ -34,12 +30,7 @@ function Carousel({ itemsData }: Props) {
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       >
-        <CarouselContent
-          className={`flex items-center justify-between xs:w-[240px] xs:flex-col xs:justify-between sm:flex-col sm:justify-between md:flex-col ${currentIndex === 4 ? 'xs:h-[400px] sm:h-[450px] md:h-[600px]' : 'xs:h-[500px] sm:h-[530px] md:h-[800px] md:justify-between'}`}
-          itemsData={itemsData}
-          currentIndex={currentIndex}
-          isType={type}
-        />
+        <CarouselContent currentIndex={currentIndex} isType={type} />
       </CarouselContainer>
     </div>
   );

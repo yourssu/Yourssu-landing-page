@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop -H 0.0.0.0",
+    "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -22,15 +22,14 @@
     "dotenv": "^16.4.1",
     "framer-motion": "^11.3.31",
     "gatsby": "^5.13.1",
-    "gatsby-image": "^3.11.0",
     "gatsby-plugin-google-gtag": "^5.13.1",
-    "gatsby-plugin-image": "^3.13.0",
+    "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.0",
     "gatsby-plugin-react-svg": "^3.3.0",
-    "gatsby-plugin-sharp": "^5.13.0",
+    "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-source-filesystem": "^5.13.0",
     "gatsby-source-sanity": "^7.9.1",
-    "gatsby-transformer-sharp": "^5.13.0",
+    "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0"

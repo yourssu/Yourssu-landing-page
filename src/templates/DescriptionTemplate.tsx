@@ -105,16 +105,17 @@ function DescriptionTemplate({
             />
           )}
         </InnerContainer>
+
+        {breakpoints.md && (
+          <ApplyButtonContainer>
+            <ApplyButton
+              link={edges[0].node.basicInformation.apply_link}
+              isRecruiting={isRecruiting}
+              $testSize="body4"
+            />
+          </ApplyButtonContainer>
+        )}
       </Container>
-      {breakpoints.md && (
-        <ApplyButtonContainer>
-          <ApplyButton
-            link={edges[0].node.basicInformation.apply_link}
-            isRecruiting={isRecruiting}
-            $testSize="body4"
-          />
-        </ApplyButtonContainer>
-      )}
     </Layout>
   );
 }
@@ -193,13 +194,10 @@ export const querySanityDataByName = graphql`
 `;
 
 const Container = tw.div`
-  flex
-  justify-center
   bg-white-0
-  
-  md:pb-20
-  sm:pb-20
-  xs:pb-20
+
+  px-10
+  sm:px-5
 `;
 
 const InnerContainer = tw.div`
@@ -213,13 +211,11 @@ const InnerContainer = tw.div`
   max-w-[1364px]
   h-fit
 
-  mx-10
-  sm:mx-5
-
-  my-20
-  md:my-[50px]
-  sm:my-8
-  xs:my-8 
+  mx-auto
+  py-20
+  md:py-[50px]
+  sm:py-8
+  xs:py-8
 `;
 
 const SectionContainer = tw.div`
@@ -250,7 +246,7 @@ const Line = tw.hr`
 `;
 
 const ApplyButtonContainer = tw.div`
-  fixed
+  sticky
   bottom-0
   
   flex

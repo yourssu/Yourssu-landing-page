@@ -20,10 +20,10 @@ function Supporting() {
     let count = 0;
 
     teamData.forEach((value) => {
-      if (
-        value.recruitingData &&
-        isTodayInRange(value.recruitingData.formSchedule)
-      ) {
+      if (!value.recruitingData || !value.recruitingData.formSchedule) {
+        return;
+      }
+      if (isTodayInRange(value.recruitingData.formSchedule)) {
         count += 1;
       }
     });
@@ -34,7 +34,9 @@ function Supporting() {
   const filterData = teamData.filter((item) => {
     if (searchText === '') {
       return (
-        item.recruitingData && isTodayInRange(item.recruitingData.formSchedule)
+        item.recruitingData &&
+        item.recruitingData.formSchedule &&
+        isTodayInRange(item.recruitingData.formSchedule)
       );
     }
     return item.searchKeyword.includes(searchText);
@@ -103,12 +105,11 @@ const SubContainer2 = tw.div`
 const StepBox = tw.div<{ $length: number }>`
   gap-4 
   w-full
-  lg:px-20
   
   ${({ $length }) =>
     // eslint-disable-next-line no-nested-ternary
-    $length >= 7
-      ? 'grid grid-cols-10 lg:grid-cols-3 md:grid-cols-8'
+    $length >= 5
+      ? 'grid grid-cols-10 lg:grid-cols-16 md:grid-cols-8'
       : 'flex md:grid md:grid-cols-8 sm:flex sm:flex-col xs:flex-col justify-center'}
 `;
 
@@ -118,12 +119,12 @@ const StepWrapper = tw.div<{ $index: number; $length: number }>`
 
   col-span-2
   sm:col-span-10
-  lg:col-span-1
-  lg:justify-self-center
+  lg:col-span-4
   md:col-span-4
   xs:col-span-10
 
-  ${({ $index }) => $index === 0 && 'col-start-2 lg:col-start-1'}
+  ${({ $index }) => $index === 0 && 'col-start-2'}
+  ${({ $index }) => $index === 4 && 'col-start-3 lg:col-start-3'}
   ${({ $length, $index }) => $length % 2 === 1 && $index === $length - 1 && 'md:col-start-3'}
 `;
 

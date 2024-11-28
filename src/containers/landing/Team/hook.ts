@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
 
 import { TeamButtonEdge } from '@/types/hook';
 
@@ -11,7 +12,11 @@ export default function useTeamDetail() {
             basicInformation {
               name
               sub_name
-              _rawIcon
+              icon {
+                asset {
+                  gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                }
+              }
             }
           }
         }
@@ -25,7 +30,7 @@ export default function useTeamDetail() {
     return {
       longName: team.node.basicInformation.name,
       shortName: team.node.basicInformation.sub_name,
-      image: team.node.basicInformation._rawIcon.asset._ref,
+      image: getImage(team.node.basicInformation.icon.asset.gatsbyImageData),
     };
   });
 

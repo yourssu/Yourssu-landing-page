@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
 
 import { RoadToProInformation } from '@/types/recruiting.type';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 import useRoadToProDetail from './hook';
 
@@ -20,26 +20,28 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
         <SubTitle>{roadToPro.title}</SubTitle>
       </TitleContainer>
       <VideoInfoContainer>
-        {roadToPro.roadToPro_list.map((video) => (
-          <div key={video.video_link} className="flex flex-col gap-4">
-            <VideoContainer to={video.video_link}>
-              <Thumbnail
-                src={extractImageUrl(video.video_thumbnail._rawAsset._ref)}
-                alt={video.video_link}
-              />
-              <Gradient src={data.gradientImg.publicURL} alt="gradient" />
-              <PlayButton src={data.playIcon.publicURL} alt="play" />
-            </VideoContainer>
-            <Presenter>
-              {video.presenter
-                .map(
-                  ({ presenter_name, presenter_nickname }) =>
-                    `${presenter_name} (${presenter_nickname})`,
-                )
-                .join(', ')}
-            </Presenter>
-          </div>
-        ))}
+        {roadToPro.roadToPro_list.map((video) => {
+          const thumbnail = getImage(
+            video.video_thumbnail.asset.gatsbyImageData,
+          );
+          return (
+            <div key={video.video_link} className="flex flex-col gap-4">
+              <VideoContainer to={video.video_link}>
+                {thumbnail && <Thumbnail image={thumbnail} alt="thumbnail" />}
+                <Gradient src={data.gradientImg.publicURL} alt="gradient" />
+                <PlayButton src={data.playIcon.publicURL} alt="play" />
+              </VideoContainer>
+              <Presenter>
+                {video.presenter
+                  .map(
+                    ({ presenter_name, presenter_nickname }) =>
+                      `${presenter_name} (${presenter_nickname})`,
+                  )
+                  .join(', ')}
+              </Presenter>
+            </div>
+          );
+        })}
       </VideoInfoContainer>
     </Container>
   );
@@ -96,7 +98,7 @@ const VideoContainer = tw(Link)`
   w-fit
 `;
 
-const Thumbnail = tw.img`
+const Thumbnail = tw(GatsbyImage)`
   h-[224px]
   md:h-[188px]
   sm:h-[188px]

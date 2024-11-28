@@ -3,7 +3,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image';
 export interface TeamButtonItem {
   shortName: string;
   longName: string;
-  image: string;
+  image: IGatsbyImageData | undefined;
 }
 
 export interface CarouselNode {

@@ -124,7 +124,7 @@ const StepWrapper = tw.div<{ $index: number; $length: number }>`
   xs:col-span-10
 
   ${({ $index }) => $index === 0 && 'col-start-2'}
-  ${({ $index }) => $index === 4 && 'col-start-3 lg:col-start-3'}
+  ${({ $index }) => $index === 4 && 'col-start-1 lg:col-start-1'}
   ${({ $length, $index }) => $length % 2 === 1 && $index === $length - 1 && 'md:col-start-3'}
 `;
 

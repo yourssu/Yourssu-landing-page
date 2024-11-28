@@ -10,15 +10,13 @@ function ApplyProcedure() {
       <ApplyProcedureText>합류 여정</ApplyProcedureText>
       <Text2>유어슈에 지원하면 다음과 같은 과정을 거쳐 선발돼요.</Text2>
       <ApplyProcedureStepContainer className="flex justify-between">
-        {data.map((value, index) => {
-          return (
-            <ApplyProcedureStep
-              data={value}
-              key={value.description.stepTitle}
-              index={index}
-            />
-          );
-        })}
+        {data.map((value, index) => (
+          <ApplyProcedureStep
+            data={value}
+            key={value.description.stepTitle}
+            index={index}
+          />
+        ))}
       </ApplyProcedureStepContainer>
       <Text3>*세부사항은 지원 분야마다 차이가 있을 수 있습니다.</Text3>
     </Container>

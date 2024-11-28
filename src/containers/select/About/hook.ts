@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
 
-import { NodeType } from '@/types/hook';
+import { ImgNodeType, NodeType } from '@/types/hook';
 
 interface AboutData {
   aboutImgData: {
-    nodes: NodeType[];
+    nodes: ImgNodeType[];
   };
   smallarrow: {
     nodes: NodeType[];
@@ -21,8 +22,10 @@ export default function useAboutDetail() {
         filter: { name: { eq: "departmentSelect.about" } }
       ) {
         nodes {
-          publicURL
           name
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, quality: 90, width: 498)
+          }
         }
       }
       smallarrow: allFile(filter: { name: { eq: "smallarrow-right" } }) {
@@ -51,5 +54,15 @@ export default function useAboutDetail() {
     '서로를 존중하며 유어슈의 성장과 함께 스스로 발전합니다.',
   ];
 
-  return { imgData, aboutDescription };
+  return {
+    aboutImgData: {
+      image: getImage(
+        imgData.aboutImgData.nodes[0].childImageSharp.gatsbyImageData,
+      ),
+      name: imgData.aboutImgData.nodes[0].name,
+    },
+    smallarrow: imgData.smallarrow.nodes[0],
+    listImgData: imgData.listImgData.nodes[0],
+    aboutDescription,
+  };
 }

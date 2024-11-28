@@ -1,5 +1,7 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+
 interface VideoInformation {
-  video_thumbnail: { _rawAsset: { _ref: string } };
+  video_thumbnail: { asset: { gatsbyImageData: IGatsbyImageData } };
   presenter: { presenter_nickname: string; presenter_name: string }[];
   video_link: string;
 }
@@ -9,8 +11,8 @@ export interface BasicInformation {
   short_introduction: string;
   long_introduction: string;
   apply_link: string;
-  _rawIcon: {
-    asset: { _ref: string };
+  icon: {
+    asset: { gatsbyImageData: IGatsbyImageData };
   };
 }
 
@@ -19,9 +21,7 @@ export interface DefaultContentInformation {
   content: string[];
 }
 
-export interface SkillContentInformation {
-  title: string;
-  content: string[];
+export interface SkillContentInformation extends DefaultContentInformation {
   notice: string[];
 }
 

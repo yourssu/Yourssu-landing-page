@@ -1,15 +1,16 @@
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image';
+
 import useSeoDetail from '@/components/Seo/hook';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 interface DepartmentSeoProps {
   title: string;
   description: string;
-  image: string;
+  image: IGatsbyImageData;
 }
 
 function DepartmentSeo({ title, description, image }: DepartmentSeoProps) {
   const { site } = useSeoDetail();
-  const imageUrl = extractImageUrl(image);
+  const imageUrl = getSrc(image) || '';
 
   return (
     <>

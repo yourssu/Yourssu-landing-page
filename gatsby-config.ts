@@ -113,7 +113,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'icons',
-        path: `${__dirname}/src/assets/icons/`,
+        path: `${__dirname}/src/assets/icons`,
       },
     },
     {

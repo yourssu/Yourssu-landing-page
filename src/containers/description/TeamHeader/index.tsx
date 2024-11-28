@@ -1,20 +1,23 @@
 import { Link } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
 
 import { BasicInformation } from '@/types/recruiting.type';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 function TeamHeader({
+  name,
   basicInformation,
   isRecruiting,
 }: {
+  name: string;
   basicInformation: BasicInformation;
   isRecruiting: boolean;
 }) {
   const introduction = basicInformation.short_introduction.replaceAll(
     /\\n/g,
-    ' ',
+    '',
   );
+  const icon = getImage(basicInformation.icon.asset.gatsbyImageData);
 
   return (
     <Container>
@@ -22,7 +25,7 @@ function TeamHeader({
         <TeamIntroContainer>
           <TeamIntroInnerContainer>
             <Title>{introduction}</Title>
-            <TeamName>{basicInformation.name}</TeamName>
+            <TeamName>{name}</TeamName>
             <Description>{basicInformation.long_introduction}</Description>
           </TeamIntroInnerContainer>
           {basicInformation.apply_link && isRecruiting ? (
@@ -36,10 +39,7 @@ function TeamHeader({
           )}
         </TeamIntroContainer>
         <TeamImageContainer>
-          <TeamImage
-            src={extractImageUrl(basicInformation._rawIcon.asset._ref)}
-            alt={basicInformation.name}
-          />
+          {icon && <TeamImage image={icon} alt={name} />}
         </TeamImageContainer>
       </InnerContainer>
     </Container>
@@ -160,7 +160,7 @@ const TeamImageContainer = tw.div`
   justify-center
 `;
 
-const TeamImage = tw.img`
+const TeamImage = tw(GatsbyImage)`
   w-[400px]
   md:w-[280px]
   sm:w-[200px]

@@ -1,6 +1,15 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+
 export interface NodeType {
   publicURL: string;
   name: string;
+}
+
+export interface ImgNodeType {
+  name: string;
+  childImageSharp: {
+    gatsbyImageData: IGatsbyImageData;
+  };
 }
 
 export interface NodeListType {
@@ -12,9 +21,9 @@ export interface TeamButtonEdge {
     basicInformation: {
       name: string;
       sub_name: string;
-      _rawIcon: {
+      icon: {
         asset: {
-          _ref: string;
+          gatsbyImageData: IGatsbyImageData;
         };
       };
     };

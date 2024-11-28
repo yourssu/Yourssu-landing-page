@@ -1,9 +1,9 @@
 import { motion, Variants } from 'framer-motion';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import { NodeType } from '@/types/hook';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 import DepartmentLinkButton from './DepartmentLinkButton';
 
@@ -14,11 +14,7 @@ export default function DepartmentCard({
   data: {
     name: string;
     short_introduction: string;
-    _rawIcon: {
-      asset: {
-        _ref: string;
-      };
-    };
+    icon: IGatsbyImageData | undefined;
   };
   buttonImgData: NodeType;
 }) {
@@ -55,10 +51,7 @@ export default function DepartmentCard({
 
         <Stack>
           <DepartmentText>{data.name}</DepartmentText>
-          <DepartmentImg
-            src={extractImageUrl(data._rawIcon.asset._ref)}
-            alt={data.name}
-          />
+          {data.icon && <DepartmentImg image={data.icon} alt={data.name} />}
         </Stack>
       </Container>
     </div>
@@ -93,7 +86,7 @@ const Stack = tw(motion.div)`
   justify-between
   w-full
   h-full
-  p-[32px]
+  p-8
 `;
 
 const DepartmentText = tw.span`
@@ -101,13 +94,13 @@ const DepartmentText = tw.span`
   h3
 `;
 
-const DepartmentImg = tw.img`
+const DepartmentImg = tw(GatsbyImage)`
   ml-auto
   w-[100px]
 `;
 
 const DepartmentDescription = tw.p`
   whitespace-pre-line
-  break-words
+  tracking-tight
   h4
 `;

@@ -1,9 +1,9 @@
 import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import { TeamButtonItem } from '@/types/landing.type';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 function TeamButton({ longName, shortName, image }: TeamButtonItem) {
   const [isHover, setIsHover] = useState(false);
@@ -28,11 +28,13 @@ function TeamButton({ longName, shortName, image }: TeamButtonItem) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img
-            className="w-[85px] xs:w-[60px] sm:w-[60px]"
-            src={extractImageUrl(image)}
-            alt={longName}
-          />
+          {image && (
+            <GatsbyImage
+              className="w-[85px] xs:w-[60px] sm:w-[60px]"
+              image={image}
+              alt={longName}
+            />
+          )}
         </Link>
       </div>
       <Link

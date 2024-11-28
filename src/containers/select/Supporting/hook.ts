@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { NodeType } from '@/types/hook';
 import recruitingSchedule from '@/utils/recruitingSchedule';
@@ -48,9 +49,9 @@ interface SupportingData {
         basicInformation: {
           name: string;
           short_introduction: string;
-          _rawIcon: {
+          icon: {
             asset: {
-              _ref: string;
+              gatsbyImageData: IGatsbyImageData;
             };
           };
         };
@@ -122,7 +123,11 @@ export default function useSupportingDetail() {
             basicInformation {
               name
               short_introduction
-              _rawIcon
+              icon {
+                asset {
+                  gatsbyImageData
+                }
+              }
             }
             searchKeyword
           }
@@ -138,7 +143,10 @@ export default function useSupportingDetail() {
       scheduleWithoutAssignment,
     } = value.node.applyProcedure;
     return {
-      information: value.node.basicInformation,
+      information: {
+        ...value.node.basicInformation,
+        icon: getImage(value.node.basicInformation.icon.asset.gatsbyImageData),
+      },
       recruitingData: recruitingSchedule({
         recruitingType: {
           individualSchedule,

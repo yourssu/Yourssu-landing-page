@@ -18,7 +18,7 @@ function Header({ isMainPage }: Props) {
     <header
       className={`${
         !isMainPage && 'bg-bluegray4-0'
-      } absolute z-10 flex w-full flex-col items-center justify-between ${
+      } absolute z-50 flex w-full flex-col items-center justify-between ${
         isClick && 'bg-white-0'
       }`}
     >

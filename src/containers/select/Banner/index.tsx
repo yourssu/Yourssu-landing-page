@@ -13,7 +13,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
   return (
     <Container
       $breakPoint={breakpoints.query669 as boolean}
-      className="z-50 flex flex-col items-center"
+      className="z-40 flex flex-col items-center"
     >
       <SubContainer1
         className={`flex ${(breakpoints.query669 as boolean) ? 'mt-12 flex-col items-center justify-center gap-[5px]' : 'mt-20 justify-between'}`}

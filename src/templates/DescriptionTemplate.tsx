@@ -66,6 +66,7 @@ function DescriptionTemplate({
   return (
     <Layout isMainPage={false}>
       <TeamHeader
+        name={name}
         basicInformation={edges[0].node.basicInformation}
         isRecruiting={isRecruiting}
       />
@@ -89,7 +90,7 @@ function DescriptionTemplate({
             <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
             <InaWord
               departmentImage={
-                edges[0].node.basicInformation._rawIcon.asset._ref
+                edges[0].node.basicInformation.icon.asset.gatsbyImageData
               }
               inaWord={edges[0].node.inaWord}
             />
@@ -105,7 +106,6 @@ function DescriptionTemplate({
             />
           )}
         </InnerContainer>
-
         {breakpoints.md && (
           <ApplyButtonContainer>
             <ApplyButton
@@ -132,7 +132,7 @@ export function Head({
     <DepartmentSeo
       title={`${data.short_introduction} ${data.name}`}
       description={data.long_introduction}
-      image={data._rawIcon.asset._ref}
+      image={data.icon.asset.gatsbyImageData}
     />
   );
 }
@@ -143,11 +143,14 @@ export const querySanityDataByName = graphql`
       edges {
         node {
           basicInformation {
-            name
             short_introduction
             long_introduction
             apply_link
-            _rawIcon
+            icon {
+              asset {
+                gatsbyImageData
+              }
+            }
           }
           task {
             title
@@ -170,7 +173,9 @@ export const querySanityDataByName = graphql`
             title
             roadToPro_list {
               video_thumbnail {
-                _rawAsset
+                asset {
+                  gatsbyImageData
+                }
               }
               presenter {
                 presenter_nickname

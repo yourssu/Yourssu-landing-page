@@ -7,7 +7,7 @@ interface Props {
 }
 
 function Footer({ backgroundColor }: Props) {
-  const { logo } = useFooterDetail();
+  const { logo, socialIcon, link } = useFooterDetail();
   const logoData = logo.nodes[0];
 
   const background: { [key: string]: string } = {
@@ -27,6 +27,23 @@ function Footer({ backgroundColor }: Props) {
         </div>
         <div>ⓒ Yourssu. All rights reserved.</div>
       </InfoContainer>
+      <div className="flex items-center gap-[9px]">
+        {socialIcon.nodes.map((icon, index) => (
+          <>
+            <a
+              key={icon.name}
+              href={link[icon.name.split('-')[1]]}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={icon.publicURL} alt={icon.name} />
+            </a>
+            {index !== socialIcon.nodes.length - 1 && (
+              <hr className="h-[26.5px] w-[1px] border-none bg-[#D4D7DB]" />
+            )}
+          </>
+        ))}
+      </div>
     </Container>
   );
 }
@@ -72,4 +89,5 @@ const InfoContainer = tw.div`
   xs:text-[13px]
   sm:text-[13px]
   md:text-[14px]
+  mb-8
 `;

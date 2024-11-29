@@ -117,6 +117,13 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'socials',
+        path: `${__dirname}/src/assets/socials`,
+      },
+    },
+    {
       resolve: `gatsby-source-sanity`,
       options: {
         projectId: process.env.GATSBY_APP_SANITY_PROJECT_ID,

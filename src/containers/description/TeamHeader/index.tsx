@@ -1,37 +1,45 @@
 import { Link } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
+
 import { BasicInformation } from '@/types/recruiting.type';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 function TeamHeader({
+  name,
   basicInformation,
+  isRecruiting,
 }: {
+  name: string;
   basicInformation: BasicInformation;
+  isRecruiting: boolean;
 }) {
+  const introduction = basicInformation.short_introduction.replaceAll(
+    /\\n/g,
+    '',
+  );
+  const icon = getImage(basicInformation.icon.asset.gatsbyImageData);
+
   return (
     <Container>
       <InnerContainer>
         <TeamIntroContainer>
           <TeamIntroInnerContainer>
-            <Title>{basicInformation.short_introduction}</Title>
-            <TeamName>{basicInformation.name}</TeamName>
+            <Title>{introduction}</Title>
+            <TeamName>{name}</TeamName>
             <Description>{basicInformation.long_introduction}</Description>
           </TeamIntroInnerContainer>
-          {basicInformation.apply_link ? (
+          {basicInformation.apply_link && isRecruiting ? (
             <Link to={basicInformation.apply_link}>
               <ApplyButton>바로 지원하기</ApplyButton>
             </Link>
           ) : (
             <div>
-              <NoApplyButton>지원 기간이 아닙니다</NoApplyButton>
+              <NoApplyButton disabled>지원 기간이 아닙니다</NoApplyButton>
             </div>
           )}
         </TeamIntroContainer>
         <TeamImageContainer>
-          <TeamImage
-            src={extractImageUrl(basicInformation._rawIcon.asset._ref)}
-            alt={basicInformation.name}
-          />
+          {icon && <TeamImage image={icon} alt={name} />}
         </TeamImageContainer>
       </InnerContainer>
     </Container>
@@ -46,6 +54,11 @@ const Container = tw.section`
 
   w-full
   bg-bluegray4-0
+
+  pt-20
+  md:pt-12
+  sm:pt-12
+  xs:pt-12
 `;
 
 const InnerContainer = tw.div`
@@ -140,8 +153,6 @@ const NoApplyButton = tw.button`
   md:py-3
   sm:py-3
   xs:py-3
-
-  cursor-default
 `;
 
 const TeamImageContainer = tw.div`
@@ -149,7 +160,7 @@ const TeamImageContainer = tw.div`
   justify-center
 `;
 
-const TeamImage = tw.img`
+const TeamImage = tw(GatsbyImage)`
   w-[400px]
   md:w-[280px]
   sm:w-[200px]

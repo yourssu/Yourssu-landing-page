@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components';
+
 import { GrowthAndDiffInformation } from '@/types/recruiting.type';
 
 interface GrowthAndDiffProps {

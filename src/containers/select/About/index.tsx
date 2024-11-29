@@ -1,10 +1,13 @@
 import { Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
+
 import useAboutDetail from './hook';
 
 function About() {
-  const { imgData, aboutDescription } = useAboutDetail();
+  const { aboutImgData, smallarrow, listImgData, aboutDescription } =
+    useAboutDetail();
   const breakpoints = useBreakpoint();
 
   return (
@@ -12,18 +15,17 @@ function About() {
       $windowSize={!breakpoints.query669}
       className="flex items-center justify-center xs:flex-col sm:flex-col md:flex-col"
     >
-      <AboutImage
-        src={imgData.aboutImgData.nodes[0].publicURL}
-        alt={imgData.aboutImgData.nodes[0].name}
-      />
+      {aboutImgData.image && (
+        <AboutImage image={aboutImgData.image} alt={aboutImgData.name} />
+      )}
       <SubContainer className="flex flex-col items-start justify-center sm:items-center">
         <SubContainerTop className="flex flex-col items-start sm:items-center sm:justify-center ">
           <div className="flex items-center">
             <Title>ABOUT YOURSSU</Title>
             <Link to="/">
               <img
-                src={imgData.smallarrow.nodes[0].publicURL}
-                alt={imgData.smallarrow.nodes[0].name}
+                src={smallarrow.publicURL}
+                alt={smallarrow.name}
                 className="pl-[7px]"
               />
             </Link>
@@ -37,10 +39,7 @@ function About() {
           {aboutDescription.map((value, index) => {
             return (
               <List className=" flex justify-start" key={index!}>
-                <ListImage
-                  src={imgData.listImgData.nodes[0].publicURL}
-                  alt={imgData.listImgData.nodes[0].name}
-                />
+                <ListImage src={listImgData.publicURL} alt={listImgData.name} />
                 <ListItem>{value}</ListItem>
               </List>
             );
@@ -55,8 +54,8 @@ const Container = tw.div<{ $windowSize: boolean }>`
 
   rounded-[30px]
 
-  py-[32px]
-  px-[100px]
+  py-8
+  px-10
   ${(prop) => (prop.$windowSize ? 'sm:px-[160px]' : 'sm:px-[20px]')}
   xs:px-[20px]
   
@@ -72,9 +71,9 @@ const Container = tw.div<{ $windowSize: boolean }>`
   
 `;
 
-const AboutImage = tw.img`
-  w-[498px] 
-  xs:w-[255px] 
+const AboutImage = tw(GatsbyImage)`
+  w-[498px]
+  xs:w-[255px]
   sm:w-[255px]
 `;
 

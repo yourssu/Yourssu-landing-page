@@ -1,34 +1,40 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { NodeListType, NodeType } from '@/types/hook';
-
-interface ProjectImgNode {
-  childImageSharp: {
-    fluid: {
-      aspectRatio: number;
-      sizes: string;
-      base64: string;
-      src: string;
-      srcSet: string;
-    };
-  };
-}
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface CarouselData {
-  carouselItemButtonImgData: NodeListType;
+  carouselItemButtonImgData: {
+    nodes: {
+      publicURL: string;
+      name: string;
+    }[];
+  };
   carouselItemLinkImgData: {
-    nodes: NodeType[];
+    nodes: {
+      publicURL: string;
+      name: string;
+    }[];
   };
   carouselItemListImgData: {
-    nodes: NodeType[];
+    nodes: {
+      publicURL: string;
+      name: string;
+    }[];
   };
   projectImgData: {
-    nodes: ProjectImgNode[];
+    nodes: {
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
+      name: string;
+    }[];
   };
   backgroundImgData: {
-    nodes: NodeType[];
+    nodes: {
+      publicURL: string;
+      name: string;
+    }[];
   };
 }
-
 export default function useCarouselDetail() {
   const data: CarouselData = useStaticQuery(graphql`
     query {
@@ -71,10 +77,7 @@ export default function useCarouselDetail() {
       ) {
         nodes {
           childImageSharp {
-            fluid(pngQuality: 90, maxWidth: 750) {
-              ...GatsbyImageSharpFluid
-              ...GatsbyImageSharpFluidLimitPresentationSize
-            }
+            gatsbyImageData(quality: 90, layout: CONSTRAINED)
           }
         }
       }
@@ -142,5 +145,11 @@ export default function useCarouselDetail() {
       link: ['https://wiki.soomsil.de/wiki/%EB%8C%80%EB%AC%B8'],
     },
   ];
-  return { data, projectData };
+
+  const projectImgData = data.projectImgData.nodes.map((node) => ({
+    image: getImage(node.childImageSharp.gatsbyImageData),
+    name: node.name,
+  }));
+
+  return { ...data, projectImgData, projectData };
 }

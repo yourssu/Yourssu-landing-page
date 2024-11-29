@@ -1,15 +1,25 @@
-import { useState } from 'react';
-import { CarouselNode, OSType } from '@/types/landing.type';
+import { useEffect, useState } from 'react';
+
+import { OSType } from '@/types/landing.type';
+
 import CarouselContainer from './CarouselContainer';
 import CarouselContent from './CarouselContent';
 
-interface Props {
-  itemsData: CarouselNode[];
-  type: OSType;
-}
-
-function Carousel({ itemsData, type }: Props) {
+function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [type, setType] = useState<OSType>();
+
+  useEffect(() => {
+    const osType = navigator.userAgent.toLowerCase();
+    if (osType.indexOf('android') > -1) {
+      setType('android');
+    } else if (osType.indexOf('iphone') > -1 || osType.indexOf('ipad') > -1) {
+      setType('ios');
+    } else {
+      setType('pc');
+    }
+  }, []);
+
   return (
     <div
       id="carouselItem"
@@ -20,21 +30,7 @@ function Carousel({ itemsData, type }: Props) {
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       >
-        {currentIndex === 4 ? (
-          <CarouselContent
-            className="flex items-center justify-between xs:h-[400px] xs:w-[240px] xs:flex-col xs:justify-between sm:h-[450px] sm:flex-col sm:justify-between md:h-[600px] md:flex-col"
-            itemsData={itemsData}
-            currentIndex={currentIndex}
-            isType={type}
-          />
-        ) : (
-          <CarouselContent
-            className="flex items-center justify-center xs:h-[500px] xs:w-[240px] xs:flex-col xs:justify-between sm:h-[530px] sm:flex-col sm:justify-between md:h-[800px] md:flex-col md:justify-between"
-            itemsData={itemsData}
-            currentIndex={currentIndex}
-            isType={type}
-          />
-        )}
+        <CarouselContent currentIndex={currentIndex} isType={type} />
       </CarouselContainer>
     </div>
   );

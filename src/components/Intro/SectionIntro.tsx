@@ -13,7 +13,7 @@ function SectionIntro({ title, description, linerColor, textColor }: Props) {
 
   const linearVariants: { [key: string]: string } = {
     gra: 'bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0',
-    black: 'bg-black',
+    black: 'bg-black-0',
   };
 
   return (
@@ -21,9 +21,9 @@ function SectionIntro({ title, description, linerColor, textColor }: Props) {
       <div
         className={`h-[39px] w-[3px] xs:h-[22px] xs:w-[2px] ${linearVariants[linerColor]}`}
       />
-      <h1 className="mb-[10px] mt-[40px] font-Jost text-[36px] font-medium tracking-[.01em] xs:mt-[15px] xs:text-[20px] sm:text-[24px] md:text-[32px] xl:font-semibold xxl:font-semibold">
+      <h2 className="mb-[10px] mt-10 font-Jost text-[36px] font-medium tracking-[.01em] xs:mt-[15px] xs:text-[20px] sm:text-[24px] md:text-[32px] xl:font-semibold xxl:font-semibold">
         {title}
-      </h1>
+      </h2>
       {description.split('<br />').map((des) => (
         <p
           key={des}

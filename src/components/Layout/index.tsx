@@ -1,26 +1,17 @@
-import { OSType } from '@/types/landing.type';
-import Footer from '../Footer';
-import Header from '../Header';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 interface Props {
   children: React.ReactNode;
-  type: OSType;
-  pageType: string;
+  isMainPage: boolean;
 }
 
-function Layout({ children, type, pageType }: Props) {
+function Layout({ children, isMainPage }: Props) {
   return (
-    <div
-      className={`relative ${
-        pageType === 'recruiting' ? 'bg-bluegray4-0' : null
-      }`}
-    >
-      <Header pageType={pageType} type={type} />
+    <div className={`relative ${!isMainPage && 'bg-bluegray4-0'}`}>
+      <Header isMainPage={isMainPage} />
       {children}
-      <Footer
-        backgroundColor={pageType === 'recruiting' ? 'bluegray4' : 'gray4'}
-        type={type}
-      />
+      <Footer backgroundColor={isMainPage ? 'gray4' : 'bluegray4'} />
     </div>
   );
 }

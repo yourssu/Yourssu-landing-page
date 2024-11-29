@@ -1,7 +1,10 @@
-import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { useState } from 'react';
 import tw from 'tailwind-styled-components';
+
 import { NodeType } from '@/types/hook';
+
 import DepartmentLinkButton from './DepartmentLinkButton';
 
 export default function DepartmentCard({
@@ -9,16 +12,14 @@ export default function DepartmentCard({
   buttonImgData,
 }: {
   data: {
-    imgData: NodeType;
-    description: {
-      departmentName: string;
-      departmentDescription: string;
-      departmentDescriptionLink: string;
-    };
+    name: string;
+    short_introduction: string;
+    icon: IGatsbyImageData | undefined;
   };
   buttonImgData: NodeType;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const fixedDescription = data.short_introduction.replace(/\\n/g, '\n');
 
   return (
     <div
@@ -38,12 +39,10 @@ export default function DepartmentCard({
               duration: 0.3,
             }}
           >
-            <DepartmentDescription>
-              {data.description.departmentDescription}
-            </DepartmentDescription>
+            <DepartmentDescription>{fixedDescription}</DepartmentDescription>
             <div className="ml-auto">
               <DepartmentLinkButton
-                linkData={data.description.departmentDescriptionLink}
+                linkData={data.name.toLowerCase().replaceAll(' ', '_')}
                 buttonImgData={buttonImgData}
               />
             </div>
@@ -51,8 +50,8 @@ export default function DepartmentCard({
         )}
 
         <Stack>
-          <DepartmentText>{data.description.departmentName}</DepartmentText>
-          <DepartmentImg src={data.imgData.publicURL} alt={data.imgData.name} />
+          <DepartmentText>{data.name}</DepartmentText>
+          {data.icon && <DepartmentImg image={data.icon} alt={data.name} />}
         </Stack>
       </Container>
     </div>
@@ -87,7 +86,7 @@ const Stack = tw(motion.div)`
   justify-between
   w-full
   h-full
-  p-[32px]
+  p-8
 `;
 
 const DepartmentText = tw.span`
@@ -95,12 +94,13 @@ const DepartmentText = tw.span`
   h3
 `;
 
-const DepartmentImg = tw.img`
+const DepartmentImg = tw(GatsbyImage)`
   ml-auto
   w-[100px]
 `;
 
 const DepartmentDescription = tw.p`
   whitespace-pre-line
+  tracking-tight
   h4
 `;

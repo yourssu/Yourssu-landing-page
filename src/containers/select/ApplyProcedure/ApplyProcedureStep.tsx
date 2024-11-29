@@ -1,12 +1,15 @@
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
-import { NodeType } from '@/types/hook';
 
 export default function ApplyProcedureStep({
   data,
   index,
 }: {
   data: {
-    imgData: NodeType;
+    imgData: {
+      image: IGatsbyImageData | undefined;
+      name: string;
+    };
     description: {
       stepTitle: string;
       stepDescription: string;
@@ -19,11 +22,13 @@ export default function ApplyProcedureStep({
       className="flex flex-col items-center justify-between"
       $index={index}
     >
-      <StepImage
-        $index={index}
-        src={data.imgData.publicURL}
-        alt={data.imgData.name}
-      />
+      {data.imgData.image && (
+        <StepImage
+          $index={index}
+          image={data.imgData.image}
+          alt={data.imgData.name}
+        />
+      )}
       <StepBox $index={index} className="flex flex-col justify-start">
         <StepText>
           {index + 1}. {data.description.stepTitle}
@@ -42,7 +47,7 @@ const Container = tw.div<{ $index: number }>`
   ${(prop) => (prop.$index === 2 ? 'xs:col-start-1 sm:col-start-1 md:col-start-1 lg:col-start-2' : null)}
 `;
 
-const StepImage = tw.img<{ $index: number }>`
+const StepImage = tw(GatsbyImage)<{ $index: number }>`
   ${(prop) => (prop.$index === 2 ? 'xs:w-[174px] sm:w-[174px]' : 'xs:w-[200px] sm:w-[200px]')}
 `;
 

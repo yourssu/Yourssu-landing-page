@@ -1,9 +1,11 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
+
 import SectionIntro from '@/components/Intro/SectionIntro';
-import useTeamDetail from '@/containers/landing/Team/hook';
 import { TeamButtonItem } from '@/types/landing.type';
+
 import TeamButton from './TeamButton';
+import useTeamDetail from './hook';
 
 function Team() {
   const breakpoints = useBreakpoint();
@@ -14,7 +16,7 @@ function Team() {
   ];
 
   return (
-    <div className="flex flex-col items-center py-[105px] xs:py-[40px] sm:py-[70px] md:py-[90px] lg:py-[90px]">
+    <div className="flex flex-col items-center py-[105px] xs:py-10 sm:py-[70px] md:py-[90px] lg:py-[90px]">
       {breakpoints.md ? (
         <SectionIntro
           title="TEAM YOURSSU"
@@ -31,10 +33,14 @@ function Team() {
         />
       )}
       <TeamButtonBox>
-        {teams.map((team: TeamButtonItem, index) => (
-          <TeamButtonWapper $index={index} key={team.team[0]}>
-            <TeamButton team={team.team} img={team.img} />
-          </TeamButtonWapper>
+        {teams.map((team: TeamButtonItem, index: number) => (
+          <TeamButtonWrapper key={team.longName} $index={index}>
+            <TeamButton
+              shortName={team.shortName}
+              longName={team.longName}
+              image={team.image}
+            />
+          </TeamButtonWrapper>
         ))}
       </TeamButtonBox>
     </div>
@@ -53,7 +59,7 @@ const TeamButtonBox = tw.div`
   justify-center
 `;
 
-const TeamButtonWapper = tw.div<{ $index: number }>`
+const TeamButtonWrapper = tw.div<{ $index: number }>`
   col-span-1
   lg:col-span-1
   /* lg:col-span-2 */

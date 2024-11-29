@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-synthesis: none;
+}
+
 @font-face {
   font-family: 'Roboto';
   src: url('../../src/assets/fonts/Roboto-Medium.woff');

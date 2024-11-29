@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
+
 import {
   DefaultContentInformation,
   SkillContentInformation,
 } from '@/types/recruiting.type';
+
 import SkillDescription from './SkillDescription';
 import useInformationDetail from './hook';
 

@@ -104,11 +104,10 @@ const Title = tw.span`
 
 const AboutTitle = tw.p`
   h3
-
   sm:text-[18px]
-  sm:leading-[21px]
-  sm:tracking-[0%]
   sm:text-center
+  xs:text-[18px]
+  xs:text-center
 `;
 
 const ListSection = tw.div`
@@ -130,13 +129,11 @@ const ListImage = tw.img`
 `;
 
 const ListItem = tw.p`
-  body2
   text-Text_Color2-0
-
+  body2
   md:body3
-
-  sm:body8
-  xs:body8
+  sm:text-[12px]
+  xs:text-[12px]
 `;
 
 export default About;

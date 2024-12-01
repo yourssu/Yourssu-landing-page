@@ -71,23 +71,28 @@ const LogoContainer = tw.div`
 
 const LogoImg = tw.img`
   mr-1
-  h-[23px]
-  xs:h-[12px]
-  sm:h-[12px]
+  h-full
 `;
 
 const Logo = tw.div`
-  body3
   py-1
-  xs:text-[14px]
+  font-jost
+  font-[600]
+  text-[20px]
+  tracking-[-0.4px]
   sm:text-[14px]
+  sm:tracking-[-0.28px]
+  xs:text-[14px]
+  xs:tracking-[-0.28px]
+
 `;
 
 const InfoContainer = tw.div`
   text-center
-  body5
+  body7
+  sm:body8
+  md:body8
+  xs:body8
   xs:text-[13px]
-  sm:text-[13px]
-  md:text-[14px]
   mb-8
 `;

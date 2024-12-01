@@ -21,10 +21,10 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
         <span>{formatDate(bannerData.periodData.formSchedule)}</span>
         <span>유어슈 정기 리크루팅</span>
       </SubContainer1>
-      <SubContainer2 className="flex flex-col items-center text-center font-Roboto">
+      <SubContainer2 className="font-roboto flex flex-col items-center text-center">
         <BannerTitle>
-          {bannerData.periodData.formSchedule.start.slice(2, 4)}&apos;YOURSSU{' '}
-          <br /> RECRUITING
+          {bannerData.periodData.formSchedule.start.slice(2, 4)}’YOURSSU <br />{' '}
+          RECRUITING
         </BannerTitle>
         <BannerImage
           src={bannerData.imgData.publicURL}
@@ -138,10 +138,12 @@ const ButtonText = tw.span`
   sm:text-[20px]
   sm:leading-[30px]
   sm:tracking-[-2%]
+  sm:font-[700]
 
   xs:text-[20px]
   xs:leading-[30px]
   xs:tracking-[-2%]
+  xsw:font-[700]
 `;
 
 // button component

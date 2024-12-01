@@ -135,12 +135,9 @@ const IdealText = tw.span`
 
   h2
 
-  md:font-family: Pretendard;
-  md:font-size: 40px;
-  md:font-style: normal;
-  md:font-weight: 700;
-  md:line-height: normal;
-  md:letter-spacing: -0.4px;
+  md:text-[40px]
+  md:font-[700]
+  md:tracking-[-0.4px]
 
   sm:h3
   sm:whitespace-pre-line

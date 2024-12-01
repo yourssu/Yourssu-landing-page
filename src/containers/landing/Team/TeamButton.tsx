@@ -51,7 +51,7 @@ function TeamButton({ longName, shortName, image }: TeamButtonItem) {
 const Team = tw.p`
   text-Text_Color2-0
 
-  body3
+  body2
 
   sm:body8
   xs:body8

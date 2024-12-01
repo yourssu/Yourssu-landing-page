@@ -6,163 +6,131 @@
   font-synthesis: none;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('../../src/assets/fonts/Roboto-Medium.woff');
-}
-
-@font-face {
-  font-family: 'NeoSB';
-  src: url('../../src/assets/fonts/AppleSDGothicNeoSB.woff');
-}
-
-@font-face {
-  font-family: 'NeoR';
-  src: url('../../src/assets/fonts/AppleSDGothicNeoR.woff');
-}
-
-@font-face {
-  font-family: 'NeoEB';
-  src: url('../../src/assets/fonts/AppleSDGothicNeoEB.woff');
-}
-
-@font-face {
-  font-family: 'Jost';
-  src: url('../../src/assets/fonts//Jost-VariableFont.woff');
-}
-
-@font-face {
-  font-family: 'NeoM00';
-  src: url('../../src/assets//fonts/AppleSDGothicNeoM00.ttf');
-}
-
-@font-face {
-  font-family: 'PretendardB';
-  src: url('../../src/assets//fonts/Pretendard-Bold.woff');
-}
-
-@font-face {
-  font-family: 'PretendardSB';
-  src: url('../../src/assets//fonts/Pretendard-SemiBold.woff');
-}
-
-@font-face {
-  font-family: 'PretendardR';
-  src: url('../../src/assets//fonts/Pretendard-Regular.woff');
-}
-
 @layer utilities {
   .h1 {
-    font-family: 'PretendardB';
+    font-family: 'Pretendard';
     font-size: 60px;
     font-style: normal;
+    font-weight: 700;
     line-height: normal;
     letter-spacing: -0.6px;
   }
 
   .h2 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 50px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: -0.5px;
   }
 
   .h3 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 32px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: -0.32px;
   }
 
   .h4 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 24px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
   }
 
   .body1 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 26px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: 0.26px;
   }
 
   .body2 {
-    font-family: 'PretendardR';
+    font-family: 'Pretendard';
     font-size: 22px;
     font-style: normal;
-    line-height: 36px; /* 163.636% */
+    font-weight: 400;
     letter-spacing: -0.44px;
   }
 
   .body3 {
-    font-family: 'PretendardR';
+    font-family: 'Pretendard';
     font-size: 20px;
     font-style: normal;
-    line-height: 30px; /* 150% */
+    font-weight: 400;
+    line-height: 30px;
     letter-spacing: -0.4px;
   }
 
   .body4 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 18px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
   }
 
   .body5 {
-    font-family: 'PretendardR';
+    font-family: 'Pretendard';
     font-size: 18px;
     font-style: normal;
+    font-weight: 400;
     line-height: normal;
   }
 
   .body6 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 16px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
   }
 
   .body7 {
-    font-family: 'PretendardR';
+    font-family: 'Pretendard';
     font-size: 16px;
     font-style: normal;
+    font-weight: 400;
     line-height: 24px;
   }
 
   .body8 {
-    font-family: 'PretendardR';
+    font-family: 'Pretendard';
     font-size: 14px;
     font-style: normal;
+    font-weight: 400;
     line-height: normal;
   }
 
   .body8-1 {
-    font-family: 'PretendardSB';
+    font-family: 'Pretendard';
     font-size: 14px;
     font-style: normal;
+    font-weight: 600;
     line-height: normal;
   }
 
   .body9 {
-    font-family: 'PretendardR';
+    font-family: 'Pretendard';
     font-size: 14px;
     font-style: normal;
+    font-weight: 400;
     line-height: 20px;
   }
 
   .jost1 {
     font-family: 'Jost';
-    font-size: 64px;
+    font-size: 90px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 100%;
-    letter-spacing: -0.64px;
+    letter-spacing: -1.8px;
   }
 
   .jost2 {
@@ -187,9 +155,9 @@
     font-family: 'Jost';
     font-size: 24px;
     font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.48px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: -0.96px;
   }
 
   .jost5 {

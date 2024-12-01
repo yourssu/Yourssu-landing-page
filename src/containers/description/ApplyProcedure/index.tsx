@@ -131,7 +131,8 @@ const ProcedureDate = tw.div`
   to-mainGra2-0
   bg-clip-text
 
-  font-PretendardSB
+  font-pretendard
+  font-[600]
   text-xl
   md:text-base
   sm:text-base
@@ -148,7 +149,8 @@ const ProcedureStep = tw.div`
   
   min-w-max
   
-  font-PretendardR
+  font-pretendard
+  font-[400]
   text-xl
   leading-9
   text-gray1-0

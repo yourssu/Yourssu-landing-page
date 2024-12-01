@@ -3,6 +3,8 @@ name: build-and-deploy
 on:
   push:
     branches: [master]
+  repository_dispatch:
+    types: [sanity-content-update]
 
 jobs:
   build:

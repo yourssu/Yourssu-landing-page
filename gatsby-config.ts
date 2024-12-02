@@ -95,15 +95,6 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-filesystem',
       options: {
         // The unique name for each instance
-        name: 'social',
-        // Path to the directory
-        path: `${__dirname}/src/assets/social/`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        // The unique name for each instance
         name: 'projects',
         // Path to the directory
         path: `${__dirname}/src/assets/projects`,
@@ -121,35 +112,15 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        // The unique name for each instance
-        name: 'teams',
-        // Path to the directory
-        path: `${__dirname}/src/assets/icons/teams`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        // The unique name for each instance
-        name: 'department_icons',
-        // Path to the directory
-        path: `${__dirname}/src/assets/icons/department_icons`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        // The unique name for each instance
-        name: 'hovers',
-        // Path to the directory
-        path: `${__dirname}/src/assets/icons/hovers`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         name: 'icons',
-        path: `${__dirname}/src/assets/icons/`,
+        path: `${__dirname}/src/assets/icons`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'socials',
+        path: `${__dirname}/src/assets/socials`,
       },
     },
     {

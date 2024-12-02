@@ -3,10 +3,15 @@ name: build-and-deploy
 on:
   push:
     branches: [master]
+  repository_dispatch:
+    types: [sanity-content-update]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency:
+      group: gatsby-build
+      cancel-in-progress: true
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3

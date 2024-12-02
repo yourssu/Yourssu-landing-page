@@ -1,55 +1,41 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
-import useBannerDetail from './hook';
+
 import '@/styles/global.css';
+import formatDate from '@/utils/formatDate';
+
+import useBannerDetail from './hook';
 
 function Banner({ moveSupporting }: { moveSupporting: () => void }) {
-  const { imgData, bannerDescription } = useBannerDetail();
+  const bannerData = useBannerDetail();
   const breakpoints = useBreakpoint();
 
   return (
     <Container
       $breakPoint={breakpoints.query669 as boolean}
-      className="z-50 flex flex-col items-center"
+      className="z-40 flex flex-col items-center"
     >
-      {(breakpoints.query669 as boolean) ? (
-        <SubContainer1 className="flex flex-col items-center justify-center gap-[5px]">
-          <span>
-            20{bannerDescription.recruitingDate.year}.0
-            {bannerDescription.recruitingDate.month[0]}.0
-            {bannerDescription.recruitingDate.day[0]}-0
-            {bannerDescription.recruitingDate.month[1]}.0
-            {bannerDescription.recruitingDate.day[1]}
-          </span>
-          <span>유어슈 정기 리크루팅</span>
-        </SubContainer1>
-      ) : (
-        <SubContainer1 className="flex justify-between">
-          <span>
-            20{bannerDescription.recruitingDate.year}.0
-            {bannerDescription.recruitingDate.month[0]}.0
-            {bannerDescription.recruitingDate.day[0]}-0
-            {bannerDescription.recruitingDate.month[1]}.
-            {bannerDescription.recruitingDate.day[1]}
-          </span>
-          <span>유어슈 정기 리크루팅</span>
-        </SubContainer1>
-      )}
-
-      <SubContainer2 className="flex flex-col items-center text-center font-Roboto">
+      <SubContainer1
+        className={`flex ${(breakpoints.query669 as boolean) ? 'mt-12 flex-col items-center justify-center gap-[5px]' : 'mt-20 justify-between'}`}
+      >
+        <span>{formatDate(bannerData.periodData.formSchedule)}</span>
+        <span>유어슈 정기 리크루팅</span>
+      </SubContainer1>
+      <SubContainer2 className="font-roboto flex flex-col items-center text-center">
         <BannerTitle>
-          {bannerDescription.recruitingDate.year}&apos;YOURSSU <br /> RECRUITING
+          {bannerData.periodData.formSchedule.start.slice(2, 4)}’YOURSSU <br />{' '}
+          RECRUITING
         </BannerTitle>
         <BannerImage
-          src={imgData.bannerImgData.nodes[0].publicURL}
-          alt={imgData.bannerImgData.nodes[0].name}
+          src={bannerData.imgData.publicURL}
+          alt={bannerData.imgData.name}
         />
       </SubContainer2>
       <SubContainer3 className="flex flex-col items-center">
-        <BannerSubTitle>
-          {breakpoints.query669
-            ? bannerDescription.title[1]
-            : bannerDescription.title[0]}
+        <BannerSubTitle
+          className={`${breakpoints.query669 ? 'whitespace-pre-wrap' : 'whitespace-normal'}`}
+        >
+          {`당신의 손으로 바꿔나갈,\n당신의 숭실`}
         </BannerSubTitle>
         <Button type="button" onClick={moveSupporting}>
           <ButtonText>지원하기</ButtonText>
@@ -75,7 +61,6 @@ const Container = tw.div<{ $breakPoint: boolean }>`
 
 const SubContainer1 = tw.div`
   w-full
-
   h3
 
   md:h4
@@ -153,10 +138,12 @@ const ButtonText = tw.span`
   sm:text-[20px]
   sm:leading-[30px]
   sm:tracking-[-2%]
+  sm:font-[700]
 
   xs:text-[20px]
   xs:leading-[30px]
   xs:tracking-[-2%]
+  xsw:font-[700]
 `;
 
 // button component

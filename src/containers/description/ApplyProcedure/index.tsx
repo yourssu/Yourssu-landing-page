@@ -1,17 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { useEffect, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
+
 import { ApplyProcedureInformation } from '@/types/recruiting.type';
+
 import ProcedureLargeSVG from './ProcedureLargeSVG';
 import ProcedureSmallSVG from './ProcedureSmallSVG';
 import WarningDescription from './WarningDescription';
 import useApplyProcedureDetail from './hook';
 
 interface ApplyProcedureProps {
-  applyProcedure: ApplyProcedureInformation[];
+  applyProcedure: ApplyProcedureInformation[] | null;
+  isRecruiting: boolean;
 }
 
-function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
+function ApplyProcedure({ applyProcedure, isRecruiting }: ApplyProcedureProps) {
   const data = useApplyProcedureDetail();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const warningRef = useRef<HTMLDivElement>(null);
@@ -29,6 +32,9 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
 
     return () => document.removeEventListener('mousedown', handleClose);
   }, [isWarningOpen]);
+
+  // 리쿠르팅을 안하거나, 일정이 지나면 null 반환
+  if (!applyProcedure || !isRecruiting) return null;
 
   return (
     <section>
@@ -125,7 +131,8 @@ const ProcedureDate = tw.div`
   to-mainGra2-0
   bg-clip-text
 
-  font-PretendardSB
+  font-pretendard
+  font-[600]
   text-xl
   md:text-base
   sm:text-base
@@ -142,7 +149,8 @@ const ProcedureStep = tw.div`
   
   min-w-max
   
-  font-PretendardR
+  font-pretendard
+  font-[400]
   text-xl
   leading-9
   text-gray1-0

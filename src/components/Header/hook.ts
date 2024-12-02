@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+
 import { NodeListType } from '@/types/hook';
 
 interface HeaderData {

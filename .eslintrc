@@ -13,11 +13,8 @@
     "es6": true,
     "node": true
   },
-  "plugins": ["react", "jsx-a11y", "prettier", "@typescript-eslint"],
+  "plugins": ["react", "jsx-a11y", "prettier", "@typescript-eslint", "import"],
   "extends": [
-    "airbnb",
-    "airbnb-typescript",
-    "airbnb/hooks",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
@@ -37,20 +34,17 @@
         ],
         "pathGroups": [
           {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          },
-          {
             "pattern": "@/**",
             "group": "internal",
             "position": "after"
           }
         ],
         "pathGroupsExcludedImportTypes": ["react", "react-dom"],
+        "newlines-between": "always",
         "alphabetize": { "order": "asc" }
       }
     ],
+    "react/require-default-props": "off",
     "@typescript-eslint/no-use-before-define": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-props-no-spreading": "off",

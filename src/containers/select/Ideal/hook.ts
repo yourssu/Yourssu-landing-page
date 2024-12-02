@@ -1,9 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { NodeType } from '@/types/hook';
+import { getImage } from 'gatsby-plugin-image';
+
+import { ImgNodeType } from '@/types/hook';
 
 interface IdeaData {
   idealImgData: {
-    nodes: NodeType[];
+    nodes: ImgNodeType[];
   };
 }
 
@@ -14,12 +16,19 @@ export default function useIdealDetail() {
         filter: { name: { eq: "departmentSelect.ideal" } }
       ) {
         nodes {
-          publicURL
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, quality: 90)
+          }
           name
         }
       }
     }
   `);
 
-  return { imgData };
+  return {
+    image: getImage(
+      imgData.idealImgData.nodes[0].childImageSharp.gatsbyImageData,
+    ),
+    name: imgData.idealImgData.nodes[0].name,
+  };
 }

@@ -1,23 +1,37 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+
+interface BannerData {
+  desktopImage: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData;
+    };
+  };
+  mobileImage: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData;
+    };
+  };
+}
 
 export default function useBannerDetail() {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<BannerData>(graphql`
     query {
       desktopImage: file(name: { eq: "banner-lg" }) {
         childImageSharp {
-          fluid(pngQuality: 90, maxHeight: 800) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(quality: 90, height: 800, placeholder: BLURRED)
         }
       }
       mobileImage: file(name: { eq: "banner-sm" }) {
         childImageSharp {
-          fluid(pngQuality: 90, maxHeight: 557) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(quality: 90, height: 557, placeholder: BLURRED)
         }
       }
     }
   `);
-  return data;
+
+  return {
+    desktopImage: getImage(data.desktopImage),
+    mobileImage: getImage(data.mobileImage),
+  };
 }

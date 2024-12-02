@@ -3,11 +3,13 @@ import tw from 'tailwind-styled-components';
 
 interface ApplyButtonProps {
   link: string;
+  isRecruiting: boolean;
   $testSize: string;
 }
 
-function ApplyButton({ link, $testSize }: ApplyButtonProps) {
-  if (link)
+function ApplyButton({ link, isRecruiting, $testSize }: ApplyButtonProps) {
+  // 링크가 없을 때, 지원 기간이 아닐 때, 리쿠르팅을 하지 않을 때 비활성화
+  if (link && isRecruiting)
     return (
       <ActiveContainer to={link} $testSize={$testSize}>
         지원하기
@@ -15,7 +17,7 @@ function ApplyButton({ link, $testSize }: ApplyButtonProps) {
     );
 
   return (
-    <NoActiveContainer $testSize={$testSize}>
+    <NoActiveContainer $testSize={$testSize} disabled>
       지원 기간이 아닙니다
     </NoActiveContainer>
   );
@@ -43,6 +45,4 @@ const NoActiveContainer = tw.button<{ $testSize: string }>`
   py-5
   text-center
   text-bluegray1-0
-
-  cursor-default
 `;

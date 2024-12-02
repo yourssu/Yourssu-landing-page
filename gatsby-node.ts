@@ -1,5 +1,6 @@
-import { graphql, type GatsbyNode } from 'gatsby';
+import { type GatsbyNode } from 'gatsby';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import recruitingSchedule from './src/utils/recruitingSchedule';
 
 interface QueryResult {
   allSanityDepartment: {
@@ -8,15 +9,48 @@ interface QueryResult {
         basicInformation: {
           name: string;
         };
+        applyProcedure: {
+          scheduleWithoutAssignment: boolean;
+          scheduleWithAssignment: boolean;
+          individualSchedule: boolean;
+          formSchedule: {
+            start: Date;
+            end: Date;
+          };
+          procedure: {
+            step: string;
+            schedule: string;
+          }[];
+        };
       };
     }[];
   };
-  allSanityRecruitingSchedule: {
+  scheduleWithAssignment: {
     edges: {
       node: {
-        applyProcedure: {
-          schedule: string;
+        title: string;
+        formSchedule: {
+          start: Date;
+          end: Date;
+        };
+        procedure: {
           step: string;
+          schedule: string;
+        }[];
+      };
+    }[];
+  };
+  scheduleWithoutAssignment: {
+    edges: {
+      node: {
+        title: string;
+        formSchedule: {
+          start: Date;
+          end: Date;
+        };
+        procedure: {
+          step: string;
+          schedule: string;
         }[];
       };
     }[];
@@ -41,23 +75,60 @@ export const createPages: GatsbyNode['createPages'] = async ({
 }) => {
   const { createPage } = actions;
 
-  const queryAllSanityData = await graphql<QueryResult>(`
+  const result = await graphql<QueryResult>(`
     {
-      allSanityDepartment(sort: { num: ASC }) {
+      allSanityDepartment(sort: { basicInformation: { key: ASC } }) {
         edges {
           node {
             basicInformation {
               name
             }
+            applyProcedure {
+              scheduleWithoutAssignment
+              scheduleWithAssignment
+              individualSchedule
+              formSchedule {
+                start
+                end
+              }
+              procedure {
+                step
+                schedule
+              }
+            }
           }
         }
       }
-      allSanityRecruitingSchedule {
+      scheduleWithAssignment: allSanityRecruitingSchedule(
+        filter: { title: { regex: "/과제 O$/" } }
+      ) {
         edges {
           node {
-            applyProcedure {
-              schedule
+            title
+            formSchedule {
+              start
+              end
+            }
+            procedure {
               step
+              schedule
+            }
+          }
+        }
+      }
+      scheduleWithoutAssignment: allSanityRecruitingSchedule(
+        filter: { title: { regex: "/과제 X$/" } }
+      ) {
+        edges {
+          node {
+            title
+            formSchedule {
+              start
+              end
+            }
+            procedure {
+              step
+              schedule
             }
           }
         }
@@ -65,45 +136,116 @@ export const createPages: GatsbyNode['createPages'] = async ({
     }
   `);
 
-  if (queryAllSanityData.errors) {
+  if (result.errors) {
     reporter.panicOnBuild(`Error while running query`);
     return;
   }
+
+  const queryAllSanityData = result.data;
 
   const DescriptionTemplateComponent = path.resolve(
     __dirname,
     'src/templates/DescriptionTemplate.tsx',
   );
 
-  const nameList = queryAllSanityData.data?.allSanityDepartment.edges.map(
+  const nameList = queryAllSanityData?.allSanityDepartment.edges.map(
     (edge) => edge.node.basicInformation.name,
   );
 
-  const scheduleContainsAssignment =
-    queryAllSanityData.data?.allSanityRecruitingSchedule.edges[0].node
-      .applyProcedure;
+  const checkRecruitType = (recruitTypeData: {
+    scheduleWithoutAssignment: boolean;
+    scheduleWithAssignment: boolean;
+    individualSchedule: boolean;
+    formSchedule: {
+      start: Date;
+      end: Date;
+    };
+    procedure: {
+      step: string;
+      schedule: string;
+    }[];
+  }): {
+    formSchedule: { start: Date | null; end: Date | null } | null;
+    procedure: { step: string; schedule: string }[] | null;
+  } => {
+    const {
+      scheduleWithoutAssignment,
+      scheduleWithAssignment,
+      individualSchedule,
+      formSchedule,
+      procedure,
+    } = recruitTypeData;
 
-  const scheduleWithoutAssignment =
-    queryAllSanityData.data?.allSanityRecruitingSchedule.edges[
-      queryAllSanityData.data.allSanityRecruitingSchedule.edges.length - 1
-    ].node.applyProcedure;
+    const recruitingType = {
+      individualSchedule,
+      scheduleWithAssignment,
+      scheduleWithoutAssignment,
+    };
+
+    const scheduleWithAssignmentData =
+      queryAllSanityData?.scheduleWithAssignment?.edges[0]?.node.formSchedule ||
+      null;
+    const scheduleWithoutAssignmentData =
+      queryAllSanityData?.scheduleWithoutAssignment?.edges[0]?.node
+        .formSchedule || null;
+    const scheduleIndividualData = formSchedule || null;
+
+    const recruitingScheduleData = recruitingSchedule({
+      recruitingType,
+      scheduleWithAssignmentData,
+      scheduleWithoutAssignmentData,
+      scheduleIndividualData,
+    });
+
+    if (!recruitingScheduleData) {
+      return {
+        formSchedule: null,
+        procedure: null,
+      };
+    }
+
+    if (recruitingScheduleData.type === 'individual') {
+      return {
+        formSchedule: recruitingScheduleData.formSchedule,
+        procedure: procedure,
+      };
+    }
+
+    if (recruitingScheduleData.type === 'withAssignment') {
+      return {
+        formSchedule: recruitingScheduleData.formSchedule,
+        procedure:
+          queryAllSanityData?.scheduleWithAssignment?.edges[0]?.node
+            .procedure || [],
+      };
+    }
+
+    if (recruitingScheduleData.type === 'withoutAssignment') {
+      return {
+        formSchedule: recruitingScheduleData.formSchedule,
+        procedure:
+          queryAllSanityData?.scheduleWithoutAssignment?.edges[0]?.node
+            .procedure || [],
+      };
+    }
+
+    return {
+      formSchedule: null,
+      procedure: null,
+    };
+  };
 
   const generateDescriptionPage = ({
-    node: {
-      basicInformation: { name },
-    },
+    name,
+    recruiting,
   }: {
-    node: {
-      basicInformation: {
-        name: string;
-      };
+    name: string;
+    recruiting: {
+      formSchedule: { start: Date | null; end: Date | null } | null;
+      procedure: { step: string; schedule: string }[] | null;
     };
   }) => {
     const pathName = name.toLowerCase().replaceAll(' ', '_');
-    const teamNamesContainsAssignmentInSchedule = [
-      'backend_developer',
-      'product_designer',
-    ];
 
     const pageOptions = {
       path: `recruiting/${pathName}`,
@@ -111,17 +253,18 @@ export const createPages: GatsbyNode['createPages'] = async ({
       context: {
         name,
         nameList,
-        schedule: teamNamesContainsAssignmentInSchedule.includes(pathName)
-          ? scheduleContainsAssignment
-          : scheduleWithoutAssignment,
+        formSchedule: recruiting.formSchedule,
+        procedure: recruiting.procedure,
       },
     };
 
     createPage(pageOptions);
   };
 
-  queryAllSanityData.data &&
-    queryAllSanityData.data.allSanityDepartment.edges.forEach(
-      generateDescriptionPage,
-    );
+  queryAllSanityData?.allSanityDepartment.edges.forEach((data) => {
+    generateDescriptionPage({
+      name: data.node.basicInformation.name,
+      recruiting: checkRecruitType(data.node.applyProcedure),
+    });
+  });
 };

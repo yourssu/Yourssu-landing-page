@@ -1,6 +1,8 @@
 import { Link } from 'gatsby';
 import tw from 'tailwind-styled-components';
+
 import ApplyButton from '@/components/Button/ApplyButton';
+
 import useSideNavigationDetail from './hook';
 
 const KAKAO_LINK = 'http://pf.kakao.com/_AxfrxeT';
@@ -8,6 +10,7 @@ const KAKAO_LINK = 'http://pf.kakao.com/_AxfrxeT';
 interface SideNavigationProps {
   currentTeam: {
     name: string;
+    isRecruiting: boolean;
     applyLink: string;
   };
   teamList: string[];
@@ -33,7 +36,11 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
           ))}
         </NavigationList>
       </NavigationContainer>
-      <ApplyButton link={currentTeam.applyLink} $testSize="h4" />
+      <ApplyButton
+        link={currentTeam.applyLink}
+        isRecruiting={currentTeam.isRecruiting}
+        $testSize="h4"
+      />
       <Link to={KAKAO_LINK} className="ml-auto w-fit">
         <InquiryButtonText>문의하기</InquiryButtonText>
         <img src={data.inquiryButton.publicURL} alt="문의하기" />

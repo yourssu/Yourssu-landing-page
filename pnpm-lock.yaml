@@ -17,14 +17,11 @@ importers:
       gatsby:
         specifier: ^5.13.1
         version: 5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4)
-      gatsby-image:
-        specifier: ^3.11.0
-        version: 3.11.0
       gatsby-plugin-google-gtag:
         specifier: ^5.13.1
         version: 5.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-plugin-image:
-        specifier: ^3.13.0
+        specifier: ^3.13.1
         version: 3.13.1(omuwha3bvagmvpnnmv5q7pz3su)
       gatsby-plugin-manifest:
         specifier: ^5.13.0
@@ -33,7 +30,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4))
       gatsby-plugin-sharp:
-        specifier: ^5.13.0
+        specifier: ^5.13.1
         version: 5.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4))(graphql@16.9.0)
       gatsby-source-filesystem:
         specifier: ^5.13.0
@@ -42,7 +39,7 @@ importers:
         specifier: ^7.9.1
         version: 7.9.1(gatsby-plugin-image@3.13.1(omuwha3bvagmvpnnmv5q7pz3su))(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4))(graphql@16.9.0)
       gatsby-transformer-sharp:
-        specifier: ^5.13.0
+        specifier: ^5.13.1
         version: 5.13.1(gatsby-plugin-sharp@5.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4))(graphql@16.9.0))(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.0))(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.5.4))(graphql@16.9.0)
       react:
         specifier: ^18.2.0
@@ -3434,11 +3431,6 @@ packages:
     resolution: {integrity: sha512-WR6jv18OhKLwK/hGZ6ZGUd82GFtM6gHz+sOpgsJJx/+uqRjZwqcrH2LSrWRSWUCk7FoZY1rJuBSD1QkOODV01A==}
     engines: {node: '>=14.15.0'}
 
-  gatsby-image@3.11.0:
-    resolution: {integrity: sha512-vRMhGLrgyQRH2RYs8leyZ1UyWYIew+NOZEsKur1w6gnWDf0U9UVmYFa9OIE1Vedlo1W+on3AuZ3/KwM+cI69VQ==}
-    engines: {node: '>=12.13.0'}
-    deprecated: 'gatsby-image is now gatsby-plugin-image: https://npm.im/gatsby-plugin-image. This package will no longer receive updates.'
-
   gatsby-legacy-polyfills@3.13.1:
     resolution: {integrity: sha512-NjR3B/rq6dsJuaMmeHlGExdVXJfDqVWERXi9ROfIBt7O3Fwzy5WYgoPeVikVZE06DmeZWlBzuNcGSfc8lilB5g==}
 
@@ -4668,9 +4660,6 @@ packages:
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
-
-  object-fit-images@3.2.4:
-    resolution: {integrity: sha512-G+7LzpYfTfqUyrZlfrou/PLLLAPNC52FTy5y1CBywX+1/FkxIloOyQXBmZ3Zxa2AWO+lMF0JTuvqbr7G5e5CWg==}
 
   object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -10811,12 +10800,6 @@ snapshots:
 
   gatsby-graphiql-explorer@3.13.1: {}
 
-  gatsby-image@3.11.0:
-    dependencies:
-      '@babel/runtime': 7.25.6
-      object-fit-images: 3.2.4
-      prop-types: 15.8.1
-
   gatsby-legacy-polyfills@3.13.1:
     dependencies:
       '@babel/runtime': 7.25.6
@@ -12338,8 +12321,6 @@ snapshots:
   nullthrows@1.1.1: {}
 
   object-assign@4.1.1: {}
-
-  object-fit-images@3.2.4: {}
 
   object-hash@3.0.0: {}
 

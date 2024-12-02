@@ -1,22 +1,21 @@
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
+
 import { InaWordInformation } from '@/types/recruiting.type';
-import extractImageUrl from '@/utils/extractImageUrl';
 
 interface InaWordProps {
-  departmentImage: string;
+  departmentImage: IGatsbyImageData;
   inaWord: InaWordInformation;
 }
 
 function InaWord({ departmentImage, inaWord }: InaWordProps) {
+  const image = getImage(departmentImage);
   return (
     <section>
       <Title>{inaWord.title}</Title>
       <InaWordContainer>
         <WordContainer>
-          <DepartmentImage
-            src={extractImageUrl(departmentImage)}
-            alt={inaWord.title}
-          />
+          {image && <DepartmentImage image={image} alt={inaWord.title} />}
           <Word>“{inaWord.word}”</Word>
         </WordContainer>
         <DescriptionContainer>{inaWord.content}</DescriptionContainer>
@@ -80,7 +79,7 @@ const DescriptionContainer = tw.div`
   text-gray1-0
 `;
 
-const DepartmentImage = tw.img`
+const DepartmentImage = tw(GatsbyImage)`
   w-[60px]
   xs:w-10
   sm:w-10

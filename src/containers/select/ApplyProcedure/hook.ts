@@ -1,9 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { NodeType } from '@/types/hook';
+import { getImage } from 'gatsby-plugin-image';
+
+import { ImgNodeType } from '@/types/hook';
 
 interface ApplyProcedureData {
   stepImgData: {
-    nodes: NodeType[];
+    nodes: ImgNodeType[];
   };
 }
 
@@ -15,7 +17,9 @@ export default function useApplyProcedureDetail() {
         sort: { name: ASC }
       ) {
         nodes {
-          publicURL
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED)
+          }
           name
         }
       }
@@ -42,7 +46,12 @@ export default function useApplyProcedureDetail() {
 
   const data = description.map((value, index) => {
     return {
-      imgData: imgData.stepImgData.nodes[index],
+      imgData: {
+        image: getImage(
+          imgData.stepImgData.nodes[index].childImageSharp.gatsbyImageData,
+        ),
+        name: imgData.stepImgData.nodes[index].name,
+      },
       description: value,
     };
   });

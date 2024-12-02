@@ -1,19 +1,16 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+
 export interface TeamButtonItem {
-  team: string[];
-  img: string;
-  notionLink?: string;
+  shortName: string;
+  longName: string;
+  image: IGatsbyImageData | undefined;
 }
 
 export interface CarouselNode {
   childImageSharp: {
-    fluid: {
-      aspectRatio: number;
-      sizes: string;
-      base64: string;
-      src: string;
-      srcSet: string;
-    };
+    gatsbyImageData: IGatsbyImageData | undefined;
   };
+  name: string;
 }
 
 export type OSType = 'android' | 'ios' | 'pc' | undefined;

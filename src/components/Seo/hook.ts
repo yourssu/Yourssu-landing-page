@@ -1,18 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { IGatsbyImageData, getImage } from 'gatsby-plugin-image';
 
-type SeoSiteNode = {
+interface SeoSiteNode {
   title: string;
   description: string;
   siteUrl: string;
-};
-
-type SeoFileNode = {
-  base64: string;
-  height: number;
-  src: string;
-  srcSet: string;
-  width: number;
-};
+}
 
 interface SeoData {
   site: {
@@ -20,7 +13,7 @@ interface SeoData {
   };
   file: {
     childImageSharp: {
-      fixed: SeoFileNode;
+      gatsbyImageData: IGatsbyImageData;
     };
   };
 }
@@ -37,13 +30,14 @@ export default function useSeoDetail() {
       }
       file(name: { eq: "banner-sm" }) {
         childImageSharp {
-          fixed(height: 630, width: 1200) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(layout: FIXED, width: 1200, height: 630, quality: 90)
         }
       }
     }
   `);
 
-  return data;
+  return {
+    site: data.site.siteMetadata,
+    file: getImage(data.file.childImageSharp.gatsbyImageData),
+  };
 }

@@ -1,14 +1,13 @@
 import tw from 'tailwind-styled-components';
-import { OSType } from '@/types/landing.type';
+
 import useFooterDetail from './hook';
 
 interface Props {
-  type: OSType;
   backgroundColor: string;
 }
 
-function Footer({ type, backgroundColor }: Props) {
-  const { logo } = useFooterDetail();
+function Footer({ backgroundColor }: Props) {
+  const { logo, socialIcon, link } = useFooterDetail();
   const logoData = logo.nodes[0];
 
   const background: { [key: string]: string } = {
@@ -20,11 +19,7 @@ function Footer({ type, backgroundColor }: Props) {
     <Container $bg={background[backgroundColor]}>
       <LogoContainer>
         <LogoImg src={logoData.publicURL} alt={logoData.name} />
-        {type === 'ios' ? (
-          <IosLogo>YOURSSU</IosLogo>
-        ) : (
-          <DefaultLogo>YOURSSU</DefaultLogo>
-        )}
+        <Logo>YOURSSU</Logo>
       </LogoContainer>
       <InfoContainer>
         <div className="py-[3px] xs:py-[2px]">
@@ -32,6 +27,23 @@ function Footer({ type, backgroundColor }: Props) {
         </div>
         <div>ⓒ Yourssu. All rights reserved.</div>
       </InfoContainer>
+      <div className="flex items-center gap-[9px]">
+        {socialIcon.nodes.map((icon, index) => (
+          <>
+            <a
+              key={icon.name}
+              href={link[icon.name.split('-')[1]]}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={icon.publicURL} alt={icon.name} />
+            </a>
+            {index !== socialIcon.nodes.length - 1 && (
+              <hr className="h-[26.5px] w-[1px] border-none bg-[#D4D7DB]" />
+            )}
+          </>
+        ))}
+      </div>
     </Container>
   );
 }
@@ -45,8 +57,8 @@ const Container = tw.footer<{ $bg: string }>`
   justify-center
   text-gray1-0
   py-10
-  xs:py-[20px]
-  sm:py-[20px]
+  xs:py-5
+  sm:py-5
   ${(props) => props.$bg}
 `;
 
@@ -59,31 +71,28 @@ const LogoContainer = tw.div`
 
 const LogoImg = tw.img`
   mr-1
-  h-[23px]
-  xs:h-[12px]
-  sm:h-[12px]
+  h-full
 `;
 
-// TODO: Ios 버전 css 확인
-const IosLogo = tw.div`
-  body3
+const Logo = tw.div`
   py-1
-  font-[550]
-  xs:text-[14px]
+  font-jost
+  font-[600]
+  text-[20px]
+  tracking-[-0.4px]
   sm:text-[14px]
-`;
+  sm:tracking-[-0.28px]
+  xs:text-[14px]
+  xs:tracking-[-0.28px]
 
-const DefaultLogo = tw.div`
-  body3
-  py-1
-  xs:text-[14px]
-  sm:text-[14px]
 `;
 
 const InfoContainer = tw.div`
   text-center
-  body5
+  body7
+  sm:body8
+  md:body8
+  xs:body8
   xs:text-[13px]
-  sm:text-[13px]
-  md:text-[14px]
+  mb-8
 `;

@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
 import { motion, transform, useScroll } from 'framer-motion';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { useEffect, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
+
 import useIdealDetail from './hook';
 
 function Ideal() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const { imgData } = useIdealDetail();
+  const imgData = useIdealDetail();
   const ideal = [
     {
       id: 1,
@@ -82,13 +84,13 @@ function Ideal() {
                   <div className="text-center">
                     <IdealText>{value.title}</IdealText>
                   </div>
-                  {index !== 3 ? (
+                  {index !== 3 && imgData.image && (
                     <IdealImage
                       $index={index}
-                      src={imgData.idealImgData.nodes[0].publicURL}
-                      alt={imgData.idealImgData.nodes[0].name}
+                      image={imgData.image}
+                      alt={imgData.name}
                     />
-                  ) : null}
+                  )}
                 </Item>
               </Container>
             </div>
@@ -133,12 +135,9 @@ const IdealText = tw.span`
 
   h2
 
-  md:font-family: Pretendard;
-  md:font-size: 40px;
-  md:font-style: normal;
-  md:font-weight: 700;
-  md:line-height: normal;
-  md:letter-spacing: -0.4px;
+  md:text-[40px]
+  md:font-[700]
+  md:tracking-[-0.4px]
 
   sm:h3
   sm:whitespace-pre-line
@@ -146,7 +145,7 @@ const IdealText = tw.span`
   xs:whitespace-pre-line
 `;
 
-const IdealImage = tw.img<{ $index: number }>`
+const IdealImage = tw(GatsbyImage)<{ $index: number }>`
   absolute
   ${(prop) => (prop.$index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform')}
   md:w-[260px]

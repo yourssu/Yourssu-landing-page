@@ -72,6 +72,7 @@ const config: GatsbyConfig = {
         short_name: 'yourssu',
         start_url: '/',
         icon: 'src/assets/logo/logo.svg',
+        cache_busting_mode: 'query',
       },
     },
     {

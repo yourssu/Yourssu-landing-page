@@ -148,7 +148,7 @@ export const querySanityDataByName = graphql`
             apply_link
             icon {
               asset {
-                gatsbyImageData
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
           }
@@ -174,7 +174,7 @@ export const querySanityDataByName = graphql`
             roadToPro_list {
               video_thumbnail {
                 asset {
-                  gatsbyImageData
+                  gatsbyImageData(placeholder: BLURRED)
                 }
               }
               presenter {

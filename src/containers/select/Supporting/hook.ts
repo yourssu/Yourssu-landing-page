@@ -125,7 +125,7 @@ export default function useSupportingDetail() {
               short_introduction
               icon {
                 asset {
-                  gatsbyImageData
+                  gatsbyImageData(placeholder: BLURRED)
                 }
               }
             }

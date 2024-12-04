@@ -21,7 +21,7 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
         <span>{formatDate(bannerData.periodData.formSchedule)}</span>
         <span>유어슈 정기 리크루팅</span>
       </SubContainer1>
-      <SubContainer2 className="font-roboto flex flex-col items-center text-center">
+      <SubContainer2 className="flex flex-col items-center text-center font-roboto">
         <BannerTitle>
           {bannerData.periodData.formSchedule.start.slice(2, 4)}’YOURSSU <br />{' '}
           RECRUITING

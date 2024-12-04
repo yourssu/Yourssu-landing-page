@@ -12,11 +12,11 @@ function Ideal() {
     <div className="bg-[#F5F5F5] py-[160px] xs:py-20 sm:py-[110px] md:py-[120px]">
       <div className="flex flex-row items-center justify-center xs:flex-col sm:flex-col md:flex-col">
         {breakpoints.md ? (
-          <h2 className="font-apple-neo h-fit pb-2 font-semibold xs:text-[20px] sm:text-[24px] md:text-[32px]">
+          <h2 className="h-fit pb-2 font-apple-neo font-semibold xs:text-[20px] sm:text-[24px] md:text-[32px]">
             이런 사람을 지향해요
           </h2>
         ) : (
-          <h2 className="font-apple-neo h-[284px] min-w-max pt-1 text-[36px] font-semibold lg:h-[390px]">
+          <h2 className="h-[284px] min-w-max pt-1 font-apple-neo text-[36px] font-semibold lg:h-[390px]">
             이런 사람을
             <br />
             지향해요

@@ -29,7 +29,7 @@ function Header({ isMainPage }: Props) {
             alt={logoData.name}
             className=" w-[42px] xs:w-[25px] sm:w-[28px] md:w-[37px]"
           />
-          <h1 className="text-black font-jost w-[111px] text-center text-[24px] font-semibold leading-[26px] -tracking-[0.04em] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
+          <h1 className="text-black w-[111px] text-center font-jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
             YOURSSU
           </h1>
         </Link>
@@ -78,7 +78,7 @@ function Header({ isMainPage }: Props) {
           <Link
             to="/"
             className={`
-              font-jost p-5 text-[18px] font-[600] leading-normal tracking-[-0.36px] 
+              p-5 font-jost text-[18px] font-[600] leading-normal tracking-[-0.36px] 
               ${isMainPage ? 'text-black-0' : 'text-Text_Color2-0'}`}
           >
             MAIN
@@ -86,7 +86,7 @@ function Header({ isMainPage }: Props) {
           <Link
             to="/recruiting"
             className={`
-              font-jost p-5 text-[18px] font-[600] leading-normal tracking-[-0.36px] 
+              p-5 font-jost text-[18px] font-[600] leading-normal tracking-[-0.36px] 
               ${isMainPage ? 'text-Text_Color2-0' : 'text-black-0'}`}
           >
             RECRUITING

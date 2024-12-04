@@ -89,6 +89,7 @@ function Ideal() {
                       $index={index}
                       image={imgData.image}
                       alt={imgData.name}
+                      style={{ position: 'absolute' }}
                     />
                   )}
                 </Item>
@@ -146,7 +147,6 @@ const IdealText = tw.span`
 `;
 
 const IdealImage = tw(GatsbyImage)<{ $index: number }>`
-  absolute
   ${(prop) => (prop.$index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform')}
   md:w-[260px]
   sm:w-[110px]

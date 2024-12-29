@@ -11,7 +11,7 @@ function Banner() {
     <div className="relative flex flex-col items-center justify-center">
       {mobileImage && desktopImage && (
         <GatsbyImage
-          alt="배너 이미지"
+          alt="유어슈 배너 이미지"
           loading="eager"
           className="h-[800px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
           image={breakpoints.md ? mobileImage : desktopImage}

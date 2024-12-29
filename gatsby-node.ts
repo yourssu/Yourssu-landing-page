@@ -65,6 +65,10 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
     resolve: {
       plugins: [new TsconfigPathsPlugin()],
     },
+    output: {
+      filename: '[name].[chunkhash].js',
+      chunkFilename: '[name].[chunkhash].js',
+    },
   });
 };
 

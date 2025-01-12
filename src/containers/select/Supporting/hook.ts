@@ -154,9 +154,13 @@ export default function useSupportingDetail() {
           scheduleWithoutAssignment,
         },
         scheduleWithAssignmentData:
-          data.scheduleWithAssignmentData.edges[0].node.formSchedule,
+          data.scheduleWithAssignmentData.edges.length > 0
+            ? data.scheduleWithAssignmentData.edges[0].node.formSchedule
+            : null,
         scheduleWithoutAssignmentData:
-          data.scheduleWithoutAssignmentData.edges[0].node.formSchedule,
+          data.scheduleWithoutAssignmentData.edges.length > 0
+            ? data.scheduleWithoutAssignmentData.edges[0].node.formSchedule
+            : null,
         scheduleIndividualData: value.node.applyProcedure.formSchedule,
       }),
       searchKeyword: value.node.searchKeyword,

@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    concurrency:
-      group: gatsby-build
-      cancel-in-progress: true
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3

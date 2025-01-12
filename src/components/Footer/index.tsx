@@ -1,3 +1,4 @@
+import React from 'react';
 import tw from 'tailwind-styled-components';
 
 import useFooterDetail from './hook';
@@ -29,9 +30,8 @@ function Footer({ backgroundColor }: Props) {
       </InfoContainer>
       <div className="flex items-center gap-[9px]">
         {socialIcon.nodes.map((icon, index) => (
-          <>
+          <React.Fragment key={icon.name}>
             <a
-              key={icon.name}
               href={link[icon.name.split('-')[1]]}
               target="_blank"
               rel="noreferrer"
@@ -41,7 +41,7 @@ function Footer({ backgroundColor }: Props) {
             {index !== socialIcon.nodes.length - 1 && (
               <hr className="h-[26.5px] w-[1px] border-none bg-[#D4D7DB]" />
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </Container>

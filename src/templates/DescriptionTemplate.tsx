@@ -128,9 +128,10 @@ export function Head({
   data: SanityDepartmentData;
 }) {
   const data = allSanityDepartment.edges[0].node.basicInformation;
+
   return (
     <DepartmentSeo
-      title={`${data.short_introduction} ${data.name}`}
+      title={`${data.short_introduction.replace(/\\n/g, '')} ${data.name}`}
       description={data.long_introduction}
       image={data.icon.asset.gatsbyImageData}
     />
@@ -143,6 +144,7 @@ export const querySanityDataByName = graphql`
       edges {
         node {
           basicInformation {
+            name
             short_introduction
             long_introduction
             apply_link

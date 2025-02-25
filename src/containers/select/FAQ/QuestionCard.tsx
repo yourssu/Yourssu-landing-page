@@ -31,7 +31,7 @@ export default function QuestionCard({
             />
           </div>
 
-          <Accordion.Content className="data-[state=open]:animate-accordion-slide-down data-[state=closed]:animate-accordion-slide-up overflow-hidden text-left">
+          <Accordion.Content className="overflow-hidden text-left data-[state=closed]:animate-accordion-slide-up data-[state=open]:animate-accordion-slide-down">
             <AnswerSpace />
             <AnswerBox>
               <AnswerText>{answer}</AnswerText>

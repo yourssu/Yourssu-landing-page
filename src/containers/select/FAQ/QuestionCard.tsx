@@ -1,6 +1,5 @@
-import { AnimatePresence, motion, Variants } from 'framer-motion';
+import * as Accordion from '@radix-ui/react-accordion';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import { useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import { NodeType } from '@/types/hook';
@@ -15,58 +14,34 @@ export default function QuestionCard({
   smallArrow: NodeType;
 }) {
   const breakpoints = useBreakpoint();
-  const [active, setActive] = useState(false);
-
-  const onClick = () => {
-    setActive((prev) => !prev);
-  };
 
   return (
-    <Container
-      $windowSize={!breakpoints.query550}
-      className=""
-      onClick={onClick}
-    >
-      <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
-        <div className="flex items-center gap-[12px] xs:gap-[8px] sm:gap-[8px]">
-          <Q>Q</Q>
-          <Text>{question}</Text>
-        </div>
-        <QuestionIcon
-          className={`${active ? 'rotate-90' : ''} transform`}
-          src={smallArrow.publicURL}
-          alt={smallArrow.name}
-        />
-      </div>
+    <Accordion.Item value={question}>
+      <Accordion.Trigger className="group">
+        <Container $windowSize={!breakpoints.query550}>
+          <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
+            <div className="flex items-center gap-[12px] xs:gap-[8px] sm:gap-[8px]">
+              <Q>Q</Q>
+              <Text>{question}</Text>
+            </div>
+            <QuestionIcon
+              className="group-data-[state=open]:rotate-90"
+              src={smallArrow.publicURL}
+              alt={smallArrow.name}
+            />
+          </div>
 
-      <AnimatePresence initial={false}>
-        {active && (
-          <motion.div
-            initial="initial"
-            animate="animate"
-            exit="initial"
-            variants={AnswerBoxVariants}
-            transition={{ ease: 'easeOut', duration: 0.3 }}
-          >
+          <Accordion.Content className="data-[state=open]:animate-accordion-slide-down data-[state=closed]:animate-accordion-slide-up overflow-hidden text-left">
             <AnswerSpace />
             <AnswerBox>
               <AnswerText>{answer}</AnswerText>
             </AnswerBox>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Container>
+          </Accordion.Content>
+        </Container>
+      </Accordion.Trigger>
+    </Accordion.Item>
   );
 }
-
-const AnswerBoxVariants: Variants = {
-  initial: {
-    height: 0,
-  },
-  animate: {
-    height: 'auto',
-  },
-};
 
 const Container = tw.div<{ $windowSize: boolean }>`
   w-[1280px]

@@ -11,10 +11,9 @@ import useApplyProcedureDetail from './hook';
 
 interface ApplyProcedureProps {
   applyProcedure: ApplyProcedureInformation[] | null;
-  isRecruiting: boolean;
 }
 
-function ApplyProcedure({ applyProcedure, isRecruiting }: ApplyProcedureProps) {
+function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   const data = useApplyProcedureDetail();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const warningRef = useRef<HTMLDivElement>(null);
@@ -33,13 +32,13 @@ function ApplyProcedure({ applyProcedure, isRecruiting }: ApplyProcedureProps) {
     return () => document.removeEventListener('mousedown', handleClose);
   }, [isWarningOpen]);
 
-  // 리쿠르팅을 안하거나, 일정이 지나면 null 반환
-  if (!applyProcedure || !isRecruiting) return null;
+  // 리쿠르팅을 안하면 null 반환
+  if (!applyProcedure || applyProcedure.length === 0) return null;
 
   return (
     <section>
       <TitleContainer>
-        <Title>지원절차</Title>
+        <Title>합류여정</Title>
         <NoticeButton
           type="button"
           onClick={() => {

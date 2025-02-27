@@ -80,20 +80,17 @@ function DescriptionTemplate({
                 experience={edges[0].node.experience}
                 skill={edges[0].node.skill}
               />
-              <ApplyProcedure
-                applyProcedure={procedure}
-                isRecruiting={isRecruiting}
+              <ApplyProcedure applyProcedure={procedure} />
+              <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
+              <InaWord
+                departmentImage={
+                  edges[0].node.basicInformation.icon.asset.gatsbyImageData
+                }
+                inaWord={edges[0].node.inaWord}
               />
             </DefaultInformationContainer>
             <Line />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-            <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
-            <InaWord
-              departmentImage={
-                edges[0].node.basicInformation.icon.asset.gatsbyImageData
-              }
-              inaWord={edges[0].node.inaWord}
-            />
           </SectionContainer>
           {!breakpoints.md && (
             <SideNavigation

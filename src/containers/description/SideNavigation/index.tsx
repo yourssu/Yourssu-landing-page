@@ -41,10 +41,10 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         isRecruiting={currentTeam.isRecruiting}
         $testSize="h4"
       />
-      <Link to={KAKAO_LINK} className="ml-auto w-fit">
+      <a href={KAKAO_LINK} className="ml-auto w-fit">
         <InquiryButtonText>문의하기</InquiryButtonText>
         <img src={data.inquiryButton.publicURL} alt="문의하기" />
-      </Link>
+      </a>
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import isTodayInRange from '@/utils/isTodayInRange';
@@ -10,39 +10,27 @@ import useSupportingDetail from './hook';
 function Supporting() {
   const { teamData, imgData } = useSupportingDetail();
   const [searchText, setSearchText] = useState<string>('');
-  const [supportingTeam, setSupportingTeam] = useState<number>(0);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
+  const supportingTeam = teamData.reduce((acc, value) => {
+    if (!value.recruitingData || !value.recruitingData.formSchedule) {
+      return acc;
+    }
+    if (isTodayInRange(value.recruitingData.formSchedule)) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
 
-    let count = 0;
-
-    teamData.forEach((value) => {
-      if (!value.recruitingData || !value.recruitingData.formSchedule) {
-        return;
-      }
-      if (isTodayInRange(value.recruitingData.formSchedule)) {
-        count += 1;
-      }
-    });
-
-    setSupportingTeam(count);
-  }, [teamData]);
-
-  const filterData = useMemo(() => {
-    if (typeof window === 'undefined') return;
-
-    return teamData.filter((item) => {
-      if (searchText === '') {
-        return (
-          item.recruitingData &&
-          item.recruitingData.formSchedule &&
-          isTodayInRange(item.recruitingData.formSchedule)
-        );
-      }
-      return item.searchKeyword.includes(searchText);
-    });
-  }, [searchText, teamData]);
+  const filterData = teamData.filter((item) => {
+    if (searchText === '') {
+      return (
+        item.recruitingData &&
+        item.recruitingData.formSchedule &&
+        isTodayInRange(item.recruitingData.formSchedule)
+      );
+    }
+    return item.searchKeyword.includes(searchText);
+  });
 
   return (
     <Container>

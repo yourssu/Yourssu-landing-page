@@ -41,13 +41,28 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
         <TitleContainer key={info.title}>
           <InformationTitle>{info.title}</InformationTitle>
           <InformationContainer>
-            {info.content.map((content) => (
-              <li key={content}>
-                {content.split('\\n').map((item) => (
-                  <div key={item}>{item}</div>
-                ))}
-              </li>
-            ))}
+            {info.content.map((content) => {
+              const important =
+                content.startsWith('[') && content.endsWith(']');
+
+              if (important) content = content.substring(1, content.length - 1);
+
+              return (
+                <li
+                  className={`${important ? 'my-2 -ml-7 list-none xs:-ml-6 sm:-ml-5 md:-ml-5' : ''}`}
+                  key={content}
+                >
+                  {content.split('\\n').map((item) => (
+                    <div
+                      className={`${important ? 'font-semibold' : ''}`}
+                      key={item}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </li>
+              );
+            })}
           </InformationContainer>
         </TitleContainer>
       ))}

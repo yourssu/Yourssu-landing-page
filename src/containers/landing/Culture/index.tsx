@@ -13,7 +13,7 @@ function Culture() {
         linerColor="gra"
         textColor="ver1"
       />
-      <div className="mt-[110px] flex h-[492px] w-[958px] flex-wrap content-between items-center justify-between xs:mt-[50px] xs:h-fit xs:w-[250px] sm:mt-[80px] sm:h-fit sm:w-[310px] md:mt-[80px] md:h-fit md:w-[400px]">
+      <div className="mt-[110px] flex w-[958px] flex-wrap justify-between gap-6 xs:mt-[50px] xs:h-fit xs:w-[250px] xs:gap-[30px] sm:mt-[80px] sm:h-fit sm:w-[310px] sm:gap-[50px] md:mt-[80px] md:h-fit md:w-[400px] md:gap-[60px]">
         {items.map((item) => (
           <CultureItem
             key={item.id}

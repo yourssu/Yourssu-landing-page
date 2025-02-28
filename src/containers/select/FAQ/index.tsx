@@ -1,3 +1,4 @@
+import * as Accordion from '@radix-ui/react-accordion';
 import tw from 'tailwind-styled-components';
 
 import QuestionCard from './QuestionCard';
@@ -8,19 +9,29 @@ function FAQ() {
 
   return (
     <Container className="flex flex-col items-center">
-      <FAQText>자주 묻는 질문</FAQText>
-      <div className="flex flex-col items-center gap-[20px]">
+      <FAQText>유어슈 모집 FAQ</FAQText>
+      <Accordion.Root
+        type="multiple"
+        className="flex flex-col items-center gap-10"
+      >
         {faq.map((value) => {
           return (
-            <QuestionCard
-              key={value.question}
-              question={value.question}
-              answer={value.answer}
-              smallArrow={imgData.smallarrow.nodes[0]}
-            />
+            <div key={value.category} className="flex flex-col gap-5">
+              <div className="h3 sm:h4 xs:h4">{value.category}</div>
+              {value.list.map((item) => {
+                return (
+                  <QuestionCard
+                    key={item.question}
+                    question={item.question}
+                    answer={item.answer}
+                    smallArrow={imgData.smallarrow.nodes[0]}
+                  />
+                );
+              })}
+            </div>
           );
         })}
-      </div>
+      </Accordion.Root>
     </Container>
   );
 }

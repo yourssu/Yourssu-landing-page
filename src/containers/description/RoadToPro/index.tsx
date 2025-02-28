@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import tw from 'tailwind-styled-components';
 
@@ -26,7 +25,7 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
           );
           return (
             <div key={video.video_link} className="flex flex-col gap-4">
-              <VideoContainer to={video.video_link}>
+              <VideoContainer href={video.video_link}>
                 {thumbnail && <Thumbnail image={thumbnail} alt="thumbnail" />}
                 <Gradient src={data.gradientImg.publicURL} alt="gradient" />
                 <PlayButton src={data.playIcon.publicURL} alt="play" />
@@ -92,7 +91,7 @@ const VideoInfoContainer = tw.div`
   xs:gap-y-5
 `;
 
-const VideoContainer = tw(Link)`
+const VideoContainer = tw.a`
   relative
   h-fit
   w-fit

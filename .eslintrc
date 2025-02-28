@@ -57,6 +57,10 @@
     "import/resolver": {
       "typescript": {
         "project": "."
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", ".pnpm"]
       }
     },
     "react": {

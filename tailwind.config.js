@@ -14,6 +14,20 @@ module.exports = {
       project: '35px',
     },
     extend: {
+      keyframes: {
+        accordionSlideDown: {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        accordionSlideUp: {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-slide-down': 'accordionSlideDown 300ms ease-out',
+        'accordion-slide-up': 'accordionSlideUp 300ms ease-out',
+      },
       gridTemplateColumns: {
         16: 'repeat(16, minmax(0, 1fr))',
       },

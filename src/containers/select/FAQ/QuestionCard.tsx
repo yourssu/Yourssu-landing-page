@@ -20,7 +20,7 @@ export default function QuestionCard({
       <Accordion.Trigger className="group">
         <Container $windowSize={!breakpoints.query550}>
           <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
-            <div className="flex items-center gap-[12px] xs:gap-[8px] sm:gap-[8px]">
+            <div className="flex items-center gap-[12px] text-left xs:gap-[8px] sm:gap-[8px]">
               <Q>Q</Q>
               <Text>{question}</Text>
             </div>

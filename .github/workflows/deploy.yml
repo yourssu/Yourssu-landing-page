@@ -34,12 +34,9 @@ jobs:
       - name: build application
         run: ./node_modules/.bin/gatsby build
 
-      - name: Deploy to s3
+      - name: Deploy to S3 using gatsby-plugin-s3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            public s3://yourssu.com
+          AWS_REGION: ap-northeast-2
+        run: ./node_modules/.bin/gatsby-plugin-s3 deploy --yes

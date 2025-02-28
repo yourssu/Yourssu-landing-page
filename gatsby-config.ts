@@ -140,6 +140,16 @@ const config: GatsbyConfig = {
         queries: myCustomQueries,
       },
     },
+    {
+      resolve: 'gatsby-plugin-s3',
+      options: {
+        bucketName: 'yourssu.com',
+        region: 'ap-northeast-2',
+        protocol: 'https',
+        hostname: 'yourssu.com',
+        acl: null,
+      },
+    },
   ],
   jsxRuntime: 'automatic',
 };

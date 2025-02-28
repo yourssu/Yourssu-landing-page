@@ -13,10 +13,8 @@ function Supporting() {
   const [supportingTeam, setSupportingTeam] = useState<number>(0);
 
   useEffect(() => {
-    setSearchText('');
-  }, []);
+    if (typeof window === 'undefined') return;
 
-  useEffect(() => {
     let count = 0;
 
     teamData.forEach((value) => {
@@ -32,6 +30,8 @@ function Supporting() {
   }, [teamData]);
 
   const filterData = useMemo(() => {
+    if (typeof window === 'undefined') return;
+
     return teamData.filter((item) => {
       if (searchText === '') {
         return (

@@ -30,13 +30,15 @@ function CarouselContent({ currentIndex, isType }: Props) {
     <div
       className={`flex items-center justify-between xs:w-[240px] xs:flex-col xs:justify-between sm:flex-col sm:justify-between md:flex-col ${currentIndex === 4 ? 'xs:h-[400px] sm:h-[450px] md:h-[600px]' : 'xs:h-[500px] sm:h-[530px] md:h-[800px] md:justify-between'}`}
     >
-      {currentIndex % 2 !== 0 && (
-        <GatsbyImage
-          alt={projectData[currentIndex].title}
-          className="h-auto w-full max-w-[732px] xs:hidden sm:hidden md:hidden lg:w-[530px]"
-          image={projectImgData[currentIndex]?.image as IGatsbyImageData}
-        />
-      )}
+      <div className="xs:hidden sm:hidden md:hidden">
+        {currentIndex % 2 !== 0 && (
+          <GatsbyImage
+            alt={projectData[currentIndex].title}
+            className="h-auto w-full max-w-[732px] lg:w-[530px]"
+            image={projectImgData[currentIndex]?.image as IGatsbyImageData}
+          />
+        )}
+      </div>
       <div className="relative flex flex-col items-start justify-center xs:mb-[5px] sm:mb-[5px] md:mb-[10px]">
         <span className="absolute -top-[75px] left-[5px] font-apple-neo text-[70px] font-extrabold leading-[115px] -tracking-[0.03em] text-[#000000] opacity-10 xs:-top-[60px] xs:left-[10px] xs:text-[40px] xs:-tracking-[0.05em] sm:-left-[20px] sm:-top-[65px] sm:text-[48px] sm:-tracking-[0.05em] ">
           0{currentIndex + 1}

@@ -139,6 +139,13 @@ const ProcedureDate = tw.div`
   text-end
   leading-9
   text-transparent
+  
+  sm:text-sm
+  xs:text-xs
+  sm:gap-[26px]
+  xs:gap-[26px]
+  sm:mt-0.5
+  xs:mt-0.5
 `;
 
 const ProcedureStep = tw.div`
@@ -155,6 +162,11 @@ const ProcedureStep = tw.div`
   text-gray1-0
 
   md:body7
-  sm:body7
-  xs:body7
+  sm:body9
+  xs:body9
+  
+  sm:gap-[26px]
+  xs:gap-[26px]
+  sm:mt-0.5
+  xs:mt-0.5
 `;

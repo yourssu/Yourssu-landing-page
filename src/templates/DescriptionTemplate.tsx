@@ -9,6 +9,7 @@ import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
+import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
@@ -90,7 +91,10 @@ function DescriptionTemplate({
               />
             </DefaultInformationContainer>
             <Line />
-            <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+            <div className="flex gap-16">
+              <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+              <Medium />
+            </div>
           </SectionContainer>
           {!breakpoints.md && (
             <SideNavigation
@@ -231,6 +235,7 @@ const SectionContainer = tw.div`
   md:gap-[50px]
   sm:gap-[50px]
   xs:gap-[50px]
+  max-w-full
 `;
 
 const DefaultInformationContainer = tw.div`

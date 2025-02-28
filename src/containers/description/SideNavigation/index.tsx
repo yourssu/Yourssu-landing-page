@@ -41,10 +41,23 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         isRecruiting={currentTeam.isRecruiting}
         $testSize="h4"
       />
-      <a href={KAKAO_LINK} className="ml-auto w-fit">
-        <InquiryButtonText>문의하기</InquiryButtonText>
-        <img src={data.inquiryButton.publicURL} alt="문의하기" />
-      </a>
+      <div className="flex gap-8">
+        <Link
+          to="/recruiting/#faq"
+          className="flex w-fit flex-col items-center"
+        >
+          <div className="body4 mb-[1px]  items-center text-gray1-0">
+            FAQ 보러가기
+          </div>
+          <img src={data.inquiryButton.publicURL} alt="FAQ 보러가기" />
+        </Link>
+        <a href={KAKAO_LINK} className="flex w-fit flex-col items-center">
+          <div className="body4 mb-[1px] items-center text-gray1-0">
+            문의하기
+          </div>
+          <img src={data.inquiryButton.publicURL} alt="문의하기" />
+        </a>
+      </div>
     </Container>
   );
 }
@@ -88,13 +101,4 @@ const NavigationItem = tw(Link)<{ $active: boolean }>`
   px-[18px]
   py-3
   ${(props) => (props.$active ? 'bg-bluegray4-0' : 'bg-white-0')}
-`;
-
-const InquiryButtonText = tw.div`
-  body4
-  mb-[1px]
-  flex
-  flex-col
-  items-center
-  text-gray1-0
 `;

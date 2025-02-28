@@ -6,7 +6,7 @@ import formatDate from '@/utils/formatDate';
 
 import useBannerDetail from './hook';
 
-function Banner({}: { moveSupporting: () => void }) {
+function Banner() {
   const bannerData = useBannerDetail();
   const breakpoints = useBreakpoint();
 
@@ -37,7 +37,7 @@ function Banner({}: { moveSupporting: () => void }) {
         >
           {`당신의 손으로 바꿔나갈,\n당신의 숭실`}
         </BannerSubTitle>
-        {/*<Button type="button" onClick={moveSupporting}>*/}
+        {/*<Button type="button">*/}
         {/*  <ButtonText>지원하기</ButtonText>*/}
         {/*</Button>*/}
       </SubContainer3>

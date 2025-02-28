@@ -18,7 +18,7 @@ function ApplyProcedure() {
           />
         ))}
       </ApplyProcedureStepContainer>
-      <Text3>*세부사항은 지원 분야마다 차이가 있을 수 있습니다.</Text3>
+      <Text3>*세부사항은 지원 분야마다 차이가 있을 수 있어요.</Text3>
     </Container>
   );
 }

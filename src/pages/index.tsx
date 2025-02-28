@@ -1,20 +1,25 @@
-import MVC from 'src/containers/landing/MVC';
-
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
 import Banner from '@/containers/landing/Banner';
-import Culture from '@/containers/landing/Culture';
-import Project from '@/containers/landing/Project';
-import Team from '@/containers/landing/Team';
+import Channel from '@/containers/landing/Channel';
+import CoreValue from '@/containers/landing/CoreValue';
+import Culture from '@/containers/landing/Culture/new';
+import MissionVision from '@/containers/landing/MVC/new';
+import Product from '@/containers/landing/Product';
+import { ReviewCarousel } from '@/containers/landing/Review';
+import ToRecruit from '@/containers/landing/ToRecruit';
 
 export default function Home() {
   return (
     <Layout isMainPage>
       <Banner />
-      <Team />
-      <MVC />
-      <Project />
+      <Product />
+      <MissionVision />
+      <CoreValue />
       <Culture />
+      <Channel />
+      <ReviewCarousel />
+      <ToRecruit />
     </Layout>
   );
 }

@@ -38,7 +38,7 @@ export default function useFAQDetail() {
           answer: '네! 숭실대학교 재학생과 휴학생 모두 지원할 수 있어요.',
         },
         {
-          question: '지난 기수에 지원했다가 탈락했는데, 다시 지원할 수 있나요?',
+          question: '지난 학기에 지원했다가 탈락했는데, 다시 지원할 수 있나요?',
           answer: '네! 이전 지원 여부는 선발 결과에 영향을 미치지 않아요.',
         },
         {

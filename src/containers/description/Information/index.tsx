@@ -51,7 +51,7 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
           </InformationContainer>
         </TitleContainer>
       ))}
-      {skill && (
+      {skill && skill.content.length !== 0 && (
         <div className="relative">
           <SkillTitleContainer>
             <InformationTitle>{skill.title}</InformationTitle>

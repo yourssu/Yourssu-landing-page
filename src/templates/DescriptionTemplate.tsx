@@ -18,6 +18,7 @@ import {
   DefaultContentInformation,
   GrowthAndDiffInformation,
   InaWordInformation,
+  MediumInformation,
   RoadToProInformation,
   SkillContentInformation,
 } from '@/types/recruiting.type';
@@ -35,6 +36,7 @@ interface SanityDepartmentData {
         roadToProVideo: RoadToProInformation;
         growthAndDiff: GrowthAndDiffInformation;
         inaWord: InaWordInformation;
+        articleContent: MediumInformation[];
       };
     }[];
   };
@@ -91,10 +93,8 @@ function DescriptionTemplate({
               />
             </DefaultInformationContainer>
             <Line />
-            <div className="flex gap-16">
-              <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-              {/*<Medium />*/}
-            </div>
+            <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+            {/*<Medium medium={edges[0].node.articleContent} />*/}
           </SectionContainer>
           {!breakpoints.md && (
             <SideNavigation
@@ -171,6 +171,12 @@ export const querySanityDataByName = graphql`
             title
             content
             notice
+          }
+          articleContent {
+            url
+            title
+            description
+            image
           }
           roadToProVideo {
             title

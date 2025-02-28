@@ -44,3 +44,10 @@ export interface GrowthAndDiffInformation {
   title: string;
   content: string;
 }
+
+export interface MediumInformation {
+  url: string;
+  title: string;
+  description: string;
+  image: string;
+}

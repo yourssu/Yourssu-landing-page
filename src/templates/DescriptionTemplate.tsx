@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import ApplyButton from '@/components/Button/ApplyButton';
@@ -61,8 +62,15 @@ function DescriptionTemplate({
   },
   pageContext: { name, nameList, formSchedule, procedure },
 }: DescriptionTemplateProps) {
-  const isRecruiting = formSchedule ? isTodayInRange(formSchedule) : false;
+  const [isRecruiting, setIsRecruiting] = useState(false);
   const breakpoints = useBreakpoint();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && formSchedule) {
+      const recruiting = isTodayInRange(formSchedule);
+      setIsRecruiting(recruiting);
+    }
+  }, [formSchedule]);
 
   return (
     <Layout isMainPage={false}>

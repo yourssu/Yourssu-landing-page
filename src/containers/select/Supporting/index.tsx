@@ -49,7 +49,7 @@ function Supporting() {
         <SupportingDescription>
           {supportingTeam > 0
             ? `총 ${supportingTeam}개의 분야에서 지원자를 모집하고 있어요.\n관심 있는 직군의 카드에 마우스를 올려보세요!`
-            : '현재 지원자를 모집하고 있는 분야가 없습니다.'}
+            : '현재 지원자를 모집하고 있는 분야가 없어요.'}
         </SupportingDescription>
       </SubContainer1>
 

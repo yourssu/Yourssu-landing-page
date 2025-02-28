@@ -9,6 +9,7 @@ import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
+// import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
@@ -80,20 +81,20 @@ function DescriptionTemplate({
                 experience={edges[0].node.experience}
                 skill={edges[0].node.skill}
               />
-              <ApplyProcedure
-                applyProcedure={procedure}
-                isRecruiting={isRecruiting}
+              <ApplyProcedure applyProcedure={procedure} />
+              <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
+              <InaWord
+                departmentImage={
+                  edges[0].node.basicInformation.icon.asset.gatsbyImageData
+                }
+                inaWord={edges[0].node.inaWord}
               />
             </DefaultInformationContainer>
             <Line />
-            <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-            <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
-            <InaWord
-              departmentImage={
-                edges[0].node.basicInformation.icon.asset.gatsbyImageData
-              }
-              inaWord={edges[0].node.inaWord}
-            />
+            <div className="flex gap-16">
+              <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+              {/*<Medium />*/}
+            </div>
           </SectionContainer>
           {!breakpoints.md && (
             <SideNavigation
@@ -234,6 +235,7 @@ const SectionContainer = tw.div`
   md:gap-[50px]
   sm:gap-[50px]
   xs:gap-[50px]
+  max-w-full
 `;
 
 const DefaultInformationContainer = tw.div`

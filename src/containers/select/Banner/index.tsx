@@ -6,7 +6,7 @@ import formatDate from '@/utils/formatDate';
 
 import useBannerDetail from './hook';
 
-function Banner({ moveSupporting }: { moveSupporting: () => void }) {
+function Banner() {
   const bannerData = useBannerDetail();
   const breakpoints = useBreakpoint();
 
@@ -37,9 +37,9 @@ function Banner({ moveSupporting }: { moveSupporting: () => void }) {
         >
           {`당신의 손으로 바꿔나갈,\n당신의 숭실`}
         </BannerSubTitle>
-        <Button type="button" onClick={moveSupporting}>
-          <ButtonText>지원하기</ButtonText>
-        </Button>
+        {/*<Button type="button">*/}
+        {/*  <ButtonText>지원하기</ButtonText>*/}
+        {/*</Button>*/}
       </SubContainer3>
     </Container>
   );
@@ -130,39 +130,39 @@ const BannerSubTitle = tw.span`
   text-center
 `;
 
-const ButtonText = tw.span`
-  text-white-0
-
-  body1
-
-  sm:text-[20px]
-  sm:leading-[30px]
-  sm:tracking-[-2%]
-  sm:font-[700]
-
-  xs:text-[20px]
-  xs:leading-[30px]
-  xs:tracking-[-2%]
-  xsw:font-[700]
-`;
-
-// button component
-const Button = tw.button`
-  h-[71px] 
-  md:h-[94px]
-  sm:h-[56px]
-  xs:h-[56px]
-
-  w-[191px] 
-  md:w-[479px]
-  sm:w-[273px]
-  xs:w-[273px]
-
-  rounded-[999px] 
-
-  bg-gradient-to-r 
-  from-mainGra2-0 
-  to-mainGra1-0
-`;
+// const ButtonText = tw.span`
+//   text-white-0
+//
+//   body1
+//
+//   sm:text-[20px]
+//   sm:leading-[30px]
+//   sm:tracking-[-2%]
+//   sm:font-[700]
+//
+//   xs:text-[20px]
+//   xs:leading-[30px]
+//   xs:tracking-[-2%]
+//   xsw:font-[700]
+// `;
+//
+// // button component
+// const Button = tw.button`
+//   h-[71px]
+//   md:h-[94px]
+//   sm:h-[56px]
+//   xs:h-[56px]
+//
+//   w-[191px]
+//   md:w-[479px]
+//   sm:w-[273px]
+//   xs:w-[273px]
+//
+//   rounded-[999px]
+//
+//   bg-gradient-to-r
+//   from-mainGra2-0
+//   to-mainGra1-0
+// `;
 
 export default Banner;

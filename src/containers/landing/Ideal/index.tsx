@@ -9,7 +9,7 @@ function Ideal() {
   const breakpoints = useBreakpoint();
 
   return (
-    <div className="bg-[#F5F5F5] py-[160px] xs:py-20 sm:py-[110px] md:py-[120px]">
+    <div className="w-full bg-[#F5F5F5] py-[160px] xs:py-20 sm:py-[110px] md:py-[120px]">
       <div className="flex flex-row items-center justify-center xs:flex-col sm:flex-col md:flex-col">
         {breakpoints.md ? (
           <h2 className="h-fit pb-2 font-apple-neo font-semibold xs:text-[20px] sm:text-[24px] md:text-[32px]">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import tw from 'tailwind-styled-components';
 
 import isTodayInRange from '@/utils/isTodayInRange';
@@ -31,16 +31,18 @@ function Supporting() {
     setSupportingTeam(count);
   }, [teamData]);
 
-  const filterData = teamData.filter((item) => {
-    if (searchText === '') {
-      return (
-        item.recruitingData &&
-        item.recruitingData.formSchedule &&
-        isTodayInRange(item.recruitingData.formSchedule)
-      );
-    }
-    return item.searchKeyword.includes(searchText);
-  });
+  const filterData = useMemo(() => {
+    return teamData.filter((item) => {
+      if (searchText === '') {
+        return (
+          item.recruitingData &&
+          item.recruitingData.formSchedule &&
+          isTodayInRange(item.recruitingData.formSchedule)
+        );
+      }
+      return item.searchKeyword.includes(searchText);
+    });
+  }, [searchText, teamData]);
 
   return (
     <Container>

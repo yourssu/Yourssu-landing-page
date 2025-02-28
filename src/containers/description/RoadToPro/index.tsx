@@ -78,7 +78,7 @@ const SubTitle = tw.div`
 
 const VideoInfoContainer = tw.div`
   flex
-  flex-col
+  flex-wrap
 
   gap-x-5
   md:gap-x-2

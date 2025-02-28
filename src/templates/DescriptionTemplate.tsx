@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
@@ -19,10 +19,13 @@ import {
   DefaultContentInformation,
   GrowthAndDiffInformation,
   InaWordInformation,
+  MediumInformation,
   RoadToProInformation,
   SkillContentInformation,
 } from '@/types/recruiting.type';
 import isTodayInRange from '@/utils/isTodayInRange';
+
+const KAKAO_LINK = 'http://pf.kakao.com/_AxfrxeT';
 
 interface SanityDepartmentData {
   allSanityDepartment: {
@@ -36,6 +39,7 @@ interface SanityDepartmentData {
         roadToProVideo: RoadToProInformation;
         growthAndDiff: GrowthAndDiffInformation;
         inaWord: InaWordInformation;
+        articleContent: MediumInformation[];
       };
     }[];
   };
@@ -99,10 +103,8 @@ function DescriptionTemplate({
               />
             </DefaultInformationContainer>
             <Line />
-            <div className="flex gap-16">
-              <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-              {/*<Medium />*/}
-            </div>
+            <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+            {/*<Medium medium={edges[0].node.articleContent} />*/}
           </SectionContainer>
           {!breakpoints.md && (
             <SideNavigation
@@ -122,6 +124,18 @@ function DescriptionTemplate({
               isRecruiting={isRecruiting}
               $testSize="body4"
             />
+            <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
+              <Link
+                to="/recruiting/#faq"
+                className="flex w-fit flex-col items-center"
+              >
+                <div className="mb-[1px] items-center">FAQ 보러가기</div>
+              </Link>
+              |
+              <a href={KAKAO_LINK} className="flex w-fit flex-col items-center">
+                <div className="mb-[1px] items-center">문의하기</div>
+              </a>
+            </div>
           </ApplyButtonContainer>
         )}
       </Container>
@@ -179,6 +193,12 @@ export const querySanityDataByName = graphql`
             title
             content
             notice
+          }
+          articleContent {
+            url
+            title
+            description
+            image
           }
           roadToProVideo {
             title
@@ -266,8 +286,10 @@ const Line = tw.hr`
 const ApplyButtonContainer = tw.div`
   sticky
   bottom-0
+  gap-3
   
   flex
+  flex-col
   
   w-full
   p-5

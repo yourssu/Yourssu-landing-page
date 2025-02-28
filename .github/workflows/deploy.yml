@@ -13,11 +13,22 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.7.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Clean Gatsby build
-        run: ./node_modules/.bin/gatsby clean
+        run: pnpm gatsby clean
 
       - name: Generate Environment Variables File for Production
         run: |
@@ -31,12 +42,12 @@ jobs:
           GATSBY_APP_SANITY_DATASET: ${{ secrets.GATSBY_APP_SANITY_DATASET }}
           GATSBY_APP_GA_ID: ${{ secrets.GATSBY_APP_GA_ID }}
 
-      - name: build application
-        run: ./node_modules/.bin/gatsby build
+      - name: Build application
+        run: pnpm gatsby build
 
       - name: Deploy to S3 using gatsby-plugin-s3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-northeast-2
-        run: ./node_modules/.bin/gatsby-plugin-s3 deploy --yes
+        run: pnpm gatsby-plugin-s3 deploy --yes

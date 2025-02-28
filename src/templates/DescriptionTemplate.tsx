@@ -98,10 +98,14 @@ function DescriptionTemplate({
                   edges[0].node.basicInformation.icon.asset.gatsbyImageData
                 }
                 inaWord={edges[0].node.inaWord}
-              /> */}
-            <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-            {/*<Medium medium={edges[0].node.articleContent} />*/}
-          </div>
+              />
+            </DefaultInformationContainer>
+            <Line />
+            <div className="flex gap-16">
+              <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
+              {/*<Medium />*/}
+            </div>
+          </SectionContainer>
           {!breakpoints.md && (
             <SideNavigation
               currentTeam={{
@@ -118,24 +122,8 @@ function DescriptionTemplate({
             <ApplyButton
               link={edges[0].node.basicInformation.apply_link}
               isRecruiting={isRecruiting}
+              $testSize="body4"
             />
-            <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
-              <Link
-                to="/recruiting/#faq"
-                className="flex w-fit flex-col items-center"
-              >
-                <div className="mb-[1px] items-center">FAQ 보러가기</div>
-              </Link>
-              |
-              <a
-                href={KAKAO_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-fit flex-col items-center"
-              >
-                <div className="mb-[1px] items-center">문의하기</div>
-              </a>
-            </div>
           </ApplyButtonContainer>
         )}
       </Container>

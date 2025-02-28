@@ -9,7 +9,7 @@ import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
 import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
-import Medium from '@/containers/description/Medium';
+// import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
@@ -93,7 +93,7 @@ function DescriptionTemplate({
             <Line />
             <div className="flex gap-16">
               <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-              <Medium />
+              {/*<Medium />*/}
             </div>
           </SectionContainer>
           {!breakpoints.md && (

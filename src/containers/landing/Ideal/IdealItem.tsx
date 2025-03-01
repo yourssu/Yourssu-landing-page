@@ -12,7 +12,7 @@ function IdealItem({ title, description }: Props) {
           {title}
         </h3>
       </div>
-      <div className="ml-[141px] w-[725px] text-justify font-apple-neo text-[22px] font-normal text-Text_Color2-0 xs:ml-[70px] xs:w-[170px] xs:text-[13px] sm:ml-[86px] sm:w-[220px] sm:text-[14px] md:ml-[110px] md:w-[380px] md:text-[18px] lg:w-[455px]">
+      <div className="ml-[141px] w-[725px] font-apple-neo text-[22px] font-normal text-Text_Color2-0 xs:ml-[70px] xs:w-[170px] xs:text-[13px] sm:ml-[86px] sm:w-[220px] sm:text-[14px] md:ml-[110px] md:w-[380px] md:text-[18px] lg:w-[455px]">
         {description}
       </div>
     </div>

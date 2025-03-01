@@ -143,7 +143,6 @@ const InformationContainer = tw.ul`
   list-outside
   list-disc
   text-gray1-0
-  text-justify
 
   pl-7
   md:pl-5

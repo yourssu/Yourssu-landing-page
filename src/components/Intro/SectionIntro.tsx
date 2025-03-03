@@ -1,6 +1,6 @@
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   linerColor: string;
   textColor: string;
 }
@@ -24,15 +24,16 @@ function SectionIntro({ title, description, linerColor, textColor }: Props) {
       <h2 className="mb-[10px] mt-10 font-jost text-[36px] font-medium tracking-[.01em] xs:mt-[15px] xs:text-[20px] sm:text-[24px] md:text-[32px] xl:font-semibold xxl:font-semibold">
         {title}
       </h2>
-      {description.split('<br />').map((des) => (
-        <p
-          key={des}
-          className={`flex justify-center text-center font-apple-neo text-[22px] font-normal leading-relaxed xs:text-[13px] sm:w-[330px] sm:text-[14px] md:w-[450px] md:text-[18px] ${textColorVariants[textColor]}`}
-        >
-          {des}
-          <br />
-        </p>
-      ))}
+      {description &&
+        description.split('<br />').map((des) => (
+          <p
+            key={des}
+            className={`flex justify-center text-center font-apple-neo text-[22px] font-normal leading-relaxed xs:text-[13px] sm:w-[330px] sm:text-[14px] md:w-[450px] md:text-[18px] ${textColorVariants[textColor]}`}
+          >
+            {des}
+            <br />
+          </p>
+        ))}
     </div>
   );
 }

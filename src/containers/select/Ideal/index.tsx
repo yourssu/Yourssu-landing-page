@@ -1,160 +1,39 @@
-import { motion, transform, useScroll } from 'framer-motion';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { useEffect, useRef, useState } from 'react';
-import tw from 'tailwind-styled-components';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
-import useIdealDetail from './hook';
+import useIdealDetail from '@/containers/landing/MVC/hook';
+import IdealItem from '@/containers/select/Ideal/IdealItem';
 
 function Ideal() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const imgData = useIdealDetail();
-  const ideal = [
-    {
-      id: 1,
-      title: '자발적인',
-    },
-    {
-      id: 2,
-      title: '도전적인',
-    },
-    {
-      id: 3,
-      title: '공감하는',
-    },
-    {
-      id: 4,
-      title: '당신을\n기다려왔습니다!',
-    },
-  ];
-  const { scrollY } = useScroll();
-  const [scrollBoundingBox, setScrollBoundingBox] = useState({
-    top: 0,
-    bottom: 0,
-  });
-  const [opacityValues, setOpacityValues] = useState<number[]>(
-    ideal.map(() => 0),
-  );
-
-  scrollY.on('change', (value) => {
-    const opacities = ideal.map((_, index) => {
-      const wholeScrollAreaHeight = Math.max(
-        scrollBoundingBox.bottom - scrollBoundingBox.top,
-        0,
-      );
-      const fadeHeightRatio = 0.3;
-      const eachFadeScrollAreaHeight =
-        (wholeScrollAreaHeight / ideal.length) * fadeHeightRatio;
-      const eachScrollAreaHeight = wholeScrollAreaHeight / ideal.length;
-      const fadeInStart = scrollBoundingBox.top + eachScrollAreaHeight * index;
-      const fadeInEnd = fadeInStart + eachFadeScrollAreaHeight;
-      const fadeOutEnd = fadeInStart + eachScrollAreaHeight;
-      const fadeOutStart = fadeOutEnd - eachFadeScrollAreaHeight;
-      return transform(
-        value,
-        [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
-        [0, 1, 1, 0],
-      );
-    });
-
-    setOpacityValues(opacities);
-  });
-
-  useEffect(() => {
-    if (!scrollContainerRef.current) return;
-
-    const { top, height } = scrollContainerRef.current.getBoundingClientRect();
-
-    setScrollBoundingBox({
-      top,
-      bottom: top + height,
-    });
-  }, []);
+  const { items } = useIdealDetail();
+  const breakpoints = useBreakpoint();
 
   return (
-    <>
-      <ScrollContainer ref={scrollContainerRef}>
-        {ideal.map((value, index) => {
-          return (
-            <div key={value.id} className="sticky top-0">
-              <Container>
-                <Item
-                  className="-translate-y-1/4"
-                  style={{ opacity: opacityValues[index] }}
-                >
-                  <div className="text-center">
-                    <IdealText>{value.title}</IdealText>
-                  </div>
-                  {index !== 3 && imgData.image && (
-                    <IdealImage
-                      $index={index}
-                      image={imgData.image}
-                      alt={imgData.name}
-                      style={{ position: 'absolute' }}
-                    />
-                  )}
-                </Item>
-              </Container>
-            </div>
-          );
-        })}
-      </ScrollContainer>
-      <ScrollAreaBottomSpace />
-    </>
+    <div className="w-full bg-[#F5F5F5] py-[160px] xs:py-20 sm:py-[110px] md:py-[120px]">
+      <div className="flex flex-row items-center justify-center xs:flex-col sm:flex-col md:flex-col">
+        {breakpoints.md ? (
+          <h2 className="h-fit pb-2 font-apple-neo font-semibold xs:text-[20px] sm:text-[24px] md:text-[32px]">
+            이런 사람을 지향해요
+          </h2>
+        ) : (
+          <h2 className="h-[284px] min-w-max pt-1 font-apple-neo text-[36px] font-semibold lg:h-[390px]">
+            이런 사람을
+            <br />
+            지향해요
+          </h2>
+        )}
+        <div className="mx-[39px] h-[284px] w-[3px] bg-gradient-to-t from-gradient_color1-0 to-gradient_color2-0 xs:h-[2px] xs:w-[250px] xs:bg-gradient-to-r sm:mb-10 sm:h-[3px] sm:w-[310px] sm:bg-gradient-to-r md:mb-[50px] md:h-[3px] md:w-[500px] md:bg-gradient-to-r lg:h-[390px]" />
+        <div className="flex flex-col">
+          {items.map((item) => (
+            <IdealItem
+              title={item.title}
+              description={item.description}
+              key={item.title}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
-
-const ScrollContainer = tw.div`
-  relative 
-  
-  flex 
-  flex-col
-  
-  w-full
-  h-[800vh]
-`;
-
-const Container = tw.div`
-  absolute
-
-  w-full
-  md:h-[666px]
-  sm:h-[542px]
-  xs:h-[542px]
-`;
-
-const Item = tw(motion.div)`
-  w-full
-  h-[200vh]
-
-  flex
-  justify-center
-  items-center
-  `;
-
-const IdealText = tw.span`
-  text-center
-
-  h2
-
-  md:text-[40px]
-  md:font-[700]
-  md:tracking-[-0.4px]
-
-  sm:h3
-  sm:whitespace-pre-line
-  xs:h3
-  xs:whitespace-pre-line
-`;
-
-const IdealImage = tw(GatsbyImage)<{ $index: number }>`
-  ${(prop) => (prop.$index % 2 === 0 ? 'right-0' : 'left-0 -scale-x-100 transform')}
-  md:w-[260px]
-  sm:w-[110px]
-  xs:w-[100px]
-`;
-
-const ScrollAreaBottomSpace = tw.div`
-  h-[40vh]
-`;
 
 export default Ideal;

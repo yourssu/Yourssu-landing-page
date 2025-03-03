@@ -1,7 +1,7 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
-import useIdealDetail from '@/containers/landing/MVC/hook';
 import IdealItem from '@/containers/select/Ideal/IdealItem';
+import useIdealDetail from '@/containers/select/Ideal/hook';
 
 function Ideal() {
   const { items } = useIdealDetail();

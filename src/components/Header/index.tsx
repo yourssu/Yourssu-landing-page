@@ -10,26 +10,19 @@ interface Props {
 function Header({ isMainPage }: Props) {
   const { data } = useHeaderDetail();
   const [isClick, setIsClick] = useState(false);
-  const logoData = data.logo.nodes[0];
+  // const logoData = data.logo.nodes[0];
   const listIconData = data.listIcon.nodes[0];
   const xIconData = data.xIcon.nodes[0];
 
   return (
     <header
-      className={`${
-        !isMainPage && 'bg-bluegray4-0'
-      } absolute z-50 flex w-full flex-col items-center justify-between ${
+      className={`absolute z-50 flex w-full flex-col items-center justify-between bg-white-0 ${
         isClick && 'bg-white-0'
       }`}
     >
       <div className="flex h-[74px] w-full items-center justify-between xs:h-[51px] xs:px-5 sm:h-[51px] sm:px-5 md:px-10 lg:px-10 xl:w-[1326px] xxl:w-[1326px]">
         <Link to="/" className="flex items-center justify-between">
-          <img
-            src={logoData.publicURL}
-            alt={logoData.name}
-            className=" w-[42px] xs:w-[25px] sm:w-[28px] md:w-[37px]"
-          />
-          <h1 className="text-black w-[111px] text-center font-jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
+          <h1 className="w-[111px] text-center font-jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] text-[#6B5CFF] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
             YOURSSU
           </h1>
         </Link>
@@ -68,11 +61,7 @@ function Header({ isMainPage }: Props) {
           )}
         </button>
       </div>
-      <hr
-        className={`${
-          isClick ? 'hidden' : null
-        } block h-[1px] w-full border-none ${!isMainPage && 'bg-bluegray2-0'}`}
-      />
+
       {isClick && (
         <nav className="flex h-auto w-full flex-col items-start justify-start bg-white-0 md:hidden lg:hidden xl:hidden xxl:hidden">
           <Link

@@ -13,7 +13,7 @@ function Banner() {
         <GatsbyImage
           alt="유어슈 배너 이미지"
           loading="eager"
-          className="h-[800px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
+          className="h-[650px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
           image={breakpoints.md ? mobileImage : desktopImage}
         />
       )}

@@ -17,12 +17,12 @@ interface BannerData {
 export default function useBannerDetail() {
   const data = useStaticQuery<BannerData>(graphql`
     query {
-      desktopImage: file(name: { eq: "banner-lg" }) {
+      desktopImage: file(name: { eq: "main-desktop" }) {
         childImageSharp {
           gatsbyImageData(quality: 90, height: 800, placeholder: BLURRED)
         }
       }
-      mobileImage: file(name: { eq: "banner-sm" }) {
+      mobileImage: file(name: { eq: "main-mobile" }) {
         childImageSharp {
           gatsbyImageData(quality: 90, height: 557, placeholder: BLURRED)
         }

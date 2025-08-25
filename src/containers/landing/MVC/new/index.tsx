@@ -57,7 +57,7 @@ function MissionVision() {
     <section
       ref={scrollRef}
       style={{ height: `${contentData.length * 100}vh` }}
-      className="relative mb-[6.75rem] mt-40"
+      className="relative mb-[6.75rem] mt-40 xs:hidden sm:hidden md:hidden"
     >
       <motion.div
         style={{ height }}

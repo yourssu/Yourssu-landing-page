@@ -10,9 +10,8 @@ function CoreValue() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative mx-auto flex w-full max-w-[65.625rem] flex-col items-center justify-center py-20">
+    <section className="relative mx-auto flex w-full max-w-[65.625rem] flex-col items-center justify-center py-20 xs:px-5 sm:px-5 md:px-5">
       <AnimatePresence>
-        {/* 1. 호버 상태일 때 Dim 레이어를 렌더링합니다. */}
         {hoveredIndex !== null && (
           <motion.div
             className="fixed inset-0 z-10 bg-black-0 bg-opacity-50"
@@ -31,7 +30,7 @@ function CoreValue() {
       />
 
       <div
-        className="flex justify-center gap-4"
+        className="flex flex-wrap justify-center gap-4"
         onMouseLeave={() => setHoveredIndex(null)}
       >
         {CORE_VALUES.map((value, index) => (

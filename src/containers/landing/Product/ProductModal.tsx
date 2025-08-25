@@ -11,7 +11,7 @@ function ProductModal({ product, onClose }: ProductModalProps) {
 
   return (
     <div
-      className="relative inline-flex h-full max-h-[43rem] w-full max-w-[50.625rem] flex-col rounded-[1rem] bg-white-0 px-10 py-9 shadow-lg"
+      className="relative inline-flex h-full max-h-[43rem] w-full max-w-[50.625rem] flex-col rounded-[1rem] bg-white-0 px-10 py-9 shadow-lg xs:mx-5 xs:h-auto xs:py-6 sm:mx-5 sm:h-auto sm:py-6"
       onClick={(e) => e.stopPropagation()}
     >
       <button onClick={onClose} className="flex h-6 w-full justify-end">

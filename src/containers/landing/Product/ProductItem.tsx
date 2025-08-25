@@ -16,12 +16,14 @@ function ProductItem({ product, onProductClick }: ProductItemProps) {
       >
         <div className="flex w-full flex-col items-start justify-start gap-4 self-end py-6">
           <div className="text-black flex items-center justify-start gap-3 transition-colors duration-300 group-hover:text-[#DB95FA]">
-            <h2 className="text-3xl font-semibold">{product.title}</h2>
+            <h2 className="text-3xl font-semibold xs:text-2xl sm:text-2xl">
+              {product.title}
+            </h2>
             <div className="h-6 w-6 text-[#525252] duration-300 group-hover:text-[#DB95FA]">
               <RightArrowIcon />
             </div>
           </div>
-          <p className="whitespace-pre-line text-2xl font-normal leading-[34px] -tracking-[.02em] text-[#6E7687]">
+          <p className="whitespace-pre-line text-2xl font-normal leading-[34px] -tracking-[.02em] text-[#6E7687] xs:text-xl sm:text-xl">
             {product.description}
           </p>
         </div>

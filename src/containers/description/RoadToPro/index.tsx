@@ -13,10 +13,9 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
   const data = useRoadToProDetail();
 
   return (
-    <Container>
+    <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
       <TitleContainer>
-        <Title>Road to Pro</Title>
-        <SubTitle>{roadToPro.title}</SubTitle>
+        <div className="T3_Sb_20">Road to Pro</div>
       </TitleContainer>
       <VideoInfoContainer>
         {roadToPro.roadToPro_list.map((video) => {
@@ -30,50 +29,28 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
                 <Gradient src={data.gradientImg.publicURL} alt="gradient" />
                 <PlayButton src={data.playIcon.publicURL} alt="play" />
               </VideoContainer>
-              <Presenter>
+              <p className="B1_Rg_16">
                 {video.presenter
                   .map(
                     ({ presenter_name, presenter_nickname }) =>
                       `${presenter_name} (${presenter_nickname})`,
                   )
                   .join(', ')}
-              </Presenter>
+              </p>
             </div>
           );
         })}
       </VideoInfoContainer>
-    </Container>
+    </section>
   );
 }
 
 export default RoadToPro;
 
-const Container = tw.section`
-  flex
-  flex-col
-  gap-10
-`;
-
 const TitleContainer = tw.div`
   flex
   flex-col
   gap-2
-`;
-
-const Title = tw.div`
-  h3
-  md:body4
-  sm:body4
-  xs:body4
-  text-black-0
-`;
-
-const SubTitle = tw.div`
-  body3
-  md:body7
-  sm:body7
-  xs:body7
-  text-gray1-0
 `;
 
 const VideoInfoContainer = tw.div`
@@ -98,12 +75,12 @@ const VideoContainer = tw.a`
 `;
 
 const Thumbnail = tw(GatsbyImage)`
-  h-[224px]
+  h-44
   md:h-[188px]
   sm:h-[188px]
   xs:h-[188px]
 
-  w-[400px]
+  w-80
   md:w-[336px]
   sm:w-[336px]
   xs:w-[336px]
@@ -112,12 +89,12 @@ const Thumbnail = tw(GatsbyImage)`
 `;
 
 const Gradient = tw.img`
-  h-[224px]
+  h-44
   md:h-[188px]
   sm:h-[188px]
   xs:h-[188px]
 
-  w-[400px]
+  w-80
   md:w-[336px]
   sm:w-[336px]
   xs:w-[336px]
@@ -140,12 +117,4 @@ const PlayButton = tw.img`
   xs:w-[91px]
   sm:w-[91px]
   md:w-[91px]
-`;
-
-const Presenter = tw.div`
-  body3
-  md:body8
-  sm:body8
-  xs:body8
-  text-black-0
 `;

@@ -228,8 +228,6 @@ export const querySanityDataByName = graphql`
 const Container = tw.div`
   bg-white-0
 
-  px-10
-  sm:px-5
 `;
 
 const InnerContainer = tw.div`
@@ -240,14 +238,21 @@ const InnerContainer = tw.div`
   sm:gap-0
   xs:gap-0
 
-  max-w-[1364px]
+  lg:px-10
+  md:px-10
+  sm:px-5
+  xs:px-5
+  px-[120px]
+
+  max-w-[1440px]
   h-fit
 
   mx-auto
-  py-20
-  md:py-[50px]
-  sm:py-8
-  xs:py-8
+  pt-5
+  pb-20
+  md:pb-[50px]
+  sm:pb-8
+  xs:pb-8
 `;
 
 const ApplyButtonContainer = tw.div`

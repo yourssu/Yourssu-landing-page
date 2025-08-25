@@ -15,51 +15,20 @@ function TeamHeader({
   );
 
   return (
-    <Container>
-      <InnerContainer>
+    <section className="flex items-center justify-center">
+      <div className="mt-[74px] inline-flex w-full max-w-[1440px] flex-col justify-center gap-8 self-stretch overflow-hidden bg-[#FFFFFF] px-[120px] pb-5 pt-20 xs:px-5 sm:px-5 md:px-10 lg:px-10">
         <TeamIntroContainer>
           <TeamIntroInnerContainer>
             <Title>{introduction}</Title>
             <TeamName>{name}</TeamName>
           </TeamIntroInnerContainer>
         </TeamIntroContainer>
-      </InnerContainer>
-    </Container>
+      </div>
+    </section>
   );
 }
 
 export default TeamHeader;
-
-const Container = tw.section`
-  flex
-  items-center
-
-  w-full
-  bg-bluegray4-0
-
-  pt-20
-  md:pt-12
-  sm:pt-12
-  xs:pt-12
-`;
-
-const InnerContainer = tw.div`
-  flex
-  items-center
-  justify-between
-  sm:justify-center
-  sm:flex-wrap
-  xs:flex-wrap
-
-  max-w-[1440px]
-  w-full
-  mx-auto
-
-  p-10
-  md:p-5
-  sm:p-5
-  xs:p-5
-`;
 
 const TeamIntroContainer = tw.div`
   flex

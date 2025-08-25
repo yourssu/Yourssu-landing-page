@@ -31,7 +31,7 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
               $active={currentTeam.name === team}
             >
               <img src={data.smallArrow.publicURL} alt="small-arrow" />
-              <div className="body5 text-gray1-0">{team}</div>
+              <div>{team}</div>
             </NavigationItem>
           ))}
         </NavigationList>
@@ -43,29 +43,21 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
       <div className="flex gap-5">
         <Link
           to="/recruiting/#faq"
-          className="inline-flex h-32 flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] px-6 pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
+          className="inline-flex h-[130px] flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
         >
           <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">
             FAQ 보러가기
           </div>
-          <img
-            className="h-24 w-32"
-            src={data.inquiryButton.publicURL}
-            alt="FAQ 보러가기"
-          />
+          <img src={data.inquiryButton.publicURL} alt="FAQ 보러가기" />
         </Link>
         <a
           href={KAKAO_LINK}
-          className="inline-flex flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] px-6 pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
+          className="inline-flex h-[130px] flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px]  pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
         >
           <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">
             문의하기
           </div>
-          <img
-            className="h-24 w-32"
-            src={data.inquiryButton.publicURL}
-            alt="문의하기"
-          />
+          <img src={data.inquiryButton.publicURL} alt="문의하기" />
         </a>
       </div>
     </Container>
@@ -75,7 +67,7 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
 export default SideNavigation;
 
 const Container = tw.aside`
-  w-[320px]
+  w-[280px]
   flex
   flex-col
   gap-6
@@ -109,5 +101,7 @@ const NavigationItem = tw(Link)<{ $active: boolean }>`
   w-full
   px-[18px]
   py-3
+  ${(props) => (props.$active ? 'B1_Sb_16' : 'B1_Lt_16')}
   ${(props) => (props.$active ? 'bg-bluegray4-0' : 'bg-white-0')}
+  ${(props) => (props.$active ? 'text-[#25262C]' : 'text-[#6E7687]')}
 `;

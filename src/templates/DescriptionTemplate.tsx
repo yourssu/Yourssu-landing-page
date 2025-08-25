@@ -127,7 +127,12 @@ function DescriptionTemplate({
                 <div className="mb-[1px] items-center">FAQ 보러가기</div>
               </Link>
               |
-              <a href={KAKAO_LINK} className="flex w-fit flex-col items-center">
+              <a
+                href={KAKAO_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-fit flex-col items-center"
+              >
                 <div className="mb-[1px] items-center">문의하기</div>
               </a>
             </div>

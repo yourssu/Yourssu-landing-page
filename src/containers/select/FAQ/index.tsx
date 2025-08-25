@@ -13,7 +13,7 @@ function FAQ() {
   return (
     <RecruitSectionLayout>
       <RecruitTitle
-        title="팀 한마디 및 FAQ"
+        title="FAQ"
         subtitle="유어슈에 대해 궁금한 부분이 있으신가요?"
         SVGIconComponent={<QuestionIcon />}
       />

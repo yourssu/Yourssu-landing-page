@@ -39,7 +39,7 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
     <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
       <TitleContainer>
         <div className="T3_Sb_20">지원 절차</div>
-        <NoticeButton
+        {/* <NoticeButton
           type="button"
           onClick={() => {
             setIsWarningOpen((prev) => !prev);
@@ -47,7 +47,7 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
         >
           <img src={data.warningLightIcon.publicURL} alt="정보 더보기" />
           <NoticeText>주의사항을 반드시 읽어주세요</NoticeText>
-        </NoticeButton>
+        </NoticeButton> */}
         {isWarningOpen && (
           <WarningDescription
             iconURL={data.warningDarkIcon.publicURL}
@@ -104,19 +104,19 @@ const TitleContainer = tw.div`
   gap-3
 `;
 
-const NoticeText = tw.span`
-  body4
-  md:body6
-  sm:body6
-  xs:body6
-  text-gray2-0
-`;
+// const NoticeText = tw.span`
+//   body4
+//   md:body6
+//   sm:body6
+//   xs:body6
+//   text-gray2-0
+// `;
 
-const NoticeButton = tw.button`
-  flex
-  gap-1
-  items-center
-`;
+// const NoticeButton = tw.button`
+//   flex
+//   gap-1
+//   items-center
+// `;
 
 const ProcedureContainer = tw.div`
   relative

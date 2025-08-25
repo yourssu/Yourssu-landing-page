@@ -8,8 +8,7 @@ interface Props {
 }
 
 function Footer({ backgroundColor }: Props) {
-  const { logo, socialIcon, link } = useFooterDetail();
-  const logoData = logo.nodes[0];
+  const { socialIcon, link } = useFooterDetail();
 
   const background: { [key: string]: string } = {
     gray4: 'bg-gray4-0',
@@ -18,31 +17,32 @@ function Footer({ backgroundColor }: Props) {
 
   return (
     <Container $bg={background[backgroundColor]}>
-      <LogoContainer>
-        <LogoImg src={logoData.publicURL} alt={logoData.name} />
-        <Logo>YOURSSU</Logo>
-      </LogoContainer>
-      <InfoContainer>
-        <div className="py-[3px] xs:py-[2px]">
-          동아리방 : 숭실대학교 학생회관 244호
+      <div className="mx-auto w-full max-w-[65.625rem]">
+        <LogoContainer>
+          <Logo>YOURSSU</Logo>
+        </LogoContainer>
+        <div className="mb-2 flex items-center gap-[9px]">
+          {socialIcon.nodes.map((icon, index) => (
+            <React.Fragment key={icon.name}>
+              <a
+                href={link[icon.name.split('-')[1]]}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={icon.publicURL} alt={icon.name} />
+              </a>
+              {index !== socialIcon.nodes.length - 1 && (
+                <hr className="h-[26.5px] w-[1px] border-none bg-[#D4D7DB]" />
+              )}
+            </React.Fragment>
+          ))}
         </div>
-        <div>ⓒ Yourssu. All rights reserved.</div>
-      </InfoContainer>
-      <div className="flex items-center gap-[9px]">
-        {socialIcon.nodes.map((icon, index) => (
-          <React.Fragment key={icon.name}>
-            <a
-              href={link[icon.name.split('-')[1]]}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={icon.publicURL} alt={icon.name} />
-            </a>
-            {index !== socialIcon.nodes.length - 1 && (
-              <hr className="h-[26.5px] w-[1px] border-none bg-[#D4D7DB]" />
-            )}
-          </React.Fragment>
-        ))}
+        <InfoContainer>
+          <div className="py-[3px] xs:py-[2px]">
+            동아리방 : 숭실대학교 학생회관 244호
+          </div>
+          <div>ⓒ Yourssu. All rights reserved.</div>
+        </InfoContainer>
       </div>
     </Container>
   );
@@ -53,8 +53,8 @@ export default Footer;
 const Container = tw.footer<{ $bg: string }>`
   flex
   flex-col
-  items-center
-  justify-center
+  items-start
+  justify-start
   text-gray1-0
   py-10
   xs:py-5
@@ -67,11 +67,6 @@ const LogoContainer = tw.div`
   flex
   flex-row
   items-center
-`;
-
-const LogoImg = tw.img`
-  mr-1
-  h-full
 `;
 
 const Logo = tw.div`
@@ -88,7 +83,7 @@ const Logo = tw.div`
 `;
 
 const InfoContainer = tw.div`
-  text-center
+  text-start
   body7
   sm:body8
   md:body8

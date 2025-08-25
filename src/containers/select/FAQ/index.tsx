@@ -1,15 +1,22 @@
 import * as Accordion from '@radix-ui/react-accordion';
-import tw from 'tailwind-styled-components';
+
+import RecruitSectionLayout from '@/components/Layout/RecruitSectionLayout';
+import RecruitTitle from '@/components/Title/RecruitTitle';
 
 import QuestionCard from './QuestionCard';
 import useFAQDetail from './hook';
+import { QuestionIcon } from './icons';
 
 function FAQ() {
   const { faq, imgData } = useFAQDetail();
 
   return (
-    <Container className="flex flex-col items-center">
-      <FAQText>유어슈 모집 FAQ</FAQText>
+    <RecruitSectionLayout>
+      <RecruitTitle
+        title="팀 한마디 및 FAQ"
+        subtitle="유어슈에 대해 궁금한 부분이 있으신가요?"
+        SVGIconComponent={<QuestionIcon />}
+      />
       <Accordion.Root
         type="multiple"
         className="flex flex-col items-center gap-10"
@@ -17,7 +24,6 @@ function FAQ() {
         {faq.map((value) => {
           return (
             <div key={value.category} className="flex flex-col gap-5">
-              <div className="h3 sm:h4 xs:h4">{value.category}</div>
               {value.list.map((item) => {
                 return (
                   <QuestionCard
@@ -32,18 +38,8 @@ function FAQ() {
           );
         })}
       </Accordion.Root>
-    </Container>
+    </RecruitSectionLayout>
   );
 }
-
-const Container = tw.div`
-  gap-[60px]
-`;
-
-const FAQText = tw.span`
-  h2
-  sm:h3
-  xs:h3
-`;
 
 export default FAQ;

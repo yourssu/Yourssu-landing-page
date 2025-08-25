@@ -4,6 +4,8 @@ import tw from 'tailwind-styled-components';
 
 import { NodeType } from '@/types/hook';
 
+import { QuestionEmptyIcon, QuestionFillIcon } from './icons';
+
 export default function QuestionCard({
   question,
   answer,
@@ -21,8 +23,25 @@ export default function QuestionCard({
         <Container $windowSize={!breakpoints.query550}>
           <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
             <div className="flex items-center gap-[12px] text-left xs:gap-[8px] sm:gap-[8px]">
-              <Q>Q</Q>
-              <Text>{question}</Text>
+              <div className="relative h-6 w-6 flex-shrink-0">
+                <QuestionEmptyIcon
+                  className="absolute inset-0 transition-opacity duration-300
+                           group-data-[state=closed]:opacity-100 
+                           group-data-[state=open]:opacity-0"
+                />
+                <QuestionFillIcon
+                  className="absolute inset-0 transition-opacity duration-300
+                           group-data-[state=closed]:opacity-0 
+                           group-data-[state=open]:opacity-100"
+                />
+              </div>
+              <p
+                className="text-xl leading-7 tracking-[-0.02em]
+                group-data-[state=closed]:font-normal group-data-[state=open]:font-semibold
+                group-data-[state=closed]:text-[#4B505D] group-data-[state=open]:text-[#25262C]"
+              >
+                {question}
+              </p>
             </div>
             <QuestionIcon
               className="group-data-[state=open]:rotate-90"
@@ -34,7 +53,9 @@ export default function QuestionCard({
           <Accordion.Content className="overflow-hidden text-left data-[state=closed]:animate-accordion-slide-up data-[state=open]:animate-accordion-slide-down">
             <AnswerSpace />
             <AnswerBox>
-              <AnswerText>{answer}</AnswerText>
+              <p className="text-base font-normal leading-6 tracking-[-0.02em] text-[#4B505D]">
+                {answer}
+              </p>
             </AnswerBox>
           </Accordion.Content>
         </Container>
@@ -44,56 +65,30 @@ export default function QuestionCard({
 }
 
 const Container = tw.div<{ $windowSize: boolean }>`
-  w-[1280px]
-  lg:w-[1080px]
+  w-[1200px]
+  lg:w-[1200px]
   md:w-[720px]
   ${(prop) => (prop.$windowSize ? 'sm:w-[530px]' : 'w-[350px]')}
   xs:w-[350px]
 
   rounded-[16px] 
   bg-white-0 
-  p-[32px]
+  p-6
 
-  sm:p-[20px]
-  xs:p-[20px]
+  border
+  border-[#F1F1F4]
 
   cursor-pointer
 `;
 
-const Q = tw.span`
-  h3
-
-  sm:h4
-  xs:h4
-
-  bg-gradient-to-r 
-  from-mainGra2-0 
-  to-mainGra1-0 
-  bg-clip-text
-  text-transparent
-`;
-
-const Text = tw.p`
-  w-full
-  h-auto
-  text-gray1-0
-  font-[600]
-
-  h4
-  
-  sm:body4
-  xs:body4
-`;
-
 const QuestionIcon = tw.img`
-  w-[12px]
-  h-auto
-  sm:h-[12px]
-  md:h-[12px]
+  h-[12px]
+  
   -rotate-90
 `;
 
 const AnswerBox = tw.div`
+  // bg-[#F7F8F8]
   bg-bluegray4-0
   rounded-[12px]
   px-[36px]
@@ -105,14 +100,5 @@ const AnswerBox = tw.div`
 `;
 
 const AnswerSpace = tw.div`
-  h-[32px]
-  sm:h-[20px]
-  xs:h-[20px]
-`;
-
-const AnswerText = tw.p`
-  text-gray1-0
-  body2
-  sm:body7
-  xs:body7
+  h-6
 `;

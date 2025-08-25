@@ -52,6 +52,8 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         </Link>
         <a
           href={KAKAO_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex h-[130px] flex-1 flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px]  pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
         >
           <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">

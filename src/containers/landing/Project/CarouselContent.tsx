@@ -48,7 +48,11 @@ function CarouselContent({ currentIndex, isType }: Props) {
             </span>
             <div>
               {projectData[currentIndex].link.length === 1 && (
-                <a href={projectData[currentIndex].link[0]}>
+                <a
+                  href={projectData[currentIndex].link[0]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     className="pointer-events-none ml-[5px] h-[26px] w-[26px] cursor-pointer xs:h-[15px] xs:w-[15px] sm:h-[18px] sm:w-[21.46px]"
                     src={linkImgData.imgUrl}

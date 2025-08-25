@@ -9,6 +9,9 @@ export default function useSideNavigationDetail() {
       inquiryButton: file(name: { eq: "inquiry-button" }) {
         publicURL
       }
+      faqButton: file(name: { eq: "faq-button" }) {
+        publicURL
+      }
     }
   `);
 

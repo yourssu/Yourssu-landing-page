@@ -1,5 +1,3 @@
-import tw from 'tailwind-styled-components';
-
 import { GrowthAndDiffInformation } from '@/types/recruiting.type';
 
 interface GrowthAndDiffProps {
@@ -13,31 +11,21 @@ function GrowthAndDiff({ growthAndDiff }: GrowthAndDiffProps) {
   if (!content) return null;
 
   return (
-    <section>
-      <Title>{title}</Title>
-      <DescriptionContainer>{content}</DescriptionContainer>
+    <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
+      <div className="T3_Sb_20">{title}</div>
+      <div className="B1_Rg_16">
+        <dl>
+          {content
+            .trim()
+            .split('-')
+            .filter((item) => item.trim().length > 0)
+            .map((item) => (
+              <li key={item}>{item.trim()}</li>
+            ))}
+        </dl>
+      </div>
     </section>
   );
 }
-
-const Title = tw.div`
-  body1
-  md:body4
-  sm:body4
-  xs:body4
-
-  pb-6
-  text-black-0
-`;
-
-const DescriptionContainer = tw.div`
-  body3
-  md:body7
-  sm:body7
-  xs:body7
-
-  whitespace-pre-wrap
-  text-gray1-0
-`;
 
 export default GrowthAndDiff;

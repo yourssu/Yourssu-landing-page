@@ -1,20 +1,28 @@
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import { GatsbyImage } from 'gatsby-plugin-image';
-
-import useBannerDetail from '@/containers/landing/Banner/hook';
+import { StaticImage } from 'gatsby-plugin-image';
 
 function Banner() {
-  const { desktopImage, mobileImage } = useBannerDetail();
   const breakpoints = useBreakpoint();
 
   return (
     <div className="relative flex flex-col items-center justify-center">
-      {mobileImage && desktopImage && (
-        <GatsbyImage
+      {breakpoints.md ? (
+        <StaticImage
+          src="../../../assets/images/main-mobile.png"
           alt="유어슈 배너 이미지"
           loading="eager"
           className="h-[650px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
-          image={breakpoints.md ? mobileImage : desktopImage}
+          placeholder="blurred"
+          quality={90}
+        />
+      ) : (
+        <StaticImage
+          src="../../../assets/images/main-desktop.png"
+          alt="유어슈 배너 이미지"
+          loading="eager"
+          className="h-[650px] w-full xs:h-[300px] sm:h-[557px] md:h-[557px]"
+          placeholder="blurred"
+          quality={90}
         />
       )}
       {/* 390, 720 화면 */}

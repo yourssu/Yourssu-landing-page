@@ -7,7 +7,7 @@ type ContentBlockProps = {
 function ContentBlock({ content }: ContentBlockProps) {
   return (
     <div>
-      <p className="mb-5 whitespace-pre-line text-2xl text-[#4B505D]">
+      <p className="mb-5 whitespace-pre-line text-2xl text-[#4B505D] xs:text-xl sm:text-xl">
         {content.description}
       </p>
       <img

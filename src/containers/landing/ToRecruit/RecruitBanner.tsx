@@ -16,7 +16,7 @@ function RecruitmentBanner({ imageUrl, recruitTitle }: RecruitmentBannerProps) {
         aria-hidden="true"
       />
 
-      <h2 className="relative text-center text-4xl font-semibold leading-[52px] text-white-0">
+      <h2 className="relative text-center text-4xl font-semibold leading-[52px] text-white-0 sm:text-xl sm:leading-8 md:text-2xl md:leading-9 lg:text-3xl lg:leading-10">
         {recruitTitle}
       </h2>
 

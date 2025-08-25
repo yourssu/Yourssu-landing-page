@@ -16,7 +16,11 @@ function Channel() {
             rel="noopener noreferrer"
             className="flex h-full flex-col items-center justify-center gap-3"
           >
-            <div className="h-48 w-72 rounded-[1rem] bg-zinc-300" />
+            <img
+              className="h-48 w-72 rounded-[1rem] bg-zinc-300"
+              src={channel.imageUrl}
+              alt={channel.title}
+            />
 
             <div className="w-72 px-1 text-left">
               <p className="text-sm font-normal text-gray-700">

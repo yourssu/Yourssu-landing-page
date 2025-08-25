@@ -33,7 +33,7 @@ function Product() {
 
   return (
     <section className="mt-[6.25rem]">
-      <div className="container mx-auto flex max-w-[65.625rem] flex-col items-start justify-center">
+      <div className="container mx-auto flex max-w-[65.625rem] flex-col items-start justify-center xs:px-5 sm:px-5 md:px-5">
         <MainTitle title="Product" subTitle="함께 몰입한 결과물" />
 
         <div className="mt-9 flex w-full flex-col items-center justify-center gap-10">

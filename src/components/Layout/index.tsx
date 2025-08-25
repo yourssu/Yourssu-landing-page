@@ -8,10 +8,10 @@ interface Props {
 
 function Layout({ children, isMainPage }: Props) {
   return (
-    <div className={`relative ${!isMainPage && 'bg-bluegray4-0'}`}>
+    <div className="relative">
       <Header isMainPage={isMainPage} />
       {children}
-      <Footer backgroundColor={isMainPage ? 'gray4' : 'bluegray4'} />
+      <Footer backgroundColor="#ffffff" />
     </div>
   );
 }

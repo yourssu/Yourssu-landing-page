@@ -2,7 +2,7 @@ import recruitBannerImage from 'src/assets/images/recruit/banner/recruit-top-ban
 
 function RecruitBanner() {
   return (
-    <section className="w-full p-5">
+    <section className="w-full p-5 xs:hidden sm:hidden">
       <img src={recruitBannerImage} alt="리크루팅 배너 이미지 2025-2" />
     </section>
   );

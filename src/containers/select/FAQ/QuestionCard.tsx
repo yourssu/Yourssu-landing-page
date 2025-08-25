@@ -23,7 +23,6 @@ export default function QuestionCard({
         <Container $windowSize={!breakpoints.query550}>
           <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
             <div className="flex items-center gap-[12px] text-left xs:gap-[8px] sm:gap-[8px]">
-<<<<<<< HEAD
               <div className="relative h-6 w-6 flex-shrink-0">
                 <QuestionEmptyIcon
                   className="absolute inset-0 transition-opacity duration-300
@@ -43,10 +42,6 @@ export default function QuestionCard({
               >
                 {question}
               </p>
-=======
-              <Q>Q</Q>
-              <Text>{question}</Text>
->>>>>>> fecb4c6 (feat: 1차 QA 내용 반영 (#74))
             </div>
             <QuestionIcon
               className="group-data-[state=open]:rotate-90"

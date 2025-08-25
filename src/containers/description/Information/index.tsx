@@ -36,10 +36,13 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
   }, [isTooltipOpen]);
 
   return (
-    <Container>
+    <>
       {information.map((info) => (
-        <TitleContainer key={info.title}>
-          <InformationTitle>{info.title}</InformationTitle>
+        <section
+          className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
+          key={info.title}
+        >
+          <div className="T3_Sb_20">{info.title}</div>
           <InformationContainer>
             {info.content.map((content) => {
               const important =
@@ -64,12 +67,12 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
               );
             })}
           </InformationContainer>
-        </TitleContainer>
+        </section>
       ))}
       {skill && skill.content.length !== 0 && (
-        <div className="relative">
+        <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
           <SkillTitleContainer>
-            <InformationTitle>{skill.title}</InformationTitle>
+            <div className="T3_Sb_20">{skill.title}</div>
             {skill.notice.length > 0 && (
               <div className="relative">
                 <NoticeButton
@@ -99,46 +102,16 @@ function Information({ task, ideal, experience, skill }: InformationProps) {
               <li key={item}>{item}</li>
             ))}
           </InformationContainer>
-        </div>
+        </section>
       )}
-    </Container>
+    </>
   );
 }
 
 export default Information;
 
-const Container = tw.section`
-  flex
-  flex-col
-  gap-[60px]
-  lg:gap-[50px]
-  md:gap-[50px]
-  sm:gap-[50px]
-  xs:gap-[50px]
-`;
-
-const TitleContainer = tw.div`
-  flex
-  flex-col
-  gap-5
-  lg:gap-4
-  md:gap-4
-  sm:gap-4
-`;
-
-const InformationTitle = tw.div`
-  body1
-  md:body4
-  sm:body4
-  xs:body4
-  text-black-0
-`;
-
 const InformationContainer = tw.ul`
-  body2
-  md:body7
-  sm:body7
-  xs:body7
+  B1_Rg_16
 
   list-outside
   list-disc
@@ -152,7 +125,6 @@ const InformationContainer = tw.ul`
 `;
 
 const SkillTitleContainer = tw.div`
-  mb-5
   flex
   items-center
   gap-3

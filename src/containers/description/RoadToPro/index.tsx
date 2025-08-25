@@ -24,7 +24,11 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
           );
           return (
             <div key={video.video_link} className="flex flex-col gap-4">
-              <VideoContainer href={video.video_link}>
+              <VideoContainer
+                href={video.video_link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {thumbnail && <Thumbnail image={thumbnail} alt="thumbnail" />}
                 <Gradient src={data.gradientImg.publicURL} alt="gradient" />
                 <PlayButton src={data.playIcon.publicURL} alt="play" />

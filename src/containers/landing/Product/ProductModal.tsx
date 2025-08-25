@@ -53,12 +53,16 @@ function ProductModal({ product, onClose }: ProductModalProps) {
       <div className="flex items-center justify-end gap-2.5">
         <a
           href={product.suggestUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex h-10 items-center justify-center rounded-[0.75rem] bg-[#ECEFFF] px-4 text-sm font-semibold text-[#5736F5]"
         >
           의견 제안
         </a>
         <a
           href={product.serviceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex h-10 items-center justify-center rounded-[0.75rem] bg-[#6B5CFF] px-4 text-sm font-semibold text-white-0"
         >
           서비스 바로가기

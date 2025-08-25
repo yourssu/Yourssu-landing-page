@@ -13,6 +13,8 @@ function Medium({ medium }: MediumProps) {
       {medium.map((article) => (
         <a
           href={article.url}
+          target="_blank"
+          rel="noopener noreferrer"
           key={article.title}
           className="flex gap-5 xs:flex-col-reverse sm:flex-col-reverse"
         >

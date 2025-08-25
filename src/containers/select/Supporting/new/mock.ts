@@ -1,7 +1,6 @@
 import { IconProps } from '@/types/icon';
 
 import {
-  AndroidIcon,
   BackEndIcon,
   DesigPaletteIcon,
   FrontEndIcon,
@@ -30,33 +29,33 @@ export const POSITIONS_DATA: PositionType[] = [
     IconComponent: DesigPaletteIcon,
   },
   {
-    title: 'Marketing',
+    title: 'Marketer',
     value: 'marketer',
     IconComponent: MarketingIcon,
   },
   {
-    title: 'iOS\nDeveloper',
-    value: 'ios_developer',
+    title: 'iOS\nEngineer',
+    value: 'ios_Engineer',
     IconComponent: IOSIcon,
   },
-  {
-    title: 'Android\nDeveloper',
-    value: 'android_developer',
-    IconComponent: AndroidIcon,
-  },
+  // {
+  //   title: 'Android\nEngineer',
+  //   value: 'android_Engineer',
+  //   IconComponent: AndroidIcon,
+  // },
   {
     title: 'HR\nManager',
     value: 'hr_partner',
     IconComponent: HRIcon,
   },
   {
-    title: 'Frontend\nDeveloper',
-    value: 'web_fe_developer',
+    title: 'Frontend\nEngineer',
+    value: 'web_fe_Engineer',
     IconComponent: FrontEndIcon,
   },
   {
-    title: 'Backend\nDeveloper',
-    value: 'backend_developer',
+    title: 'Backend\nEngineer',
+    value: 'backend_Engineer',
     IconComponent: BackEndIcon,
   },
   {

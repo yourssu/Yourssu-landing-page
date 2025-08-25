@@ -1,5 +1,3 @@
-import { Link } from 'gatsby';
-
 interface ApplyButtonProps {
   link: string;
   isRecruiting: boolean;
@@ -11,13 +9,14 @@ function ApplyButton({ link, isRecruiting }: ApplyButtonProps) {
   const content = active ? '지원하기' : '지원 기간이 아닙니다';
 
   return (
-    <Link
-      to={link}
-      activeClassName="active"
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`${active && 'active'} B1_Sb_16 inline-flex h-12 items-center justify-center gap-1 self-stretch rounded-[16px] bg-[#6B5CFF] px-5 text-[#FFFFFF]`}
     >
       {content}
-    </Link>
+    </a>
   );
 }
 

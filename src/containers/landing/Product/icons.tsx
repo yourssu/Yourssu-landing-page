@@ -1,10 +1,6 @@
-// 급히 작업 하느라 svg 컴포넌트용 props 구성을 못했습니다. QA 진행하며 작업하겠습니다.
+import { IconProps } from '@/types/icon';
 
-export interface iconProps {
-  className?: string;
-}
-
-export function RightArrowIcon({ className = '' }: iconProps) {
+export function RightArrowIcon({ className = '' }: IconProps) {
   return (
     <svg
       width="24"
@@ -24,7 +20,7 @@ export function RightArrowIcon({ className = '' }: iconProps) {
   );
 }
 
-export function ProductCloseIcon({ className = '' }: iconProps) {
+export function ProductCloseIcon({ className = '' }: IconProps) {
   return (
     <svg
       width="25"

@@ -11,7 +11,7 @@ function Culture() {
   const activeContent = CULTURE_DATA.find((item) => item.tabName === activeTab);
 
   return (
-    <section className="mb-[9.5rem] w-full bg-[#F7F8F8] py-[4.625rem]">
+    <section className="mb-[9.5rem] w-full bg-[#F7F8F8] py-[4.625rem] xs:px-5 sm:px-5 md:px-5">
       <div className="mx-auto w-full max-w-[65.625rem]">
         <MainTitle
           title="Culture"

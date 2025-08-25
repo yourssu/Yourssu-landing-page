@@ -22,7 +22,7 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
   return (
     <Container>
       <NavigationContainer>
-        <div className="h4">TEAM</div>
+        <h2 className="T3_Sb_20">TEAM</h2>
         <NavigationList>
           {teamList.map((team) => (
             <NavigationItem
@@ -39,23 +39,33 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
       <ApplyButton
         link={currentTeam.applyLink}
         isRecruiting={currentTeam.isRecruiting}
-        $testSize="h4"
       />
-      <div className="flex gap-8">
+      <div className="flex gap-5">
         <Link
           to="/recruiting/#faq"
-          className="flex w-fit flex-col items-center"
+          className="inline-flex h-32 flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] px-6 pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
         >
-          <div className="body4 mb-[1px]  items-center text-gray1-0">
+          <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">
             FAQ 보러가기
           </div>
-          <img src={data.inquiryButton.publicURL} alt="FAQ 보러가기" />
+          <img
+            className="h-24 w-32"
+            src={data.inquiryButton.publicURL}
+            alt="FAQ 보러가기"
+          />
         </Link>
-        <a href={KAKAO_LINK} className="flex w-fit flex-col items-center">
-          <div className="body4 mb-[1px] items-center text-gray1-0">
+        <a
+          href={KAKAO_LINK}
+          className="inline-flex flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] px-6 pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
+        >
+          <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">
             문의하기
           </div>
-          <img src={data.inquiryButton.publicURL} alt="문의하기" />
+          <img
+            className="h-24 w-32"
+            src={data.inquiryButton.publicURL}
+            alt="문의하기"
+          />
         </a>
       </div>
     </Container>
@@ -71,7 +81,6 @@ const Container = tw.aside`
   gap-6
   sticky
   top-[50px]
-  mt-[50px]
   h-fit
 `;
 

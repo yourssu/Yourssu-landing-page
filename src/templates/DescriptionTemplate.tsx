@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
-import InaWord from '@/containers/description/InaWord';
+// import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
 // import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
@@ -77,35 +77,31 @@ function DescriptionTemplate({
   }, [formSchedule]);
 
   return (
-    <Layout isMainPage={false}>
+    <Layout isMainPage={true}>
       <TeamHeader
         name={name}
         basicInformation={edges[0].node.basicInformation}
-        isRecruiting={isRecruiting}
       />
       <Container>
         <InnerContainer>
-          <SectionContainer>
-            <DefaultInformationContainer>
-              <Information
-                task={edges[0].node.task}
-                ideal={edges[0].node.ideal}
-                experience={edges[0].node.experience}
-                skill={edges[0].node.skill}
-              />
-              <ApplyProcedure applyProcedure={procedure} />
-              <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
-              <InaWord
+          <div className="inline-flex flex-1 flex-col items-start justify-center gap-5 self-stretch">
+            <Information
+              task={edges[0].node.task}
+              ideal={edges[0].node.ideal}
+              experience={edges[0].node.experience}
+              skill={edges[0].node.skill}
+            />
+            <ApplyProcedure applyProcedure={procedure} />
+            <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
+            {/* <InaWord
                 departmentImage={
                   edges[0].node.basicInformation.icon.asset.gatsbyImageData
                 }
                 inaWord={edges[0].node.inaWord}
-              />
-            </DefaultInformationContainer>
-            <Line />
+              /> */}
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
             {/*<Medium medium={edges[0].node.articleContent} />*/}
-          </SectionContainer>
+          </div>
           {!breakpoints.md && (
             <SideNavigation
               currentTeam={{
@@ -122,7 +118,6 @@ function DescriptionTemplate({
             <ApplyButton
               link={edges[0].node.basicInformation.apply_link}
               isRecruiting={isRecruiting}
-              $testSize="body4"
             />
             <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
               <Link
@@ -239,8 +234,8 @@ const Container = tw.div`
 
 const InnerContainer = tw.div`
   flex
-  gap-[100px]
-  lg:gap-[50px]
+  gap-5
+  lg:gap-5
   md:gap-0
   sm:gap-0
   xs:gap-0
@@ -253,34 +248,6 @@ const InnerContainer = tw.div`
   md:py-[50px]
   sm:py-8
   xs:py-8
-`;
-
-const SectionContainer = tw.div`
-  flex
-  flex-1
-  flex-col
-  gap-[70px]
-  md:gap-[50px]
-  sm:gap-[50px]
-  xs:gap-[50px]
-  max-w-full
-`;
-
-const DefaultInformationContainer = tw.div`
-  flex
-  flex-col
-  gap-[60px]
-  lg:gap-[50px]
-  md:gap-[50px]
-  sm:gap-[50px]
-  xs:gap-[50px]
-`;
-
-const Line = tw.hr`
-  h-[2px]
-  my-4
-  border-none
-  bg-gray3-0
 `;
 
 const ApplyButtonContainer = tw.div`

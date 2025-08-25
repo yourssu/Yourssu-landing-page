@@ -36,9 +36,9 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   if (!applyProcedure || applyProcedure.length === 0) return null;
 
   return (
-    <section>
+    <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
       <TitleContainer>
-        <Title>합류여정</Title>
+        <div className="T3_Sb_20">지원 절차</div>
         <NoticeButton
           type="button"
           onClick={() => {
@@ -72,6 +72,23 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
           ))}
         </ProcedureStep>
       </ProcedureContainer>
+      <div className="inline-flex flex-col items-start justify-start gap-2 rounded-[12px] bg-[#F7F8F8] p-4">
+        <div className="inline-flex items-center justify-start gap-2 self-stretch">
+          <img src={data.warningDarkIcon.publicURL} alt="정보 더보기" />
+          <div className="text-text-basic-primary justify-start font-['Pretendard'] text-base font-semibold leading-normal">
+            지원 시 유의사항
+          </div>
+        </div>
+        <div className="text-text-basic-secondary justify-start font-['Pretendard'] text-base font-normal leading-normal">
+          기재된 내용이 사실과 다를 경우 합격이 취소될 수 있음을 유의하여 주시길
+          바랍니다.
+          <br />
+          전형 일정 및 결과는 지원서 작성 시 기재해주신 이메일을 통해 일주일
+          이내로 안내드립니다.
+          <br />
+          인큐베이팅 기간은 유동적으로 변경 될수 있음을 알려드립니다.
+        </div>
+      </div>
     </section>
   );
 }
@@ -80,20 +97,11 @@ export default ApplyProcedure;
 
 const TitleContainer = tw.div`
   relative
-  pb-6
 
   flex
   items-center
   flex-wrap
   gap-3
-`;
-
-const Title = tw.div`
-  body1
-  md:body4
-  sm:body4
-  xs:body4
-  text-black-0
 `;
 
 const NoticeText = tw.span`

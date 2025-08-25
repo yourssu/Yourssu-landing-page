@@ -40,19 +40,19 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         link={currentTeam.applyLink}
         isRecruiting={currentTeam.isRecruiting}
       />
-      <div className="flex gap-5">
+      <div className="flex w-full gap-5">
         <Link
           to="/recruiting/#faq"
-          className="inline-flex h-[130px] flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
+          className="inline-flex h-[130px] flex-1 flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px] pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
         >
           <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">
             FAQ 보러가기
           </div>
-          <img src={data.inquiryButton.publicURL} alt="FAQ 보러가기" />
+          <img src={data.faqButton.publicURL} alt="FAQ 보러가기" />
         </Link>
         <a
           href={KAKAO_LINK}
-          className="inline-flex h-[130px] flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px]  pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
+          className="inline-flex h-[130px] flex-1 flex-col items-center justify-between self-stretch overflow-hidden rounded-[12px]  pt-3 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]"
         >
           <div className="B3_Sb_14 mb-[1px] items-center text-gray1-0">
             문의하기

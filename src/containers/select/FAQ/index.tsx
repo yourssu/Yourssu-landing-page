@@ -8,7 +8,7 @@ import useFAQDetail from './hook';
 import { QuestionIcon } from './icons';
 
 function FAQ() {
-  const { faq, imgData } = useFAQDetail();
+  const { faqs, imgData } = useFAQDetail();
 
   return (
     <RecruitSectionLayout>
@@ -19,22 +19,16 @@ function FAQ() {
       />
       <Accordion.Root
         type="multiple"
-        className="flex flex-col items-center gap-10"
+        className="flex flex-col items-center gap-5"
       >
-        {faq.map((value) => {
+        {faqs.map((item) => {
           return (
-            <div key={value.category} className="flex flex-col gap-5">
-              {value.list.map((item) => {
-                return (
-                  <QuestionCard
-                    key={item.question}
-                    question={item.question}
-                    answer={item.answer}
-                    smallArrow={imgData.smallarrow.nodes[0]}
-                  />
-                );
-              })}
-            </div>
+            <QuestionCard
+              key={item.question}
+              question={item.question}
+              answer={item.answer}
+              smallArrow={imgData.smallarrow.nodes[0]}
+            />
           );
         })}
       </Accordion.Root>

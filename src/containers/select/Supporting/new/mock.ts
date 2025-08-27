@@ -60,7 +60,7 @@ export const POSITIONS_DATA: PositionType[] = [
   },
   {
     title: 'Legal\nOfficer',
-    value: 'legal_officer',
+    value: 'legal_partner',
     IconComponent: LegalIcon,
   },
 ];

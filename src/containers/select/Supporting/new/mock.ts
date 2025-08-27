@@ -35,7 +35,7 @@ export const POSITIONS_DATA: PositionType[] = [
   },
   {
     title: 'iOS\nEngineer',
-    value: 'ios_Engineer',
+    value: 'ios_engineer',
     IconComponent: IOSIcon,
   },
   // {
@@ -50,12 +50,12 @@ export const POSITIONS_DATA: PositionType[] = [
   },
   {
     title: 'Frontend\nEngineer',
-    value: 'web_fe_Engineer',
+    value: 'web_frontend_engineer',
     IconComponent: FrontEndIcon,
   },
   {
     title: 'Backend\nEngineer',
-    value: 'backend_Engineer',
+    value: 'backend_engineer',
     IconComponent: BackEndIcon,
   },
   {

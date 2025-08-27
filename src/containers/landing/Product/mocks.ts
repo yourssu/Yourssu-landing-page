@@ -38,10 +38,8 @@ export const products: ProductDataType[] = [
     stats: '40개 학과, 누적 1,256명 이용',
     imageUrl: soongptImage,
     modalImageUrl: soongptModalImage,
-    suggestUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSe5vse5MHoTKjkFVL_Euo4p6wCOwDMYCPlp_seRUnn7QRr6Lg/viewform?usp=dialog',
-    serviceUrl:
-      'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C-%EC%9C%A0%EC%84%B8%EC%9D%B8%ED%8A%B8/id1601044486',
+    suggestUrl: 'https://soongpt.yourssu.com',
+    serviceUrl: 'https://soongpt.yourssu.com',
   },
   {
     id: 3,
@@ -51,7 +49,9 @@ export const products: ProductDataType[] = [
     stats: '사용자 만족도 4.7점, iOS/Android 사용자 100+',
     imageUrl: ussaintImage,
     modalImageUrl: ussaintModalImage,
-    suggestUrl: 'https://soongpt.yourssu.com',
-    serviceUrl: 'https://soongpt.yourssu.com',
+    suggestUrl:
+      'https://docs.google.com/forms/d/e/1FAIpQLSe5vse5MHoTKjkFVL_Euo4p6wCOwDMYCPlp_seRUnn7QRr6Lg/viewform?usp=dialog',
+    serviceUrl:
+      'https://apps.apple.com/kr/app/%EC%88%A8%EC%89%B4%EB%95%8C-%EC%9C%A0%EC%84%B8%EC%9D%B8%ED%8A%B8/id1601044486',
   },
 ];

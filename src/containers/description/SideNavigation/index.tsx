@@ -24,16 +24,22 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
       <NavigationContainer>
         <h2 className="T3_Sb_20">TEAM</h2>
         <NavigationList>
-          {teamList.map((team) => (
-            <NavigationItem
-              to={`/recruiting/${team.toLowerCase().replaceAll(' ', '_')}`}
-              key={team}
-              $active={currentTeam.name === team}
-            >
-              <img src={data.smallArrow.publicURL} alt="small-arrow" />
-              <div>{team}</div>
-            </NavigationItem>
-          ))}
+          {teamList.map((team) => {
+            if (team === 'Android Developer') {
+              return null;
+            }
+
+            return (
+              <NavigationItem
+                to={`/recruiting/${team.toLowerCase().replaceAll(' ', '_')}`}
+                key={team}
+                $active={currentTeam.name === team}
+              >
+                <img src={data.smallArrow.publicURL} alt="small-arrow" />
+                <div>{team}</div>
+              </NavigationItem>
+            );
+          })}
         </NavigationList>
       </NavigationContainer>
       <ApplyButton

@@ -37,12 +37,12 @@ export default function useMVCDetail() {
     {
       title: 'MISSION',
       description:
-        '유어슈는 숭실대 학생들을 공감하며, 최고의 서비스를 끊임없이 제공한다.',
+        '유어슈는 숭실대 학생들과 함께 성장하며, 서비스로 세상에 의미 있는 변화를 만든다.',
     },
     {
       title: 'VISION',
       description:
-        '유어슈의 힘으로, 숭실대학교의 재학생 모두가 사용하는 서비스를 제공한다.',
+        '2년 내, 유어슈가 만든 서비스 중 최소 1개 이상이 외부 사용자 1,000명 이상에게 실제로 사용되며 가치를 인정 받는 것을 목표로 한다.',
     },
   ];
   return { coreValueItems, items };

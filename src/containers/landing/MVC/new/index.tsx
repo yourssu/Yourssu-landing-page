@@ -7,24 +7,8 @@ import {
 } from 'framer-motion';
 import { useRef, useState } from 'react';
 
-import missionImage from 'src/assets/images/mvc/MISSON.png';
-import mvcImage from 'src/assets/images/mvc/MVC.png';
-import visionImage from 'src/assets/images/mvc/VISION.png';
-
-const contentData = [
-  {
-    imageUrl: mvcImage,
-    altText: '유어슈의 미션, 비전, 핵심가치 설명 이미지',
-  },
-  {
-    imageUrl: missionImage,
-    altText: '유어슈의 미션 설명 이미지',
-  },
-  {
-    imageUrl: visionImage,
-    altText: '유어슈의 비전 설명 이미지',
-  },
-];
+import mvcAltBackgroundImage from 'src/assets/images/mvc/bg-alt.png';
+import mvcBackgroundImage from 'src/assets/images/mvc/bg.png';
 
 function MissionVision() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,17 +52,26 @@ function MissionVision() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              className="flex flex-col items-center justify-start gap-9 text-center"
+              className="flex size-full flex-col items-center justify-center gap-9 bg-cover bg-no-repeat text-center"
+              style={{
+                backgroundImage:
+                  activeContent.bgImageUrl &&
+                  `url(${activeContent.bgImageUrl})`,
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <img
-                src={activeContent.imageUrl}
-                alt={activeContent.altText}
-                className="h-full w-full"
-              />
+              <div className="flex flex-col items-center gap-1">
+                <div className="T3_Sb_20 text-[#4B505D]">
+                  {activeContent.subTitle}
+                </div>
+                <div className="H2_Sb_40">{activeContent.title}</div>
+              </div>
+              <div className="T1_Rg_28 whitespace-pre-wrap">
+                {activeContent.description}
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -86,5 +79,34 @@ function MissionVision() {
     </section>
   );
 }
+
+const contentData = [
+  {
+    title: '유어슈의 미션, 비전, 핵심가치',
+    subTitle: 'MVC',
+    description:
+      '유어슈는 서비스로 세상에 의미 있는 변화를 만들기 위해,\n기존 숭실대학교를 넘어 더 넓은 무대를 바라보며 MVC 3.0을 설정했습니다.',
+    bgImageUrl: undefined,
+  },
+  {
+    title: 'MISSION',
+    subTitle: 'YOURSSU',
+    description:
+      '2년 내 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게 실제로 사용되며 가치를 인정받는 것을 목표로 한다.',
+    bgImageUrl: mvcBackgroundImage,
+  },
+  {
+    title: 'VISION',
+    subTitle: 'YOURSSU',
+    description:
+      '유어슈는 숭실대 학생들을 공감하며,\n최고의 서비스를 끊임없이 제공한다.',
+    bgImageUrl: mvcAltBackgroundImage,
+  },
+] as const satisfies Array<{
+  title: string;
+  subTitle: string;
+  description: string;
+  bgImageUrl: string | undefined;
+}>;
 
 export default MissionVision;

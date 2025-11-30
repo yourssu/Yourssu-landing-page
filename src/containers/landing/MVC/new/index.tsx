@@ -1,7 +1,6 @@
 import {
   useMotionValueEvent,
   useScroll,
-  useTransform,
   AnimatePresence,
   motion,
 } from 'framer-motion';
@@ -25,17 +24,12 @@ function MissionVision() {
       Math.floor(latest * contentData.length),
       contentData.length - 1,
     );
+
     setCurrentIndex(newIndex);
   });
 
   // 현재 인덱스에 맞는 콘텐츠를 가져옵니다.
   const activeContent = contentData[currentIndex];
-
-  const height = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.9, 1],
-    ['37.5rem', '100vh', '100vh', '37.5rem'],
-  );
 
   return (
     <section
@@ -43,10 +37,7 @@ function MissionVision() {
       style={{ height: `${contentData.length * 100}vh` }}
       className="relative mb-[6.75rem] mt-40 xs:hidden sm:hidden md:hidden"
     >
-      <motion.div
-        style={{ height }}
-        className="sticky top-0 flex w-full items-center justify-center bg-white-0"
-      >
+      <motion.div className="sticky top-0 flex h-screen w-full items-center justify-center bg-white-0">
         {/* 비전 콘텐츠가 들어가는 div */}
         <div className="flex h-[37.5rem] w-full min-w-96 max-w-full flex-col items-center justify-center bg-[#F6F6F6]">
           <AnimatePresence mode="wait">
@@ -61,7 +52,7 @@ function MissionVision() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               <div className="flex flex-col items-center gap-1">
                 <div className="T3_Sb_20 text-[#4B505D]">

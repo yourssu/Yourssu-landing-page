@@ -13,11 +13,7 @@ function Culture() {
   return (
     <section className="mb-[9.5rem] w-full bg-[#F7F8F8] py-[4.625rem] xs:px-5 sm:px-5 md:px-5">
       <div className="mx-auto w-full max-w-[65.625rem]">
-        <MainTitle
-          title="Culture"
-          subTitle="함께 즐기는 문화"
-          className="mb-9"
-        />
+        <MainTitle title="Culture" subTitle="함께 즐기는 문화" />
 
         <div className="mb-6 flex items-center gap-3">
           {CULTURE_DATA.map((tab) => (

@@ -23,11 +23,7 @@ function CoreValue() {
         )}
       </AnimatePresence>
 
-      <MainTitle
-        title="Core Value"
-        subTitle="유어슈의 핵심 가치"
-        className="mb-9"
-      />
+      <MainTitle title="Core Value" subTitle="유어슈의 핵심 가치" />
 
       <div
         className="flex flex-wrap justify-center gap-4"

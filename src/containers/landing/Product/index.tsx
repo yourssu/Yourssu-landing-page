@@ -1,67 +1,92 @@
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useRef, useState } from 'react';
 
-import MainTitle from '@/components/Title/MainTitle';
-
-import ProductItem from './ProductItem';
-import ProductModal from './ProductModal';
-import { ProductDataType } from './mocks';
+import { ProductCard } from './ProductCard';
+import { ArrowLeftIcon, ArrowRightIcon } from './arrowIcons';
 import { products } from './mocks';
 
 function Product() {
-  const [selectedProduct, setSelectedProduct] =
-    useState<ProductDataType | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const handleProductClick = (product: ProductDataType) => {
-    setSelectedProduct(product);
-  };
+  const itemsPerPage = 3;
+  const cardWidth = 332;
+  const gap = 24;
+  const moveDistance = (cardWidth + gap) * itemsPerPage; // 1068px
 
-  const handleCloseModal = () => {
-    setSelectedProduct(null);
-  };
+  // 데이터가 3의 배수가 아닐 때, 부족한 칸 수를 계산 (예: 5개면 1칸 부족)
+  const remainingSlots =
+    (itemsPerPage - (products.length % itemsPerPage)) % itemsPerPage;
 
-  useEffect(() => {
-    if (selectedProduct) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const maxPage = Math.ceil(products.length / itemsPerPage) - 1;
+      let nextPage =
+        direction === 'left'
+          ? Math.max(0, currentPage - 1)
+          : Math.min(maxPage, currentPage + 1);
+
+      setCurrentPage(nextPage);
+
+      scrollRef.current.scrollTo({
+        left: nextPage * moveDistance,
+        behavior: 'smooth',
+      });
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [selectedProduct]);
+  };
 
   return (
-    <section className="mt-[6.25rem]">
-      <div className="container mx-auto flex max-w-[65.625rem] flex-col items-start justify-center xs:px-5 sm:px-5 md:px-5">
-        <MainTitle title="Product" subTitle="함께 몰입한 결과물" />
+    <section className="w-full py-[80px]">
+      {/* 1. 헤더 영역 */}
+      <div className="mx-auto mb-8 flex w-full max-w-[1060px] flex-col items-start gap-[4px]">
+        <span className="font-pretendard text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-text-basicTertiary">
+          Product
+        </span>
+        <div className="flex w-full items-center justify-between">
+          <span className="font-pretendard text-[24px] font-semibold leading-[38px] tracking-[-0.48px]">
+            함께 몰입한 결과물
+          </span>
+          {/* 화살표 버튼 그룹 */}
+          <div className="flex h-[48px] w-[90px] cursor-pointer items-center justify-center gap-[28px] rounded-[29px] border border-line-basicMedium px-[9px]">
+            <button onClick={() => scroll('left')} aria-label="이전">
+              <ArrowLeftIcon />
+            </button>
+            <button onClick={() => scroll('right')} aria-label="다음">
+              <ArrowRightIcon />
+            </button>
+          </div>
+        </div>
+      </div>
 
-        <div className="mt-9 flex w-full flex-col items-center justify-center gap-10">
+      {/* 2. 카드 리스트 영역 */}
+      <div className="mx-auto flex max-w-[1060px] flex-col">
+        <div
+          ref={scrollRef}
+          className="scrollbar-hide relative flex snap-x snap-mandatory gap-6 overflow-x-auto"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {products.map((product) => (
-            <div key={product.id}>
-              <ProductItem
-                product={product}
-                onProductClick={handleProductClick}
+            <a
+              key={product.id}
+              href={product.serviceUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ProductCard
+                title={product.title}
+                description={product.description}
+                imageUrl={product.imageUrl}
               />
-
-              <div className="h-px w-full bg-gray-200"></div>
-            </div>
+            </a>
+          ))}
+          {/* 부족한 칸만큼 투명한 div를 생성해 스크롤 공간 확보 */}
+          {Array.from({ length: remainingSlots }).map((_, i) => (
+            <div
+              key={`dummy-${i}`}
+              className="h-1 min-w-[332px] flex-shrink-0"
+            />
           ))}
         </div>
       </div>
-      {selectedProduct &&
-        createPortal(
-          <div
-            className="z-100 fixed inset-0 flex items-center justify-center bg-black-0 bg-opacity-50"
-            onClick={handleCloseModal}
-          >
-            <ProductModal
-              product={selectedProduct}
-              onClose={handleCloseModal}
-            />
-          </div>,
-          document.body,
-        )}
     </section>
   );
 }

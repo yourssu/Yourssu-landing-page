@@ -7,7 +7,7 @@ interface BoxButtonProps {
 export function BoxButton({ children, width, onClick }: BoxButtonProps) {
   return (
     <div
-      className="B1_Sb_16 inline-flex h-[52px] cursor-pointer items-center justify-center gap-1 self-stretch rounded-[16px] bg-[#6B5CFF] px-[20px] text-[#FFFFFF]"
+      className="B1_Sb_16 inline-flex h-[52px] cursor-pointer items-center justify-center gap-1 self-stretch rounded-[16px] bg-bg-brandPrimary px-[20px] text-text-basicWhite"
       style={{ width }}
       onClick={onClick}
     >

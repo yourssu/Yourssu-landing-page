@@ -38,14 +38,14 @@ function Product() {
 
         <div className="mt-9 flex w-full flex-col items-center justify-center gap-10">
           {products.map((product) => (
-            <>
+            <div key={product.id}>
               <ProductItem
                 product={product}
                 onProductClick={handleProductClick}
               />
 
               <div className="h-px w-full bg-gray-200"></div>
-            </>
+            </div>
           ))}
         </div>
       </div>

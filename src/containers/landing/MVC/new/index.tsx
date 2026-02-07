@@ -6,8 +6,9 @@ import {
 } from 'framer-motion';
 import { useRef, useState } from 'react';
 
-import mvcAltBackgroundImage from 'src/assets/images/mvc/bg-alt.png';
-import mvcBackgroundImage from 'src/assets/images/mvc/bg.png';
+import missionImage from '@/assets/images/mvc/MISSION.png';
+import mvcImage from '@/assets/images/mvc/MVC.png';
+import visionImage from '@/assets/images/mvc/VISION.png';
 
 function MissionVision() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,12 +35,12 @@ function MissionVision() {
   return (
     <section
       ref={scrollRef}
-      style={{ height: `${contentData.length * 100}vh` }}
-      className="relative mb-[6.75rem] mt-40 xs:hidden sm:hidden md:hidden"
+      style={{ height: `${contentData.length * 100}vh`, position: 'relative' }}
+      className="h-[300vh] w-screen"
     >
-      <motion.div className="sticky top-0 flex h-screen w-full items-center justify-center bg-white-0">
-        {/* 비전 콘텐츠가 들어가는 div */}
-        <div className="flex h-[37.5rem] w-full min-w-96 max-w-full flex-col items-center justify-center bg-[#F6F6F6]">
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center">
+        <motion.div className="h-[500px] w-full min-w-96 max-w-full flex-col items-center justify-center">
+          {/* 비전 콘텐츠가 들어가는 div */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -54,19 +55,23 @@ function MissionVision() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <div className="flex flex-col items-center gap-1">
-                <div className="T3_Sb_20 text-[#4B505D]">
-                  {activeContent.subTitle}
+              <div className="flex h-[150px] shrink-0 flex-col items-start gap-[36px] self-stretch">
+                <div className="flex flex-col items-center gap-1 self-stretch">
+                  <div className="text-center font-pretendard text-[14px] leading-[20px] tracking-[-0.28px] text-text-basicTertiary">
+                    {activeContent.subTitle}
+                  </div>
+                  <div className="text-center font-pretendard text-[24px] font-semibold leading-[34px] tracking-[-0.48px] text-text-basicPrimary">
+                    {activeContent.title}
+                  </div>
                 </div>
-                <div className="H2_Sb_40">{activeContent.title}</div>
-              </div>
-              <div className="T1_Rg_28 whitespace-pre-wrap">
-                {activeContent.description}
+                <div className="self-stretch whitespace-pre-wrap text-center font-pretendard text-[18px] leading-[26px] tracking-[-0.36px] text-text-basicSecondary">
+                  {activeContent.description}
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
@@ -77,21 +82,21 @@ const contentData = [
     subTitle: 'MVC',
     description:
       '유어슈는 서비스로 세상에 의미 있는 변화를 만들기 위해,\n기존 숭실대학교를 넘어 더 넓은 무대를 바라보며 MVC 3.0을 설정했습니다.',
-    bgImageUrl: undefined,
+    bgImageUrl: mvcImage,
   },
   {
     title: 'MISSION',
     subTitle: 'YOURSSU',
     description:
-      '유어슈는 숭실대 학생들과 함께 성장하며,\n서비스로 세상에 의미 있는 변화를 만든다.',
-    bgImageUrl: mvcBackgroundImage,
+      '2년 내 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게 실제로 사용되며 가치를 인정받는 것을 목표로 한다',
+    bgImageUrl: missionImage,
   },
   {
     title: 'VISION',
     subTitle: 'YOURSSU',
     description:
-      '2년 내, 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게 실제로 사용되며 가치를 인정 받는 것을 목표로 한다.',
-    bgImageUrl: mvcAltBackgroundImage,
+      '유어슈는 숭실대 학생들을 공감하며, 최고의 서비스를 끊임없이 제공한다',
+    bgImageUrl: visionImage,
   },
 ] as const satisfies Array<{
   title: string;

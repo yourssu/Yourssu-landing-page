@@ -16,11 +16,11 @@ function Header({ isMainPage }: Props) {
 
   return (
     <header
-      className={`absolute z-50 flex w-full flex-col items-center justify-between bg-white-0 ${
+      className={`z-50 flex w-full flex-col items-center justify-between bg-white-0 ${
         isClick && 'bg-white-0'
       }`}
     >
-      <div className="flex h-[74px] w-full items-center justify-between xs:h-[51px] xs:px-5 sm:h-[51px] sm:px-5 md:px-10 lg:px-10 xl:w-[75rem] xxl:w-[75rem]">
+      <div className="flex h-[80px] w-full items-center justify-between xs:h-[51px] xs:px-5 sm:h-[51px] sm:px-5 md:px-10 lg:px-10 xl:w-[75rem] xxl:w-[75rem]">
         <Link to="/" className="flex items-center justify-between">
           <h1 className="w-[111px] text-center font-jost text-[24px] font-semibold leading-[26px] -tracking-[0.04em] text-[#6B5CFF] xs:w-[60px] xs:text-[14px] xs:leading-[16px] xs:-tracking-[0.02em] sm:w-[73px] sm:text-[16px] sm:leading-[16px] sm:-tracking-[0.02em] md:w-[92px] md:text-[20px] md:leading-[20px] md:-tracking-[0.02em]">
             YOURSSU

@@ -16,13 +16,13 @@ function RecruitmentBanner({ imageUrl, recruitTitle }: RecruitmentBannerProps) {
         aria-hidden="true"
       />
 
-      <h2 className="H3_Sb_32 relative text-center text-white-0 xs:text-lg xs:leading-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-9 lg:text-3xl lg:leading-10">
+      <h2 className="relative text-center text-4xl font-semibold leading-[52px] text-white-0 xs:text-lg xs:leading-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-9 lg:text-3xl lg:leading-10">
         {recruitTitle}
       </h2>
 
       <Link
         to="/recruiting"
-        className="B1_Sb_16 relative flex items-center justify-center rounded-[1rem] bg-[#6B5CFF] px-5 py-3.5 text-base text-white-0 transition-colors"
+        className="relative flex items-center justify-center rounded-[1rem] bg-[#6B5CFF] px-5 py-3.5 text-base font-semibold leading-normal text-white-0 transition-colors"
       >
         지원하러 가기
       </Link>

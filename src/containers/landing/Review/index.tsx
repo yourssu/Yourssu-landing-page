@@ -11,17 +11,17 @@ export function ReviewCarousel() {
       x: ['0%', '-50%'],
       transition: {
         ease: 'linear',
-        duration: 70,
+        duration: 20,
         repeat: Infinity,
       },
     },
   };
 
   return (
-    <section className="relative mb-7 w-full py-5">
+    <section className="mb-7 w-full py-5">
       <div className="overflow-hidden">
         <motion.div
-          className="flex w-max"
+          className="flex"
           variants={carouselVariants}
           animate="animate"
         >

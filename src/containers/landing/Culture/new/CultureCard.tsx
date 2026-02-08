@@ -8,7 +8,7 @@ export interface CultureCardProps {
 
 export function CultureCard({ tagName, title, description }: CultureCardProps) {
   return (
-    <div className="flex w-[1060px] items-center gap-[12px] rounded-[16px] border border-[#F1F1F4] bg-[#FFFFFF] px-[28px] py-[24px] xs:w-[343px] sm:w-[343px] md:w-[343px]">
+    <div className="flex w-[1060px] items-center gap-[12px] rounded-[16px] border border-[#F1F1F4] bg-[#FFFFFF] px-[28px] py-[24px]">
       <div className="flex flex-col items-start gap-[28px] self-stretch">
         <div className="flex flex-col items-start gap-[10px] self-stretch">
           <Tag name={tagName} />

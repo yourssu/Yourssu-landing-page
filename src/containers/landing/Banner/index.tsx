@@ -6,7 +6,7 @@ import { MainCard } from './MainCard';
 
 function Banner() {
   return (
-    <div className="flex flex-col items-center gap-[10px] self-stretch px-5 py-10 md:py-[80px]">
+    <div className="flex flex-col items-center gap-[10px] self-stretch py-[80px]">
       <MainCard
         images={[mainCard1, mainCard2, mainCard3]}
         text={`좋아서 몰입하는

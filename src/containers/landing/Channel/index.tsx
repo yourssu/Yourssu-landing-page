@@ -10,7 +10,7 @@ function Channel() {
 
       <div
         className="mb-[3.75rem] flex w-full justify-center gap-10 
-          xs:justify-start xs:overflow-x-scroll xs:pl-5 sm:justify-start sm:overflow-x-scroll sm:pl-5 md:justify-start md:overflow-x-scroll md:pl-5"
+          xs:justify-start xs:overflow-x-scroll xs:pl-5 sm:justify-start sm:overflow-x-scroll sm:pl-5 md:justify-center md:overflow-x-scroll md:pl-5"
         id="scrollbar-hide"
       >
         {CHANNELS_DATA.map((channel) => (

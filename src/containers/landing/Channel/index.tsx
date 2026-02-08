@@ -4,7 +4,7 @@ import { CHANNELS_DATA } from './mock';
 function Channel() {
   return (
     <section className="mb-7 h-[30.5rem] py-[3.75rem] text-center">
-      <h3 className="mb-[2.375rem] font-pretendard text-[1.75rem] font-semibold xs:text-2xl sm:text-2xl md:text-2xl">
+      <h3 className="T2_Sb_24 mb-[2.375rem] xs:text-2xl sm:text-2xl md:text-2xl">
         다양한 채널에서 유어슈를 만나보세요
       </h3>
 

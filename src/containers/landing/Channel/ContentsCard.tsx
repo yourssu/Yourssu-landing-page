@@ -1,0 +1,50 @@
+import { useState } from 'react';
+
+import { Tag } from '@/components/Tag/Tag';
+
+interface ContentsCardProps {
+  title: string;
+  tagNames: string[];
+  imageUrl: string;
+  contentUrl: string;
+}
+
+export function ContentsCard({
+  title,
+  tagNames,
+  imageUrl,
+  contentUrl,
+}: ContentsCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <a href={contentUrl} target="_blank" rel="noopener noreferrer">
+      <div
+        className="inline-flex flex-col items-start justify-center gap-[20px]"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="flex h-[200px] w-[340px] items-center justify-center overflow-hidden rounded-[16px]">
+          <img
+            src={imageUrl}
+            alt={`${title} thumbnail`}
+            className="group-hover:scale-105 h-full w-full object-cover transition-transform duration-300"
+          />
+        </div>
+        <div className="flex w-full flex-col items-start gap-[12px] px-[8px] py-0 opacity-80">
+          <span
+            className={`T3_Sb_20 whitespace-pre-line text-left ${
+              isHovered ? 'text-text-brandPrimary' : 'text-text-basicPrimary'
+            }`}
+          >
+            {title}
+          </span>
+          <div className="flex-start flex gap-[8px]">
+            {tagNames.map((tagName) => (
+              <Tag key={tagName} name={tagName} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}

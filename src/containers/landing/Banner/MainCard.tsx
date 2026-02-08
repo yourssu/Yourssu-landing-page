@@ -1,0 +1,48 @@
+import { navigate } from 'gatsby';
+import { useState, useEffect } from 'react';
+
+import { BoxButton } from '@/components/Button/BoxButton';
+
+interface MainCardProps {
+  images: string[]; // 이미지 경로 배열
+  text: string;
+}
+
+export function MainCard({ images, text }: MainCardProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // 3초마다 인덱스 변경
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="flex-end relative flex h-[535px] w-full max-w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px]">
+      {images.map((src, index) => (
+        <img
+          key={src}
+          src={src}
+          alt={`bg-${index}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+            index === currentIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+      <div className="bg-black/30 absolute inset-0" />
+      <div className="relative z-10 flex h-full flex-col items-start justify-between text-left">
+        <span
+          className="H1_Sb_32 whitespace-pre-line text-text-basicWhite"
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
+        <div className="self-end">
+          <BoxButton width={142} onClick={() => navigate('/recruiting')}>
+            채용 포지션 보기
+          </BoxButton>
+        </div>
+      </div>
+    </div>
+  );
+}

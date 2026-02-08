@@ -1,23 +1,42 @@
+import { useState } from 'react';
+
 import MainTitle from '@/components/Title/MainTitle';
 
-import { CultureCard } from './CultureCard';
-import { cultures } from './mock';
+import ContentBlock from './ContentBlock';
+import { CULTURE_DATA } from './mock';
 
 function Culture() {
-  return (
-    <section className="w-full bg-[#F7F8F8] py-[80px] xs:px-5 sm:px-5 md:px-5">
-      <div className="mx-auto w-full max-w-[65.625rem]">
-        <MainTitle title="Culture" subTitle="유어슈에서 함께 즐기는 문화" />
+  const [activeTab, setActiveTab] = useState(CULTURE_DATA[0].tabName);
 
-        <div className="mb-6 flex flex-col items-center gap-3">
-          {cultures.map((data: any, index: number) => (
-            <CultureCard
-              key={index}
-              tagName={data.tagName}
-              title={data.title}
-              description={data.description}
-            />
+  const activeContent = CULTURE_DATA.find((item) => item.tabName === activeTab);
+
+  return (
+    <section className="mb-[9.5rem] w-full bg-[#F7F8F8] py-[4.625rem] xs:px-5 sm:px-5 md:px-5">
+      <div className="mx-auto w-full max-w-[65.625rem]">
+        <MainTitle title="Culture" subTitle="함께 즐기는 문화" />
+
+        <div className="mb-6 flex items-center gap-3">
+          {CULTURE_DATA.map((tab) => (
+            <button
+              key={tab.tabName}
+              onClick={() => setActiveTab(tab.tabName)}
+              className={`rounded-[1rem] px-4 py-2 text-xl font-semibold transition-colors
+              ${
+                activeTab === tab.tabName
+                  ? 'bg-[#ECEFFF] text-[#6B5CFF]'
+                  : 'text-[#6E7687]'
+              }
+            `}
+            >
+              {tab.tabName}
+            </button>
           ))}
+        </div>
+
+        <div>
+          {activeContent && (
+            <ContentBlock key={activeTab} content={activeContent} />
+          )}
         </div>
       </div>
     </section>

@@ -34,7 +34,7 @@ export function MainCard({ images, text }: MainCardProps) {
       <div className="bg-black/30 absolute inset-0" />
       <div className="relative z-10 flex h-full flex-col items-start justify-between text-left">
         <span
-          className="H1_Sb_32 whitespace-pre-line text-text-basicWhite"
+          className="text-white whitespace-pre-wrap text-[32px] font-normal leading-[42px] text-white-0"
           dangerouslySetInnerHTML={{ __html: text }}
         />
         <div className="self-end">

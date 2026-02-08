@@ -38,13 +38,9 @@ function Product() {
     <section className="w-full py-[80px]">
       {/* 1. 헤더 영역 */}
       <div className="mx-auto mb-8 flex w-full max-w-[1060px] flex-col items-start gap-[4px]">
-        <span className="font-pretendard text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-text-basicTertiary">
-          Product
-        </span>
+        <span className="B3_Rg_14 text-text-basicTertiary">Product</span>
         <div className="flex w-full items-center justify-between">
-          <span className="font-pretendard text-[24px] font-semibold leading-[38px] tracking-[-0.48px]">
-            함께 몰입한 결과물
-          </span>
+          <span className="T2_Sb_24">함께 몰입한 결과물</span>
           {/* 화살표 버튼 그룹 */}
           <div className="flex h-[48px] w-[90px] cursor-pointer items-center justify-center gap-[28px] rounded-[29px] border border-line-basicMedium px-[9px]">
             <button onClick={() => scroll('left')} aria-label="이전">

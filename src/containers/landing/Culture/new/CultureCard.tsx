@@ -12,11 +12,11 @@ export function CultureCard({ tagName, title, description }: CultureCardProps) {
       <div className="flex flex-col items-start gap-[28px] self-stretch">
         <div className="flex flex-col items-start gap-[10px] self-stretch">
           <Tag name={tagName} />
-          <span className="self-stretch font-pretendard text-[20px] font-semibold leading-[28px] tracking-[-0.4px] text-text-basicSecondary">
+          <span className="T3_Sb_20 self-stretch text-text-basicSecondary">
             {title}
           </span>
         </div>
-        <span className="self-stretch whitespace-pre-line font-pretendard text-[16px] leading-[24px] tracking-[-0.32px] text-text-basicTertiary">
+        <span className="B1_Rg_16 self-stretch whitespace-pre-line text-text-basicTertiary">
           {description}
         </span>
       </div>

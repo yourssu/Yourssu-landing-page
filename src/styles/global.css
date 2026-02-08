@@ -26,33 +26,16 @@
     letter-spacing: -0.6px;
   }
 
-  .T1_Rg_28 {
-    font-family: Pretendard;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: -0.56px;
-  }
-
-  .T2_Rg_24 {
-    font-family: Pretendard;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 34px; /* 141.667% */
-    letter-spacing: -0.48px;
-  }
-
-  .H2_Sb_40 {
-    font-family: Pretendard;
-    font-size: 40px;
+  .H1_Sb_32 {
+    font-family: 'Pretendard';
+    font-size: 32px;
     font-style: normal;
     font-weight: 600;
-    line-height: 52px; /* 130% */
-    letter-spacing: -0.8px;
+    line-height: 42px; /* 131.25% */
+    letter-spacing: -0.64px;
   }
 
-  .T3_Sb_20 {
+  .T1_Sb_20 {
     font-family: Pretendard;
     font-size: 20px;
     font-style: normal;
@@ -61,8 +44,79 @@
     letter-spacing: -0.4px;
   }
 
-  .B1_Rg_16 {
+  .T1_Rg_28 {
+    font-family: 'Pretendard';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: -0.56px;
+  }
+
+  .T2_Rg_24 {
+    font-family: 'Pretendard';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px; /* 141.667% */
+    letter-spacing: -0.48px;
+  }
+
+  .T2_Sb_24 {
+    font-family: 'Pretendard';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 34px; /* 141.667% */
+    letter-spacing: -0.48px;
+  }
+
+  .T2_Sb_18 {
     font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px; /* 144.444% */
+    letter-spacing: -0.36px;
+  }
+
+  .H2_Sb_40 {
+    font-family: 'Pretendard';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 52px; /* 130% */
+    letter-spacing: -0.8px;
+  }
+
+  .T3_Rg_20 {
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.4px;
+  }
+
+  .T3_Sb_20 {
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.4px;
+  }
+
+  .T4_Rg_18 {
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 144.444% */
+    letter-spacing: -0.36px;
+  }
+
+  .B1_Rg_16 {
+    font-family: 'Pretendard';
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -71,7 +125,7 @@
   }
 
   .B1_Sb_16 {
-    font-family: Pretendard;
+    font-family: 'Pretendard';
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -80,7 +134,7 @@
   }
 
   .B1_Lt_16 {
-    font-family: Pretendard;
+    font-family: 'Pretendard';
     font-size: 16px;
     font-style: normal;
     font-weight: 300;
@@ -89,12 +143,48 @@
   }
 
   .B3_Sb_14 {
-    font-family: Pretendard;
+    font-family: 'Pretendard';
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: 20px; /* 142.857% */
     letter-spacing: -0.28px;
+  }
+
+  .B3_Rg_14 {
+    font-family: 'Pretendard';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: -0.28px;
+  }
+
+  .B5_Rg_12 {
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
+    letter-spacing: -0.24px;
+  }
+
+  .C1_Rg_11 {
+    font-family: Pretendard;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 145.455% */
+    letter-spacing: -0.22px;
+  }
+
+  .C1_Rg_13 {
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 138.462% */
+    letter-spacing: -0.26px;
   }
 
   .h2 {
@@ -113,6 +203,15 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: -0.32px;
+  }
+
+  .H3_Sb_32 {
+    font-family: Pretendard;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 42px; /* 131.25% */
+    letter-spacing: -0.64px;
   }
 
   .h4 {

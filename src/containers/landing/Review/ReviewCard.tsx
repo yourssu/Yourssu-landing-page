@@ -7,7 +7,7 @@ interface ReviewCardProps {
 
 function ReviewCard({ reviewData }: ReviewCardProps) {
   return (
-    <div className="flex h-[140px] w-[500px] flex-col items-start justify-start gap-2.5 rounded-[1rem] bg-gray-50 px-9 py-5 xs:w-96 sm:w-96">
+    <div className="flex h-[140px] w-[500px] flex-col items-start justify-start gap-2.5 rounded-[1rem] bg-gray-50 px-9 py-5">
       <div className="inline-flex items-center justify-center gap-2">
         <ProfileIcon />
 

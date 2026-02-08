@@ -32,7 +32,7 @@ export function ContentsCard({
         </div>
         <div className="flex w-full flex-col items-start gap-[12px] px-[8px] py-0 opacity-80">
           <span
-            className={`T3_Sb_20 whitespace-pre-line ${
+            className={`T3_Sb_20 whitespace-pre-line text-left ${
               isHovered ? 'text-text-brandPrimary' : 'text-text-basicPrimary'
             }`}
           >

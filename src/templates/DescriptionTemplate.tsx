@@ -76,6 +76,8 @@ function DescriptionTemplate({
     }
   }, [formSchedule]);
 
+  console.log(name, isRecruiting);
+
   return (
     <Layout isMainPage={true}>
       <TeamHeader

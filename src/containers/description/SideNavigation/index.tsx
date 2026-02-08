@@ -25,10 +25,6 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         <h2 className="T3_Sb_20">TEAM</h2>
         <NavigationList>
           {teamList.map((team) => {
-            if (team === 'Android Developer') {
-              return null;
-            }
-
             return (
               <NavigationItem
                 to={`/recruiting/${team.toLowerCase().replaceAll(' ', '_')}`}

@@ -9,6 +9,7 @@ import {
   LegalIcon,
   MarketingIcon,
   ProductManagerIcon,
+  AndroidIcon,
 } from './icons';
 
 export interface PositionType {
@@ -38,11 +39,11 @@ export const POSITIONS_DATA: PositionType[] = [
     value: 'ios_engineer',
     IconComponent: IOSIcon,
   },
-  // {
-  //   title: 'Android\nEngineer',
-  //   value: 'android_Engineer',
-  //   IconComponent: AndroidIcon,
-  // },
+  {
+    title: 'Android\nEngineer',
+    value: 'android_developer',
+    IconComponent: AndroidIcon,
+  },
   {
     title: 'HR\nManager',
     value: 'hr_partner',

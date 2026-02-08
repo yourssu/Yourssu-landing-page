@@ -21,11 +21,11 @@ export const REVIEWS_DATA: ReviewDataType[] = [
     nickname: 'Ina',
     part: 'Product Design',
     review:
-      '활동하며 가장 크게 느낀 점은 유어슈에는 단순히 프로젝트나 개인적 성장을 위하는 것이 아닌 유어슈를 진심으로 아끼고 애정하는 멤버들이 많다는 것이었습니다. 동아리에 대한 애정을 가진 사람들이 많다는 사실은 저에게도 큰 동기부여가 된 것 같아요!',
+      '활동하며 가장 크게 느낀 점은 유어슈에는 단순히 프로젝트나 개인적 성장을 위하는 것이 아닌 유어슈를 진심으로 아끼는 멤버들이 많다는 것이었습니다. 동아리에 대한 애정을 가진 사람들이 많다는 사실은 저에게도 큰 동기부여가 된 것 같아요!',
   },
   {
     nickname: 'Juun',
-    part: 'Web FE',
+    part: 'FE',
     review:
       '실무와 유사한 팀 프로젝트를 경험할 수 있었고 실력이 뛰어난 사람들을 많이 알아갈 수 있어 좋았어요.',
   },
@@ -37,7 +37,7 @@ export const REVIEWS_DATA: ReviewDataType[] = [
   },
   {
     nickname: 'Mosu',
-    part: 'IOS',
+    part: 'iOS',
     review:
       'iOS 개발을 처음 시작할 때는 유어슈 선배들이 이끌어준 덕분에 흥미를 잃지 않고 꾸준히 할 수 있었어요. 유어슈는 뭔가 시도해보고 성장하기 좋은 환경이고, 동료들도 다 좋은 사람들이라 많은 것을 얻을 수 있었던 동아리였어요. 최고입니다😄',
   },
@@ -61,13 +61,13 @@ export const REVIEWS_DATA: ReviewDataType[] = [
   },
   {
     nickname: 'Tang',
-    part: 'Web FE',
+    part: 'FE',
     review:
       '인재 밀도가 높아 실력이 뛰어난 사람들과 소통하며, 많이 배울 수 있었습니다. 2학기에 함께 개발하며 더욱 성장할 미래가 기대됩니다.',
   },
   {
     nickname: 'Jerome',
-    part: 'Web FE',
+    part: 'FE',
     review:
       '유어슈 활동에 집중하고 싶었는데, 외부 활동으로 인해 집중하지 못하여서 아쉬웠습니다. 다음 학기에는 유어슈 프로젝트에 집중하고 싶어요.',
   },

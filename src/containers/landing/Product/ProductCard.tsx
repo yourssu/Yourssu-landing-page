@@ -28,13 +28,15 @@ export function ProductCard({
       </div>
       <div className="flex flex-col items-start gap-2 self-stretch px-2">
         <span
-          className={`T3_Sb_20 ${
+          className={`T3_Sb_20 text-[20px] font-semibold leading-[28px] tracking-[-0.4px] ${
             isHovered ? 'text-text-brandPrimary' : 'text-text-basicPrimary'
           }`}
         >
           {title}
         </span>
-        <span className="T3_Rg_20 text-text-basicSecondary">{description}</span>
+        <span className="T4_Regular_16 text-[20px] font-normal leading-[28px] tracking-[-0.4px] text-text-basicSecondary">
+          {description}
+        </span>
       </div>
     </div>
   );

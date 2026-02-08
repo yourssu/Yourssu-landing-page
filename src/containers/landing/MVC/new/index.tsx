@@ -57,14 +57,14 @@ function MissionVision() {
             >
               <div className="flex h-[150px] shrink-0 flex-col items-start gap-[36px] self-stretch">
                 <div className="flex flex-col items-center gap-1 self-stretch">
-                  <div className="B3_Rg_14 text-center text-text-basicTertiary">
+                  <div className="text-center font-pretendard text-[14px] leading-[20px] tracking-[-0.28px] text-text-basicTertiary">
                     {activeContent.subTitle}
                   </div>
-                  <div className="T2_Sb_24 text-center text-text-basicPrimary">
+                  <div className="text-center font-pretendard text-[24px] font-semibold leading-[34px] tracking-[-0.48px] text-text-basicPrimary">
                     {activeContent.title}
                   </div>
                 </div>
-                <div className="T4_Rg_18 self-stretch whitespace-pre-wrap text-center text-text-basicSecondary">
+                <div className="self-stretch whitespace-pre-wrap text-center font-pretendard text-[18px] leading-[26px] tracking-[-0.36px] text-text-basicSecondary">
                   {activeContent.description}
                 </div>
               </div>

@@ -20,7 +20,7 @@ export function MainCard({ images, text }: MainCardProps) {
   }, [images.length]);
 
   return (
-    <div className="flex-end relative flex h-[535px] w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px]">
+    <div className="flex-end relative flex h-[535px] w-full max-w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px]">
       {images.map((src, index) => (
         <img
           key={src}

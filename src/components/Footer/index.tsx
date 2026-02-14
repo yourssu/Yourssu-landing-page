@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 
+import githubIcon from '@/assets/socials/github.svg';
+import instagramIcon from '@/assets/socials/instagram.svg';
+import kakaotalkIcon from '@/assets/socials/kakaotalk.svg';
+import mediumIcon from '@/assets/socials/medium.svg';
+
 import useFooterDetail from './hook';
 
 interface Props {
@@ -8,7 +13,7 @@ interface Props {
 }
 
 function Footer({ backgroundColor }: Props) {
-  const { socialIcon, link } = useFooterDetail();
+  const { link } = useFooterDetail();
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -16,13 +21,12 @@ function Footer({ backgroundColor }: Props) {
     setIsMounted(true);
   }, []);
 
-  // 1. 원하는 순서와 키(key) 정의
-  const socialOrder = ['kakaotalk', 'github', 'instagram', 'medium'];
-
-  // 2. 쿼리해온 데이터 중 순서에 맞는 것만 필터링 및 정렬
-  const orderedSocials = socialOrder
-    .map((key) => socialIcon.nodes.find((node) => node.name === key))
-    .filter((icon) => icon !== undefined);
+  const socialData = [
+    { name: 'kakaotalk', icon: kakaotalkIcon },
+    { name: 'github', icon: githubIcon },
+    { name: 'instagram', icon: instagramIcon },
+    { name: 'medium', icon: mediumIcon },
+  ];
 
   const background: { [key: string]: string } = {
     gray4: 'bg-gray4-0',
@@ -36,17 +40,16 @@ function Footer({ backgroundColor }: Props) {
           <Logo>YOURSSU</Logo>
         </LogoContainer>
         <div className="mb-2 flex items-center gap-[12px]">
-          {/* 3. 정렬된 orderedSocials 사용 */}
           {isMounted &&
-            orderedSocials.map((icon) => (
-              <React.Fragment key={icon.name}>
+            socialData.map((item) => (
+              <React.Fragment key={item.name}>
                 <a
                   className="flex h-12 w-12 items-center justify-center gap-[10px] rounded-[16px] bg-bg-basicLight"
-                  href={link[icon.name]}
+                  href={link[item.name]}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src={icon.publicURL} alt={icon.name} />
+                  <img src={item.icon} alt={item.name} />
                 </a>
               </React.Fragment>
             ))}

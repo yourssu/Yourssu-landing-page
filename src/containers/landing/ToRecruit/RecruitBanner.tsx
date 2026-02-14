@@ -1,14 +1,27 @@
-import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
+
+import { BoxButton } from '@/components/Button/BoxButton';
 
 interface RecruitmentBannerProps {
   imageUrl: string;
-  recruitTitle: string;
+  recruitTitle: {
+    desktop: string;
+    mobile: string;
+  };
+  buttonText: {
+    desktop: string;
+    mobile: string;
+  };
 }
 
-function RecruitmentBanner({ imageUrl, recruitTitle }: RecruitmentBannerProps) {
+function RecruitmentBanner({
+  imageUrl,
+  recruitTitle,
+  buttonText,
+}: RecruitmentBannerProps) {
   return (
     <div
-      className="relative flex h-96 w-full flex-col items-center justify-end gap-9 bg-cover bg-center py-32"
+      className="relative flex h-[430px] w-full flex-col items-center justify-items-end gap-9 bg-cover bg-center py-[133px] xs:h-[210px] xs:gap-[14px] xs:py-[50px] sm:h-[210px] sm:gap-[14px] sm:py-[50px]"
       style={{ backgroundImage: `url(${imageUrl})` }}
     >
       <div
@@ -16,16 +29,27 @@ function RecruitmentBanner({ imageUrl, recruitTitle }: RecruitmentBannerProps) {
         aria-hidden="true"
       />
 
-      <h2 className="H3_Sb_32 relative text-center text-white-0 xs:text-lg xs:leading-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-9 lg:text-3xl lg:leading-10">
-        {recruitTitle}
+      {/* 타이틀 영역 */}
+      <h2 className="H3_Sb_32 sm:T1_Sb_20 xs:T1_Sb_20 relative text-center text-white-0">
+        {/* 데스크탑 */}
+        <span className="block whitespace-pre-wrap xs:hidden sm:hidden">
+          {recruitTitle.desktop}
+        </span>
+        {/* 모바일 */}
+        <span className="hidden whitespace-pre-wrap xs:block sm:block">
+          {recruitTitle.mobile}
+        </span>
       </h2>
 
-      <Link
-        to="/recruiting"
-        className="B1_Sb_16 relative flex items-center justify-center rounded-[1rem] bg-[#6B5CFF] px-5 py-3.5 text-base text-white-0 transition-colors"
-      >
-        지원하러 가기
-      </Link>
+      {/* 버튼 영역 */}
+      <div className="relative">
+        <BoxButton onClick={() => navigate('/recruiting')}>
+          <span className="block xs:hidden sm:hidden">
+            {buttonText.desktop}
+          </span>
+          <span className="hidden xs:block sm:block">{buttonText.mobile}</span>
+        </BoxButton>
+      </div>
     </div>
   );
 }

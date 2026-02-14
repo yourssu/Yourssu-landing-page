@@ -20,7 +20,7 @@ export function MainCard({ images, text }: MainCardProps) {
   }, [images.length]);
 
   return (
-    <div className="flex-end relative flex h-[535px] w-full max-w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px]">
+    <div className="flex-end relative flex h-[535px] w-full max-w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px] xs:h-[243px] xs:w-[370px] xs:p-[20px] sm:h-[243px] sm:w-[370px] sm:p-[20px]">
       {images.map((src, index) => (
         <img
           key={src}
@@ -34,11 +34,11 @@ export function MainCard({ images, text }: MainCardProps) {
       <div className="bg-black/30 absolute inset-0" />
       <div className="relative z-10 flex h-full flex-col items-start justify-between text-left">
         <span
-          className="H1_Sb_32 whitespace-pre-line text-text-basicWhite"
+          className="H1_Sb_32 sm:T1_Sb_20 xs:T1_Sb_20 whitespace-pre-line text-text-basicWhite"
           dangerouslySetInnerHTML={{ __html: text }}
         />
         <div className="self-end">
-          <BoxButton width={142} onClick={() => navigate('/recruiting')}>
+          <BoxButton onClick={() => navigate('/recruiting')}>
             채용 포지션 보기
           </BoxButton>
         </div>

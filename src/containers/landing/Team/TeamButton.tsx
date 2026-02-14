@@ -42,7 +42,7 @@ function TeamButton({ longName, shortName, image }: TeamButtonItem) {
         className="flex w-fit items-center justify-center gap-1"
       >
         <Team>{shortName}</Team>
-        <p className="flex-shrink-0 text-Text_Color3-0">&#62;</p>
+        <p className="text-Text_Color3-0 flex-shrink-0">&#62;</p>
       </Link>
     </div>
   );

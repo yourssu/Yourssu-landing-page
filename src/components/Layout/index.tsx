@@ -8,7 +8,7 @@ interface Props {
 
 function Layout({ children, isMainPage }: Props) {
   return (
-    <div className="relative xs:px-[18.5px] sm:px-[18.5px] md:px-[18.5px]">
+    <div className="relative">
       <Header isMainPage={isMainPage} />
       {children}
       <Footer backgroundColor="#ffffff" />

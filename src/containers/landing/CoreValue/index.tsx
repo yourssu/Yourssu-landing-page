@@ -10,7 +10,7 @@ function CoreValue() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative z-0 mx-auto flex w-full max-w-[1060px] flex-col items-center justify-center py-20 xs:px-5 sm:px-5 md:px-5">
+    <section className="relative z-0 mx-auto flex w-full max-w-[1060px] flex-col items-center justify-center gap-9 py-20 sm:gap-6 sm:py-10">
       <AnimatePresence>
         {hoveredIndex !== null && (
           <motion.div
@@ -39,6 +39,8 @@ function CoreValue() {
             onMouseEnter={() => setHoveredIndex(index)}
             imageAfter={value.coreValueDescription}
             imageBefore={value.coreValue}
+            imageAfterMobile={value.mobileCoreValueDescription}
+            imageBeforeMobile={value.mobileCoreValue}
           />
         ))}
       </div>

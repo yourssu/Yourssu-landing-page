@@ -10,7 +10,7 @@ function CoreValue() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative z-0 mx-auto flex w-full max-w-[1060px] flex-col items-center justify-center gap-9 py-20 sm:gap-6 sm:py-10">
+    <section className="relative z-0 mx-auto flex w-full max-w-[1060px] flex-col items-center justify-center gap-9 py-20 xs:gap-6 xs:py-10 sm:gap-6 sm:py-10">
       <AnimatePresence>
         {hoveredIndex !== null && (
           <motion.div
@@ -29,7 +29,7 @@ function CoreValue() {
       />
 
       <div
-        className="relative flex flex-wrap justify-center gap-4"
+        className="relative flex flex-wrap justify-center gap-4 xs:w-[110px] xs:gap-2 sm:w-[340px] sm:gap-2 md:w-[700px]"
         onMouseLeave={() => setHoveredIndex(null)}
       >
         {CORE_VALUES.map((value, index) => (

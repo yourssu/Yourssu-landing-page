@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 
 import useFooterDetail from './hook';
@@ -10,12 +10,18 @@ interface Props {
 function Footer({ backgroundColor }: Props) {
   const { socialIcon, link } = useFooterDetail();
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // 1. 원하는 순서와 키(key) 정의
   const socialOrder = ['kakaotalk', 'github', 'instagram', 'medium'];
 
   // 2. 쿼리해온 데이터 중 순서에 맞는 것만 필터링 및 정렬
   const orderedSocials = socialOrder
-    .map((key) => socialIcon.nodes.find((node) => node.name.includes(key)))
+    .map((key) => socialIcon.nodes.find((node) => node.name === key))
     .filter((icon) => icon !== undefined);
 
   const background: { [key: string]: string } = {
@@ -31,18 +37,19 @@ function Footer({ backgroundColor }: Props) {
         </LogoContainer>
         <div className="mb-2 flex items-center gap-[12px]">
           {/* 3. 정렬된 orderedSocials 사용 */}
-          {orderedSocials.map((icon) => (
-            <React.Fragment key={icon.name}>
-              <a
-                className="flex h-12 w-12 items-center justify-center gap-[10px] rounded-[16px] bg-bg-basicLight"
-                href={link[icon.name]}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src={icon.publicURL} alt={icon.name} />
-              </a>
-            </React.Fragment>
-          ))}
+          {isMounted &&
+            orderedSocials.map((icon) => (
+              <React.Fragment key={icon.name}>
+                <a
+                  className="flex h-12 w-12 items-center justify-center gap-[10px] rounded-[16px] bg-bg-basicLight"
+                  href={link[icon.name]}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={icon.publicURL} alt={icon.name} />
+                </a>
+              </React.Fragment>
+            ))}
         </div>
         <InfoContainer>
           <div className="py-[3px] xs:py-[2px]">

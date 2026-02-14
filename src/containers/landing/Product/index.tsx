@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 
+import MainTitle from '@/components/Title/MainTitle';
+
 import { ProductCard } from './ProductCard';
 import { ArrowLeftIcon, ArrowRightIcon } from './arrowIcons';
 import { products } from './mocks';
@@ -57,26 +59,26 @@ function Product() {
   const containerWidth = cardWidth * itemsInView + gap * (itemsInView - 1);
 
   return (
-    <section className="mx-auto w-full px-5 py-[80px]">
+    <section className="mx-auto flex w-full flex-col py-20 xs:py-10 sm:py-10">
       <div
-        className="mx-auto flex flex-col transition-all duration-300"
+        className="mx-auto flex flex-col gap-9 transition-all duration-300 xs:gap-6 sm:gap-6"
         style={{ width: `${containerWidth}px`, maxWidth: '100%' }}
       >
         {/* 헤더 영역: 컨테이너 너비에 맞춰 정렬됨 */}
-        <div className="mb-8 flex w-full items-center justify-between">
-          <div className="flex flex-col items-start gap-[4px]">
-            <span className="B3_Rg_14 text-text-basicTertiary">Product</span>
-            <span className="T2_Sb_24">함께 몰입한 결과물</span>
-          </div>
-          <div className="flex h-[48px] w-[90px] items-center justify-center gap-[28px] rounded-[29px] border border-line-basicMedium px-[9px]">
-            <button onClick={() => scroll('left')}>
-              <ArrowLeftIcon />
-            </button>
-            <button onClick={() => scroll('right')}>
-              <ArrowRightIcon />
-            </button>
-          </div>
-        </div>
+        <MainTitle
+          title="Product"
+          subTitle="함께 몰입한 결과물"
+          rightElement={
+            <div className="border-line-basic-medium flex h-12 w-[90px] items-center justify-center gap-7 rounded-[29px] border px-[9px] py-2 xs:h-8 xs:w-[60px] xs:gap-[18.667px] xs:px-[6px] xs:py-[5.333px] sm:h-8 sm:w-[60px] sm:gap-[18.667px] sm:px-[6px] sm:py-[5.333px]">
+              <button onClick={() => scroll('left')}>
+                <ArrowLeftIcon className="flex h-4 w-4 flex-shrink-0 items-center justify-center xs:h-[10.67px] xs:w-[10.67px] sm:h-[10.67px] sm:w-[10.67px]" />
+              </button>
+              <button onClick={() => scroll('right')}>
+                <ArrowRightIcon className="flex h-4 w-4 flex-shrink-0 items-center justify-center xs:h-[10.67px] xs:w-[10.67px] sm:h-[10.67px] sm:w-[10.67px]" />
+              </button>
+            </div>
+          }
+        />
 
         {/* 카드 리스트 영역: overflow-hidden으로 잘림 방지 */}
         <div className="relative w-full overflow-hidden">

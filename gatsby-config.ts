@@ -121,7 +121,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'socials',
-        path: `${__dirname}/src/assets/socials`,
+        path: `${__dirname}/src/assets/socials/new`,
       },
     },
     {

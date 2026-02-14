@@ -14,7 +14,7 @@ function CultureItem({ id, title, description }: Props) {
         <span className="font-apple-neo text-[28px] font-semibold xs:text-[16px] sm:text-[18px] md:text-[24px]">
           {title}
         </span>
-        <p className="mt-[11px] w-[341px] font-apple-neo text-[22px] font-normal text-Text_Color2-0 xs:w-[215px] xs:text-[14px] sm:w-[270px] sm:text-[14px] md:text-[18px]">
+        <p className="text-Text_Color2-0 mt-[11px] w-[341px] font-apple-neo text-[22px] font-normal xs:w-[215px] xs:text-[14px] sm:w-[270px] sm:text-[14px] md:text-[18px]">
           {description}
         </p>
       </div>

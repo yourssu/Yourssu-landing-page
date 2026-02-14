@@ -1,9 +1,10 @@
-export function ArrowLeftIcon() {
+import { IconProps } from '@/types/icon';
+
+export function ArrowLeftIcon({ className }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="8"
-      height="14"
+      className={className}
       viewBox="0 0 8 14"
       fill="none"
     >
@@ -17,12 +18,11 @@ export function ArrowLeftIcon() {
   );
 }
 
-export function ArrowRightIcon() {
+export function ArrowRightIcon({ className }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="8"
-      height="14"
+      className={className}
       viewBox="0 0 8 14"
       fill="none"
     >

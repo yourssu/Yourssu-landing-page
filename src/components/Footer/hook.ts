@@ -34,6 +34,7 @@ export default function useFooterDetail() {
     medium: 'https://medium.com/yourssu',
     github: 'https://github.com/yourssu',
     laboratory: 'https://github.com/yourssu-Lab',
+    kakaotalk: 'http://pf.kakao.com/_AxfrxeT',
   };
 
   return { logo: data.logo, socialIcon: data.socialIcon, link };

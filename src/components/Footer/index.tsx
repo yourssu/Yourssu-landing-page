@@ -10,14 +10,6 @@ interface Props {
 function Footer({ backgroundColor }: Props) {
   const { socialIcon, link } = useFooterDetail();
 
-  // 1. 원하는 순서와 키(key) 정의
-  const socialOrder = ['kakaotalk', 'github', 'instagram', 'medium'];
-
-  // 2. 쿼리해온 데이터 중 순서에 맞는 것만 필터링 및 정렬
-  const orderedSocials = socialOrder
-    .map((key) => socialIcon.nodes.find((node) => node.name.includes(key)))
-    .filter((icon) => icon !== undefined);
-
   const background: { [key: string]: string } = {
     gray4: 'bg-gray4-0',
     bluegray4: 'bg-bluegray4-0',
@@ -25,22 +17,23 @@ function Footer({ backgroundColor }: Props) {
 
   return (
     <Container $bg={background[backgroundColor]}>
-      <div className="mx-auto w-full">
+      <div className="mx-auto w-full max-w-[65.625rem]">
         <LogoContainer>
           <Logo>YOURSSU</Logo>
         </LogoContainer>
-        <div className="mb-2 flex items-center gap-[12px]">
-          {/* 3. 정렬된 orderedSocials 사용 */}
-          {orderedSocials.map((icon) => (
+        <div className="mb-2 flex items-center gap-[9px]">
+          {socialIcon.nodes.map((icon, index) => (
             <React.Fragment key={icon.name}>
               <a
-                className="flex h-12 w-12 items-center justify-center gap-[10px] rounded-[16px] bg-bg-basicLight"
-                href={link[icon.name]}
+                href={link[icon.name.split('-')[1]]}
                 target="_blank"
                 rel="noreferrer"
               >
                 <img src={icon.publicURL} alt={icon.name} />
               </a>
+              {index !== socialIcon.nodes.length - 1 && (
+                <hr className="h-[26.5px] w-[1px] border-none bg-[#D4D7DB]" />
+              )}
             </React.Fragment>
           ))}
         </div>
@@ -63,10 +56,10 @@ const Container = tw.footer<{ $bg: string }>`
   items-start
   justify-start
   text-gray1-0
-  py-20
-  xs:px-4
-  sm:px-4
-  px-[120px]
+  py-10
+  xs:py-5
+  sm:py-5
+  px-5
   ${(props) => props.$bg}
 `;
 
@@ -87,6 +80,7 @@ const Logo = tw.div`
   sm:tracking-[-0.28px]
   xs:text-[14px]
   xs:tracking-[-0.28px]
+
 `;
 
 const InfoContainer = tw.div`

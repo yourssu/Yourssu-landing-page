@@ -17,10 +17,10 @@ function Recruiting() {
     <Layout isMainPage={false}>
       <div className="flex w-full flex-col items-center justify-center pb-[50px] pt-[75px] xs:pt-[51px] sm:pt-[51px]">
         <RecruitBanner />
+        <Supporting />
         <Ideal />
         {/*<About />*/}
         <ApplyProcess />
-        <Supporting />
         <div id="faq" ref={sectionRef} className="flex w-full justify-center">
           <FAQ />
         </div>

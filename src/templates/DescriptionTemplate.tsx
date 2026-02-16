@@ -1,16 +1,15 @@
 import { graphql, Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { useEffect, useState } from 'react';
-import tw from 'tailwind-styled-components';
 
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
 import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
 import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
-// import InaWord from '@/containers/description/InaWord';
+import InaWord from '@/containers/description/InaWord';
 import Information from '@/containers/description/Information';
-// import Medium from '@/containers/description/Medium';
+import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
 import TeamHeader from '@/containers/description/TeamHeader';
@@ -82,9 +81,9 @@ function DescriptionTemplate({
         name={name}
         basicInformation={edges[0].node.basicInformation}
       />
-      <Container>
-        <InnerContainer>
-          <div className="inline-flex flex-1 flex-col items-start justify-center gap-5 self-stretch">
+      <div className="flex w-full items-start justify-center gap-5 self-stretch bg-bg-basicDefault pb-20 pl-28 pr-28 pt-5 xs:px-0 sm:px-0">
+        <div className="flex w-full items-start gap-5">
+          <div className="flex flex-1 flex-col items-start justify-center gap-5">
             <Information
               task={edges[0].node.task}
               ideal={edges[0].node.ideal}
@@ -93,52 +92,54 @@ function DescriptionTemplate({
             />
             <ApplyProcedure applyProcedure={procedure} />
             <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
-            {/* <InaWord
-                departmentImage={
-                  edges[0].node.basicInformation.icon.asset.gatsbyImageData
-                }
-                inaWord={edges[0].node.inaWord}
-              /> */}
+            <InaWord
+              departmentImage={
+                edges[0].node.basicInformation.icon.asset.gatsbyImageData
+              }
+              inaWord={edges[0].node.inaWord}
+            />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-            {/*<Medium medium={edges[0].node.articleContent} />*/}
+            <Medium medium={edges[0].node.articleContent} />
           </div>
-          {!breakpoints.md && (
-            <SideNavigation
-              currentTeam={{
-                name,
-                isRecruiting,
-                applyLink: edges[0].node.basicInformation.apply_link,
-              }}
-              teamList={nameList}
-            />
-          )}
-        </InnerContainer>
-        {breakpoints.md && (
-          <ApplyButtonContainer>
-            <ApplyButton
-              link={edges[0].node.basicInformation.apply_link}
-              isRecruiting={isRecruiting}
-            />
-            <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
-              <Link
-                to="/recruiting/#faq"
-                className="flex w-fit flex-col items-center"
-              >
-                <div className="mb-[1px] items-center">FAQ 보러가기</div>
-              </Link>
-              |
-              <a
-                href={KAKAO_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-fit flex-col items-center"
-              >
-                <div className="mb-[1px] items-center">문의하기</div>
-              </a>
-            </div>
-          </ApplyButtonContainer>
-        )}
-      </Container>
+          <div className="sticky top-[80px] flex h-fit w-72 flex-col items-start gap-5 xs:hidden sm:hidden md:hidden">
+            {!breakpoints.md && (
+              <SideNavigation
+                currentTeam={{
+                  name,
+                  isRecruiting,
+                  applyLink: edges[0].node.basicInformation.apply_link,
+                }}
+                teamList={nameList}
+              />
+            )}
+            {breakpoints.md && (
+              <div className="sticky bottom-0 flex w-full flex-col gap-3 bg-gradient-to-t from-white-0 from-80% to-transparent p-5">
+                <ApplyButton
+                  link={edges[0].node.basicInformation.apply_link}
+                  isRecruiting={isRecruiting}
+                />
+                <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
+                  <Link
+                    to="/recruiting/#faq"
+                    className="flex w-fit flex-col items-center"
+                  >
+                    <div className="mb-[1px] items-center">FAQ 보러가기</div>
+                  </Link>
+                  |
+                  <a
+                    href={KAKAO_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-fit flex-col items-center"
+                  >
+                    <div className="mb-[1px] items-center">문의하기</div>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 }
@@ -228,51 +229,4 @@ export const querySanityDataByName = graphql`
       }
     }
   }
-`;
-
-const Container = tw.div`
-  bg-white-0
-
-`;
-
-const InnerContainer = tw.div`
-  flex
-  gap-5
-  lg:gap-5
-  md:gap-0
-  sm:gap-0
-  xs:gap-0
-
-  lg:px-10
-  md:px-10
-  sm:px-5
-  xs:px-5
-  px-[120px]
-
-  max-w-[1440px]
-  h-fit
-
-  mx-auto
-  pt-5
-  pb-20
-  md:pb-[50px]
-  sm:pb-8
-  xs:pb-8
-`;
-
-const ApplyButtonContainer = tw.div`
-  sticky
-  bottom-0
-  gap-3
-  
-  flex
-  flex-col
-  
-  w-full
-  p-5
-
-  bg-gradient-to-t
-  from-white-0
-  from-80%
-  to-transparent
 `;

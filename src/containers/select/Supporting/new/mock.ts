@@ -46,7 +46,7 @@ export const POSITIONS_DATA: PositionType[] = [
   },
   {
     title: 'Android\nEngineer',
-    value: 'android_developer',
+    value: 'android_engineer',
     IconComponent: AndroidIcon,
     isRecruiting: true,
   },
@@ -58,7 +58,7 @@ export const POSITIONS_DATA: PositionType[] = [
   },
   {
     title: 'Frontend\nEngineer',
-    value: 'web_frontend_engineer',
+    value: 'frontend_engineer',
     IconComponent: FrontEndIcon,
     isRecruiting: true,
   },

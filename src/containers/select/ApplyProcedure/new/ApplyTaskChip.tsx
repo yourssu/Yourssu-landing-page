@@ -1,14 +1,14 @@
 interface ApplyTaskChipProps {
   SVGIconComponent: React.ReactNode;
-  chiptitle: string;
+  chipTitle: string;
 }
 
-function ApplyTaskChip({ SVGIconComponent, chiptitle }: ApplyTaskChipProps) {
+function ApplyTaskChip({ SVGIconComponent, chipTitle }: ApplyTaskChipProps) {
   return (
-    <div className="flex h-14 flex-1 items-center justify-center gap-2 rounded-[0.75rem] bg-[#ECEFFF]">
+    <div className="flex w-full items-center justify-center gap-2 rounded-[0.75rem] bg-bg-brandSecondary px-5 py-4 xs:px-4 sm:px-4 md:px-4">
       <span>{SVGIconComponent}</span>
-      <p className="font-pretendard text-base font-normal leading-6 tracking-[-0.02em] text-[#6B5CFF]">
-        {chiptitle}
+      <p className="B1_Rg_16 xs:B4_Rg_13 sm:B4_Rg_13 md:B4_Rg_13 text-text-brandPrimary">
+        {chipTitle}
       </p>
     </div>
   );

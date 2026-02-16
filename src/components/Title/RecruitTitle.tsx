@@ -12,16 +12,16 @@ function RecruitTitle({
   className = '',
 }: RecruitTitleProps) {
   return (
-    <div className={`flex w-full justify-between ${className}`}>
-      <h3 className="font-pretendard tracking-[-0.02em]">
-        <p className="text-sm font-normal leading-5 text-[#6E7687]">
-          {subtitle}
-        </p>
-        <p className=" text-2xl font-semibold leading-[34px] text-[#25262C]">
+    <div
+      className={`flex items-center justify-center gap-6 self-stretch ${className}`}
+    >
+      <div className="flex flex-1 flex-col items-start gap-1">
+        <p className="B3_Rg_14 text-text-basicTertiary">{subtitle}</p>
+        <p className="T2_Sb_24 sm:T1_Sb_20 xs:T1_Sb_20 text-text-basicPrimary">
           {title}
         </p>
-      </h3>
-      {SVGIconComponent}
+      </div>
+      <div className="xs:hidden sm:hidden">{SVGIconComponent}</div>
     </div>
   );
 }

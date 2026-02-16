@@ -10,24 +10,35 @@ function Supporting() {
   return (
     <RecruitSectionLayout>
       <RecruitTitle
-        title="지원 분야"
-        subtitle="현재 유어슈에 지원할 수 있는 분야들이에요"
+        title="8개의 팀에서 합류를 기다리고 있어요"
+        subtitle="완벽하지 않아도 괜찮아요"
         SVGIconComponent={<HandsUpPeopleIcon />}
       />
 
       <div className="grid grid-cols-3 gap-5 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
-        {POSITIONS_DATA.map(({ title, IconComponent, value }) => (
-          <Link
-            to={value}
-            key={title}
-            className="flex items-center justify-between rounded-[0.75rem] border border-[#F1F1F4] p-6"
-          >
-            <h3 className="whitespace-pre-wrap text-2xl font-semibold text-gray-700">
-              {title}
-            </h3>
-            <IconComponent />
-          </Link>
-        ))}
+        {POSITIONS_DATA.map(({ title, IconComponent, value, isRecruiting }) =>
+          isRecruiting ? (
+            <Link
+              to={value}
+              key={title}
+              className="flex items-center justify-between rounded-[0.75rem] border border-line-basicLight p-6 xs:p-5 sm:p-5"
+            >
+              <h3 className="whitespace-pre-wrap text-2xl font-semibold text-text-basicSecondary">
+                {title}
+              </h3>
+              <IconComponent />
+            </Link>
+          ) : (
+            <div
+              key={title}
+              className="flex cursor-not-allowed items-center justify-between rounded-[0.75rem] border border-line-basicLight p-6 xs:p-5 sm:p-5"
+            >
+              <h3 className="whitespace-pre-wrap text-2xl font-semibold text-text-basicDisabled">
+                {title}
+              </h3>
+            </div>
+          ),
+        )}
       </div>
     </RecruitSectionLayout>
   );

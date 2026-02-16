@@ -1,5 +1,4 @@
 import { graphql } from 'gatsby';
-import { useRef } from 'react';
 
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
@@ -11,19 +10,15 @@ import Ideal from '@/containers/select/Ideal/new';
 import Supporting from '@/containers/select/Supporting/new';
 
 function Recruiting() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
   return (
     <Layout isMainPage={false}>
       <div className="flex w-full flex-col items-center justify-center pb-[50px] pt-[75px] xs:pt-[51px] sm:pt-[51px]">
         <RecruitBanner />
+        <Supporting />
         <Ideal />
         {/*<About />*/}
         <ApplyProcess />
-        <Supporting />
-        <div id="faq" ref={sectionRef} className="flex w-full justify-center">
-          <FAQ />
-        </div>
+        <FAQ />
       </div>
     </Layout>
   );

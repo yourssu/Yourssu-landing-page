@@ -52,6 +52,15 @@
     line-height: -0.56px;
   }
 
+  .T2_Lt_24 {
+    font-family: 'Pretendard';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px; /* 141.667% */
+    letter-spacing: -0.48px;
+  }
+
   .T2_Rg_24 {
     font-family: 'Pretendard';
     font-size: 24px;

@@ -36,7 +36,6 @@ export interface RoadToProInformation {
 
 export interface InaWordInformation {
   title: string;
-  content: string;
   word: string;
 }
 

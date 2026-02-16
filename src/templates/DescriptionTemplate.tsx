@@ -6,7 +6,7 @@ import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
 import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
-// import InaWord from '@/containers/description/InaWord';
+import InaWord from '@/containers/description/InaWord';
 import InformationCard from '@/containers/description/Information/InformationCard';
 import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
@@ -87,12 +87,7 @@ function DescriptionTemplate({
             <InformationCard data={edges[0].node.experience} />
             <InformationCard data={edges[0].node.growthAndDiff} />
             <ApplyProcedure applyProcedure={procedure} />
-            {/* <InaWord
-              departmentImage={
-                edges[0].node.basicInformation.icon.asset.gatsbyImageData
-              }
-              inaWord={edges[0].node.inaWord}
-            /> */}
+            <InaWord inaWord={edges[0].node.inaWord} />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
             <Medium medium={edges[0].node.articleContent} />
           </div>

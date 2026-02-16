@@ -11,7 +11,7 @@ function FAQ() {
   const { faqs, imgData } = useFAQDetail();
 
   return (
-    <RecruitSectionLayout>
+    <RecruitSectionLayout id="faq">
       <RecruitTitle
         title="FAQ"
         subtitle="유어슈에 대해 궁금한 부분이 있으신가요?"

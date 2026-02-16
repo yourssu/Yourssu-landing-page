@@ -18,8 +18,8 @@ export default function QuestionCard({
   const breakpoints = useBreakpoint();
 
   return (
-    <Accordion.Item value={question}>
-      <Accordion.Trigger className="group">
+    <Accordion.Item value={question} className="w-full">
+      <Accordion.Trigger className="group w-full">
         <Container $windowSize={!breakpoints.query550}>
           <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
             <div className="flex items-center gap-[12px] text-left xs:gap-[8px] sm:gap-[8px]">
@@ -36,9 +36,8 @@ export default function QuestionCard({
                 />
               </div>
               <p
-                className="text-xl leading-7 tracking-[-0.02em]
-                group-data-[state=closed]:font-normal group-data-[state=open]:font-semibold
-                group-data-[state=closed]:text-[#4B505D] group-data-[state=open]:text-[#25262C]"
+                className="group-data-[state=open]:T3_Sb_20 group-data-[state=closed]:T3_Rg_20
+                group-data-[state=closed]:text-text-basicSecondary group-data-[state=open]:text-text-basicPrimary"
               >
                 {question}
               </p>
@@ -53,9 +52,7 @@ export default function QuestionCard({
           <Accordion.Content className="overflow-hidden text-left data-[state=closed]:animate-accordion-slide-up data-[state=open]:animate-accordion-slide-down">
             <AnswerSpace />
             <AnswerBox>
-              <p className="text-base font-normal leading-6 tracking-[-0.02em] text-[#4B505D]">
-                {answer}
-              </p>
+              <p className="B1_Rg_16 text-text-basicSecondary">{answer}</p>
             </AnswerBox>
           </Accordion.Content>
         </Container>
@@ -65,11 +62,7 @@ export default function QuestionCard({
 }
 
 const Container = tw.div<{ $windowSize: boolean }>`
-  w-[1200px]
-  lg:w-[1200px]
-  md:w-[720px]
-  ${(prop) => (prop.$windowSize ? 'sm:w-[530px]' : 'w-[350px]')}
-  xs:w-[350px]
+  w-full
 
   rounded-[16px] 
   bg-white-0 

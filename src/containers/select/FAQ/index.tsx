@@ -11,7 +11,7 @@ function FAQ() {
   const { faqs, imgData } = useFAQDetail();
 
   return (
-    <RecruitSectionLayout>
+    <RecruitSectionLayout id="faq">
       <RecruitTitle
         title="FAQ"
         subtitle="유어슈에 대해 궁금한 부분이 있으신가요?"
@@ -19,7 +19,7 @@ function FAQ() {
       />
       <Accordion.Root
         type="multiple"
-        className="flex flex-col items-center gap-5"
+        className="flex w-full flex-col items-stretch gap-5"
       >
         {faqs.map((item) => {
           return (

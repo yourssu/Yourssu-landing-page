@@ -17,7 +17,7 @@ function Ideal() {
         SVGIconComponent={<IdealProfileIcon />}
       />
 
-      <div className="flex w-full items-center justify-center gap-5 xs:flex-col sm:flex-col md:flex-col">
+      <div className="flex gap-5 self-stretch xs:flex-col sm:flex-col md:flex-col">
         <InfoCard<IdealDataType>
           idealData={IDEAL_DATAS[0]}
           SVGIconComponent={<HandIcon />}

@@ -12,24 +12,25 @@ interface IdealCardProps<T extends DefaultDataType> {
 function InfoCard<T extends DefaultDataType>({
   SVGIconComponent,
   idealData,
-  className = 'h-[8.5rem]',
+  className = '',
 }: IdealCardProps<T>) {
   return (
     <div
-      className={`flex w-[24.25rem] flex-col gap-3 rounded-[0.75rem] border border-[#F1F1F4] p-6 font-pretendard
-            xs:h-[10rem] xs:w-[22.5rem] sm:h-[10rem] sm:w-[22.5rem] md:h-[10rem] md:w-[22.5rem]
+      className={`flex w-full flex-1 flex-col items-start gap-6 rounded-[12px] border border-line-basicLight p-6 xs:p-5 sm:p-5
             ${className}
         `}
     >
-      <div className="flex items-center gap-1.5">
-        <div className="h-6 w-6">{SVGIconComponent}</div>
-        <h4 className="text-xl font-semibold leading-7 tracking-[-0.02em] text-[#4B505D]">
-          {idealData.title}
-        </h4>
+      <div className="flex flex-col items-start gap-3 self-stretch">
+        <div className="flex items-center gap-[0.38rem] self-stretch">
+          <div className="h-6 w-6">{SVGIconComponent}</div>
+          <h4 className="T3_Sb_20 text-text-basicSecondary">
+            {idealData.title}
+          </h4>
+        </div>
+        <p className="B1_Rg_16 self-stretch whitespace-pre-line text-text-basicTertiary">
+          {idealData.description}
+        </p>
       </div>
-      <p className="whitespace-pre-line text-base font-normal leading-7 tracking-[-0.02em] text-[#6E7687]">
-        {idealData.description}
-      </p>
     </div>
   );
 }

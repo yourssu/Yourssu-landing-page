@@ -1,8 +1,7 @@
-import InfoCard from '@/components/Card/InfoCard';
 import RecruitSectionLayout from '@/components/Layout/RecruitSectionLayout';
 import RecruitTitle from '@/components/Title/RecruitTitle';
 
-import ApplyTaskChip from './ApplyTaskChip';
+import ApplyStepItem from './ApplyStepItem';
 import {
   ApplyOneIcon,
   ApplyThreeIcon,
@@ -14,7 +13,7 @@ import {
   HandshakeIcon,
   ScheduleIcon,
 } from './icons';
-import { APPLY_DATAS, ApplyProcessDataType } from './mock';
+import { APPLY_DATAS } from './mock';
 
 function ApplyProcess() {
   return (
@@ -25,59 +24,35 @@ function ApplyProcess() {
         SVGIconComponent={<ScheduleIcon />}
       />
 
-      <div className="flex w-full items-center justify-center gap-5 xs:flex-col sm:flex-col md:flex-col">
-        <div>
-          <div className="mb-3 flex w-[24.25rem] items-center justify-center gap-3 xs:w-[22.5rem] sm:w-[22.5rem] md:w-[22.5rem]">
-            <ApplyTaskChip
-              SVGIconComponent={<DocumentIcon />}
-              chiptitle={APPLY_DATAS[0].detailTask[0]}
-            />
-            <ApplyTaskChip
-              SVGIconComponent={<BriefcaseIcon />}
-              chiptitle={APPLY_DATAS[0].detailTask[1]}
-            />
-          </div>
+      <div className="flex w-full gap-5 self-stretch xs:flex-col sm:flex-col md:flex-col">
+        {/* 1단계: 서류 전형 */}
+        <ApplyStepItem
+          data={APPLY_DATAS[0]}
+          cardIcon={<ApplyOneIcon />}
+          chips={[
+            { icon: <DocumentIcon />, title: APPLY_DATAS[0].detailTask[0] },
+            { icon: <BriefcaseIcon />, title: APPLY_DATAS[0].detailTask[1] },
+          ]}
+        />
 
-          <InfoCard<ApplyProcessDataType>
-            SVGIconComponent={<ApplyOneIcon />}
-            idealData={APPLY_DATAS[0]}
-            className="h-[10rem]"
-          />
-        </div>
+        {/* 2단계: 면접 전형 */}
+        <ApplyStepItem
+          data={APPLY_DATAS[1]}
+          cardIcon={<ApplyTwoIcon />}
+          chips={[
+            { icon: <HandshakeIcon />, title: APPLY_DATAS[1].detailTask[0] },
+            { icon: <BraceIcon />, title: APPLY_DATAS[1].detailTask[1] },
+          ]}
+        />
 
-        <div>
-          <div className="mb-3 flex w-[24.25rem] items-center justify-center gap-3 xs:w-[22.5rem] sm:w-[22.5rem] md:w-[22.5rem]">
-            <ApplyTaskChip
-              SVGIconComponent={<HandshakeIcon />}
-              chiptitle={APPLY_DATAS[1].detailTask[0]}
-            />
-            <ApplyTaskChip
-              SVGIconComponent={<BraceIcon />}
-              chiptitle={APPLY_DATAS[1].detailTask[1]}
-            />
-          </div>
-
-          <InfoCard<ApplyProcessDataType>
-            SVGIconComponent={<ApplyTwoIcon />}
-            idealData={APPLY_DATAS[1]}
-            className="h-[10rem]"
-          />
-        </div>
-
-        <div>
-          <div className="mb-3 flex w-[24.25rem] items-center justify-center gap-3 xs:w-[22.5rem] sm:w-[22.5rem] md:w-[22.5rem]">
-            <ApplyTaskChip
-              SVGIconComponent={<CheckCircleIcon />}
-              chiptitle={APPLY_DATAS[2].detailTask[0]}
-            />
-          </div>
-
-          <InfoCard<ApplyProcessDataType>
-            SVGIconComponent={<ApplyThreeIcon />}
-            idealData={APPLY_DATAS[2]}
-            className="h-[10rem]"
-          />
-        </div>
+        {/* 3단계: 최종 합류 */}
+        <ApplyStepItem
+          data={APPLY_DATAS[2]}
+          cardIcon={<ApplyThreeIcon />}
+          chips={[
+            { icon: <CheckCircleIcon />, title: APPLY_DATAS[2].detailTask[0] },
+          ]}
+        />
       </div>
 
       <p className="text-sm font-normal leading-5 tracking-[-0.02em] text-[#6E7687]">

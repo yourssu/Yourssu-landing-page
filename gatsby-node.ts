@@ -272,3 +272,22 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 };
+
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({ actions }) => {
+  const { createTypes } = actions;
+  
+  const typeDefs = `
+    type SanityDefaultContent {
+      title: String
+      content: [String]
+    }
+
+    type SanityDepartment implements Node {
+      task: SanityDefaultContent
+      ideal: SanityDefaultContent
+      experience: SanityDefaultContent
+      growthAndDiff: SanityDefaultContent
+    }
+  `;
+  createTypes(typeDefs);
+};

@@ -19,7 +19,7 @@ function FAQ() {
       />
       <Accordion.Root
         type="multiple"
-        className="flex flex-col items-center gap-5"
+        className="flex w-full flex-col items-stretch gap-5"
       >
         {faqs.map((item) => {
           return (

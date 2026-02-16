@@ -1,5 +1,5 @@
 const LINE_HEIGHT = 24;
-const GAP_HEIGHT = 22;
+const GAP_HEIGHT = 32;
 const WIDTH = 20;
 
 const MAIN_GRA_1 = '#f953ff';

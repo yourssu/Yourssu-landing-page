@@ -19,7 +19,7 @@ export default function QuestionCard({
     <Accordion.Item value={question} className="w-full">
       <Accordion.Trigger className="group w-full">
         <Container $windowSize={!breakpoints.query550}>
-          <div className="flex items-center justify-between xs:gap-[20px] sm:gap-[20px]">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-[12px] text-left xs:gap-[8px] sm:gap-[8px]">
               <div className="relative h-6 w-6 flex-shrink-0">
                 <QuestionEmptyIcon
@@ -34,8 +34,9 @@ export default function QuestionCard({
                 />
               </div>
               <p
-                className="group-data-[state=open]:T3_Sb_20 group-data-[state=closed]:T3_Rg_20
-                group-data-[state=closed]:text-text-basicSecondary group-data-[state=open]:text-text-basicPrimary"
+                className="group-data-[state=open]:T3_Sb_20 group-data-[state=closed]:T3_Rg_20 
+              sm:B1_Sb_16 sm:group-data-[state=closed]:B1_Rg_16 sm:group-data-[state=open]:B1_Sb_16 xs:B1_Sb_16 xs:group-data-[state=closed]:B1_Rg_16 xs:group-data-[state=open]:B1_Sb_16
+              group-data-[state=closed]:text-text-basicSecondary group-data-[state=open]:text-text-basicPrimary"
               >
                 {question}
               </p>
@@ -48,9 +49,10 @@ export default function QuestionCard({
           </div>
 
           <Accordion.Content className="overflow-hidden text-left data-[state=closed]:animate-accordion-slide-up data-[state=open]:animate-accordion-slide-down">
-            <AnswerSpace />
             <AnswerBox>
-              <p className="B1_Rg_16 text-text-basicSecondary">{answer}</p>
+              <p className="B1_Rg_16 sm:B3_Rg_14 xs:B3_Rg_14 text-text-basicSecondary">
+                {answer}
+              </p>
             </AnswerBox>
           </Accordion.Content>
         </Container>
@@ -61,13 +63,19 @@ export default function QuestionCard({
 
 const Container = tw.div<{ $windowSize: boolean }>`
   w-full
+  flex
+  flex-col
 
-  rounded-[16px] 
+  rounded-[12px] 
   bg-white-0 
   p-6
+  gap-6
+
+  sm:p-5
+  xs:p-5
 
   border
-  border-[#F1F1F4]
+  border-line-basicLight
 
   cursor-pointer
 `;
@@ -88,8 +96,4 @@ const AnswerBox = tw.div`
   sm:py-[16px]
   xs:px-[20px]
   xs:py-[16px]
-`;
-
-const AnswerSpace = tw.div`
-  h-6
 `;

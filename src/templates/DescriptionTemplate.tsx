@@ -11,10 +11,12 @@ import InformationCard from '@/containers/description/Information/InformationCar
 import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
+import TeamFAQ from '@/containers/description/TeamFAQ';
 import TeamHeader from '@/containers/description/TeamHeader';
 import {
   BasicInformation,
   DefaultContentInformation,
+  FAQInformation,
   InaWordInformation,
   MediumInformation,
   RoadToProInformation,
@@ -37,6 +39,7 @@ interface SanityDepartmentData {
         growthAndDiff: DefaultContentInformation;
         inaWord: InaWordInformation;
         articleContent: MediumInformation[];
+        FAQ: FAQInformation;
       };
     }[];
   };
@@ -88,6 +91,7 @@ function DescriptionTemplate({
             <InformationCard data={edges[0].node.growthAndDiff} />
             <ApplyProcedure applyProcedure={procedure} />
             <InaWord inaWord={edges[0].node.inaWord} />
+            <TeamFAQ data={edges[0].node.FAQ} />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
             <Medium medium={edges[0].node.articleContent} />
           </div>
@@ -192,6 +196,13 @@ export const querySanityDataByName = graphql`
           inaWord {
             title
             word
+          }
+          FAQ {
+            title
+            FAQList {
+              question
+              answer
+            }
           }
           articleContent {
             url

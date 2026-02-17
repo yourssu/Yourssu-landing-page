@@ -23,6 +23,7 @@ export interface DefaultContentInformation {
 
 export interface SkillContentInformation extends DefaultContentInformation {
   notice: string[];
+  content: string[];
 }
 
 export interface ApplyProcedureInformation {
@@ -36,18 +37,26 @@ export interface RoadToProInformation {
 
 export interface InaWordInformation {
   title: string;
-  content: string;
   word: string;
 }
 
-export interface GrowthAndDiffInformation {
+export interface MediumInformation {
   title: string;
-  content: string;
+  article: {
+    url: string;
+    title: string;
+    author: string;
+    description: string;
+    image: string;
+  }[];
 }
 
-export interface MediumInformation {
-  url: string;
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface FAQInformation {
   title: string;
-  description: string;
-  image: string;
+  FAQList: FAQItem[];
 }

@@ -36,9 +36,14 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
   if (!applyProcedure || applyProcedure.length === 0) return null;
 
   return (
-    <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
+    <section
+      className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 
+    outline-offset-[-1px] outline-[#F1F1F4] xs:p-5 sm:p-5"
+    >
       <TitleContainer>
-        <div className="T3_Sb_20">지원 절차</div>
+        <div className="T3_Sb_20 sm:T2_Sb_18 xs:T2_Sb_18 text-text-basicPrimary">
+          합류 여정
+        </div>
         {/* <NoticeButton
           type="button"
           onClick={() => {
@@ -55,39 +60,47 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
           />
         )}
       </TitleContainer>
-      <ProcedureContainer>
-        <ProcedureDate>
+      {/* 합류 일정 그래프 부분 */}
+      <div className="flex items-center gap-6 px-3 py-0">
+        {/* 왼쪽: 날짜 */}
+        <div
+          className="B2_Sb_15 sm:B4_Rg_13 xs:B4_Rg_13 flex min-w-fit flex-col items-end justify-center gap-8
+         bg-gradient-to-b from-mainGra1-0 to-mainGra2-0 bg-clip-text text-transparent"
+        >
           {applyProcedure.map((item) => (
             <div key={item.schedule}>{item.schedule}</div>
           ))}
-        </ProcedureDate>
+        </div>
         {breakpoints.md ? (
           <ProcedureSmallSVG count={applyProcedure.length} />
         ) : (
           <ProcedureLargeSVG count={applyProcedure.length} />
         )}
-        <ProcedureStep>
+        {/* 오른쪽: 전형 단계 */}
+        <div className="B2_Rg_15 sm:B4_Rg_13 xs:B4_Rg_13 flex flex-col items-start gap-8 text-text-basicSecondary">
           {applyProcedure.map((item) => (
             <div key={item.schedule}>{item.step}</div>
           ))}
-        </ProcedureStep>
-      </ProcedureContainer>
-      <div className="inline-flex flex-col items-start justify-start gap-2 rounded-[12px] bg-[#F7F8F8] p-4">
-        <div className="inline-flex items-center justify-start gap-2 self-stretch">
+        </div>
+      </div>
+      <div className="flex flex-col items-start gap-2 rounded-[12px] bg-bg-basicLight p-4">
+        <div className="flex items-center gap-2 self-stretch">
           <img src={data.warningDarkIcon.publicURL} alt="정보 더보기" />
-          <div className="text-text-basic-primary justify-start font-['Pretendard'] text-base font-semibold leading-normal">
+          <div className="B1_Sb_16 text-text-basicPrimary">
             지원 시 유의사항
           </div>
         </div>
-        <div className="text-text-basic-secondary justify-start font-['Pretendard'] text-base font-normal leading-normal">
-          기재된 내용이 사실과 다를 경우 합격이 취소될 수 있음을 유의하여 주시길
-          바랍니다.
-          <br />
-          전형 일정 및 결과는 지원서 작성 시 기재해주신 이메일을 통해 일주일
-          이내로 안내드립니다.
-          <br />
-          인큐베이팅 기간은 유동적으로 변경 될수 있음을 알려드립니다.
-        </div>
+        <ul className="B1_Rg_16 sm:B3_Rg_14 xs:B3_Rg_14 flex list-outside list-disc flex-col gap-1 pl-5 text-text-basicSecondary">
+          <li>
+            기재된 내용이 사실과 다를 경우 합격이 취소될 수 있음을 유의하여
+            주시길 바랍니다.
+          </li>
+          <li>
+            전형 일정 및 결과는 지원서 작성 시 기재해주신 이메일을 통해 일주일
+            이내로 안내드립니다.
+          </li>
+          <li>인큐베이팅 기간은 유동적으로 변경 될 수 있음을 알려드립니다.</li>
+        </ul>
       </div>
     </section>
   );
@@ -117,64 +130,3 @@ const TitleContainer = tw.div`
 //   gap-1
 //   items-center
 // `;
-
-const ProcedureContainer = tw.div`
-  relative
-  flex
-  gap-[27px]
-  md:gap-3
-  sm:gap-3
-  xs:gap-3
-`;
-
-const ProcedureDate = tw.div`
-  flex
-  flex-col
-  gap-[22px]
-
-  min-w-fit
-  bg-gradient-to-b
-  from-mainGra1-0
-  to-mainGra2-0
-  bg-clip-text
-
-  font-pretendard
-  font-[600]
-  text-xl
-  md:text-base
-  sm:text-base
-  xs:text-base
-  text-end
-  leading-9
-  text-transparent
-  
-  sm:text-sm
-  xs:text-xs
-  sm:gap-[26px]
-  xs:gap-[26px]
-  sm:mt-0.5
-  xs:mt-0.5
-`;
-
-const ProcedureStep = tw.div`
-  flex
-  flex-col
-  gap-[22px]
-  
-  min-w-max
-  
-  font-pretendard
-  font-[400]
-  text-xl
-  leading-9
-  text-gray1-0
-
-  md:body7
-  sm:body9
-  xs:body9
-  
-  sm:gap-[26px]
-  xs:gap-[26px]
-  sm:mt-0.5
-  xs:mt-0.5
-`;

@@ -38,7 +38,7 @@ interface SanityDepartmentData {
         roadToProVideo: RoadToProInformation;
         growthAndDiff: DefaultContentInformation;
         inaWord: InaWordInformation;
-        articleContent: MediumInformation[];
+        medium: MediumInformation;
         FAQ: FAQInformation;
       };
     }[];
@@ -93,7 +93,7 @@ function DescriptionTemplate({
             <InaWord inaWord={edges[0].node.inaWord} />
             <TeamFAQ data={edges[0].node.FAQ} />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-            <Medium medium={edges[0].node.articleContent} />
+            <Medium medium={edges[0].node.medium} />
           </div>
           <div className="sticky top-[80px] flex h-fit w-72 flex-col items-start gap-5 xs:hidden sm:hidden md:hidden">
             {!breakpoints.md && (
@@ -204,11 +204,15 @@ export const querySanityDataByName = graphql`
               answer
             }
           }
-          articleContent {
-            url
+          medium {
             title
-            description
-            image
+            article {
+              url
+              title
+              author
+              description
+              image
+            }
           }
           roadToProVideo {
             title

@@ -13,17 +13,17 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
   const data = useRoadToProDetail();
 
   return (
-    <section className="inline-flex flex-col items-start justify-start gap-6 self-stretch rounded-[12px] p-6 outline outline-1 outline-offset-[-1px] outline-[#F1F1F4]">
-      <TitleContainer>
-        <div className="T3_Sb_20">Road to Pro</div>
-      </TitleContainer>
+    <section className="flex flex-col items-start gap-6 self-stretch rounded-[12px] border border-line-basicLight p-6 xs:p-5 sm:p-5">
+      <div className="T3_Sb_20 sm:T2_Sb_18 xs:T2_Sb_18 text-text-basicPrimary">
+        Road to Pro
+      </div>
       <VideoInfoContainer>
         {roadToPro.roadToPro_list.map((video) => {
           const thumbnail = getImage(
             video.video_thumbnail.asset.gatsbyImageData,
           );
           return (
-            <div key={video.video_link} className="flex flex-col gap-4">
+            <div key={video.video_link} className="flex flex-col gap-3">
               <VideoContainer
                 href={video.video_link}
                 target="_blank"
@@ -33,7 +33,7 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
                 <Gradient src={data.gradientImg.publicURL} alt="gradient" />
                 <PlayButton src={data.playIcon.publicURL} alt="play" />
               </VideoContainer>
-              <p className="B1_Rg_16">
+              <p className="B1_Rg_16 text-text-basicPrimary">
                 {video.presenter
                   .map(
                     ({ presenter_name, presenter_nickname }) =>
@@ -50,12 +50,6 @@ function RoadToPro({ roadToPro }: RoadToProProps) {
 }
 
 export default RoadToPro;
-
-const TitleContainer = tw.div`
-  flex
-  flex-col
-  gap-2
-`;
 
 const VideoInfoContainer = tw.div`
   flex
@@ -74,6 +68,7 @@ const VideoInfoContainer = tw.div`
 
 const VideoContainer = tw.a`
   relative
+  flex
   h-fit
   w-fit
 `;
@@ -89,7 +84,7 @@ const Thumbnail = tw(GatsbyImage)`
   sm:w-[336px]
   xs:w-[336px]
 
-  rounded-[16px]
+  rounded-[12px]
 `;
 
 const Gradient = tw.img`
@@ -105,7 +100,7 @@ const Gradient = tw.img`
 
   absolute
   top-0
-  rounded-[16px]
+  rounded-[12px]
   opacity-10
 `;
 

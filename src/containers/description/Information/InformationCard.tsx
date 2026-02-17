@@ -6,12 +6,29 @@ interface InformationCardProps {
 }
 
 function InformationCard({ data, description }: InformationCardProps) {
-  // 0. 데이터가 없다면, 해당 섹션을 보여주지 않음
+  // 데이터가 없다면, 해당 섹션을 보여주지 않음
   if (!data?.content || data.content.length === 0) return null;
 
-  // 1. 데이터를 소제목 기준으로 그룹화
-  const groups: { title?: string; items: string[] }[] = [];
+  // **텍스트** 부분을 찾아 굵게 변환하는 헬퍼 함수
+  const renderBoldText = (text: string) => {
+    // **로 감싸진 부분을 찾는 정규표현식
+    const parts = text.split(/(\*\*.*?\*\*)/g);
 
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        // **를 제거하고 굵은 글씨로 반환
+        return (
+          <strong key={index} className="font-bold">
+            {part.substring(2, part.length - 2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
+  // 데이터를 소제목 기준으로 그룹화
+  const groups: { title?: string; items: string[] }[] = [];
   data.content.forEach((content) => {
     const isHeader = content.startsWith('[') && content.endsWith(']');
 
@@ -45,7 +62,7 @@ function InformationCard({ data, description }: InformationCardProps) {
         </div>
       )}
 
-      {/* 2. 그룹별로 렌더링 */}
+      {/* 그룹별로 렌더링 */}
       <div className="flex flex-col items-start gap-3 self-stretch">
         {/* 각 그룹 간의 간격 */}
         {groups.map((group, groupIdx) => (
@@ -65,7 +82,7 @@ function InformationCard({ data, description }: InformationCardProps) {
               {group.items.map((item, itemIdx) => (
                 <li key={itemIdx}>
                   {item.split('\\n').map((line, lineIdx) => (
-                    <div key={lineIdx}>{line}</div>
+                    <div key={lineIdx}>{renderBoldText(line)}</div>
                   ))}
                 </li>
               ))}

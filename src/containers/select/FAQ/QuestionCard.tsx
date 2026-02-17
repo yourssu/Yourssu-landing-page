@@ -11,9 +11,24 @@ export default function QuestionCard({
   answer,
 }: {
   question: string;
-  answer: React.ReactNode;
+  answer: string | React.ReactNode;
 }) {
   const breakpoints = useBreakpoint();
+
+  // 볼드체 변환 함수
+  const renderBoldText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <strong key={index} className="font-bold">
+            {part.substring(2, part.length - 2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
 
   return (
     <Accordion.Item value={question} className="w-full">
@@ -50,9 +65,17 @@ export default function QuestionCard({
 
           <Accordion.Content className="overflow-hidden text-left data-[state=closed]:animate-accordion-slide-up data-[state=open]:animate-accordion-slide-down">
             <AnswerBox>
-              <p className="B1_Rg_16 sm:B3_Rg_14 xs:B3_Rg_14 text-text-basicSecondary">
-                {answer}
-              </p>
+              <div className="B1_Rg_16 sm:B3_Rg_14 xs:B3_Rg_14 whitespace-pre-wrap text-text-basicSecondary">
+                {/* 문자열일 때만 split과 볼드체 처리 */}
+                {typeof answer === 'string'
+                  ? answer
+                      .split('\\n')
+                      .map((line, lineIdx) => (
+                        <div key={lineIdx}>{renderBoldText(line)}</div>
+                      ))
+                  : // 문자열이 아닌(이미 Element인) 경우 그대로 출력
+                    answer}
+              </div>
             </AnswerBox>
           </Accordion.Content>
         </Container>

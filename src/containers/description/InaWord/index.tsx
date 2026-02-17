@@ -7,6 +7,9 @@ interface InaWordProps {
 }
 
 function InaWord({ inaWord }: InaWordProps) {
+  // inaWord 정보가 없는 경우 해당 섹션을 보여주지 않음
+  if (!inaWord || !inaWord.word) return null;
+
   return (
     <section className="flex flex-col items-start gap-3 self-stretch rounded-[12px] p-6 xs:gap-6 xs:p-5 sm:gap-6 sm:p-5">
       <div className="flex items-center gap-2 self-stretch">

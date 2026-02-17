@@ -1,6 +1,8 @@
-import tw from 'tailwind-styled-components';
+import { navigate } from 'gatsby';
 
 import { BasicInformation } from '@/types/recruiting.type';
+
+import { ArrowForwardIcon } from './ArrowForwardIcon';
 
 function TeamHeader({
   name,
@@ -15,46 +17,28 @@ function TeamHeader({
   );
 
   return (
-    <section className="flex items-center justify-center">
-      <div className="mt-[74px] inline-flex w-full max-w-[1440px] flex-col justify-center gap-8 self-stretch overflow-hidden bg-[#FFFFFF] px-[120px] pb-5 pt-20 xs:px-5 sm:px-5 md:px-10 lg:px-10">
-        <TeamIntroContainer>
-          <TeamIntroInnerContainer>
-            <Title>{introduction}</Title>
-            <TeamName>{name}</TeamName>
-          </TeamIntroInnerContainer>
-        </TeamIntroContainer>
+    <section
+      className="flex flex-col items-center justify-center gap-8 self-stretch bg-bg-basicDefault 
+      px-[120px] pb-5 pt-40 xs:pb-5 xs:pl-0 xs:pr-[120px] xs:pt-20 sm:pb-5 sm:pl-0 sm:pr-[120px] sm:pt-20"
+    >
+      <div className="flex flex-col items-start gap-8 self-stretch">
+        <div
+          className="flex h-11 w-11 items-center justify-center gap-[0.63rem] rounded-[1.875rem] border border-line-basicLight bg-bg-basicLight"
+          onClick={() => navigate('/recruiting')}
+        >
+          <ArrowForwardIcon />
+        </div>
+        <div className="flex flex-col items-start gap-3 self-stretch xs:gap-2 sm:gap-2">
+          <p className="T2_Rg_24 sm:T1_Rg_20 xs:T1_Rg_20 self-stretch text-text-basicSecondary">
+            {introduction}
+          </p>
+          <p className="H2_Sb_40 sm:H2_Sb_28 xs:H2_Sb_28 self-stretch text-text-basicPrimary">
+            {name}
+          </p>
+        </div>
       </div>
     </section>
   );
 }
 
 export default TeamHeader;
-
-const TeamIntroContainer = tw.div`
-  flex
-  flex-col
-  justify-center
-  sm:min-[400px]
-`;
-
-const TeamIntroInnerContainer = tw.div`
-  flex
-  flex-col
-  gap-[12px]
-`;
-
-const Title = tw.div`
-  T2_Rg_24
-  md:body4
-  sm:body6
-  xs:body6
-  text-[#4B505D]
-`;
-
-const TeamName = tw.div`
-  H2_Sb_40
-  md:h2
-  sm:h3
-  xs:h3
-  text-black-0
-`;

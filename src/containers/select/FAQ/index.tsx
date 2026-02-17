@@ -8,7 +8,7 @@ import useFAQDetail from './hook';
 import { QuestionIcon } from './icons';
 
 function FAQ() {
-  const { faqs, imgData } = useFAQDetail();
+  const { faqs } = useFAQDetail();
 
   return (
     <RecruitSectionLayout id="faq">
@@ -27,7 +27,6 @@ function FAQ() {
               key={item.question}
               question={item.question}
               answer={item.answer}
-              smallArrow={imgData.smallarrow.nodes[0]}
             />
           );
         })}

@@ -1,23 +1,22 @@
 import { graphql, Link } from 'gatsby';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { useEffect, useState } from 'react';
-import tw from 'tailwind-styled-components';
 
 import ApplyButton from '@/components/Button/ApplyButton';
 import Layout from '@/components/Layout';
 import DepartmentSeo from '@/components/Seo/DepartmentSeo';
 import ApplyProcedure from '@/containers/description/ApplyProcedure';
-import GrowthAndDiff from '@/containers/description/GrowthAndDiff';
-// import InaWord from '@/containers/description/InaWord';
-import Information from '@/containers/description/Information';
-// import Medium from '@/containers/description/Medium';
+import InaWord from '@/containers/description/InaWord';
+import InformationCard from '@/containers/description/Information/InformationCard';
+import Medium from '@/containers/description/Medium';
 import RoadToPro from '@/containers/description/RoadToPro';
 import SideNavigation from '@/containers/description/SideNavigation';
+import TeamFAQ from '@/containers/description/TeamFAQ';
 import TeamHeader from '@/containers/description/TeamHeader';
 import {
   BasicInformation,
   DefaultContentInformation,
-  GrowthAndDiffInformation,
+  FAQInformation,
   InaWordInformation,
   MediumInformation,
   RoadToProInformation,
@@ -35,11 +34,12 @@ interface SanityDepartmentData {
         task: DefaultContentInformation;
         ideal: DefaultContentInformation;
         experience: DefaultContentInformation;
-        skill: SkillContentInformation | null;
+        skill: SkillContentInformation;
         roadToProVideo: RoadToProInformation;
-        growthAndDiff: GrowthAndDiffInformation;
+        growthAndDiff: DefaultContentInformation;
         inaWord: InaWordInformation;
-        articleContent: MediumInformation[];
+        medium: MediumInformation;
+        FAQ: FAQInformation;
       };
     }[];
   };
@@ -82,63 +82,64 @@ function DescriptionTemplate({
         name={name}
         basicInformation={edges[0].node.basicInformation}
       />
-      <Container>
-        <InnerContainer>
-          <div className="inline-flex flex-1 flex-col items-start justify-center gap-5 self-stretch">
-            <Information
-              task={edges[0].node.task}
-              ideal={edges[0].node.ideal}
-              experience={edges[0].node.experience}
-              skill={edges[0].node.skill}
+      <div className="flex w-full items-start justify-center gap-5 self-stretch bg-bg-basicDefault pb-20 pl-28 pr-28 pt-5 xs:px-0 sm:px-0">
+        <div className="flex w-full items-start gap-5">
+          <div className="flex flex-1 flex-col items-start justify-center gap-5">
+            <InformationCard data={edges[0].node.task} />
+            <InformationCard data={edges[0].node.growthAndDiff} />
+            <InformationCard data={edges[0].node.ideal} />
+            <InformationCard
+              data={edges[0].node.experience}
+              description="아래 내용에 모두 해당하지 않아도 충분히 지원 가능해요"
             />
+            {/* 현재 skill 피그마에 notice 영역도 있으나 26-1 리크루팅에서는 notice 문구를 사용하지 않고 content만 사용
+            따라서 data.content 내용을 보여주는 InformationCard 컴포넌트를 사용 */}
+            <InformationCard data={edges[0].node.skill} />
             <ApplyProcedure applyProcedure={procedure} />
-            <GrowthAndDiff growthAndDiff={edges[0].node.growthAndDiff} />
-            {/* <InaWord
-                departmentImage={
-                  edges[0].node.basicInformation.icon.asset.gatsbyImageData
-                }
-                inaWord={edges[0].node.inaWord}
-              /> */}
+            <InaWord inaWord={edges[0].node.inaWord} />
+            <TeamFAQ data={edges[0].node.FAQ} />
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
-            {/*<Medium medium={edges[0].node.articleContent} />*/}
+            <Medium medium={edges[0].node.medium} />
           </div>
-          {!breakpoints.md && (
-            <SideNavigation
-              currentTeam={{
-                name,
-                isRecruiting,
-                applyLink: edges[0].node.basicInformation.apply_link,
-              }}
-              teamList={nameList}
-            />
-          )}
-        </InnerContainer>
-        {breakpoints.md && (
-          <ApplyButtonContainer>
-            <ApplyButton
-              link={edges[0].node.basicInformation.apply_link}
-              isRecruiting={isRecruiting}
-            />
-            <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
-              <Link
-                to="/recruiting/#faq"
-                className="flex w-fit flex-col items-center"
-              >
-                <div className="mb-[1px] items-center">FAQ 보러가기</div>
-              </Link>
-              |
-              <a
-                href={KAKAO_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-fit flex-col items-center"
-              >
-                <div className="mb-[1px] items-center">문의하기</div>
-              </a>
-            </div>
-          </ApplyButtonContainer>
-        )}
-      </Container>
+          <div className="sticky top-[80px] flex h-fit w-72 flex-col items-start gap-5 xs:hidden sm:hidden md:hidden">
+            {!breakpoints.md && (
+              <SideNavigation
+                currentTeam={{
+                  name,
+                  isRecruiting,
+                  applyLink: edges[0].node.basicInformation.apply_link,
+                }}
+                teamList={nameList}
+              />
+            )}
+            {breakpoints.md && (
+              <div className="sticky bottom-0 flex w-full flex-col gap-3 bg-gradient-to-t from-white-0 from-80% to-transparent p-5">
+                <ApplyButton
+                  link={edges[0].node.basicInformation.apply_link}
+                  isRecruiting={isRecruiting}
+                />
+                <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
+                  <Link
+                    to="/recruiting/#faq"
+                    className="flex w-fit flex-col items-center"
+                  >
+                    <div className="mb-[1px] items-center">FAQ 보러가기</div>
+                  </Link>
+                  |
+                  <a
+                    href={KAKAO_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-fit flex-col items-center"
+                  >
+                    <div className="mb-[1px] items-center">문의하기</div>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 }
@@ -181,6 +182,10 @@ export const querySanityDataByName = graphql`
             title
             content
           }
+          growthAndDiff {
+            title
+            content
+          }
           ideal {
             title
             content
@@ -194,11 +199,26 @@ export const querySanityDataByName = graphql`
             content
             notice
           }
-          articleContent {
-            url
+          inaWord {
             title
-            description
-            image
+            word
+          }
+          FAQ {
+            title
+            FAQList {
+              question
+              answer
+            }
+          }
+          medium {
+            title
+            article {
+              url
+              title
+              author
+              description
+              image
+            }
           }
           roadToProVideo {
             title
@@ -215,64 +235,8 @@ export const querySanityDataByName = graphql`
               video_link
             }
           }
-          growthAndDiff {
-            title
-            content
-          }
-          inaWord {
-            title
-            word
-            content
-          }
         }
       }
     }
   }
-`;
-
-const Container = tw.div`
-  bg-white-0
-
-`;
-
-const InnerContainer = tw.div`
-  flex
-  gap-5
-  lg:gap-5
-  md:gap-0
-  sm:gap-0
-  xs:gap-0
-
-  lg:px-10
-  md:px-10
-  sm:px-5
-  xs:px-5
-  px-[120px]
-
-  max-w-[1440px]
-  h-fit
-
-  mx-auto
-  pt-5
-  pb-20
-  md:pb-[50px]
-  sm:pb-8
-  xs:pb-8
-`;
-
-const ApplyButtonContainer = tw.div`
-  sticky
-  bottom-0
-  gap-3
-  
-  flex
-  flex-col
-  
-  w-full
-  p-5
-
-  bg-gradient-to-t
-  from-white-0
-  from-80%
-  to-transparent
 `;

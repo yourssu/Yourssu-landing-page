@@ -2,9 +2,10 @@ import { DefaultContentInformation } from '@/types/recruiting.type';
 
 interface InformationCardProps {
   data: DefaultContentInformation;
+  description?: string;
 }
 
-function InformationCard({ data }: InformationCardProps) {
+function InformationCard({ data, description }: InformationCardProps) {
   // 0. 데이터가 없다면, 해당 섹션을 보여주지 않음
   if (!data?.content || data.content.length === 0) return null;
 
@@ -29,9 +30,20 @@ function InformationCard({ data }: InformationCardProps) {
 
   return (
     <section className="flex flex-col items-start gap-6 self-stretch rounded-[12px] border border-line-basicLight p-6 xs:p-5 sm:p-5">
-      <div className="T3_Sb_20 sm:T2_Sb_18 xs:T2_Sb_18 text-text-basicPrimary">
-        {data.title}
-      </div>
+      {description ? (
+        <div className="flex flex-col items-start justify-end gap-1 self-stretch">
+          <div className="B3_Rg_14 sm:B5_Rg_12 xs:B5_Rg_12 text-text-basicTertiary">
+            {description}
+          </div>
+          <div className="T3_Sb_20 sm:T2_Sb_18 xs:T2_Sb_18 text-text-basicPrimary">
+            {data.title}
+          </div>
+        </div>
+      ) : (
+        <div className="T3_Sb_20 sm:T2_Sb_18 xs:T2_Sb_18 text-text-basicPrimary">
+          {data.title}
+        </div>
+      )}
 
       {/* 2. 그룹별로 렌더링 */}
       <div className="flex flex-col items-start gap-3 self-stretch">

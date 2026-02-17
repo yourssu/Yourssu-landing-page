@@ -86,9 +86,12 @@ function DescriptionTemplate({
         <div className="flex w-full items-start gap-5">
           <div className="flex flex-1 flex-col items-start justify-center gap-5">
             <InformationCard data={edges[0].node.task} />
-            <InformationCard data={edges[0].node.ideal} />
-            <InformationCard data={edges[0].node.experience} />
             <InformationCard data={edges[0].node.growthAndDiff} />
+            <InformationCard data={edges[0].node.ideal} />
+            <InformationCard
+              data={edges[0].node.experience}
+              description="아래 내용에 모두 해당하지 않아도 충분히 지원 가능해요"
+            />
             <ApplyProcedure applyProcedure={procedure} />
             <InaWord inaWord={edges[0].node.inaWord} />
             <TeamFAQ data={edges[0].node.FAQ} />

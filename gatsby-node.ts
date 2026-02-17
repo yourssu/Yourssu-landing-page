@@ -282,11 +282,22 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
       content: [String]
     }
 
+    type FAQItem {
+      question: String
+      answer: String
+    }
+
+    type SanityFAQContent {
+      title: String
+      FAQList: [FAQItem]
+    }
+
     type SanityDepartment implements Node {
       task: SanityDefaultContent
       ideal: SanityDefaultContent
       experience: SanityDefaultContent
       growthAndDiff: SanityDefaultContent
+      FAQ: SanityFAQContent
     }
   `;
   createTypes(typeDefs);

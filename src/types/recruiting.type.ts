@@ -40,10 +40,14 @@ export interface InaWordInformation {
 }
 
 export interface MediumInformation {
-  url: string;
   title: string;
-  description: string;
-  image: string;
+  article: {
+    url: string;
+    title: string;
+    author: string;
+    description: string;
+    image: string;
+  }[];
 }
 
 export interface FAQItem {

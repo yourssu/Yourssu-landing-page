@@ -23,6 +23,7 @@ export interface DefaultContentInformation {
 
 export interface SkillContentInformation extends DefaultContentInformation {
   notice: string[];
+  content: string[];
 }
 
 export interface ApplyProcedureInformation {

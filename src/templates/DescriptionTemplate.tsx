@@ -34,7 +34,7 @@ interface SanityDepartmentData {
         task: DefaultContentInformation;
         ideal: DefaultContentInformation;
         experience: DefaultContentInformation;
-        skill: SkillContentInformation | null;
+        skill: SkillContentInformation;
         roadToProVideo: RoadToProInformation;
         growthAndDiff: DefaultContentInformation;
         inaWord: InaWordInformation;
@@ -92,6 +92,9 @@ function DescriptionTemplate({
               data={edges[0].node.experience}
               description="아래 내용에 모두 해당하지 않아도 충분히 지원 가능해요"
             />
+            {/* 현재 skill 피그마에 notice 영역도 있으나 26-1 리크루팅에서는 notice 문구를 사용하지 않고 content만 사용
+            따라서 data.content 내용을 보여주는 InformationCard 컴포넌트를 사용 */}
+            <InformationCard data={edges[0].node.skill} />
             <ApplyProcedure applyProcedure={procedure} />
             <InaWord inaWord={edges[0].node.inaWord} />
             <TeamFAQ data={edges[0].node.FAQ} />

@@ -1,25 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
-
-import { NodeType } from '@/types/hook';
-
-interface FAQData {
-  smallarrow: {
-    nodes: NodeType[];
-  };
-}
-
 export default function useFAQDetail() {
-  const imgData: FAQData = useStaticQuery(graphql`
-    query {
-      smallarrow: allFile(filter: { name: { eq: "smallarrow-left" } }) {
-        nodes {
-          publicURL
-          name
-        }
-      }
-    }
-  `);
-
   const faqs = [
     {
       question: '유어슈의 활동 기간은 얼마나 되나요?',
@@ -84,5 +63,5 @@ export default function useFAQDetail() {
     },
   ];
 
-  return { imgData, faqs };
+  return { faqs };
 }

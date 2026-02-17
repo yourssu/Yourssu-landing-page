@@ -2,18 +2,16 @@ import * as Accordion from '@radix-ui/react-accordion';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import tw from 'tailwind-styled-components';
 
-import { NodeType } from '@/types/hook';
+import smallArrowImg from '@/assets/icons/smallarrow-left.svg';
 
 import { QuestionEmptyIcon, QuestionFillIcon } from './icons';
 
 export default function QuestionCard({
   question,
   answer,
-  smallArrow,
 }: {
   question: string;
   answer: React.ReactNode;
-  smallArrow: NodeType;
 }) {
   const breakpoints = useBreakpoint();
 
@@ -44,8 +42,8 @@ export default function QuestionCard({
             </div>
             <QuestionIcon
               className="group-data-[state=open]:rotate-90"
-              src={smallArrow.publicURL}
-              alt={smallArrow.name}
+              src={smallArrowImg}
+              alt={'small arrow icon'}
             />
           </div>
 

@@ -23,6 +23,10 @@ function Channel() {
           />
         ))}
       </div>
+      <p className="B5_Rg_12 hidden text-center text-text-basicTertiary xs:block sm:block">
+        옆으로 넘겨 다양한 채널을 확인해 보세요
+        <br />
+      </p>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import MainTitle from '@/components/Title/MainTitle';
 
 import { ValueCard } from './ValueCard';
-import { CORE_VALUES } from './mock';
+import { mvcData } from './mock';
 
 function CoreValue() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -29,21 +29,23 @@ function CoreValue() {
       />
 
       <div
-        className="relative flex flex-wrap justify-center gap-4 xs:w-[110px] xs:gap-2 sm:w-[340px] sm:gap-2 md:w-[700px]"
+        className="relative flex flex-wrap justify-center gap-4 xs:w-full xs:gap-2 sm:w-full sm:gap-2 md:w-[700px]"
         onMouseLeave={() => setHoveredIndex(null)}
       >
-        {CORE_VALUES.map((value, index) => (
+        {mvcData.map((content, index) => (
           <ValueCard
-            key={index}
+            key={content.id}
+            content={content}
             isHovered={hoveredIndex === index}
             onMouseEnter={() => setHoveredIndex(index)}
-            imageAfter={value.coreValueDescription}
-            imageBefore={value.coreValue}
-            imageAfterMobile={value.mobileCoreValueDescription}
-            imageBeforeMobile={value.mobileCoreValue}
           />
         ))}
       </div>
+      <p className="B5_Rg_12 hidden text-center text-text-basicTertiary xs:block sm:block">
+        카드를 눌러 내용을 확인해보세요
+        <br />
+        PC환경에서는 더 자세한 내용을 확인할 수 있습니다
+      </p>
     </section>
   );
 }

@@ -18,9 +18,9 @@ function Product() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 712)
+      if (width < 721)
         setItemsInView(1); // 카드 1개 너비 + 여유
-      else if (width < 1068)
+      else if (width < 1081)
         setItemsInView(2); // 카드 2개 + 간격 1개 너비
       else setItemsInView(3); // 카드 3개 + 간격 2개 너비
 
@@ -55,14 +55,11 @@ function Product() {
   const remaining =
     (itemsInView - (products.length % itemsInView)) % itemsInView;
 
-  // 2. 현재 itemsInView에 딱 맞는 컨테이너 너비 계산
-  const containerWidth = cardWidth * itemsInView + gap * (itemsInView - 1);
-
   return (
     <section className="mx-auto flex w-full flex-col py-20 xs:py-10 sm:py-10">
       <div
-        className="mx-auto flex flex-col gap-9 transition-all duration-300 xs:gap-6 sm:gap-6"
-        style={{ width: `${containerWidth}px`, maxWidth: '100%' }}
+        className="mx-auto flex flex-col gap-9 transition-all duration-300 xs:w-[332px]
+        xs:gap-6 sm:w-[332px] sm:gap-6 md:w-[688px] lg:w-[1044px] xl:w-[1044px]"
       >
         {/* 헤더 영역: 컨테이너 너비에 맞춰 정렬됨 */}
         <MainTitle

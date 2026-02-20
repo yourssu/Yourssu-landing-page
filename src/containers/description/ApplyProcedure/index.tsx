@@ -61,25 +61,35 @@ function ApplyProcedure({ applyProcedure }: ApplyProcedureProps) {
         )}
       </TitleContainer>
       {/* 합류 일정 그래프 부분 */}
-      <div className="flex items-center gap-6 px-3 py-0">
+      <div className="flex items-center gap-6 self-stretch px-3 py-0 xs:items-end xs:justify-center sm:items-end sm:justify-center">
         {/* 왼쪽: 날짜 */}
         <div
-          className="B2_Sb_15 sm:B4_Rg_13 xs:B4_Rg_13 flex min-w-fit flex-col items-end justify-center gap-8
-         bg-gradient-to-b from-mainGra1-0 to-mainGra2-0 bg-clip-text text-transparent"
+          className="B2_Sb_15 sm:B4_Rg_13 xs:B4_Rg_13 flex min-w-fit flex-col items-end justify-center gap-8 bg-gradient-to-b
+         from-mainGra1-0 to-mainGra2-0 bg-clip-text text-transparent"
         >
           {applyProcedure.map((item) => (
             <div key={item.schedule}>{item.schedule}</div>
           ))}
         </div>
-        {breakpoints.md ? (
+        {breakpoints.sm ? (
           <ProcedureSmallSVG count={applyProcedure.length} />
         ) : (
           <ProcedureLargeSVG count={applyProcedure.length} />
         )}
         {/* 오른쪽: 전형 단계 */}
-        <div className="B2_Rg_15 sm:B4_Rg_13 xs:B4_Rg_13 flex flex-col items-start gap-8 text-text-basicSecondary">
+        <div className="B2_Rg_15 sm:B4_Rg_13 xs:B4_Rg_13 flex flex-col gap-8 text-text-basicSecondary xs:justify-center sm:justify-center">
           {applyProcedure.map((item) => (
-            <div key={item.schedule}>{item.step}</div>
+            <div key={item.schedule}>
+              {item.step === '지원서 접수 (~03.08 23:59까지)' ? (
+                <p className="justify-start">
+                  지원서 접수
+                  <br className="hidden xs:block sm:block" />
+                  (~03.08 23:59까지)
+                </p>
+              ) : (
+                item.step
+              )}
+            </div>
           ))}
         </div>
       </div>

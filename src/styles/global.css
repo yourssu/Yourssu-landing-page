@@ -169,6 +169,24 @@
     letter-spacing: -0.32px;
   }
 
+  .B2_Sb_15 {
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px; /* 146.667% */
+    letter-spacing: -0.3px;
+  }
+
+  .B2_Rg_15 {
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 146.667% */
+    letter-spacing: -0.3px;
+  }
+
   .B3_Sb_14 {
     font-family: 'Pretendard';
     font-size: 14px;
@@ -185,6 +203,15 @@
     font-weight: 400;
     line-height: 20px; /* 142.857% */
     letter-spacing: -0.28px;
+  }
+
+  .B4_Rg_13 {
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 138.462% */
+    letter-spacing: -0.26px;
   }
 
   .B5_Rg_12 {

@@ -101,6 +101,7 @@ function DescriptionTemplate({
             <RoadToPro roadToPro={edges[0].node.roadToProVideo} />
             <Medium medium={edges[0].node.medium} />
           </div>
+          {/* 데스크탑용 사이드바: 모바일에서는 아예 사라짐 */}
           <div className="sticky top-[80px] flex h-fit w-72 flex-col items-start gap-5 xs:hidden sm:hidden md:hidden">
             {!breakpoints.md && (
               <SideNavigation
@@ -112,34 +113,35 @@ function DescriptionTemplate({
                 teamList={nameList}
               />
             )}
-            {breakpoints.md && (
-              <div className="sticky bottom-0 flex w-full flex-col gap-3 bg-gradient-to-t from-white-0 from-80% to-transparent p-5">
-                <ApplyButton
-                  link={edges[0].node.basicInformation.apply_link}
-                  isRecruiting={isRecruiting}
-                />
-                <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
-                  <Link
-                    to="/recruiting/#faq"
-                    className="flex w-fit flex-col items-center"
-                  >
-                    <div className="mb-[1px] items-center">FAQ 보러가기</div>
-                  </Link>
-                  |
-                  <a
-                    href={KAKAO_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-fit flex-col items-center"
-                  >
-                    <div className="mb-[1px] items-center">문의하기</div>
-                  </a>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
+      {/* 모바일 전용 하단 지원하기 버튼(고정 바) */}
+      {breakpoints.md && (
+        <div className="sticky bottom-0 z-50 flex w-full flex-col gap-3 bg-gradient-to-t from-white-0 from-80% to-transparent p-5">
+          <ApplyButton
+            link={edges[0].node.basicInformation.apply_link}
+            isRecruiting={isRecruiting}
+          />
+          <div className="body8 flex flex-row-reverse gap-2 text-gray1-0">
+            <Link
+              to="/recruiting/#faq"
+              className="flex w-fit flex-col items-center"
+            >
+              <div className="mb-[1px] items-center">FAQ 보러가기</div>
+            </Link>
+            |
+            <a
+              href={KAKAO_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-fit flex-col items-center"
+            >
+              <div className="mb-[1px] items-center">문의하기</div>
+            </a>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 }

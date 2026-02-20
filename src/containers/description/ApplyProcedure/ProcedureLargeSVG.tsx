@@ -1,5 +1,5 @@
-const LINE_HEIGHT = 36;
-const GAP_HEIGHT = 22;
+const LINE_HEIGHT = 22;
+const GAP_HEIGHT = 32;
 const WIDTH = 20;
 
 const MAIN_GRA_1 = '#f953ff';
@@ -43,7 +43,7 @@ function ProcedureLargeSVG({ count }: { count: number }) {
           x1={WIDTH / 2}
           y1={LINE_HEIGHT / 2}
           x2={WIDTH / 2}
-          y2={totalHeight - 26}
+          y2={totalHeight - 20}
           stroke="black"
         />
         {totalArray.map((num) =>

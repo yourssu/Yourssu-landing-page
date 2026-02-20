@@ -55,7 +55,7 @@ function ApplyProcess() {
         />
       </div>
 
-      <p className="text-sm font-normal leading-5 tracking-[-0.02em] text-[#6E7687]">
+      <p className="sm:B4_Rg_13 xs:B4_Rg_13 B3_Rg_14 text-text-basicTertiary">
         *세부사항은 지원 분야마다 차이가 있을 수 있어요.
       </p>
     </RecruitSectionLayout>

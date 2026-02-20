@@ -39,7 +39,7 @@ function MissionVision() {
       className="ml-[50%] h-[300vh] w-screen -translate-x-1/2 xs:h-[200vh] sm:h-[200vh]"
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center">
-        <motion.div className="h-[500px] w-full min-w-96 max-w-full flex-col items-center justify-center xs:h-[300px] sm:h-[300px]">
+        <motion.div className="h-[500px] w-full min-w-96 max-w-full flex-col items-center justify-center xs:h-[450px] sm:h-[450px]">
           {/* 비전 콘텐츠가 들어가는 div */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -101,9 +101,9 @@ const contentData = [
     subTitle: 'YOURSSU',
     description: {
       desktop:
-        '2년 내 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게 실제로 사용되며 가치를 인정받는 것을 목표로 한다',
+        '유어슈는 숭실대 학생들과 함께 성장하며,\n서비스로 세상에 의미 있는 변화를 만든다.',
       mobile:
-        '2년 내 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게\n실제로 사용되며 가치를 인정받는 것을 목표로 한다',
+        '유어슈는 숭실대 학생들과 함께 성장하며,\n서비스로 세상에 의미 있는 변화를 만든다.',
     },
     bgImageUrl: missionImage,
   },
@@ -112,9 +112,9 @@ const contentData = [
     subTitle: 'YOURSSU',
     description: {
       desktop:
-        '유어슈는 숭실대 학생들을 공감하며, 최고의 서비스를 끊임없이 제공한다',
+        '2년 내 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게 실제로 사용되며 가치를 인정받는 것을 목표로 한다',
       mobile:
-        '유어슈는 숭실대 학생들을 공감하며\n최고의 서비스를 끊임없이 제공한다',
+        '2년 내 유어슈가 만든 서비스 중 최소 1개 이상이\n외부 사용자 1,000명 이상에게\n실제로 사용되며 가치를 인정받는 것을 목표로 한다',
     },
     bgImageUrl: visionImage,
   },

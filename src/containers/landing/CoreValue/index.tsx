@@ -41,6 +41,11 @@ function CoreValue() {
           />
         ))}
       </div>
+      <p className="B5_Rg_12 hidden text-center text-text-basicTertiary xs:block sm:block">
+        카드를 눌러 내용을 확인해보세요
+        <br />
+        PC환경에서는 더 자세한 내용을 확인할 수 있습니다
+      </p>
     </section>
   );
 }

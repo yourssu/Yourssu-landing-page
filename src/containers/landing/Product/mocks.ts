@@ -30,14 +30,14 @@ export const products: ProductDataType[] = [
   {
     id: 3,
     title: '슈타임',
-    description: '학사일정을 간단하게 추가하는 서비스',
+    description: '교내 학사일정 자동 추가 서비스',
     imageUrl: ssutimeImage,
     serviceUrl: 'https://ssu-time.vercel.app/',
   },
   {
     id: 4,
     title: '숨쉴때 유세인트',
-    description: '성적 정보를 빠르게 확인해보세요',
+    description: '교내 성적 조회 및 알림 서비스',
     imageUrl: usaintImage,
     serviceUrl:
       'https://play.google.com/store/apps/details?id=com.yourssu.soomsil.usaint&hl=ko',

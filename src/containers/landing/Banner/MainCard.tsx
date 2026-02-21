@@ -13,11 +13,18 @@ export function MainCard({ images, text }: MainCardProps) {
 
   // 3초마다 인덱스 변경
   useEffect(() => {
+    // 이미지를 프리로딩해 최초 진입 시 느려지는 현상 방지
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 3000);
+
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, [images]);
 
   return (
     <div className="flex-end relative flex h-[535px] w-full max-w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px] xs:h-[243px] xs:w-[370px] xs:p-[20px] sm:h-[243px] sm:w-[370px] sm:p-[20px]">

@@ -3,6 +3,7 @@ import tw from 'tailwind-styled-components';
 
 import ApplyButton from '@/components/Button/ApplyButton';
 
+import { ArrowLeft } from './ArrowLeft';
 import useSideNavigationDetail from './hook';
 
 const KAKAO_LINK = 'http://pf.kakao.com/_AxfrxeT';
@@ -25,13 +26,16 @@ function SideNavigation({ currentTeam, teamList }: SideNavigationProps) {
         <h2 className="T3_Sb_20">TEAM</h2>
         <NavigationList>
           {teamList.map((team) => {
+            const isDisabled = team === 'Legal Partner';
+            const isActive = currentTeam.name === team;
             return (
               <NavigationItem
                 to={`/recruiting/${team.toLowerCase().replaceAll(' ', '_')}`}
                 key={team}
-                $active={currentTeam.name === team}
+                $active={isActive}
+                $disabled={isDisabled}
               >
-                <img src={data.smallArrow.publicURL} alt="small-arrow" />
+                <ArrowLeft isActive={isActive} isDisabled={isDisabled} />
                 <div>{team}</div>
               </NavigationItem>
             );
@@ -97,7 +101,7 @@ const NavigationList = tw.div`
   gap-[10px]
 `;
 
-const NavigationItem = tw(Link)<{ $active: boolean }>`
+const NavigationItem = tw(Link)<{ $active: boolean; $disabled: boolean }>`
   flex
   justify-between
   items-center
@@ -108,4 +112,5 @@ const NavigationItem = tw(Link)<{ $active: boolean }>`
   ${(props) => (props.$active ? 'B1_Sb_16' : 'B1_Lt_16')}
   ${(props) => (props.$active ? 'bg-bluegray4-0' : 'bg-white-0')}
   ${(props) => (props.$active ? 'text-[#25262C]' : 'text-[#6E7687]')}
+  ${(props) => props.$disabled && 'text-text-basicDisabled pointer-events-none'}
 `;

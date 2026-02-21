@@ -9,8 +9,8 @@ function Channel() {
       </h3>
 
       <div
-        className="flex w-full justify-center gap-10 
-          xs:justify-start xs:overflow-x-scroll xs:pl-5 sm:justify-start sm:overflow-x-scroll sm:pl-5 md:justify-start md:overflow-x-scroll md:pl-5"
+        className="flex w-full justify-center gap-5 
+          xs:justify-start xs:overflow-x-scroll sm:justify-start sm:overflow-x-scroll md:justify-start md:overflow-x-scroll"
         id="scrollbar-hide"
       >
         {CHANNELS_DATA.map((channel) => (
@@ -23,10 +23,6 @@ function Channel() {
           />
         ))}
       </div>
-      <p className="B5_Rg_12 hidden text-center text-text-basicTertiary xs:block sm:block">
-        옆으로 넘겨 다양한 채널을 확인해 보세요
-        <br />
-      </p>
     </section>
   );
 }

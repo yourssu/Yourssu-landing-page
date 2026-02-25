@@ -20,7 +20,7 @@ export default function useFAQDetail() {
     {
       question: '개발 파트의 경우 코딩 테스트가 있나요?',
       answer:
-        '별도의 코딩 테스트는 없지만, 일부 파트는 과제나 테스트가 포함돼요.',
+        '일부 파트는 코딩 테스트 혹은 과제를 진행해요.',
     },
     {
       question: '스펙이 부족한데, 지원해도 될까요?',

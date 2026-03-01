@@ -19,12 +19,14 @@ export function MainCard({ images, text }: MainCardProps) {
       img.src = src;
     });
 
+    const time = currentIndex === 0 ? 2000 : 3000;
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, time);
 
     return () => clearInterval(timer);
-  }, [images]);
+  }, [images, currentIndex]);
 
   return (
     <div className="flex-end relative flex h-[535px] w-full max-w-[1060px] flex-col justify-between overflow-hidden rounded-[16px] px-[72px] py-[40px] xs:h-[243px] xs:w-[370px] xs:p-[20px] sm:h-[243px] sm:w-[370px] sm:p-[20px]">

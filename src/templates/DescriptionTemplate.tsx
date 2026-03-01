@@ -83,7 +83,7 @@ function DescriptionTemplate({
         basicInformation={edges[0].node.basicInformation}
       />
       <div className="flex items-start justify-center gap-5 self-stretch bg-bg-basicDefault pb-20 pl-28 pr-28 pt-5 xs:px-0 sm:px-0">
-        <div className="flex items-start gap-5 lg:w-full xl:w-full">
+        <div className="flex flex-1 items-start gap-5">
           <div className="flex flex-1 flex-col items-start justify-center gap-5">
             <InformationCard data={edges[0].node.task} />
             <InformationCard data={edges[0].node.growthAndDiff} />
